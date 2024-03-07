@@ -1,54 +1,30 @@
-import DeployButton from "../components/DeployButton";
-import AuthButton from "../components/AuthButton";
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import Image from 'next/image'
+import GoogleSignIn from "@/components/login/GoogleSignIn";
 import { createClient } from "@/utils/supabase/server";
-import ConnectSupabaseSteps from "@/components/tutorial/ConnectSupabaseSteps";
-import SignUpUserSteps from "@/components/tutorial/SignUpUserSteps";
-import Header from "@/components/Header";
 
 export default async function Index() {
-  const canInitSupabaseClient = () => {
-    // This function is just for the interactive tutorial.
-    // Feel free to remove it once you have Supabase connected.
-    try {
-      createClient();
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
+    const supabase = createClient()
 
-  const isSupabaseConnected = canInitSupabaseClient();
+    return (
+      <div>
+        <Head>
+          <title>Conscious Closet</title>
+          <link rel="icon" href="/cc-icon.svg" />
+        </Head>
 
-  return (
-    <div className="flex-1 w-full flex flex-col gap-20 items-center">
-      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-        <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
-          <DeployButton />
-          {isSupabaseConnected && <AuthButton />}
+        <div className="flex justify-center min-h-screen max-h-screen">
+          <div className="opacity-40 static">
+            <Image src="/pexels-liza-summer-closet.jpg" layout="fill" objectFit="cover" alt="Photo of clothing on hangers by Liza Summer from Pexels"/>
+          </div>
+          <div className="flex flex-col items-center self-center space-y-14 absolute">
+            <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-7xl">
+              <span className="text-theme-green">CONSCIOUS</span> CLOSET
+            </h1>
+            <GoogleSignIn />
+          </div>
         </div>
-      </nav>
-
-      <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
-        <Header />
-        <main className="flex-1 flex flex-col gap-6">
-          <h2 className="font-bold text-4xl mb-4">Next steps</h2>
-          {isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-        </main>
       </div>
-
-      <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
-        <p>
-          Powered by{" "}
-          <a
-            href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-            target="_blank"
-            className="font-bold hover:underline"
-            rel="noreferrer"
-          >
-            Supabase
-          </a>
-        </p>
-      </footer>
-    </div>
   );
-}
+};
