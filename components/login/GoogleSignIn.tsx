@@ -2,12 +2,12 @@
 import * as React from "react";
 import { FC } from "react";
 import { useExternalScripts } from "@/hooks/useExternalScripts";
-import { handleGoogleSignIn } from "@/app/login/actions";
+import { handleGoogleSignIn } from "@/server-actions/login";
 
 const GoogleSignIn: FC = () => {
     useExternalScripts("https://accounts.google.com/gsi/client");
 
-    globalThis.handleGoogleSignIn = () => handleGoogleSignIn;
+    globalThis.handleGoogleSignIn = (response) => handleGoogleSignIn(response);
 
     return (
         <div>

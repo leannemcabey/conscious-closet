@@ -1,25 +1,3 @@
-'use server'
-
-import { createClient } from "@/utils/supabase/client";
-
-export const handleGoogleSignIn = async (response) => {
-    const supabase = createClient();
-
-    console.log("inside handleGoogleSignIn")
-    console.log(JSON.stringify(response))
-
-    const { data, error } = await supabase.auth.signInWithIdToken({
-        provider: "google",
-        token: response.credential
-    });
-
-    if (error !== null) {
-        console.log("error: " + error)
-    } else {
-        console.log(JSON.stringify(data))
-    }
-};
-
 // import { revalidatePath } from 'next/cache'
 // import { redirect } from 'next/navigation'
 //
