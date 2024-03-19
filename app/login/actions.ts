@@ -3,7 +3,7 @@
 //
 // import { createClient } from '@/utils/supabase/server'
 //
-// export async function login(formData: FormData) {
+// export async function auth(formData: FormData) {
 //     const supabase = createClient()
 //
 //     // type-casting here for convenience

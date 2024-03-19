@@ -3,7 +3,7 @@ import { updateSession } from "@/utils/supabase/middleware";
 import {createMiddlewareClient} from "@supabase/auth-helpers-nextjs";
 
 /**
- * Redirects unauthenticated users back to the login screen
+ * Redirects unauthenticated users back to the auth screen
  * */
 export async function middleware(req: NextRequest) {
   // return await updateSession(req);

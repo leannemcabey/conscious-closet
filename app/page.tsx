@@ -1,7 +1,6 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import GoogleSignIn from "@/components/login/GoogleSignIn";
+import GoogleSignIn from "@/components/auth/GoogleSignIn";
 import { createClient } from "@/utils/supabase/server";
 
 export default async function Index() {
