@@ -1,20 +1,19 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/**/*.{js,ts,jsx,tsx}",
+    "./app/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        btn: {
-          background: "hsl(var(--btn-background))",
-          "background-hover": "hsl(var(--btn-background-hover))",
-        },
-      },
-    },
+        'theme-green': '#7fb18f',
+        'background-green': '#fcfffc',
+        'text-green': '#559e6b',
+        'theme-sage': '#727467',
+        'theme-gold': '#97682b',
+        'theme-brown': '#552d16',
+      }
+    }
   },
   plugins: [],
-};
+}

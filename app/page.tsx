@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import GoogleSignIn from "@/components/auth/GoogleSignIn";
+import GoogleSignIn from "@/app/components/auth/GoogleSignIn";
 import { createClient } from "@/utils/supabase/server";
 
 export default async function Index() {

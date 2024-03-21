@@ -1,8 +1,8 @@
-import DeployButton from "@/components/DeployButton";
-import AuthButton from "@/components/AuthButton";
+import DeployButton from "@/app/components/DeployButton";
+import AuthButton from "@/app/components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
-import FetchDataSteps from "@/components/tutorial/FetchDataSteps";
-import Header from "@/components/Header";
+import FetchDataSteps from "@/app/components/tutorial/FetchDataSteps";
+import Header from "@/app/components/Header";
 import { redirect } from "next/navigation";
 
 export default async function ProtectedPage() {
@@ -23,7 +23,7 @@ export default async function ProtectedPage() {
           This is a protected page that you can only see as an authenticated
           user
         </div>
-        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
+        <nav className="w-full flex justify-center border-b h-16">
           <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
             <DeployButton />
             <AuthButton />
@@ -39,7 +39,7 @@ export default async function ProtectedPage() {
         </main>
       </div>
 
-      <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
+      <footer className="w-full border-t p-8 flex justify-center text-center text-xs">
         <p>
           Powered by{" "}
           <a
