@@ -1,8 +1,6 @@
 'use server'
 
 import { createClient } from "@/utils/supabase/server";
-import { NextResponse } from "next/server";
-import {redirect} from "next/navigation";
 
 export async function GET(response) {
   // // The `/auth/callback` route is required for the server-side auth flow implemented
@@ -19,8 +17,6 @@ export async function GET(response) {
   //
   // // URL to redirect to after sign up process completes
   // return NextResponse.redirect(`${origin}/protected`);
-  console.log("in callback")
-
   const supabase = createClient();
 
   const { data, error } = await supabase.auth.signInWithIdToken({
@@ -32,5 +28,7 @@ export async function GET(response) {
     console.log("error: " + error)
   }
 
-  redirect('/home')
+  console.log(JSON.stringify(data))
+
+  return data;
 }

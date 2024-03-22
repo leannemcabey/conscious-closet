@@ -4,8 +4,8 @@ import * as React from "react";
 import { FC } from "react";
 import { slide as SlideMenu } from 'react-burger-menu'
 import Image from "next/image";
-// import { useAuth } from "../contexts/authContext";
 import Link from "next/link";
+import { useUserContext } from "@/hooks/useUserContext";
 
 const styles = {
     bmBurgerButton: {
@@ -51,11 +51,11 @@ const styles = {
 
 
 export default function Menu() {
-    // const { authenticatedUser } = useAuth()
+    const { authenticatedUser } = useUserContext()
 
     return (
         <SlideMenu right width={ '250px' } styles={ styles } >
-            {/*<p className="font-bold text-black text-sm mb-8 pb-4 border-b border-black">{authenticatedUser?.email}</p>*/}
+            <p className="font-bold text-black text-sm mb-8 pb-4 border-b border-black">{authenticatedUser?.email}</p>
 
             <Link href="/home">
                 <div className="flex space-x-4 mb-6">
