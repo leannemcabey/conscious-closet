@@ -3,26 +3,29 @@ import * as React from "react";
 import { FC } from "react";
 import { useExternalScripts } from "@/hooks/useExternalScripts";
 import { GET } from "@/app/auth/callback/route";
-import { useUserContext } from "@/hooks/useUserContext";
 import { redirect } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
 const GoogleSignIn: FC = () => {
     useExternalScripts("https://accounts.google.com/gsi/client");
-    const { login } = useUserContext();
+    // const supabase = createClient()
 
     globalThis.handleGoogleSignIn = (response) => {
 
         // Sign in to Supabase
         GET(response)
-            .then((data) => {
-                // Set application user state
-                login({
-                    id: data.user?.id,
-                    googleAccessToken: data.session?.access_token,
-                    email: data.user?.email,
-                })
-            })
-            // .then(() => redirect('/home'));
+        // supabase.auth.getSession()
+        //     .then((user) => console.log(`in google sign in: ${JSON.stringify(user)}`))
+
+            // .then(() => {
+            //     console.log(`in google sign in: ${JSON.stringify(data)}`)
+            //     // Set application user state
+            //     // login({
+            //     //     id: data.user?.id,
+            //     //     googleAccessToken: data.session?.access_token,
+            //     //     email: data.user?.email,
+            //     // })
+            // })
     }
 
     return (

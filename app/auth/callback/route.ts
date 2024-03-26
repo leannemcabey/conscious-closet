@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export async function GET(response) {
   // // The `/auth/callback` route is required for the server-side auth flow implemented
@@ -24,11 +25,12 @@ export async function GET(response) {
     token: response.credential
   });
 
+  supabase.auth.getUser()
+      .then((user) => console.log(`inside GET route: ${JSON.stringify(user)}`))
+
   if (error !== null) {
     console.log("error: " + error)
   }
 
-  console.log(JSON.stringify(data))
-
-  return data;
+  redirect('/home')
 }

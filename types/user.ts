@@ -1,5 +1,5 @@
 export interface User {
-    id?: string;
-    googleAccessToken?: string;
-    email?: string;
+    id?: string | undefined;
+    googleAccessToken?: string | undefined;
+    email?: string | undefined;
 }

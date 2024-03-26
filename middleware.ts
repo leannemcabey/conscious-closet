@@ -1,26 +1,26 @@
-import {type NextRequest, NextResponse} from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { updateSession } from "@/utils/supabase/middleware";
-import {createMiddlewareClient} from "@supabase/auth-helpers-nextjs";
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 
 /**
  * Redirects unauthenticated users back to the auth screen
  * */
 export async function middleware(req: NextRequest) {
-  // return await updateSession(req);
   const res = NextResponse.next();
   const supabase = createMiddlewareClient({req, res})
 
   const { data: { user } } = await supabase.auth.getUser();
 
   if (user && req.nextUrl.pathname === '/') {
+
     return NextResponse.redirect(new URL('/home', req.url))
   }
-
   if (!user && req.nextUrl.pathname !== '/') {
+
     return NextResponse.redirect(new URL('/', req.url))
   }
 
-  return res;
+  return await updateSession(req)
 }
 
 /**
