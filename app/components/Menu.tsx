@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { User } from "@/types/user";
+import { useUser } from "@/hooks/useUser";
 
 const styles = {
     bmBurgerButton: {
@@ -52,20 +53,7 @@ const styles = {
 
 
 export default function Menu() {
-    const supabase = createClient();
-    const [user, setUser] = useState<User>({})
-
-    useEffect(() => {
-        const getUser = async () => {
-            const { data } = await supabase.auth.getSession()
-            setUser({
-                id: data.session?.user.id,
-                googleAccessToken: data.session?.access_token,
-                email: data.session?.user.email
-            })
-        }
-        getUser()
-    }, [])
+    const user: User = useUser();
 
     return (
         <SlideMenu right width={'250px'} styles={styles}>
