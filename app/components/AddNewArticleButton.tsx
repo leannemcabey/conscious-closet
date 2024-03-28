@@ -9,7 +9,7 @@ interface AddNewArticleButtonProps {
 
 export default function AddNewArticleButton({ category }) {
     return (
-        <Link href={`/home`}>
+        <Link href={`/articles/category/${category}/new`}>
             <div className="flex flex-col space-y-2 justify-center text-center w-full h-60 border-2 border-dashed border-slate-300 rounded-md">
                 <Image src="/plus-icon.svg" height="40" width="40" alt="plus icon"/>
             </div>

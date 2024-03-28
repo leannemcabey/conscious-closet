@@ -3,8 +3,8 @@ import { createClient } from '@/utils/supabase/client';
 import { LogoutButton } from "@/app/components/auth/LogoutButton";
 import Layout from "@/app/components/Layout";
 import WeatherCategories from "@/app/components/WeatherCategories";
-import ArticleTypeCard from "@/app/components/ArticleTypeCard";
-import ArticleTypes from "@/app/components/ArticleTypes";
+import ArticleCategoryCard from "@/app/components/ArticleCategoryCard";
+import {ARTICLE_CATEGORY_TITLES, ArticleCategoryTitles} from "@/types/enums/ArticleCategory";
 
 export default function Home() {
     // const supabase = createClient();
@@ -21,15 +21,10 @@ export default function Home() {
             <div className="flex justify-center">
                 <WeatherCategories />
             </div>
-            <ArticleTypes>
-                <ArticleTypeCard type="Tops" />
-                <ArticleTypeCard type="Bottoms" />
-                <ArticleTypeCard type="Dresses" />
-                <ArticleTypeCard type="Jumpsuits & Rompers" />
-                <ArticleTypeCard type="Shoes" />
-                <ArticleTypeCard type="Outerwear" />
-                <ArticleTypeCard type="Accessories" />
-            </ArticleTypes>
+            <div className="mt-12 flex flex-col items-center justify-center space-y-5">
+                {Object.values(ArticleCategoryTitles)
+                    .map((title) => <ArticleCategoryCard title={title}/>)}
+            </div>
             <LogoutButton/>
         </Layout>
     )

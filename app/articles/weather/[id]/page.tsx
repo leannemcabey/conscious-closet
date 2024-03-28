@@ -2,11 +2,11 @@
 import Layout from "@/app/components/Layout";
 import { useUser } from "@/hooks/useUser";
 import { useState } from "react";
-import { GooglePhotoData } from "@/types/GooglePhotoData";
+import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
 
 export default function Weather({ params }: { params: { id: string } }) {
     const user = useUser();
-    const [articlePhotos, setArticlePhotos] = useState<GooglePhotoData[]>([])
+    const [articlePhotos, setArticlePhotos] = useState<GooglePhotoMetadata[]>([])
     const categoryHasArticles: boolean = articlePhotos.length > 0;
 
     return (
