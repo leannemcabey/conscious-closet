@@ -1,44 +1,53 @@
+'use client'
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { useUser } from "@/hooks/useUser";
 import { User } from "@/types/user";
 import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
 import axios from "axios";
 import Image from "next/image";
 import GalleryImage from "@/app/components/GalleryImage";
+import { createClient } from "@/utils/supabase/client";
 
 interface ImageSelection {
+    user: User;
     setImage: Dispatch<SetStateAction<string | undefined>>;
-    setIsSelecting: Dispatch<SetStateAction<boolean>>;
+    // setIsSelecting: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ImageSelection = ({ setImage, setIsSelecting }) => {
-    const user: User = useUser();
+export const ImageSelection = ({ user, setImage }) => {
+    const supabase = createClient();
     const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>()
 
     useEffect(() => {
-        axios.get("https://photoslibrary.googleapis.com/v1/mediaItems", {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + user.googleAccessToken
-            },
-            params: {
-                pageSize: "50"
-            }
-        })
-            .then((response) => {
-                const data = response.data.mediaItems.map((item: any) => {
-                    return {
-                        baseUrl: item.baseUrl,
-                        imageId: item.id
+        console.log('inside useeffect')
+        supabase.auth.getSession()
+            .then((session) => {
+                const providerToken = session.data.session?.provider_token;
+
+                axios.get("https://photoslibrary.googleapis.com/v1/mediaItems", {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + providerToken
+                    },
+                    params: {
+                        pageSize: "50"
                     }
                 })
-                setGooglePhotos(data)
+                    .then((response) => {
+                        console.log(`photos api response: ${JSON.stringify(response)}`)
+                        const data = response.data.mediaItems.map((item: any) => {
+                            return {
+                                baseUrl: item.baseUrl,
+                                imageId: item.id
+                            }
+                        })
+                        setGooglePhotos(data)
+                    })
             })
     }, []);
 
     const handleClick = async (image: GooglePhotoMetadata) => {
         setImage(image)
-        setIsSelecting(false)
+        // setIsSelecting(false)
     }
 
     return (

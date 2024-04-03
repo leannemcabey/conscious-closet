@@ -1,11 +1,10 @@
 import axios from "axios";
 import {Dispatch, FC, SetStateAction, useEffect, useState} from "react";
 import {User} from "@/types/user";
-import {useUser} from "@/hooks/useUser";
 import {GooglePhotoMetadata} from "@/types/GooglePhotoMetadata";
 import {WeatherCategory} from "@/types/enums/WeatherCategory";
 import {googlePhotosPathLoader} from "@/utils/googlePhotosPathLoader";
-import {AddFromGooglePhotosButton} from "@/app/components/AddFromGooglePhotosButton";
+import {AddFromGooglePhotosButton} from "@/app/components/newArticle/AddFromGooglePhotosButton";
 
 
 interface NewArticleProps {
@@ -14,8 +13,7 @@ interface NewArticleProps {
     setIsSelecting: Dispatch<SetStateAction<boolean>>
 }
 
-export const NewArticle: FC<NewArticleProps> = ({ category, imageId, setIsSelecting }) => {
-    const user: User = useUser();
+export const NewArticle = ({ category, imageId, setIsSelecting }) => {
     const [image, setImage] = useState<GooglePhotoMetadata | undefined>(undefined)
     const [weatherCategory, setWeatherCategory] = useState<WeatherCategory | undefined>(undefined)
 

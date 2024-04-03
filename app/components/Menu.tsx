@@ -1,13 +1,10 @@
 'use client'
-
-import * as React from "react";
-import { FC, useEffect, useState } from "react";
 import { slide as SlideMenu } from 'react-burger-menu'
 import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { User } from "@/types/user";
-import { useUser } from "@/hooks/useUser";
+import {useEffect, useState} from "react";
 
 const styles = {
     bmBurgerButton: {
@@ -53,11 +50,17 @@ const styles = {
 
 
 export default function Menu() {
-    const user: User = useUser();
+    const supabase = createClient();
+    const [userEmail, setUserEmail] = useState<string | undefined>();
+
+    useEffect(() => {
+        supabase.auth.getSession()
+            .then((session) => setUserEmail(session.data.session?.user.email))
+    }, [])
 
     return (
         <SlideMenu right width={'250px'} styles={styles}>
-            <p className="font-bold text-black text-sm mb-8 pb-4 border-b border-black">{user.email}</p>
+            <p className="font-bold text-black text-sm mb-8 pb-4 border-b border-black">{userEmail}</p>
 
             <Link href="/home">
                 <div className="flex space-x-4 mb-6">

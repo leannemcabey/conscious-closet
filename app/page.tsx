@@ -1,11 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import GoogleSignIn from "@/app/components/auth/GoogleSignIn";
-import { createClient } from "@/utils/supabase/server";
 
 export default async function Index() {
-    const supabase = createClient()
-
     return (
       <div>
         <Head>

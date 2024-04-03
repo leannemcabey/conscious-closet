@@ -1,7 +1,5 @@
-import * as React from "react";
-import { FC } from "react";
 import Link from 'next/link'
-import {ArticleCategory, ArticleCategoryTitles, categoryTitleToPathSlug} from "@/types/enums/ArticleCategory";
+import { ArticleCategory, ArticleCategoryTitles, categoryTitleToPathSlug } from "@/types/enums/ArticleCategory";
 
 interface ArticleCategoryCardProps {
     title: ArticleCategoryTitles

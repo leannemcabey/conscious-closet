@@ -1,21 +1,11 @@
-'use client'
-import { createClient } from '@/utils/supabase/client';
+'use server'
 import { LogoutButton } from "@/app/components/auth/LogoutButton";
 import Layout from "@/app/components/Layout";
-import WeatherCategories from "@/app/components/WeatherCategories";
-import ArticleCategoryCard from "@/app/components/ArticleCategoryCard";
-import {ARTICLE_CATEGORY_TITLES, ArticleCategoryTitles} from "@/types/enums/ArticleCategory";
+import WeatherCategories from "@/app/components/home/WeatherCategories";
+import ArticleCategoryCard from "@/app/components/home/ArticleCategoryCard";
+import { ArticleCategoryTitles } from "@/types/enums/ArticleCategory";
 
-export default function Home() {
-    // const supabase = createClient();
-    // supabase.auth.getSession()
-    //     .then((user) => console.log(`inside home page: ${JSON.stringify(user)}`))
-
-
-    // const { data: articleTypes } = await supabase.from("article_types").select();
-
-    // console.log(JSON.stringify(articleTypes))
-
+export default async function Home() {
     return (
         <Layout>
             <div className="flex justify-center">

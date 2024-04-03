@@ -8,7 +8,7 @@ interface WeatherPickerProps {
     select: (WeatherCategory) => void
 }
 
-export const WeatherPicker = ({ isSelected, iconPath, weatherCategory, select }) => {
+export const Weather = ({ isSelected, iconPath, weatherCategory, select }) => {
     return (
         <button
             onClick={() => select(weatherCategory)}
