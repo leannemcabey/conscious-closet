@@ -6,6 +6,7 @@ import ArticleCategoryCard from "@/app/components/home/ArticleCategoryCard";
 import { ArticleCategoryTitles } from "@/types/enums/ArticleCategory";
 
 export default async function Home() {
+    console.log('in home page')
     return (
         <Layout>
             <div className="flex justify-center">
@@ -15,7 +16,6 @@ export default async function Home() {
                 {Object.values(ArticleCategoryTitles)
                     .map((title) => <ArticleCategoryCard title={title}/>)}
             </div>
-            <LogoutButton/>
         </Layout>
     )
 }

@@ -28,7 +28,8 @@ const GoogleSignIn = () => {
                 // access_type: 'offline',
                 prompt: 'consent',
             },
-          },
+            redirectTo: 'http://localhost:3000/home' // TODO: make variable
+        },
     })
 
     return (

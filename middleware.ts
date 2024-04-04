@@ -1,3 +1,4 @@
+'use server'
 import { type NextRequest, NextResponse } from "next/server";
 import { updateSession } from "@/utils/supabase/middleware";
 import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
@@ -10,15 +11,17 @@ export async function middleware(req: NextRequest) {
   const supabase = createMiddlewareClient({req, res})
 
   const { data: { user } } = await supabase.auth.getUser();
+  console.log(`user: ${JSON.stringify(user)}`)
+
 
   if (user && req.nextUrl.pathname === '/') {
-
     return NextResponse.redirect(new URL('/home', req.url))
   }
-  if (!user && req.nextUrl.pathname !== '/') {
 
-    return NextResponse.redirect(new URL('/', req.url))
-  }
+  // TODO: this isn't playing nicely with the auth flow / redirect. The `user` object comes back null, even though there is a session in place. I guess because this is on the server side, while the session is on the client side. So it tried to redirect to /home, and then does another redirect to the login page. With this uncommented, if you refresh the page after login, you will be correctly redirected to the home page.
+  // if (!user && req.nextUrl.pathname !== '/') {
+  //   return NextResponse.redirect(new URL('/', req.url))
+  // }
 
   return await updateSession(req)
 }
@@ -32,10 +35,9 @@ export const config = {
      * Match all request paths except:
      * - _next/static (static files)
      * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
      * - images - .svg, .png, .jpg, .jpeg, .gif, .webp
      * Feel free to modify this pattern to include more paths.
      */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!_next/static|_next/image|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };

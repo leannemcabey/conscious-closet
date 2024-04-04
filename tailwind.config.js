@@ -6,12 +6,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'theme-green': '#7fb18f',
+        'theme-green': '#287e60',
+        'theme-light-green': '#bed7c5',
         'background-green': '#fcfffc',
-        'text-green': '#559e6b',
+        'text-green': '#027d5a',
+        'theme-blue': '#677893',
         'theme-sage': '#727467',
         'theme-gold': '#97682b',
-        'theme-brown': '#552d16',
+        'theme-brown': '#552d16'
       }
     }
   },

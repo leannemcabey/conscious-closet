@@ -10,7 +10,7 @@ export default function ArticleCategoryCard({ title }) {
 
     return (
         <Link href={`/articles/category/${pathSlug}`}>
-            <div className="flex items-center justify-center w-80 h-20 text-2xl rounded-lg bg-white text-theme-green drop-shadow-lg">
+            <div className="flex items-center justify-center w-80 h-20 text-2xl rounded-lg bg-white text-text-green drop-shadow-lg">
                 {title}
             </div>
         </Link>
