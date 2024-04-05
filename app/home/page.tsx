@@ -3,7 +3,7 @@ import { LogoutButton } from "@/app/components/auth/LogoutButton";
 import Layout from "@/app/components/Layout";
 import WeatherCategories from "@/app/components/home/WeatherCategories";
 import ArticleCategoryCard from "@/app/components/home/ArticleCategoryCard";
-import { ArticleCategoryTitles } from "@/types/enums/ArticleCategory";
+import { ArticleCategoryTitle } from "@/types/enums/ArticleCategory";
 
 export default async function Home() {
     console.log('in home page')
@@ -13,7 +13,7 @@ export default async function Home() {
                 <WeatherCategories />
             </div>
             <div className="mt-12 flex flex-col items-center justify-center space-y-5">
-                {Object.values(ArticleCategoryTitles)
+                {Object.values(ArticleCategoryTitle)
                     .map((title) => <ArticleCategoryCard title={title}/>)}
             </div>
         </Layout>

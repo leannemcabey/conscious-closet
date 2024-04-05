@@ -10,7 +10,7 @@ export enum ArticleCategory {
     ACCESSORIES = "accessories",
 }
 
-export enum ArticleCategoryTitles {
+export enum ArticleCategoryTitle {
     TOPS = "Tops",
     BOTTOMS = "Bottoms",
     DRESSES = "Dresses",
@@ -21,6 +21,17 @@ export enum ArticleCategoryTitles {
     ACCESSORIES = "Accessories"
 }
 
-export const categoryTitleToPathSlug = (title: ArticleCategoryTitles): ArticleCategory => {
+export const slugToTitleMap  = {
+    tops: "Tops",
+    bottoms: "Bottoms",
+    dresses: "Dresses",
+    jumpsuits_rompers: "Jumpsuits & Rompers",
+    activewear: "Activewear",
+    shoes: "Shoes",
+    outerwear: "Outerwear",
+    accessories: "Accessories"
+}
+
+export const categoryTitleToPathSlug = (title: ArticleCategoryTitle): ArticleCategory => {
     return title.toLowerCase().replace(" & ", "_") as ArticleCategory
 }

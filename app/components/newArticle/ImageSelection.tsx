@@ -52,10 +52,7 @@ export const ImageSelection = ({ user, setImage }) => {
 
     return (
         <div>
-            <div className="flex">
-                <Image src="/left-arrow.svg" width="50" height="50" alt="back arrow"/>
-                <p className="mb-4 text-lg">Select photo</p>
-            </div>
+            <p className="mb-4 text-lg">Select photo</p>
 
             {!googlePhotos && <div>Loading...</div>}
 
