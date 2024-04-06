@@ -6,7 +6,6 @@ import ArticleCategoryCard from "@/app/components/home/ArticleCategoryCard";
 import { ArticleCategoryTitle } from "@/types/enums/ArticleCategory";
 
 export default async function Home() {
-    console.log('in home page')
     return (
         <Layout>
             <div className="flex justify-center">

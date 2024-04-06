@@ -3,22 +3,19 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { User } from "@/types/user";
 import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
 import axios from "axios";
-import Image from "next/image";
-import GalleryImage from "@/app/components/GalleryImage";
+import GalleryImage from "@/app/components/articles/new/GalleryImage";
 import { createClient } from "@/utils/supabase/client";
 
 interface ImageSelection {
-    user: User;
     setImage: Dispatch<SetStateAction<string | undefined>>;
     // setIsSelecting: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ImageSelection = ({ user, setImage }) => {
+export const ImageSelection = ({ setImage }) => {
     const supabase = createClient();
     const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>()
 
     useEffect(() => {
-        console.log('inside useeffect')
         supabase.auth.getSession()
             .then((session) => {
                 const providerToken = session.data.session?.provider_token;
@@ -33,7 +30,6 @@ export const ImageSelection = ({ user, setImage }) => {
                     }
                 })
                     .then((response) => {
-                        console.log(`photos api response: ${JSON.stringify(response)}`)
                         const data = response.data.mediaItems.map((item: any) => {
                             return {
                                 baseUrl: item.baseUrl,

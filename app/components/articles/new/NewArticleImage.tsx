@@ -1,4 +1,5 @@
 'use client'
+import Image from "next/image";
 import { googlePhotosPathLoader } from "@/utils/googlePhotosPathLoader";
 
 interface NewArticleImageProps {

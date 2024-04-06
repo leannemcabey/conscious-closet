@@ -1,5 +1,4 @@
-import * as React from "react";
-import { FC } from "react";
+'use client'
 import Image from "next/image";
 import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
 import { googlePhotosPathLoader } from "@/utils/googlePhotosPathLoader";
@@ -9,7 +8,7 @@ interface GalleryImageProps {
     handleSelection: (photoData: GooglePhotoMetadata) => void;
 }
 
-const GalleryImage: FC<GalleryImageProps> = ({ photoData, handleSelection }) => {
+const GalleryImage = ({ photoData, handleSelection }: GalleryImageProps) => {
     const { baseUrl, imageId } = photoData
 
     return (

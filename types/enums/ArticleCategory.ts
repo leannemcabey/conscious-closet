@@ -21,7 +21,7 @@ export enum ArticleCategoryTitle {
     ACCESSORIES = "Accessories"
 }
 
-export const slugToTitleMap  = {
+export const categorySlugToTitleMap  = {
     tops: "Tops",
     bottoms: "Bottoms",
     dresses: "Dresses",

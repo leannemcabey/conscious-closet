@@ -1,11 +1,14 @@
 'use client'
-import { Weather } from "@/app/components/newArticle/Weather";
+import { Weather } from "@/app/components/articles/new/Weather";
 import { WeatherCategory } from "@/types/enums/WeatherCategory";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-export const WeatherPicker = () => {
-    const [weatherCategory, setWeatherCategory] = useState<WeatherCategory | undefined>(undefined);
+interface WeatherPickerProps {
+    weatherCategory: WeatherCategory | undefined;
+    setWeatherCategory: Dispatch<SetStateAction<WeatherCategory>>
+}
 
+export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPickerProps) => {
     return (
         <div className="flex flex-col">
             <div className="w-16 overflow-hidden inline-block self-end">
