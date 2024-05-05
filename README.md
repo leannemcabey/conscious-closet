@@ -3,6 +3,8 @@
   <h1 align="center">Next.js and Supabase Starter Kit</h1>
 </a>
 
+<p>If you run into build errors, run `nvm use 21`</p>
+
 <p align="center">
  The fastest way to build apps with Next.js and Supabase
 </p>
