@@ -10,7 +10,6 @@ import DeleteArticle from "@/app/components/articles/DeleteArticle";
 import AddOrRemoveFromCleanoutBag from "@/app/components/articles/AddOrRemoveFromCleanoutBag";
 
 export default async function ArticlePage({ params }: { id: string }) {
-    console.log("checking for a re-render")
     const supabase = createClient();
 
     const { data: articles } = await supabase.from("articles").select().eq('id', params.id);
