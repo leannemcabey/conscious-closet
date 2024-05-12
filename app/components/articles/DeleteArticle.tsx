@@ -14,6 +14,7 @@ const DeleteArticle = ({ article }: DeleteArticleProps) => {
             alt={"trash icon"}
             width="25" height="25"
             onClick={() => deleteArticle(article)}
+            className="mx-4"
         />
     )
 }
