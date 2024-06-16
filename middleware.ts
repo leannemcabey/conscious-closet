@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest) {
   const supabase = createMiddlewareClient({req, res})
 
   const { data: { user } } = await supabase.auth.getUser();
-  console.log(`user: ${JSON.stringify(user)}`)
+  // console.log(`user: ${JSON.stringify(user)}`)
 
 
   if (user && req.nextUrl.pathname === '/') {

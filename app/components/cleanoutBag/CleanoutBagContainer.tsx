@@ -10,7 +10,7 @@ interface CleanoutBagContainerProps {
 }
 
 const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
-    console.log("checking for re-render")
+    // console.log("checking for re-render")
     const [cleanoutBagArticles, setCleanoutBagArticles] = useState<Article[]>(articles);
 
     const deleteAllAndResetData = () => {

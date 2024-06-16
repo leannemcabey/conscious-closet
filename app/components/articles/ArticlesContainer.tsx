@@ -39,9 +39,9 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
                         }
                     })
                         .then((response) => {
-                            console.log(`batch response: ${JSON.stringify(response)}`)
+                            // console.log(`batch response: ${JSON.stringify(response)}`)
                             const data = response.data.mediaItemResults.map((result) => {
-                                console.log(`result: ${JSON.stringify(result.mediaItem.baseUrl)}`)
+                                // console.log(`result: ${JSON.stringify(result.mediaItem.baseUrl)}`)
                                 return {
                                     baseUrl: result.mediaItem.baseUrl,
                                     imageId: result.mediaItem.id

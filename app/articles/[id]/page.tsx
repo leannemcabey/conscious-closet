@@ -7,7 +7,8 @@ import { Article } from "@/types/Article";
 import LastWorn from "@/app/components/articles/LastWorn";
 import Image from "next/image";
 import DeleteArticle from "@/app/components/articles/DeleteArticle";
-import AddOrRemoveFromCleanoutBag from "@/app/components/articles/AddOrRemoveFromCleanoutBag";
+import AddOrRemoveFromCleanoutBag from "@/app/components/cleanoutBag/AddOrRemoveFromCleanoutBag";
+import AddArticleToSuitcase from "@/app/components/articles/AddArticleToSuitcase";
 
 export default async function ArticlePage({ params }: { id: string }) {
     const supabase = createClient();
@@ -24,7 +25,7 @@ export default async function ArticlePage({ params }: { id: string }) {
                 <LastWorn article={mappedArticle} />
                 <p>Weather category: {mappedArticle.weatherCategory}</p>
                 <div className="flex">
-                    <Image className="mx-4" src={"/luggage-icon.png"} alt={"luggage icon"} width="25" height="25" />
+                    <AddArticleToSuitcase article={mappedArticle} />
                     <AddOrRemoveFromCleanoutBag article={mappedArticle} />
                     <DeleteArticle article={mappedArticle} />
                 </div>

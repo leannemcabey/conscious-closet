@@ -1,14 +1,10 @@
 import * as React from "react";
 import Layout from "@/app/components/Layout";
-import {createClient} from "@/utils/supabase/server";
-import {Article} from "@/types/Article";
-import {toArticle} from "@/utils/toArticle";
-import {categorySlugToTitleMap} from "@/types/enums/ArticleCategory";
-import Link from "next/link";
-import Image from "next/image";
-import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
-import CleanoutBagContainer from "@/app/components/articles/CleanoutBagContainer";
-import {getArticlesInCleanoutBag} from "@/app/server-actions/getArticlesInCleanoutBag";
+import { createClient } from "@/utils/supabase/server";
+import { Article } from "@/types/Article";
+import { toArticle } from "@/utils/toArticle";
+import CleanoutBagContainer from "@/app/components/cleanoutBag/CleanoutBagContainer";
+import { getArticlesInCleanoutBag } from "@/app/server-actions/getArticlesInCleanoutBag";
 
 export default async function CleanOutBag() {
     const supabase = createClient();
