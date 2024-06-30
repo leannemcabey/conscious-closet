@@ -6,6 +6,7 @@ import { Suitcase } from "@/types/Suitcase";
 import { getSuitcases } from "@/app/server-actions/getSuitcases";
 import Modal from "@/app/components/modal";
 import AddToSuitcaseMenu from "@/app/components/suitcases/AddToSuitcaseMenu";
+import {addArticleToSuitcase} from "@/app/server-actions/addArticleToSuitcase";
 
 interface AddArticleToSuitcaseProps {
     article: Article;
@@ -14,17 +15,29 @@ interface AddArticleToSuitcaseProps {
 const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
     const [isSelectingSuitcase, setIsSelectingSuitcase] = useState<boolean>(false)
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
-    const [suitcaseIds, setSuitcaseIds] = useState<string[]>([]);
+    const [selectedSuitcases, setSelectedSuitcases] = useState<string[]>([]);
+
+    // TODO: pull already selected suitcases from DB to populate selectedSuitcases to start
 
     useEffect(() => {
         getSuitcases()
             .then((data) => setSuitcases(data))
     }, [])
 
+    const submit = () => {
+        console.log('submitting')
+        addArticleToSuitcase(article.id, selectedSuitcases)
+    }
+
     const suitcaseMenu = (suitcases: Suitcase[]) => {
         return (
-            <Modal setIsOpen={setIsSelectingSuitcase}>
-                <AddToSuitcaseMenu suitcases={suitcases} />
+            <Modal setIsOpen={setIsSelectingSuitcase} submit={submit}>
+                <AddToSuitcaseMenu
+                    articleId={article.id}
+                    suitcases={suitcases}
+                    selectedSuitcases={selectedSuitcases}
+                    setSelectedSuitcases={setSelectedSuitcases}
+                />
             </Modal>
         )
     }

@@ -1,15 +1,16 @@
 'use client'
 import { Suitcase } from "@/types/Suitcase";
 import Image from "next/image";
-import { useState } from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 
 interface AddToSuitcaseMenuProps {
-    suitcases: Suitcase[]
+    articleId: string;
+    suitcases: Suitcase[];
+    selectedSuitcases: string[];
+    setSelectedSuitcases: Dispatch<SetStateAction<string[] | undefined>>;
 }
 
-const AddToSuitcaseMenu = ({ suitcases }: AddToSuitcaseMenuProps) => {
-    const [selectedSuitcases, setSelectedSuitcases] = useState<string[]>([]);
-
+const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelectedSuitcases }: AddToSuitcaseMenuProps) => {
     const suitcaseIsSelected = (suitcaseId: string): boolean => selectedSuitcases.includes(suitcaseId);
 
     const adjustSuitcaseSelection = (suitcaseId: string) => {
