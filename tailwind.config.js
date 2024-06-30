@@ -14,7 +14,8 @@ module.exports = {
         'theme-blue': '#677893',
         'theme-sage': '#727467',
         'theme-gold': '#97682b',
-        'theme-brown': '#552d16'
+        'theme-brown': '#552d16',
+        'theme-gray': '#f4f3f3'
       }
     }
   },

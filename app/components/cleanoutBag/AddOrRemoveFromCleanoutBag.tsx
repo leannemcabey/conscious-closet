@@ -1,8 +1,8 @@
 'use client'
 import Image from "next/image";
-import { Article } from "@/types/Article";
-import { addOrRemoveFromCleanoutBag } from "@/app/server-actions/addOrRemoveFromCleanoutBag";
 import { useState } from "react";
+import { addOrRemoveFromCleanoutBag } from "@/app/server-actions/addOrRemoveFromCleanoutBag";
+import { Article } from "@/types/Article";
 
 interface AddOrRemoveFromCleanoutBagProps {
     article: Article;
@@ -16,18 +16,21 @@ const AddOrRemoveFromCleanoutBag = ({ article }: AddOrRemoveFromCleanoutBagProps
             .then(() => setInCleanoutBag(!inCleanoutBag))
     }
 
+    const position = inCleanoutBag ? "justify-end" : "";
+    const styling = inCleanoutBag ? "bg-theme-light-green" : "bg-gray-300";
+
     return (
-        <>
-            <p>In cleanout bag: {inCleanoutBag ? "yes" : "no"}</p>
-            <Image
-                src={"/broom-icon.png"}
-                alt={"broom icon"}
-                width="25" height="25"
-                onClick={() => changeCleanoutBagStatus()}
-                className="mx-4"
-            />
-        </>
+        <div className={`flex ${position} rounded-full bg-theme-gray w-20 h-max drop-shadow-md`}>
+            <div className={`h-12 w-12 ${styling} rounded-full p-2 drop-shadow-sm`}>
+                <Image
+                    src={"/broom-icon.png"}
+                    alt={"broom icon"}
+                    width="30" height="30"
+                    onClick={() => changeCleanoutBagStatus()}
+                />
+            </div>
+        </div>
     )
-}
+};
 
 export default AddOrRemoveFromCleanoutBag;

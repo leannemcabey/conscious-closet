@@ -2,7 +2,6 @@ import { BurgerMenuButton } from "@/app/components/navigation/BurgerMenuButton";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { LogoutButton } from "@/app/components/auth/LogoutButton";
 import { createClient } from "@/utils/supabase/client";
-import Image from "next/image";
 import MenuItem from "@/app/components/navigation/MenuItem";
 
 interface SlideOutMenuProps {
@@ -14,13 +13,8 @@ const classNames = [
     "fixed",
     "top-0",
     "right-0",
-    // "bg-gradient-to-r",
-    // "from-theme-green",
-    // "to-theme-blue",
     "bg-theme-light-green",
     "z-10",
-    // "overflow-x-hidden",
-    // "text-wrap",
     "duration-500",
     "h-full",
     "whitespace-nowrap",

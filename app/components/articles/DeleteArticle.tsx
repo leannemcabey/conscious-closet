@@ -9,13 +9,14 @@ interface DeleteArticleProps {
 
 const DeleteArticle = ({ article }: DeleteArticleProps) => {
     return (
-        <Image
-            src={"/trash-icon.svg"}
-            alt={"trash icon"}
-            width="25" height="25"
-            onClick={() => deleteArticle(article)}
-            className="mx-4"
-        />
+        <div className="h-12 w-12 w-max bg-theme-light-green rounded-full p-2 drop-shadow-md">
+            <Image
+                src={"/trash-icon.svg"}
+                alt={"trash icon"}
+                width="30" height="30"
+                onClick={() => deleteArticle(article)}
+            />
+        </div>
     )
 }
 

@@ -2,7 +2,7 @@
 import { googlePhotosPathLoader } from "@/utils/googlePhotosPathLoader";
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
 
@@ -40,9 +40,13 @@ const ArticleImage = ({ externalImageId }: ArticleImageProps) => {
             <Image
                 loader={googlePhotosPathLoader}
                 src={googlePhotoMetadata.baseUrl}
-                width={200}
-                height={250}
+                width={300}
+                height={325}
+                // TODO: dynamically apply size based on what page is being rendered
+                // width={200}
+                // height={250}
                 alt="clothing article image"
+                className="rounded-lg"
             />
         )
     }

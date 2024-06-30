@@ -1,14 +1,14 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
-import { toArticle } from "@/utils/toArticle";
 import Layout from "@/app/components/Layout";
 import ArticleImage from "@/app/components/articles/ArticleImage";
 import { Article } from "@/types/Article";
 import LastWorn from "@/app/components/articles/LastWorn";
-import Image from "next/image";
 import DeleteArticle from "@/app/components/articles/DeleteArticle";
 import AddOrRemoveFromCleanoutBag from "@/app/components/cleanoutBag/AddOrRemoveFromCleanoutBag";
-import AddArticleToSuitcase from "@/app/components/articles/AddArticleToSuitcase";
+import AddArticleToSuitcase from "@/app/components/suitcases/AddArticleToSuitcase";
+import BackButton from "@/app/components/navigation/BackButton";
+import { toArticle } from "@/utils/toArticle";
 
 export default async function ArticlePage({ params }: { id: string }) {
     const supabase = createClient();
@@ -20,14 +20,18 @@ export default async function ArticlePage({ params }: { id: string }) {
     if (mappedArticle) {
         return (
             <Layout>
-                <ArticleImage externalImageId={mappedArticle.image.imageId} />
-                <p>Category: {mappedArticle.articleCategory}</p>
-                <LastWorn article={mappedArticle} />
-                <p>Weather category: {mappedArticle.weatherCategory}</p>
-                <div className="flex">
-                    <AddArticleToSuitcase article={mappedArticle} />
+                <BackButton />
+                <div className="flex flex-col mt-12">
+                    <div className="self-center">
+                        <ArticleImage externalImageId={mappedArticle.image.imageId}/>
+                    </div>
+                    <LastWorn article={mappedArticle}/>
+                    {/*<p>Weather category: {mappedArticle.weatherCategory}</p>*/}
+                </div>
+                <div className="flex justify-center space-x-8 mt-20">
+                    <AddArticleToSuitcase article={mappedArticle}/>
+                    <DeleteArticle article={mappedArticle}/>
                     <AddOrRemoveFromCleanoutBag article={mappedArticle} />
-                    <DeleteArticle article={mappedArticle} />
                 </div>
             </Layout>
         )

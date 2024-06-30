@@ -8,5 +8,5 @@ export default async function NewArticlePage({ params }: { params: { id: string 
         <Layout>
             <NewArticleContainer category={params.id as ArticleCategory} />
         </Layout>
-)
+    )
 };
