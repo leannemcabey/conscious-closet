@@ -45,6 +45,8 @@ const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelecte
     return (
         <div className="ml-4">
             <p className="text-xl mb-4 font-semibold">Select suitcase(s):</p>
+            {/*TODO: link to add suitcase page*/}
+            {suitcases.length === 0 && <p>No suitcases</p>}
             <div className="flex flex-col space-y-2">
                 {suitcases.map((suitcase) => menuElement(suitcase))}
             </div>
