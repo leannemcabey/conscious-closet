@@ -2,6 +2,8 @@
 import { Suitcase } from "@/types/Suitcase";
 import Image from "next/image";
 import {Dispatch, SetStateAction, useState} from "react";
+import Link from "next/link";
+import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
 
 interface AddToSuitcaseMenuProps {
     articleId: string;
@@ -43,10 +45,9 @@ const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelecte
     )
 
     return (
-        <div className="ml-4">
+        <div className="mx-2">
             <p className="text-xl mb-4 font-semibold">Select suitcase(s):</p>
-            {/*TODO: link to add suitcase page*/}
-            {suitcases.length === 0 && <p>No suitcases</p>}
+            <NewSuitcaseButton />
             <div className="flex flex-col space-y-2">
                 {suitcases.map((suitcase) => menuElement(suitcase))}
             </div>

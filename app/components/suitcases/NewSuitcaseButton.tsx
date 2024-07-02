@@ -1,10 +1,19 @@
+'use client'
 import Link from "next/link";
+import { Dispatch, SetStateAction, useState } from "react";
 
-const NewSuitcaseButton = () => {
+interface NewSuitcaseButtonProps {
+    setIsCreatingSuitcase: Dispatch<SetStateAction<boolean | undefined>>
+}
+
+const NewSuitcaseButton = ({ setIsCreatingSuitcase }: NewSuitcaseButtonProps) => {
     return (
-        <Link href="/suitcases/new">
-            <button className="p-2 bg-theme-blue rounded-md text-white">+</button>
-        </Link>
+            <button
+                className="rounded-md bg-theme-gray w-full py-1 mb-4 drop-shadow-sm text-lg"
+                onClick={() => setIsCreatingSuitcase(true)}
+            >
+                +
+            </button>
     )
 }
 

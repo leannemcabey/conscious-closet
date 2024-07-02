@@ -18,5 +18,6 @@ export async function createSuitcase(name: string) {
         return
     }
 
+    // TODO: redirect to previous page, because this can now be reached from the article page as well
     redirect(`/suitcases`)
 }

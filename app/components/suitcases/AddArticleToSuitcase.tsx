@@ -4,7 +4,7 @@ import { Article } from "@/types/Article";
 import { useEffect, useState } from "react";
 import { Suitcase } from "@/types/Suitcase";
 import { getSuitcases } from "@/app/server-actions/getSuitcases";
-import Modal from "@/app/components/modal";
+import Modal from "@/app/components/Modal";
 import AddToSuitcaseMenu from "@/app/components/suitcases/AddToSuitcaseMenu";
 import {addOrRemoveArticleToSuitcase} from "@/app/server-actions/addOrRemoveArticleToSuitcase";
 import {getArticleSuitcases} from "@/app/server-actions/getArticleSuitcases";

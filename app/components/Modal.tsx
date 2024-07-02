@@ -9,7 +9,6 @@ interface ModalProps {
 
 const Modal = ({ setIsOpen, submit, children }: ModalProps) => {
     const handleSubmit = () => {
-        console.log("inside handle submit")
         setIsOpen(false)
         submit()
     }
@@ -17,7 +16,7 @@ const Modal = ({ setIsOpen, submit, children }: ModalProps) => {
     return (
         <>
             {createPortal(
-                <div className="flex justify-center w-full h-full">
+                <div data-testid="modal" className="flex justify-center w-full h-full">
                     <div className="flex flex-col bg-white px-4 py-4 rounded-md drop-shadow-2xl w-5/6 h-96 absolute top-1/3">
                             <p onClick={() => handleSubmit()}
                                className="fixed top-4 right-4 mb-4 text-xl text-theme-green font-semibold self-end">
