@@ -2,7 +2,7 @@
 import Layout from "@/app/components/Layout";
 import { createClient } from "@/utils/supabase/server";
 import { Article } from "@/types/Article";
-import { toArticle } from "@/utils/toArticle";
+import { toArticle } from "@/utils/conversions/toArticle";
 import Image from "next/image";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 

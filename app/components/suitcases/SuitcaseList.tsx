@@ -4,14 +4,25 @@ import { getSuitcases } from "@/app/server-actions/getSuitcases";
 import { Suitcase } from "@/types/Suitcase";
 import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
+import {toSuitcase} from "@/utils/conversions/toSuitcase";
+import BackButton from "@/app/components/navigation/BackButton";
 
 const SuitcaseList = () => {
+    // TODO: refresh data somehow when new suitcase is created
+
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
     const [creatingSuitcase, setCreatingSuitcase] = useState<boolean>(false)
 
+    const orderDescending = (suitcases: Suitcase[]) => {
+        return suitcases.sort((a, b) => (a.createdAt > b.createdAt) ? -1 : 1)
+    }
+
     useEffect(() => {
         getSuitcases()
-            .then((data) => setSuitcases(data))
+            .then((data) => {
+                const suitcases = data?.map((suitcase) => toSuitcase(suitcase)) || []
+                setSuitcases(orderDescending(suitcases))
+            })
     }, [])
 
     // const openModal = () => {

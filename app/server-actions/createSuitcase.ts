@@ -17,7 +17,4 @@ export async function createSuitcase(name: string) {
         console.log(error)
         return
     }
-
-    // TODO: redirect to previous page, because this can now be reached from the article page as well
-    redirect(`/suitcases`)
 }

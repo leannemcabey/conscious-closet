@@ -1,27 +1,35 @@
 'use client'
 import { createSuitcase } from "@/app/server-actions/createSuitcase";
 import {Dispatch, SetStateAction, useState} from "react";
-import Modal from "@/app/components/Modal";
+import Modal from "@/app/components/modal/Modal";
+import CloseModalButton from "@/app/components/modal/CloseModalButton";
 
 interface NewSuitcaseModalProps {
     // isOpen: boolean
-    setIsOpen: Dispatch<SetStateAction<boolean | undefined>>
+    setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
 const NewSuitcaseModal = ({ setIsOpen }: NewSuitcaseModalProps) => {
     const [suitcaseName, setSuitcaseName] = useState<string>("");
 
+    const handleSubmit = () => {
+        createSuitcase(suitcaseName)
+        setIsOpen(false)
+    }
+
     return (
         <Modal setIsOpen={setIsOpen} submit={() => console.log("submit")}>
-            <form onSubmit={() => createSuitcase(suitcaseName)} className="flex flex-col">
-                <label>Trip Name:
-                    <input
-                        type="text"
-                        onChange={(e) => setSuitcaseName(e.target.value)}
-                        className="border border-black"
-                    />
-                </label>
-                <button type="submit" className="rounded-md bg-theme-green w-max p-2 text-white">Create</button>
+            <CloseModalButton setIsOpen={setIsOpen} />
+            <form onSubmit={() => handleSubmit()} className="flex flex-col pt-20">
+                <input
+                    placeholder="New suitcase name"
+                    type="text"
+                    onChange={(e) => setSuitcaseName(e.target.value)}
+                    className="border border-theme-green bg-theme-gray rounded-md p-2"
+                />
+                <button type="submit"
+                        className="rounded-md drop-shadow-md bg-theme-green w-max py-2 px-4 mt-4 text-white self-end">Add
+                </button>
             </form>
         </Modal>
     )

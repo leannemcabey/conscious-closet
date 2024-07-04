@@ -6,7 +6,7 @@ import { categorySlugToTitleMap } from "@/types/enums/ArticleCategory";
 import Image from "next/image";
 import Link from "next/link";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
-import { toArticle } from "@/utils/toArticle";
+import { toArticle } from "@/utils/conversions/toArticle";
 
 export default async function ArticleCategoryPage({ params }: { params: { id: string } }) {
     const supabase = createClient();

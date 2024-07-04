@@ -10,9 +10,11 @@ interface AddToSuitcaseMenuProps {
     suitcases: Suitcase[];
     selectedSuitcases: string[];
     setSelectedSuitcases: Dispatch<SetStateAction<string[] | undefined>>;
+    setIsCreatingSuitcase: Dispatch<SetStateAction<boolean>>;
 }
 
-const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelectedSuitcases }: AddToSuitcaseMenuProps) => {
+const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelectedSuitcases, setIsCreatingSuitcase }: AddToSuitcaseMenuProps) => {
+    // TODO: refresh list of suitcases when a new one is added
     const suitcaseIsSelected = (suitcaseId: string): boolean => selectedSuitcases.includes(suitcaseId);
 
     const adjustSuitcaseSelection = (suitcaseId: string) => {
@@ -27,6 +29,10 @@ const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelecte
         }
 
         setSelectedSuitcases(newList)
+    }
+
+    const replaceModal = () => {
+
     }
 
     const menuElement= (suitcase: Suitcase) => (
@@ -45,9 +51,9 @@ const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelecte
     )
 
     return (
-        <div className="mx-2">
+        <div className="mt-4">
             <p className="text-xl mb-4 font-semibold">Select suitcase(s):</p>
-            <NewSuitcaseButton />
+            <NewSuitcaseButton setIsCreatingSuitcase={setIsCreatingSuitcase}/>
             <div className="flex flex-col space-y-2">
                 {suitcases.map((suitcase) => menuElement(suitcase))}
             </div>

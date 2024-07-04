@@ -1,14 +1,16 @@
 'use client'
 import Image from "next/image";
 import { Article } from "@/types/Article";
-import { useEffect, useState } from "react";
+import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import { Suitcase } from "@/types/Suitcase";
 import { getSuitcases } from "@/app/server-actions/getSuitcases";
-import Modal from "@/app/components/Modal";
+import Modal from "@/app/components/modal/Modal";
 import AddToSuitcaseMenu from "@/app/components/suitcases/AddToSuitcaseMenu";
 import {addOrRemoveArticleToSuitcase} from "@/app/server-actions/addOrRemoveArticleToSuitcase";
 import {getArticleSuitcases} from "@/app/server-actions/getArticleSuitcases";
 import {se} from "date-fns/locale";
+import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
+import AddArticleToSuitcaseModal from "@/app/components/suitcases/AddArticleToSuitcaseModal";
 
 interface AddArticleToSuitcaseProps {
     article: Article;
@@ -16,6 +18,7 @@ interface AddArticleToSuitcaseProps {
 
 const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
     const [isSelectingSuitcase, setIsSelectingSuitcase] = useState<boolean>(false)
+    const [isCreatingSuitcase, setIsCreatingSuitcase] = useState<boolean>(false)
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
     const [unsavedSuitcaseSelections, setUnsavedSuitcaseSelections] = useState<string[]>();
     const [savedSuitcaseSelections, setSavedSuitcaseSelections] = useState<string[]>();
@@ -50,17 +53,10 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
         setIsSelectingSuitcase(!isSelectingSuitcase)
     }
 
-    const suitcaseMenu = (suitcases: Suitcase[]) => {
-        return (
-            <Modal setIsOpen={setIsSelectingSuitcase} submit={saveSelections}>
-                <AddToSuitcaseMenu
-                    articleId={article.id}
-                    suitcases={suitcases}
-                    selectedSuitcases={unsavedSuitcaseSelections || []}
-                    setSelectedSuitcases={setUnsavedSuitcaseSelections}
-                />
-            </Modal>
-        )
+    // TODO: this is still not working. it doesn't reflect the change until you refresh
+    const handleSubmit = () => {
+        saveSelections()
+        openOrCloseModal()
     }
 
     return (
@@ -73,7 +69,18 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                     onClick={() => openOrCloseModal()}
                 />
             </div>
-            {isSelectingSuitcase && suitcaseMenu(suitcases || [])}
+            {isSelectingSuitcase &&
+                <AddArticleToSuitcaseModal
+                    setIsSelectingSuitcase={setIsSelectingSuitcase}
+                    article={article}
+                    suitcases={suitcases || []}
+                    unsavedSuitcaseSelections={unsavedSuitcaseSelections || []}
+                    setUnsavedSuitcaseSelections={setUnsavedSuitcaseSelections}
+                    setIsCreatingSuitcase={setIsCreatingSuitcase}
+                    handleSubmit={handleSubmit}
+                />
+            }
+            {isCreatingSuitcase && <NewSuitcaseModal setIsOpen={setIsCreatingSuitcase} />}
         </>
     )
 }

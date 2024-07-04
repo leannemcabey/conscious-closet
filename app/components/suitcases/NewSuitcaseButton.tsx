@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Dispatch, SetStateAction, useState } from "react";
 
 interface NewSuitcaseButtonProps {
-    setIsCreatingSuitcase: Dispatch<SetStateAction<boolean | undefined>>
+    setIsCreatingSuitcase: Dispatch<SetStateAction<boolean>>
 }
 
 const NewSuitcaseButton = ({ setIsCreatingSuitcase }: NewSuitcaseButtonProps) => {

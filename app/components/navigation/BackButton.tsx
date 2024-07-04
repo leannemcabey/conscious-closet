@@ -12,6 +12,7 @@ const BackButton = () => {
             width={25}
             height={25}
             onClick={() => router.back()}
+            className="mb-12"
         />
     )
 };

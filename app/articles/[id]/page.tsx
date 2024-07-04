@@ -8,7 +8,7 @@ import DeleteArticle from "@/app/components/articles/DeleteArticle";
 import AddOrRemoveFromCleanoutBag from "@/app/components/cleanoutBag/AddOrRemoveFromCleanoutBag";
 import AddArticleToSuitcase from "@/app/components/suitcases/AddArticleToSuitcase";
 import BackButton from "@/app/components/navigation/BackButton";
-import { toArticle } from "@/utils/toArticle";
+import { toArticle } from "@/utils/conversions/toArticle";
 
 export default async function ArticlePage({ params }: { id: string }) {
     const supabase = createClient();
@@ -21,7 +21,7 @@ export default async function ArticlePage({ params }: { id: string }) {
         return (
             <Layout>
                 <BackButton />
-                <div className="flex flex-col mt-12">
+                <div className="flex flex-col">
                     <div className="self-center">
                         <ArticleImage externalImageId={mappedArticle.image.imageId}/>
                     </div>

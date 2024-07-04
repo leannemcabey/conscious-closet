@@ -2,7 +2,7 @@ import * as React from "react";
 import Layout from "@/app/components/Layout";
 import { createClient } from "@/utils/supabase/server";
 import { Article } from "@/types/Article";
-import { toArticle } from "@/utils/toArticle";
+import { toArticle } from "@/utils/conversions/toArticle";
 import CleanoutBagContainer from "@/app/components/cleanoutBag/CleanoutBagContainer";
 import { getArticlesInCleanoutBag } from "@/app/server-actions/getArticlesInCleanoutBag";
 
