@@ -11,8 +11,8 @@ export const BurgerMenuButton = ({ menuVisible, setMenuVisible }) => {
         <Image
             onClick={() => setMenuVisible(!menuVisible)}
             src="/burger-menu-icon.svg"
-            height="25"
-            width="25"
+            height="24"
+            width="24"
             alt="burger menu icon"
         />
     )

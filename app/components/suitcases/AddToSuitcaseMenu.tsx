@@ -4,6 +4,7 @@ import Image from "next/image";
 import {Dispatch, SetStateAction, useState} from "react";
 import Link from "next/link";
 import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
+import {orderByNewestCreated} from "@/utils/orderByNewestCreated";
 
 interface AddToSuitcaseMenuProps {
     articleId: string;
@@ -14,7 +15,6 @@ interface AddToSuitcaseMenuProps {
 }
 
 const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelectedSuitcases, setIsCreatingSuitcase }: AddToSuitcaseMenuProps) => {
-    // TODO: refresh list of suitcases when a new one is added
     const suitcaseIsSelected = (suitcaseId: string): boolean => selectedSuitcases.includes(suitcaseId);
 
     const adjustSuitcaseSelection = (suitcaseId: string) => {
@@ -29,10 +29,6 @@ const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelecte
         }
 
         setSelectedSuitcases(newList)
-    }
-
-    const replaceModal = () => {
-
     }
 
     const menuElement= (suitcase: Suitcase) => (
@@ -51,11 +47,11 @@ const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelecte
     )
 
     return (
-        <div className="mt-4">
+        <div className="h-full mt-4">
             <p className="text-xl mb-4 font-semibold">Select suitcase(s):</p>
             <NewSuitcaseButton setIsCreatingSuitcase={setIsCreatingSuitcase}/>
-            <div className="flex flex-col space-y-2">
-                {suitcases.map((suitcase) => menuElement(suitcase))}
+            <div className="flex flex-col space-y-2 h-52 overflow-scroll">
+                {orderByNewestCreated(suitcases).map((suitcase) => menuElement(suitcase))}
             </div>
         </div>
     )

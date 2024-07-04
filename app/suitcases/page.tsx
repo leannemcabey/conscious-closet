@@ -1,6 +1,5 @@
 'use server'
 import Layout from "@/app/components/Layout";
-import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
 import SuitcaseList from "@/app/components/suitcases/SuitcaseList";
 import Image from "next/image";
 import BackButton from "@/app/components/navigation/BackButton";

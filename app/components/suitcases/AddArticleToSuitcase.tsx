@@ -80,7 +80,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                     handleSubmit={handleSubmit}
                 />
             }
-            {isCreatingSuitcase && <NewSuitcaseModal setIsOpen={setIsCreatingSuitcase} />}
+            {isCreatingSuitcase && <NewSuitcaseModal setIsOpen={setIsCreatingSuitcase} setSuitcases={setSuitcases}/>}
         </>
     )
 }

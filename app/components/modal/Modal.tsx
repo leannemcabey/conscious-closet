@@ -12,7 +12,7 @@ const Modal = ({ setIsOpen, children }: ModalProps) => {
             {createPortal(
                 <div data-testid="modal" className="flex justify-center w-full h-full">
                     <div className="flex flex-col bg-white px-4 py-4 rounded-md drop-shadow-2xl w-5/6 h-96 absolute top-1/3">
-                        <div className="overflow-scroll mt-8 mx-2">
+                        <div className="mt-8 mx-2">
                             {children}
                         </div>
                     </div>
