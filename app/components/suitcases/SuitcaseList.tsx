@@ -23,11 +23,13 @@ const SuitcaseList = () => {
     return (
         <>
             <NewSuitcaseButton setIsCreatingSuitcase={setCreatingSuitcase}/>
-            {suitcases?.map((suitcase) =>
-                <div key={suitcase.id} className="w-full text-lg truncate py-4 border border-dotted border-neutral-300 border-b-2 border-t-0 border-l-0 border-r-0">
-                    {suitcase.name}
-                </div>
-            )}
+            <div className="h-4/6 overflow-scroll">
+                {suitcases?.map((suitcase) =>
+                    <div key={suitcase.id} className="w-full text-lg truncate py-4 border border-dotted border-neutral-300 border-b-2 border-t-0 border-l-0 border-r-0">
+                        {suitcase.name}
+                    </div>
+                )}
+            </div>
 
             {creatingSuitcase && <NewSuitcaseModal setIsOpen={setCreatingSuitcase} setSuitcases={setSuitcases}/>}
         </>
