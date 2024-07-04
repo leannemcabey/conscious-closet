@@ -1,9 +1,12 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
-import { getArticleSuitcases } from "@/app/server-actions/getArticleSuitcases";
 
-export async function addOrRemoveArticleToSuitcase(articleId: string, suitcaseIds: string[]) {
-    console.log(`suitcaseIds: ${suitcaseIds}`)
+export async function addOrRemoveArticleToSuitcase(
+    articleId: string,
+    unsavedSuitcaseIds: string[],
+    savedSuitcaseIds: string[]
+) {
+    console.log(`suitcaseIds: ${unsavedSuitcaseIds}`)
     const supabase = createClient();
 
     interface insertPayloadType {
@@ -14,13 +17,11 @@ export async function addOrRemoveArticleToSuitcase(articleId: string, suitcaseId
     let insertPayload: insertPayloadType[] = [];
     let deletePayload: string[] = [];
 
-    const alreadySelectedSuitcases = await getArticleSuitcases(articleId);
-
-    // `suitcaseIds` will include those that have already been written to the database previously,
+    // `unsavedSuitcaseIds` will include those that have already been written to the database previously,
     // so they need to be de-duped. Otherwise, the entire database transaction will fail.
     // Find the new ids that haven't already been written to the database.
-    suitcaseIds.forEach((id) => {
-        if (!alreadySelectedSuitcases?.includes(id)) {
+    unsavedSuitcaseIds.forEach((id) => {
+        if (!savedSuitcaseIds?.includes(id)) {
             insertPayload.push({
                 article_id: articleId,
                 suitcase_id: id
@@ -28,10 +29,10 @@ export async function addOrRemoveArticleToSuitcase(articleId: string, suitcaseId
         }
     })
 
-    // Any ids in `alreadySelectedSuitcases` that are not in `suitcaseIds` needs to be deleted,
+    // Any ids in `savedSuitcaseIds` that are not in `unsavedSuitcaseIds` needs to be deleted,
     // because it was deselected by the user.
-    alreadySelectedSuitcases?.forEach((id) => {
-        if (!suitcaseIds.includes(id)) {
+    savedSuitcaseIds?.forEach((id) => {
+        if (!unsavedSuitcaseIds.includes(id)) {
             deletePayload.push(id)
         }
     })

@@ -32,31 +32,22 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
         getArticleSuitcases(article.id)
             .then((data) => {
                 setSavedSuitcaseSelections(data)
-                setUnsavedSuitcaseSelections(data) // `unsaved` should at least have the saved suitcases
+                // `unsavedSuitcaseSelections` should at least have the saved suitcases before
+                // changes are made as this is what controls whether the suitcase is checked off
+                setUnsavedSuitcaseSelections(data)
             })
     }, [])
 
     const saveSelections = () => {
-        addOrRemoveArticleToSuitcase(article.id, unsavedSuitcaseSelections || [])
-            .then((data) => {
-                const ids = data?.map((selection) => selection.suitcase_id)
-                setSavedSuitcaseSelections([...ids])
-            })
-
-    }
-
-    const openOrCloseModal = () => {
-        // If `isSelectingSuitcase` is currently true, that means we're closing the modal right now.
-        // When closing the modal, we want to clear any selections the user made but didn't save.
-        if (isSelectingSuitcase) setUnsavedSuitcaseSelections(savedSuitcaseSelections)
-
-        setIsSelectingSuitcase(!isSelectingSuitcase)
-    }
-
-    // TODO: this is still not working. it doesn't reflect the change until you refresh
-    const handleSubmit = () => {
-        saveSelections()
-        openOrCloseModal()
+        if (unsavedSuitcaseSelections) {
+            addOrRemoveArticleToSuitcase(article.id, unsavedSuitcaseSelections, savedSuitcaseSelections || [])
+                .then((data) => {
+                    const ids = data?.map((selection) => selection.suitcase_id)
+                    setSavedSuitcaseSelections([...ids])
+                    setUnsavedSuitcaseSelections([...ids])
+                    setIsSelectingSuitcase(false)
+                })
+        }
     }
 
     return (
@@ -66,7 +57,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                     src={"/luggage-icon.png"}
                     alt={"luggage icon"}
                     width="30" height="30"
-                    onClick={() => openOrCloseModal()}
+                    onClick={() => setIsSelectingSuitcase(!isSelectingSuitcase)}
                 />
             </div>
             {isSelectingSuitcase &&
@@ -77,7 +68,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                     unsavedSuitcaseSelections={unsavedSuitcaseSelections || []}
                     setUnsavedSuitcaseSelections={setUnsavedSuitcaseSelections}
                     setIsCreatingSuitcase={setIsCreatingSuitcase}
-                    handleSubmit={handleSubmit}
+                    handleSubmit={saveSelections}
                 />
             }
             {isCreatingSuitcase && <NewSuitcaseModal setIsOpen={setIsCreatingSuitcase} setSuitcases={setSuitcases}/>}

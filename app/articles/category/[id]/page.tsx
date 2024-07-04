@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import { toArticle } from "@/utils/conversions/toArticle";
+import BackButton from "@/app/components/navigation/BackButton";
 
 export default async function ArticleCategoryPage({ params }: { params: { id: string } }) {
     const supabase = createClient();
@@ -17,6 +18,7 @@ export default async function ArticleCategoryPage({ params }: { params: { id: st
     return (
         <Layout>
             <div className="text-center justify-center mt-4 text-2xl">
+                <BackButton />
                 <h1>{categorySlugToTitleMap[params.id]}</h1>
 
                 <div className="flex flex-col mt-8">

@@ -12,7 +12,6 @@ const SuitcaseList = () => {
     const [creatingSuitcase, setCreatingSuitcase] = useState<boolean>(false)
 
     useEffect(() => {
-        console.log("use effect is running")
         getSuitcases()
             .then((data) => {
                 const suitcases = data?.map((suitcase) => toSuitcase(suitcase)) || []

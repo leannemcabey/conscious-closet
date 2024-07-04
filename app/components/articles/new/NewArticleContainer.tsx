@@ -7,6 +7,7 @@ import { ImageSelection } from "@/app/components/articles/new/ImageSelection";
 import { WeatherPicker } from "@/app/components/articles/new/WeatherPicker";
 import { CreateArticleButton } from "@/app/components/articles/new/CreateArticleButton";
 import { ArticleCategory, categorySlugToTitleMap } from "@/types/enums/ArticleCategory";
+import BackButton from "@/app/components/navigation/BackButton";
 
 interface NewArticleContainerProps {
     category: ArticleCategory
@@ -20,6 +21,7 @@ const NewArticleContainer = ({ category }: NewArticleContainerProps) => {
 
     return (
         <div className="text-center justify-center mt-4 text-2xl">
+            <BackButton />
             <h1>{categorySlugToTitleMap[category]}</h1>
             <NewArticleImage baseUrl={image.baseUrl}/>
             <WeatherPicker weatherCategory={weatherCategory} setWeatherCategory={setWeatherCategory}/>

@@ -32,7 +32,7 @@ const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelecte
     }
 
     const menuElement= (suitcase: Suitcase) => (
-        <div onClick={() => adjustSuitcaseSelection(suitcase.id)} className="flex space-x-2">
+        <div key={suitcase.id} onClick={() => adjustSuitcaseSelection(suitcase.id)} className="flex space-x-2">
             <div className="min-w-7 max-w-7 min-h-7 max-w-7 rounded-full border border-theme-green">
                 <Image
                     src="/check-mark-button.svg"
