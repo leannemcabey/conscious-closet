@@ -9,7 +9,7 @@ module.exports = {
         'theme-green': '#287e60',
         'theme-light-green': '#bed7c5',
         'theme-mid-green': '#85a491',
-        'background-green': '#fcfffc',
+        'background-green': '#f0f5f3',
         'text-green': '#027d5a',
         'theme-blue': '#677893',
         'theme-sage': '#727467',
