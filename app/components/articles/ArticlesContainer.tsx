@@ -1,72 +1,34 @@
 'use client'
 import { Article } from "@/types/Article";
-import ArticleImageLink from "@/app/components/articles/ArticleImageLink";
-import {createClient} from "@/utils/supabase/client";
-import {useEffect, useState} from "react";
-import {GooglePhotoMetadata} from "@/types/GooglePhotoMetadata";
-import axios from "axios";
-import articleImage from "@/app/components/articles/ArticleImage";
+import ArticleImageLink from "@/app/components/articles/ArticleImageLinkCard";
+import { useEffect, useState } from "react";
+import { refreshGooglePhotosBaseUrls } from "@/utils/refreshGooglePhotosBaseUrls";
 
 interface ArticlesContainerProps {
     articles: Article[];
 }
 
 const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
-    const supabase = createClient();
     const [refreshedArticles, setRefreshedArticles] = useState<Article[]>();
-    // const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>();
-
-    const externalPhotoIds = articles.map((article) => article.image.imageId);
 
     useEffect(() => {
-        if(articles.length > 0) {
-            supabase.auth.getSession()
-                .then((session) => {
-                    const providerToken = session.data.session?.provider_token;
-                    const params = new URLSearchParams();
-                    externalPhotoIds.forEach((id) => params.append("mediaItemIds", id))
-
-                    axios.get(`https://photoslibrary.googleapis.com/v1/mediaItems:batchGet`, {
-                        params: params,
-                        //     {
-                        //     mediaItemsIds: testingParams
-                        //     // mediaItemIds: externalPhotoIds.map((value, index) => `arr[${index}]=${value}`).join('&')
-                        //     // mediaItemIds: externalPhotoIds
-                        // },
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + providerToken
-                        }
-                    })
-                        .then((response) => {
-                            // console.log(`batch response: ${JSON.stringify(response)}`)
-                            const data = response.data.mediaItemResults.map((result) => {
-                                // console.log(`result: ${JSON.stringify(result.mediaItem.baseUrl)}`)
-                                return {
-                                    baseUrl: result.mediaItem.baseUrl,
-                                    imageId: result.mediaItem.id
-                                }
-                            })
-
-                            const withUpdatedGoogleData: Article[] = articles.map((article) => {
-                                const updatedGooglePhotoMetadata: GooglePhotoMetadata = data.find((photo) => photo.imageId === article.image.imageId) ?? article.image
-
-                                return {
-                                    ...article,
-                                    image: {...updatedGooglePhotoMetadata}
-                                }
-                            })
-
-                            setRefreshedArticles(withUpdatedGoogleData)
-                        })
-                })
+        if (articles.length > 0) {
+            // This calls the `setRefreshedArticles` function
+            refreshGooglePhotosBaseUrls(articles, setRefreshedArticles);
         }
     }, []);
 
 
     return (
-        <div className="grid grid-cols-3">
-            {refreshedArticles?.map((article) => (
+        <div className="grid grid-cols-3 gap-x-2">
+            {/*
+                Checking articles.length is a workaround to handle when all articles in the clean-out bag have been
+                deleted. In that scenario, `useEffect` doesn't rerun and therefore `refreshedArticles` becomes stale
+                (ironic). However, the `articles` prop is fresh, because it is a state value in its parent component
+                that gets updated when the articles are deleted. So we can use this to check if there's anything to
+                render here.
+            */}
+            {articles.length > 0 && refreshedArticles?.map((article) => (
                 <ArticleImageLink article={article} key={article.id}/>
             ))}
         </div>

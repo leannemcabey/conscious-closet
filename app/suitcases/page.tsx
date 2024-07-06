@@ -9,8 +9,8 @@ export default async function Suitcases() {
         <Layout>
             <BackButton />
             <div className="h-screen mt-8 mx-2 flex flex-col">
-                <div className="flex">
-                    <p className="text-2xl mb-8 mr-2">Suitcases</p>
+                <div className="flex justify-center">
+                    <h1 className="text-2xl mb-8 mr-2">Suitcases</h1>
                     <div>
                         <Image
                             src={"/luggage-icon.png"}

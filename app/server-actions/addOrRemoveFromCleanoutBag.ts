@@ -1,6 +1,7 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
 import { Article } from "@/types/Article";
+import { revalidatePath } from "next/cache";
 
 export async function addOrRemoveFromCleanoutBag(article: Article) {
     const supabase = createClient();
@@ -14,4 +15,6 @@ export async function addOrRemoveFromCleanoutBag(article: Article) {
         console.log(error)
         return
     }
+
+    revalidatePath('/clean-out')
 }

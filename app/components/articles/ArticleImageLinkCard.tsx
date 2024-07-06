@@ -17,6 +17,7 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
                 width={200}
                 height={250}
                 alt="clothing article image"
+                className="rounded-md"
             />
         </Link>
     )
