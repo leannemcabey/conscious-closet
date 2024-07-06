@@ -1,5 +1,5 @@
 import { BurgerMenuButton } from "@/app/components/navigation/BurgerMenuButton";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import {Dispatch, SetStateAction, useEffect, useRef, useState} from "react";
 import { LogoutButton } from "@/app/components/auth/LogoutButton";
 import { createClient } from "@/utils/supabase/client";
 import MenuItem from "@/app/components/navigation/MenuItem";
@@ -21,17 +21,28 @@ const classNames = [
     "drop-shadow-lg"
 ]
 
-export const SlideOutMenu = ({ isVisible, setMenuVisible }) => {
+export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) => {
     const supabase = createClient();
     const [userEmail, setUserEmail] = useState<string | undefined>();
+    const menuRef = useRef(null);
 
     useEffect(() => {
         supabase.auth.getSession()
             .then((session) => setUserEmail(session.data.session?.user.email))
     }, [])
 
+    useEffect(() => {
+        // Closes the menu if the user clicks outside of it
+        document.body.addEventListener('click', (event) => {
+            const includesMenuElement = event.composedPath().includes(menuRef.current!!);
+            if (menuRef.current && !includesMenuElement) {
+                setMenuVisible(false)
+            }
+        });
+    }, []);
+
     return (
-        <div className={`${isVisible ? 'w-3/4' : 'w-0'} ${classNames.join(' ')}`}>
+        <div ref={menuRef} className={`${isVisible ? 'w-3/4' : 'w-0'} ${classNames.join(' ')}`}>
             <div className="px-6 flex flex-col">
                 <div className="flex place-content-between mt-6">
                     <LogoutButton />

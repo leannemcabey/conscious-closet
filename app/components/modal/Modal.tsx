@@ -1,16 +1,28 @@
 'use client'
 import { createPortal } from 'react-dom';
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 
 interface ModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
 const Modal = ({ setIsOpen, children }: ModalProps) => {
+    const modalRef = useRef(null);
+
+    useEffect(() => {
+        // Closes the modal if the user clicks outside of it
+        document.body.addEventListener('click', (event) => {
+            const includesModalElement = event.composedPath().includes(modalRef.current!!);
+            if (modalRef.current && !includesModalElement) {
+                setIsOpen(false)
+            }
+        });
+    }, []);
+
     return (
         <>
             {createPortal(
-                <div data-testid="modal" className="flex justify-center w-full h-full">
+                <div ref={modalRef} data-testid="modal" className="flex justify-center w-full h-full">
                     <div className="flex flex-col bg-white px-4 py-4 rounded-md border border-neutral-200 drop-shadow-2xl w-5/6 h-96 absolute top-1/3">
                         <div className="mt-8 mx-2">
                             {children}
