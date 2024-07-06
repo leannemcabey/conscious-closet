@@ -29,14 +29,20 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
             <button
                 disabled={deleteDisabled}
                 onClick={() => setIsDeleting(true)}
-                className="rounded-lg bg-theme-gray text-neutral-500 drop-shadow-md self-center p-2 mb-8"
+                className="rounded-lg bg-theme-gray border border-neutral-400 text-neutral-600 drop-shadow-md self-center p-2 mb-8"
             >
                 Delete All
             </button>
 
             {isDeleting && <DeleteAllFromCleanoutConfirmationModal setIsDeleting={setIsDeleting} handleSubmit={deleteAllAndResetData}/>}
 
-            <ArticlesContainer articles={cleanoutBagArticles} />
+            {cleanoutBagArticles.length > 0 && <ArticlesContainer articles={cleanoutBagArticles} />}
+
+            {cleanoutBagArticles.length === 0 &&
+                <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">
+                    There are no articles in your cleanout bag.
+                </p>
+            }
         </div>
     )
 }
