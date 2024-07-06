@@ -9,7 +9,7 @@ interface DeleteConfirmationModalProps {
     handleSubmit: () => void
 }
 
-const DeleteAllFromCleanOutConfirmationModal = ({ setIsDeleting, handleSubmit }: DeleteConfirmationModalProps) => {
+const DeleteAllFromCleanoutConfirmationModal = ({ setIsDeleting, handleSubmit }: DeleteConfirmationModalProps) => {
     return (
         <ConfirmationModal setIsOpen={setIsDeleting} confirmAction={handleSubmit}>
             <Image
@@ -26,4 +26,4 @@ const DeleteAllFromCleanOutConfirmationModal = ({ setIsDeleting, handleSubmit }:
     )
 }
 
-export default DeleteAllFromCleanOutConfirmationModal;
+export default DeleteAllFromCleanoutConfirmationModal;

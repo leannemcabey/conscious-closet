@@ -15,5 +15,5 @@ export async function deleteAllFromCleanoutBag() {
         return
     }
 
-    revalidatePath('/clean-out')
+    revalidatePath('/cleanout')
 }

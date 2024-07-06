@@ -9,7 +9,7 @@ interface NewSuitcaseButtonProps {
 const NewSuitcaseButton = ({ setIsCreatingSuitcase }: NewSuitcaseButtonProps) => {
     return (
             <button
-                className="rounded-md bg-theme-gray w-full py-1 mb-4 drop-shadow-sm text-lg"
+                className="rounded-md bg-white border border-theme-light-green w-full py-1 mb-4 drop-shadow-sm text-theme-green text-lg"
                 onClick={() => setIsCreatingSuitcase(true)}
             >
                 +

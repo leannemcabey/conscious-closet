@@ -2,6 +2,7 @@
 import { NewArticleInput } from "@/types/NewArticleInput";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
+import {revalidatePath} from "next/cache";
 
 export async function createArticle(newArticle: NewArticleInput) {
     const supabase = createClient();
@@ -22,5 +23,6 @@ export async function createArticle(newArticle: NewArticleInput) {
         return
     }
 
-    redirect(`/articles/category/${newArticle.articleCategory}`)
+    revalidatePath(`/articles/category/${newArticle.articleCategory}`)
+    // redirect(`/articles/category/${newArticle.articleCategory}`)
 }

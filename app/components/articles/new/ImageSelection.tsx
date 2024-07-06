@@ -8,7 +8,6 @@ import { createClient } from "@/utils/supabase/client";
 
 interface ImageSelection {
     setImage: Dispatch<SetStateAction<string | undefined>>;
-    // setIsSelecting: Dispatch<SetStateAction<boolean>>;
 }
 
 export const ImageSelection = ({ setImage }) => {
@@ -43,25 +42,28 @@ export const ImageSelection = ({ setImage }) => {
 
     const handleClick = async (image: GooglePhotoMetadata) => {
         setImage(image)
-        // setIsSelecting(false)
     }
 
     return (
         <div>
-            <p className="mb-4 text-lg">Select photo</p>
+            <p className="mb-4 text-lg text-center">Select from your Google Photos</p>
 
-            {!googlePhotos && <div>Loading...</div>}
+            <div>
+                {!googlePhotos && <div>Loading...</div>}
 
-            {googlePhotos && (
-                <div className="grid grid-cols-4 gap-2">
-                    {googlePhotos!.map((photoData) =>
-                        <GalleryImage
-                            photoData={photoData}
-                            handleSelection={handleClick}
-                            key={photoData.imageId}
-                        />)}
-                </div>
-            )}
+                {googlePhotos && (
+                    <div className="h-64 overflow-scroll">
+                        <div className="grid grid-cols-4 gap-2">
+                            {googlePhotos!.map((photoData) =>
+                                <GalleryImage
+                                    photoData={photoData}
+                                    handleSelection={handleClick}
+                                    key={photoData.imageId}
+                                />)}
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }

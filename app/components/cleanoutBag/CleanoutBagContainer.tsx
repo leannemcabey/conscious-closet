@@ -4,7 +4,7 @@ import * as React from "react";
 import { Article } from "@/types/Article";
 import { deleteAllFromCleanoutBag } from "@/app/server-actions/deleteAllFromCleanoutBag";
 import { useState } from "react";
-import DeleteAllFromCleanOutConfirmationModal from "@/app/components/cleanoutBag/DeleteAllFromCleanOutConfirmationModal";
+import DeleteAllFromCleanoutConfirmationModal from "@/app/components/cleanoutBag/DeleteAllFromCleanoutConfirmationModal";
 
 interface CleanoutBagContainerProps {
     articles: Article[]
@@ -34,7 +34,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                 Delete All
             </button>
 
-            {isDeleting && <DeleteAllFromCleanOutConfirmationModal setIsDeleting={setIsDeleting} handleSubmit={deleteAllAndResetData}/>}
+            {isDeleting && <DeleteAllFromCleanoutConfirmationModal setIsDeleting={setIsDeleting} handleSubmit={deleteAllAndResetData}/>}
 
             <ArticlesContainer articles={cleanoutBagArticles} />
         </div>

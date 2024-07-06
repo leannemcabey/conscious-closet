@@ -13,7 +13,7 @@ const classNames = [
     "fixed",
     "top-0",
     "right-0",
-    "bg-theme-light-green",
+    "bg-white",
     "z-10",
     "duration-500",
     "h-full",
@@ -43,7 +43,7 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
 
     return (
         <div ref={menuRef} className={`${isVisible ? 'w-3/4' : 'w-0'} ${classNames.join(' ')}`}>
-            <div className="px-6 flex flex-col">
+            <div className="h-screen px-6 flex flex-col bg-white">
                 <div className="flex place-content-between mt-6">
                     <LogoutButton />
                     <BurgerMenuButton menuVisible={isVisible} setMenuVisible={setMenuVisible} />
@@ -53,7 +53,7 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
 
                 <MenuItem linkTo="/home" imageSrc="/hanger-icon.png" imageAltText="hanger icon" label="Closet" />
                 <MenuItem linkTo="/suitcases" imageSrc="/luggage-icon.png" imageAltText="luggage icon" label="Suitcases" />
-                <MenuItem linkTo="/clean-out" imageSrc="/broom-icon.png" imageAltText="broom icon" label="Clean-out bag" />
+                <MenuItem linkTo="/cleanout" imageSrc="/broom-icon.png" imageAltText="broom icon" label="Cleanout bag" />
             </div>
         </div>
     );

@@ -7,7 +7,7 @@ import { getArticlesInCleanoutBag } from "@/app/server-actions/getArticlesInClea
 import Image from "next/image";
 import BackButton from "@/app/components/navigation/BackButton";
 
-export default async function CleanOutBag() {
+export default async function CleanoutBag() {
     const articles = await getArticlesInCleanoutBag();
     const mappedArticles: Article[] = articles?.map((article) => toArticle(article)) ?? [];
 
@@ -16,7 +16,7 @@ export default async function CleanOutBag() {
             <BackButton />
             <div className="mt-4">
                 <div className="flex justify-center">
-                    <h1 className="text-2xl mb-4 mr-2">Clean Out Bag</h1>
+                    <h1 className="text-2xl mb-4 mr-2">Cleanout Bag</h1>
                     <div>
                         <Image
                             src={"/broom-icon.png"}

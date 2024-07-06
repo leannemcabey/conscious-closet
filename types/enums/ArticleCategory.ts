@@ -32,6 +32,17 @@ export const categorySlugToTitleMap  = {
     accessories: "Accessories"
 }
 
+export const categorySlugToSingularTitleMap = {
+    tops: "Top",
+    bottoms: "Bottom",
+    dresses: "Dress",
+    jumpsuits_rompers: "Jumpsuit & Romper",
+    activewear: "Activewear",
+    shoes: "Shoes",
+    outerwear: "Outerwear",
+    accessories: "Accessory"
+}
+
 export const categoryTitleToPathSlug = (title: ArticleCategoryTitle): ArticleCategory => {
     return title.toLowerCase().replace(" & ", "_") as ArticleCategory
 }

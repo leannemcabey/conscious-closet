@@ -8,7 +8,7 @@ interface CloseModalProps {
 const CloseModalButton = ({ setIsOpen }: CloseModalProps) => {
     return (
         <p onClick={() => setIsOpen(false)}
-           className="fixed top-4 right-4 mb-4 text-2xl text-theme-green self-end">
+           className="fixed top-2 right-4 mb-4 text-2xl self-end">
             x
         </p>
     )

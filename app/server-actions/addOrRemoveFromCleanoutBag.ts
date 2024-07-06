@@ -16,5 +16,5 @@ export async function addOrRemoveFromCleanoutBag(article: Article) {
         return
     }
 
-    revalidatePath('/clean-out')
+    revalidatePath('/cleanout')
 }
