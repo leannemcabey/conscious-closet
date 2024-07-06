@@ -14,7 +14,10 @@ interface NewSuitcaseModalProps {
 }
 
 const NewSuitcaseModal = ({ setIsOpen, setSuitcases }: NewSuitcaseModalProps) => {
-    const [suitcaseName, setSuitcaseName] = useState<string>("");
+    const [suitcaseName, setSuitcaseName] = useState<string>();
+
+    const buttonDisabled: boolean = suitcaseName === undefined;
+    console.log(suitcaseName)
 
     const fetchAndResetSuitcases = () => {
         getSuitcases()
@@ -26,14 +29,16 @@ const NewSuitcaseModal = ({ setIsOpen, setSuitcases }: NewSuitcaseModalProps) =>
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault()
-        createSuitcase(suitcaseName)
-            .then(() => fetchAndResetSuitcases())
-            .then(() => setIsOpen(false))
+        if (suitcaseName) {
+            event.preventDefault()
+            createSuitcase(suitcaseName)
+                .then(() => fetchAndResetSuitcases())
+                .then(() => setIsOpen(false))
+        }
     }
 
     return (
-        <Modal setIsOpen={setIsOpen} submit={() => console.log("submit")}>
+        <Modal setIsOpen={setIsOpen}>
             <CloseModalButton setIsOpen={setIsOpen} />
             <form onSubmit={(event) => handleSubmit(event)} className="flex flex-col pt-20">
                 <input
@@ -44,7 +49,8 @@ const NewSuitcaseModal = ({ setIsOpen, setSuitcases }: NewSuitcaseModalProps) =>
                     className="border border-theme-green bg-theme-gray rounded-md p-2 focus:outline-none"
                 />
                 <button type="submit"
-                        className="rounded-md drop-shadow-md bg-theme-green w-max py-2 px-4 mt-4 text-white self-end">Add
+                        disabled={buttonDisabled}
+                        className={`${buttonDisabled ? "bg-theme-gray text-neutral-300" : "bg-theme-green text-white"} rounded-md drop-shadow-md w-max py-2 px-4 mt-4 self-end`}>Add
                 </button>
             </form>
         </Modal>

@@ -9,12 +9,9 @@ interface ArticlesContainerProps {
 }
 
 const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
-    console.log('rendering articlescontainers')
-    // const [staleArticles]
     const [refreshedArticles, setRefreshedArticles] = useState<Article[]>();
 
     useEffect(() => {
-        console.log('use effect running')
         if (articles.length > 0) {
             // This calls the `setRefreshedArticles` function
             refreshGooglePhotosBaseUrls(articles, setRefreshedArticles);

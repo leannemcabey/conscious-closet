@@ -6,6 +6,7 @@ import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import { toSuitcase } from "@/utils/conversions/toSuitcase";
 import {orderByNewestCreated} from "@/utils/orderByNewestCreated";
+import Link from "next/link";
 
 const SuitcaseList = () => {
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
@@ -24,9 +25,11 @@ const SuitcaseList = () => {
             <NewSuitcaseButton setIsCreatingSuitcase={setCreatingSuitcase}/>
             <div className="h-4/6 overflow-scroll">
                 {suitcases?.map((suitcase) =>
-                    <div key={suitcase.id} className="w-full text-lg truncate py-4 border border-dotted border-neutral-300 border-b-2 border-t-0 border-l-0 border-r-0">
-                        {suitcase.name}
-                    </div>
+                    <Link href={`/suitcases/${suitcase.id}`} key={suitcase.id}>
+                        <div className="w-full text-lg truncate py-4 border border-dotted border-neutral-300 border-b-2 border-t-0 border-l-0 border-r-0">
+                            {suitcase.name}
+                        </div>
+                    </Link>
                 )}
             </div>
 
