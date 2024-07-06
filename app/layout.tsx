@@ -1,5 +1,4 @@
 import "./globals.css";
-// import {GoogleOAuthProvider} from "@react-oauth/google";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
