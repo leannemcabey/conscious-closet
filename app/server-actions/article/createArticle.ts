@@ -24,5 +24,4 @@ export async function createArticle(newArticle: NewArticleInput) {
     }
 
     revalidatePath(`/articles/category/${newArticle.articleCategory}`)
-    // redirect(`/articles/category/${newArticle.articleCategory}`)
 }

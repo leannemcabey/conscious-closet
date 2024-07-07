@@ -17,7 +17,6 @@ const NewSuitcaseModal = ({ setIsOpen, setSuitcases }: NewSuitcaseModalProps) =>
     const [suitcaseName, setSuitcaseName] = useState<string>();
 
     const buttonDisabled: boolean = suitcaseName === undefined;
-    console.log(suitcaseName)
 
     const fetchAndResetSuitcases = () => {
         getSuitcases()
