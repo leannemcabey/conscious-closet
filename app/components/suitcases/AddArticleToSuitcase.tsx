@@ -52,7 +52,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
 
     return (
         <>
-            <div className="h-12 w-12 bg-theme-light-green rounded-full p-2 drop-shadow-md">
+            <div className="h-12 w-12 bg-white border border-theme-blue rounded-full p-2 drop-shadow">
                 <Image
                     src={"/luggage-icon.png"}
                     alt={"luggage icon"}

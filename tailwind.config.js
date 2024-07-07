@@ -12,6 +12,7 @@ module.exports = {
         'background-green': '#eff1ef',
         'text-green': '#027d5a',
         'theme-blue': '#677893',
+        'theme-light-blue': '#a6a7ac',
         'theme-sage': '#727467',
         'theme-gold': '#97682b',
         'theme-brown': '#552d16',

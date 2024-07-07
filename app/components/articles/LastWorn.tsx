@@ -29,7 +29,7 @@ const LastWorn = ({ article }: LastWornProps) => {
                 <p className="text-nowrap">Last Worn:</p>
             </div>
             <DatePicker
-                className="text-center py-1 w-28 bg-theme-gray rounded-md drop-shadow-md focus:outline-none"
+                className="text-center py-1 w-28 bg-theme-gray rounded-md drop-shadow focus:outline-none"
                 wrapperClassName="ml-2 w-28"
                 popperPlacement="top-start"
                 dateFormat="M/d/YYYY"

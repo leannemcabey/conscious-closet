@@ -15,7 +15,7 @@ const EditSuitcaseButton = ({ suitcase }: EditSuitcaseButtonProps) => {
         <>
             <div
                 onClick={() => setEditingSuitcase(true)}
-                className="p-2 rounded-full border border-theme-light-green bg-white drop-shadow-md"
+                className="p-2 rounded-full border border-theme-light-green bg-white drop-shadow"
             >
                 <Image
                     src={"/pencil-icon.svg"}

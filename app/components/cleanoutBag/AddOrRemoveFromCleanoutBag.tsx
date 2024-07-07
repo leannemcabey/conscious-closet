@@ -17,11 +17,11 @@ const AddOrRemoveFromCleanoutBag = ({ article }: AddOrRemoveFromCleanoutBagProps
     }
 
     const position = inCleanoutBag ? "justify-end" : "";
-    const styling = inCleanoutBag ? "bg-theme-light-green" : "bg-gray-300";
+    const toggleStyling = inCleanoutBag ? "bg-theme-blue" : "bg-white";
 
     return (
-        <div className={`flex ${position} rounded-full bg-theme-gray w-20 h-max drop-shadow-md`}>
-            <div className={`h-12 w-12 ${styling} rounded-full p-2 drop-shadow-sm`}>
+        <div className={`flex ${position} ${toggleStyling} rounded-full w-20 h-max drop-shadow`}>
+            <div className={`h-12 w-12 bg-white border border-theme-blue rounded-full p-2 drop-shadow`}>
                 <Image
                     src={"/broom-icon.png"}
                     alt={"broom icon"}

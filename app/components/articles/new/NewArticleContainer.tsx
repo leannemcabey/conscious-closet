@@ -54,7 +54,7 @@ const NewArticleContainer = ({ category, setAddingArticle }: NewArticleContainer
                     {image &&
                         <button disabled={buttonDisabled}
                                 onClick={() => handleSubmit()}
-                                className="mt-2 self-end"
+                                className="mt-2 self-end rounded-full"
                         >
                             <Image src={buttonImage} height="32" width="32" alt="check mark icon"/>
                         </button>

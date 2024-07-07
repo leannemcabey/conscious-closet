@@ -34,7 +34,7 @@ const ArticleCreationErrorAlertModal = ({ setIsOpen, unsetImage }: ArticleCreati
                 <p className="text-l">An error occurred when trying to add this article.
                     It may be that you already have it in your closet.</p>
                 <button
-                    className="mt-4 px-4 py-2 bg-theme-gray rounded-md drop-shadow-md"
+                    className="mt-4 px-4 py-2 bg-theme-gray rounded-md drop-shadow"
                     onClick={() => setIsOpen(false)}
                 >
                     OK

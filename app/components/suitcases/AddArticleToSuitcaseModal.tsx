@@ -19,7 +19,7 @@ const AddArticleToSuitcaseModal = ({ setIsSelectingSuitcase, article, suitcases,
     return (
         <Modal setIsOpen={setIsSelectingSuitcase}>
             <button onClick={() => handleSubmit()}
-               className="fixed top-4 right-4 bg-theme-green text-white self-end px-2 py-1 rounded-md drop-shadow-md">
+               className="fixed top-4 right-4 bg-theme-green text-white self-end px-2 py-1 rounded-md drop-shadow">
                 Save
             </button>
             <AddToSuitcaseMenu

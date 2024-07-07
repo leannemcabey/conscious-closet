@@ -37,7 +37,7 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
                 />
                 <button type="submit"
                         disabled={buttonDisabled}
-                        className={`${buttonDisabled ? "bg-theme-gray text-neutral-300" : "bg-theme-green text-white"} rounded-md drop-shadow-md w-max py-2 px-4 mt-4 self-end`}
+                        className={`${buttonDisabled ? "bg-theme-gray text-neutral-300" : "bg-theme-mid-green text-white"} rounded-md drop-shadow w-max py-2 px-4 mt-4 self-end`}
                 >
                     Update
                 </button>

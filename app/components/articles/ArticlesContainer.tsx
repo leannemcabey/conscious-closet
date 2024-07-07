@@ -20,17 +20,21 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
 
 
     return (
-        <div className="h-full grid grid-cols-3 gap-x-2 gap-y-2 p-2 rounded-md">
-            {/*
-                Checking articles.length is a workaround to handle when all articles in the cleanout bag have been
-                deleted. In that scenario, `useEffect` doesn't rerun and therefore `refreshedArticles` becomes stale
-                (ironic). However, the `articles` prop is fresh, because it is a state value in its parent component
-                that gets updated when the articles are deleted. So we can use this to check if there's anything to
-                render here.
-            */}
-            {articles.length > 0 && refreshedArticles?.map((article) => (
-                <ArticleImageLink article={article} key={article.id}/>
-            ))}
+        <div className="h-screen">
+            <div className="h-2/3 overflow-scroll">
+                <div className="grid grid-cols-3 gap-x-2 gap-y-2 p-2 rounded-md">
+                    {/*
+                        Checking articles.length is a workaround to handle when all articles in the cleanout bag have been
+                        deleted. In that scenario, `useEffect` doesn't rerun and therefore `refreshedArticles` becomes stale
+                        (ironic). However, the `articles` prop is fresh, because it is a state value in its parent component
+                        that gets updated when the articles are deleted. So we can use this to check if there's anything to
+                        render here.
+                    */}
+                    {articles.length > 0 && refreshedArticles?.map((article) => (
+                        <ArticleImageLink article={article} key={article.id}/>
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }

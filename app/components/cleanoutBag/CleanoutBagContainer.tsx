@@ -29,7 +29,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
             <button
                 disabled={deleteDisabled}
                 onClick={() => setIsDeleting(true)}
-                className="rounded-lg bg-theme-gray border border-neutral-400 text-neutral-600 drop-shadow-md self-center p-2 mb-8"
+                className="rounded-lg bg-white text-neutral-700 drop-shadow self-center p-2 mb-8"
             >
                 Delete All
             </button>
