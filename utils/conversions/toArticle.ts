@@ -11,7 +11,6 @@ export const toArticle = (dbArticle: DBArticle): Article => {
             inCleanoutBag: dbArticle.in_cleanout_bag,
             articleCategory: dbArticle.category,
             image: {
-                baseUrl: dbArticle.image_url,
                 imageId: dbArticle.external_image_id
             }
         } as Article

@@ -22,5 +22,4 @@ export interface DBArticle {
     in_cleanout_bag: boolean;
     external_image_id: string;
     category: string;
-    image_url: string;
 }
