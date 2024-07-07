@@ -9,7 +9,6 @@ interface ArticlesContainerProps {
 }
 
 const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
-    console.log(JSON.stringify(articles))
     const [refreshedArticles, setRefreshedArticles] = useState<Article[]>();
 
     useEffect(() => {

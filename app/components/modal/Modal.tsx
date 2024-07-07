@@ -9,14 +9,19 @@ interface ModalProps {
 const Modal = ({ setIsOpen, children }: ModalProps) => {
     const modalRef = useRef(null);
 
+    // Closes the modal if the user clicks outside of it
+    const outsideClickHandler = (event) => {
+        const includesModalElement = event.composedPath().includes(modalRef.current!!);
+        if (modalRef.current && !includesModalElement) {
+            setIsOpen(false)
+        }
+    }
+
     useEffect(() => {
-        // Closes the modal if the user clicks outside of it
-        document.body.addEventListener('click', (event) => {
-            const includesModalElement = event.composedPath().includes(modalRef.current!!);
-            if (modalRef.current && !includesModalElement) {
-                setIsOpen(false)
-            }
-        });
+        document.body.addEventListener('click', outsideClickHandler);
+        return () => {
+            document.body.removeEventListener('click', outsideClickHandler);
+        }
     }, []);
 
     return (

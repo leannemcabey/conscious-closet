@@ -42,7 +42,6 @@ export const refreshGooglePhotosBaseUrls = (articles: Article[], setRefreshedArt
                 .then((response) => {
                     const data: GooglePhotoMetadata[] = response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
                     const refreshed = replaceWithRefreshedGooglePhotosBaseUrl(articles, data);
-                    console.log(`refreshed: ${JSON.stringify(refreshed)}`)
                     setRefreshedArticlesState(refreshed)
                 })
         })

@@ -26,6 +26,14 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
     const [userEmail, setUserEmail] = useState<string | undefined>();
     const menuRef = useRef(null);
 
+    // Closes the menu if the user clicks outside of it
+    const outsideClickHandler = (event) => {
+        const includesMenuElement = event.composedPath().includes(menuRef.current!!);
+        if (menuRef.current && !includesMenuElement) {
+            setMenuVisible(false)
+        }
+    }
+
     useEffect(() => {
         supabase.auth.getSession()
             .then((session) => setUserEmail(session.data.session?.user.email))
@@ -33,12 +41,10 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
 
     useEffect(() => {
         // Closes the menu if the user clicks outside of it
-        document.body.addEventListener('click', (event) => {
-            const includesMenuElement = event.composedPath().includes(menuRef.current!!);
-            if (menuRef.current && !includesMenuElement) {
-                setMenuVisible(false)
-            }
-        });
+        document.body.addEventListener('click', outsideClickHandler);
+        return () => {
+            document.body.removeEventListener('click', outsideClickHandler);
+        }
     }, []);
 
     return (

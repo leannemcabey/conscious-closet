@@ -20,7 +20,7 @@ export async function createArticle(newArticle: NewArticleInput) {
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
     revalidatePath(`/articles/category/${newArticle.articleCategory}`)
