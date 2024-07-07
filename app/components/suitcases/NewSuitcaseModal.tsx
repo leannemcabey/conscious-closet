@@ -49,7 +49,7 @@ const NewSuitcaseModal = ({ setIsOpen, setSuitcases }: NewSuitcaseModalProps) =>
                 />
                 <button type="submit"
                         disabled={buttonDisabled}
-                        className={`${buttonDisabled ? "bg-theme-gray text-neutral-300" : "bg-theme-green text-white"} rounded-md drop-shadow w-max py-2 px-4 mt-4 self-end`}>Add
+                        className={`${buttonDisabled ? "bg-theme-gray text-neutral-300" : "bg-theme-mid-green text-white"} rounded-md drop-shadow w-max py-2 px-4 mt-4 self-end`}>Add
                 </button>
             </form>
         </Modal>

@@ -13,13 +13,13 @@ const DeleteAllFromCleanoutConfirmationModal = ({ setIsDeleting, handleSubmit }:
     return (
         <ConfirmationModal setIsOpen={setIsDeleting} confirmAction={handleSubmit}>
             <Image
-                src={"/warning-icon.svg"}
-                alt={"warning icon"}
-                width="50"
-                height="50"
-                className="mt-2 self-center"
+                src={"/hanger-warning.png"}
+                alt={"warning"}
+                width="200"
+                height="200"
+                className="self-center"
             />
-            <p className="text-center text-xl my-8">
+            <p className="text-center text-xl mt-4 mb-8">
                 Doing this will delete these articles from your closet as well as from your clean out bag!
             </p>
         </ConfirmationModal>
