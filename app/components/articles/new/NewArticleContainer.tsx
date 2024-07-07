@@ -34,7 +34,7 @@ const NewArticleContainer = ({ category, setAddingArticle }: NewArticleContainer
             weatherCategory: weatherCategory!!
         })
             .then(() => setSubmitted(true))
-            .then(() => setTimeout(() => setAddingArticle(false), 1500))
+            .then(() => setTimeout(() => setAddingArticle(false), 750))
     }
 
     return (
