@@ -5,6 +5,7 @@ import { Article } from "@/types/Article";
 import { toArticle } from "@/utils/conversions/toArticle";
 import Image from "next/image";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
+import BackButton from "@/app/components/navigation/BackButton";
 
 export default async function WeatherPage({ params }: { params: { id: string } }) {
     const supabase = createClient();
@@ -14,6 +15,7 @@ export default async function WeatherPage({ params }: { params: { id: string } }
 
     return (
         <Layout>
+            <BackButton />
             <div className="flex flex-col justify-center mt-4 text-2xl">
                 <Image src={`/${params.id}-weather-icon.svg`} height="75" width="75" alt={`${params.id} weather icon`} className="self-center" />
 

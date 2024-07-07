@@ -34,7 +34,7 @@ export default async function Suitcase({ params }: { id: string }) {
                     <DeleteSuitcaseButton suitcaseId={params.id}/>
                 </div>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center mt-6">
                 <h1 className="text-2xl mb-8 mr-2">{mappedSuitcase!!.name}</h1>
                 <div>
                     <Image

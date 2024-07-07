@@ -22,7 +22,7 @@ export default async function ArticlePage({ params }: { id: string }) {
             <Layout>
                 <BackButton />
                 <div className="flex flex-col">
-                    <div className="self-center">
+                    <div className="mt-10 self-center">
                         <ArticleImage externalImageId={mappedArticle.image.imageId}/>
                     </div>
                     <LastWorn article={mappedArticle}/>
