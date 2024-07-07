@@ -9,6 +9,8 @@ import AddOrRemoveFromCleanoutBag from "@/app/components/cleanoutBag/AddOrRemove
 import AddArticleToSuitcase from "@/app/components/suitcases/AddArticleToSuitcase";
 import BackButton from "@/app/components/navigation/BackButton";
 import { toArticle } from "@/utils/conversions/toArticle";
+import {WeatherPicker} from "@/app/components/articles/new/WeatherPicker";
+import ArticleWeatherCategory from "@/app/components/articles/ArticleWeatherCategory";
 
 export default async function ArticlePage({ params }: { id: string }) {
     const supabase = createClient();
@@ -22,13 +24,13 @@ export default async function ArticlePage({ params }: { id: string }) {
             <Layout>
                 <BackButton />
                 <div className="flex flex-col">
-                    <div className="mt-10 self-center">
+                    <div className="mt-6 mb-4 p-2 bg-white rounded-md self-center">
                         <ArticleImage externalImageId={mappedArticle.image.imageId}/>
                     </div>
                     <LastWorn article={mappedArticle}/>
-                    {/*<p>Weather category: {mappedArticle.weatherCategory}</p>*/}
+                    <ArticleWeatherCategory article={mappedArticle} />
                 </div>
-                <div className="flex justify-center space-x-8 mt-20">
+                <div className="flex justify-center space-x-8 mt-14">
                     <AddArticleToSuitcase article={mappedArticle}/>
                     <DeleteArticle article={mappedArticle}/>
                     <AddOrRemoveFromCleanoutBag article={mappedArticle} />

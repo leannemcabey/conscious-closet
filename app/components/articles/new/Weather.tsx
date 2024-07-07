@@ -1,20 +1,17 @@
 import { WeatherCategory } from "@/types/enums/WeatherCategory";
 import Image from "next/image";
+import {Dispatch, SetStateAction} from "react";
 
 interface WeatherPickerProps {
     isSelected: boolean
     iconPath: string
     weatherCategory: WeatherCategory
-    select: (WeatherCategory) => void
 }
 
-export const Weather = ({ isSelected, iconPath, weatherCategory, select }) => {
+export const Weather = ({ isSelected, iconPath, weatherCategory }: WeatherPickerProps) => {
     return (
-        <button
-            onClick={() => select(weatherCategory)}
-            className={`flex justify-center p-0.5 rounded-lg ${isSelected && "border border-theme-green"}`}
-        >
+        <div className={`flex justify-center p-1 rounded-md ${isSelected && "bg-theme-gray drop-shadow-md"}`}>
             <Image src={iconPath} height="40" width="40" alt={`${weatherCategory} weather icon`} />
-        </button>
+        </div>
     )
 }

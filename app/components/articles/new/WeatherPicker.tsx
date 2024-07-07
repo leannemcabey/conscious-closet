@@ -13,24 +13,32 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
         <div className="mt-4 flex flex-col justify-center items-center">
             <p className="text-lg">Select a weather category:</p>
             <div className="w-3/4 flex justify-evenly mt-2">
-                <Weather
-                    weatherCategory={WeatherCategory.WARM}
-                    isSelected={weatherCategory === WeatherCategory.WARM}
-                    iconPath="/warm-weather-icon.svg"
-                    select={setWeatherCategory}
-                />
-                <Weather
-                    weatherCategory={WeatherCategory.MIXED}
-                    isSelected={weatherCategory === WeatherCategory.MIXED}
-                    iconPath="/mixed-weather-icon.svg"
-                    select={setWeatherCategory}
-                />
-                <Weather
-                    weatherCategory={WeatherCategory.COLD}
-                    isSelected={weatherCategory === WeatherCategory.COLD}
-                    iconPath="/cold-weather-icon.svg"
-                    select={setWeatherCategory}
-                />
+                <div onClick={() => setWeatherCategory(WeatherCategory.WARM)}>
+                    <Weather
+                        weatherCategory={WeatherCategory.WARM}
+                        isSelected={weatherCategory === WeatherCategory.WARM}
+                        iconPath="/warm-weather-icon.svg"
+                        select={setWeatherCategory}
+                    />
+                </div>
+
+                <div onClick={() => setWeatherCategory(WeatherCategory.MIXED)}>
+                    <Weather
+                        weatherCategory={WeatherCategory.MIXED}
+                        isSelected={weatherCategory === WeatherCategory.MIXED}
+                        iconPath="/mixed-weather-icon.svg"
+                        select={setWeatherCategory}
+                    />
+                </div>
+
+                <div onClick={() => setWeatherCategory(WeatherCategory.COLD)}>
+                    <Weather
+                        weatherCategory={WeatherCategory.COLD}
+                        isSelected={weatherCategory === WeatherCategory.COLD}
+                        iconPath="/cold-weather-icon.svg"
+                        select={setWeatherCategory}
+                    />
+                </div>
             </div>
         </div>
     )

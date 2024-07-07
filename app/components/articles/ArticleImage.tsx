@@ -46,7 +46,7 @@ const ArticleImage = ({ externalImageId }: ArticleImageProps) => {
                 // width={200}
                 // height={250}
                 alt="clothing article image"
-                className="rounded-lg"
+                className="rounded-md"
             />
         )
     }
