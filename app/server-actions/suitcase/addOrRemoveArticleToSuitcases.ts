@@ -1,21 +1,14 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
+import { revalidatePath } from "next/cache";
 
-export async function addOrRemoveArticleToSuitcase(
-    articleId: string,
-    unsavedSuitcaseIds: string[],
-    savedSuitcaseIds: string[]
-) {
-    console.log(`suitcaseIds: ${unsavedSuitcaseIds}`)
-    const supabase = createClient();
+interface insertPayloadType {
+    article_id: string,
+    suitcase_id: string
+}
 
-    interface insertPayloadType {
-        article_id: string,
-        suitcase_id: string
-    }
-
+const getInsertPayload = (articleId: string, unsavedSuitcaseIds: string[], savedSuitcaseIds: string[]): insertPayloadType[] => {
     let insertPayload: insertPayloadType[] = [];
-    let deletePayload: string[] = [];
 
     // `unsavedSuitcaseIds` will include those that have already been written to the database previously,
     // so they need to be de-duped. Otherwise, the entire database transaction will fail.
@@ -29,6 +22,12 @@ export async function addOrRemoveArticleToSuitcase(
         }
     })
 
+    return insertPayload;
+};
+
+const getDeletePayload = (unsavedSuitcaseIds: string[], savedSuitcaseIds: string[]): string[] => {
+    let deletePayload: string[] = [];
+
     // Any ids in `savedSuitcaseIds` that are not in `unsavedSuitcaseIds` needs to be deleted,
     // because it was deselected by the user.
     savedSuitcaseIds?.forEach((id) => {
@@ -37,6 +36,19 @@ export async function addOrRemoveArticleToSuitcase(
         }
     })
 
+    return deletePayload;
+};
+
+export async function addOrRemoveArticleToSuitcases(
+    articleId: string,
+    unsavedSuitcaseIds: string[],
+    savedSuitcaseIds: string[]
+) {
+    const supabase = createClient();
+
+    const insertPayload = getInsertPayload(articleId, unsavedSuitcaseIds, savedSuitcaseIds);
+    const deletePayload = getDeletePayload(unsavedSuitcaseIds, savedSuitcaseIds);
+
     const { error: insertError } = await supabase
         .from('suitcase_articles')
         .insert(insertPayload)
@@ -44,6 +56,7 @@ export async function addOrRemoveArticleToSuitcase(
     const { error: deleteError } = await supabase
         .from('suitcase_articles')
         .delete()
+        .eq('article_id', articleId)
         .in('suitcase_id', deletePayload)
 
     const { data, error: fetchError } = await supabase
@@ -65,6 +78,14 @@ export async function addOrRemoveArticleToSuitcase(
         console.log(fetchError)
         return
     }
+
+    insertPayload.forEach((insert) => {
+        revalidatePath(`/suitcases/${insert.suitcase_id}`)
+    })
+
+    deletePayload.forEach((id) => {
+        revalidatePath(`/suitcases/${id}`)
+    })
 
     return data;
 }

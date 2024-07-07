@@ -6,7 +6,7 @@ import { Suitcase } from "@/types/Suitcase";
 import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
 import Modal from "@/app/components/modal/Modal";
 import AddToSuitcaseMenu from "@/app/components/suitcases/AddToSuitcaseMenu";
-import {addOrRemoveArticleToSuitcase} from "@/app/server-actions/suitcase/addOrRemoveArticleToSuitcase";
+import {addOrRemoveArticleToSuitcases} from "@/app/server-actions/suitcase/addOrRemoveArticleToSuitcases";
 import {getArticleSuitcases} from "@/app/server-actions/suitcase/getArticleSuitcases";
 import {se} from "date-fns/locale";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
@@ -40,7 +40,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
 
     const saveSelections = () => {
         if (unsavedSuitcaseSelections) {
-            addOrRemoveArticleToSuitcase(article.id, unsavedSuitcaseSelections, savedSuitcaseSelections || [])
+            addOrRemoveArticleToSuitcases(article.id, unsavedSuitcaseSelections, savedSuitcaseSelections || [])
                 .then((data) => {
                     const ids = data?.map((selection) => selection.suitcase_id)
                     setSavedSuitcaseSelections([...ids])
