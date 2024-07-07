@@ -1,7 +1,7 @@
 'use server'
 import Layout from "@/app/components/Layout";
 import { useState } from "react";
-import {createSuitcase} from "@/app/server-actions/createSuitcase";
+import {createSuitcase} from "@/app/server-actions/suitcase/createSuitcase";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import BackButton from "@/app/components/navigation/BackButton";
 

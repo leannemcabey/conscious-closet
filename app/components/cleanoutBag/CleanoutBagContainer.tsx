@@ -2,7 +2,7 @@
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import * as React from "react";
 import { Article } from "@/types/Article";
-import { deleteAllFromCleanoutBag } from "@/app/server-actions/deleteAllFromCleanoutBag";
+import { deleteAllFromCleanoutBag } from "@/app/server-actions/cleanout-bag/deleteAllFromCleanoutBag";
 import { useState } from "react";
 import DeleteAllFromCleanoutConfirmationModal from "@/app/components/cleanoutBag/DeleteAllFromCleanoutConfirmationModal";
 

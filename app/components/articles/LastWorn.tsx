@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { markArticleWornDate } from "@/app/server-actions/markArticleWornDate";
+import { markArticleWornDate } from "@/app/server-actions/article/markArticleWornDate";
 import { Article } from "@/types/Article";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";

@@ -7,7 +7,7 @@ import { ImageSelection } from "@/app/components/articles/new/ImageSelection";
 import { WeatherPicker } from "@/app/components/articles/new/WeatherPicker";
 import { ArticleCategory } from "@/types/enums/ArticleCategory";
 import BackButton from "@/app/components/navigation/BackButton";
-import { createArticle } from "@/app/server-actions/createArticle";
+import { createArticle } from "@/app/server-actions/article/createArticle";
 import Image from "next/image";
 
 interface NewArticleContainerProps {

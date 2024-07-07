@@ -1,10 +1,10 @@
 'use client'
-import { createSuitcase } from "@/app/server-actions/createSuitcase";
+import { createSuitcase } from "@/app/server-actions/suitcase/createSuitcase";
 import {Dispatch, SetStateAction, useState} from "react";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import {Suitcase} from "@/types/Suitcase";
-import {getSuitcases} from "@/app/server-actions/getSuitcases";
+import {getSuitcases} from "@/app/server-actions/suitcase/getSuitcases";
 import {toSuitcase} from "@/utils/conversions/toSuitcase";
 import {orderByNewestCreated} from "@/utils/orderByNewestCreated";
 

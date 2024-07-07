@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
-import { getSuitcases } from "@/app/server-actions/getSuitcases";
+import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
 import { Suitcase } from "@/types/Suitcase";
 import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";

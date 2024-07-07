@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import { useState } from "react";
-import { addOrRemoveFromCleanoutBag } from "@/app/server-actions/addOrRemoveFromCleanoutBag";
+import { addOrRemoveFromCleanoutBag } from "@/app/server-actions/cleanout-bag/addOrRemoveFromCleanoutBag";
 import { Article } from "@/types/Article";
 
 interface AddOrRemoveFromCleanoutBagProps {
