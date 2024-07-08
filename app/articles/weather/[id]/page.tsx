@@ -6,6 +6,8 @@ import { toArticle } from "@/utils/conversions/toArticle";
 import Image from "next/image";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import BackButton from "@/app/components/navigation/BackButton";
+import ArticleFilters from "@/app/components/articles/filter/ArticleFilters";
+import WeatherPageContainer from "@/app/components/articles/WeatherPageContainer";
 
 export default async function WeatherPage({ params }: { params: { id: string } }) {
     const supabase = createClient();
@@ -15,13 +17,10 @@ export default async function WeatherPage({ params }: { params: { id: string } }
 
     return (
         <Layout>
-            <BackButton />
             <div className="flex flex-col justify-center mt-4 text-2xl">
-                <Image src={`/${params.id}-weather-icon.svg`} height="75" width="75" alt={`${params.id} weather icon`} className="self-center" />
+                <Image src={`/${params.id}-weather-icon.svg`} height="75" width="75" alt={`${params.id} weather icon`} className="self-center mb-4" />
 
-                <div className="mt-8">
-                    <ArticlesContainer articles={mappedArticles} />
-                </div>
+                <WeatherPageContainer articles={mappedArticles} />
             </div>
         </Layout>
     )

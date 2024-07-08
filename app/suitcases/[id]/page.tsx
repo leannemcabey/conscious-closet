@@ -11,6 +11,7 @@ import { Article } from "@/types/Article";
 import { toArticle } from "@/utils/conversions/toArticle";
 import EditSuitcaseButton from "@/app/components/suitcases/EditSuitcaseButton";
 import DeleteSuitcaseButton from "@/app/components/suitcases/DeleteSuitcaseButton";
+import SuitcaseContainer from "@/app/components/suitcases/SuitcaseContainer";
 
 export default async function Suitcase({ params }: { id: string }) {
     const supabase = createClient();
@@ -45,7 +46,7 @@ export default async function Suitcase({ params }: { id: string }) {
                     />
                 </div>
             </div>
-            <ArticlesContainer articles={mappedArticles} />
+            <SuitcaseContainer articles={mappedArticles}/>
         </Layout>
     )
 };

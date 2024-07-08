@@ -5,7 +5,7 @@ import { Article } from "@/types/Article";
 import { ArticleCategory, categorySlugToTitleMap}  from "@/types/enums/ArticleCategory";
 import { toArticle } from "@/utils/conversions/toArticle";
 import BackButton from "@/app/components/navigation/BackButton";
-import ArticlesList from "@/app/components/articles/ArticlesList";
+import CategoryPageContainer from "@/app/components/articles/CategoryPageContainer";
 
 export default async function ArticleCategoryPage({ params }: { params: { id: string } }) {
     const supabase = createClient();
@@ -19,7 +19,7 @@ export default async function ArticleCategoryPage({ params }: { params: { id: st
                 <BackButton />
                 <h1 className="mb-8">{categorySlugToTitleMap[params.id]}</h1>
 
-                <ArticlesList articles={mappedArticles} category={params.id as ArticleCategory}/>
+                <CategoryPageContainer articles={mappedArticles} category={params.id as ArticleCategory}/>
             </div>
         </Layout>
     )

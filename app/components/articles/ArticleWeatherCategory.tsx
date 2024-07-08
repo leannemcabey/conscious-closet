@@ -15,7 +15,7 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategory) => {
     const handleClick = (category: WeatherCategory) => {
         setWeatherCategory(category)
         if (category !== article.weatherCategory) {
-            updateArticleWeatherCategory(article.id, category)
+            updateArticleWeatherCategory(article, category)
         }
     }
 
