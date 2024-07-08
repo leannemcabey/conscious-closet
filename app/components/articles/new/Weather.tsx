@@ -5,12 +5,16 @@ interface WeatherPickerProps {
     isSelected: boolean
     iconPath: string
     weatherCategory: WeatherCategory
+    size: "small" | "large"
 }
 
-export const Weather = ({ isSelected, iconPath, weatherCategory }: WeatherPickerProps) => {
+export const Weather = ({ isSelected, iconPath, weatherCategory, size }: WeatherPickerProps) => {
+    const imageSize = size === "small" ? "25" : "40"
+    const bgColor = size === "small" ? "bg-white" : "bg-background-green"
+
     return (
-        <div className={`flex justify-center p-1 rounded-md ${isSelected && "bg-theme-gray drop-shadow"}`}>
-            <Image src={iconPath} height="40" width="40" alt={`${weatherCategory} weather icon`} />
+        <div className={`flex justify-center p-1 rounded-md ${isSelected && bgColor} drop-shadow`}>
+            <Image src={iconPath} height={imageSize} width={imageSize} alt={`${weatherCategory} weather icon`} />
         </div>
     )
 }

@@ -18,7 +18,6 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
         }
     }, [articles]);
 
-
     return (
         <div className="h-screen">
             <div className="h-2/3 overflow-scroll">

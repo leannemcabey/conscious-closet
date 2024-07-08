@@ -9,7 +9,6 @@ import AddOrRemoveFromCleanoutBag from "@/app/components/cleanoutBag/AddOrRemove
 import AddArticleToSuitcase from "@/app/components/suitcases/AddArticleToSuitcase";
 import BackButton from "@/app/components/navigation/BackButton";
 import { toArticle } from "@/utils/conversions/toArticle";
-import {WeatherPicker} from "@/app/components/articles/new/WeatherPicker";
 import ArticleWeatherCategory from "@/app/components/articles/ArticleWeatherCategory";
 
 export default async function ArticlePage({ params }: { id: string }) {

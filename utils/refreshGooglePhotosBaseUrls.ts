@@ -4,6 +4,7 @@ import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
 import { Article } from "@/types/Article";
 import { createClient } from "@/utils/supabase/client";
 import { mediaItemToGooglePhotoMetadata } from "@/utils/conversions/mediaItemToGooglePhotoMetadata";
+import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
 
 const buildParams = (articles: Article[]): URLSearchParams => {
     const params = new URLSearchParams();
@@ -42,7 +43,7 @@ export const refreshGooglePhotosBaseUrls = (articles: Article[], setRefreshedArt
                 .then((response) => {
                     const data: GooglePhotoMetadata[] = response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
                     const refreshed = replaceWithRefreshedGooglePhotosBaseUrl(articles, data);
-                    setRefreshedArticlesState(refreshed)
+                    setRefreshedArticlesState(orderByNewestCreated(refreshed))
                 })
         })
 }

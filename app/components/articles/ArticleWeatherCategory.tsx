@@ -27,7 +27,7 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategory) => {
                         weatherCategory={WeatherCategory.WARM}
                         isSelected={weatherCategory === WeatherCategory.WARM}
                         iconPath="/warm-weather-icon.svg"
-                        select={setWeatherCategory}
+                        size="large"
                     />
                 </div>
 
@@ -36,7 +36,7 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategory) => {
                         weatherCategory={WeatherCategory.MIXED}
                         isSelected={weatherCategory === WeatherCategory.MIXED}
                         iconPath="/mixed-weather-icon.svg"
-                        select={setWeatherCategory}
+                        size="large"
                     />
                 </div>
 
@@ -45,7 +45,7 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategory) => {
                         weatherCategory={WeatherCategory.COLD}
                         isSelected={weatherCategory === WeatherCategory.COLD}
                         iconPath="/cold-weather-icon.svg"
-                        select={setWeatherCategory}
+                        size="large"
                     />
                 </div>
             </div>
