@@ -1,5 +1,5 @@
 'use client'
-import { Weather } from "@/app/components/articles/new/Weather";
+import { Weather } from "@/app/components/articles/Weather";
 import { WeatherCategory } from "@/types/enums/WeatherCategory";
 import { Dispatch, SetStateAction } from "react";
 

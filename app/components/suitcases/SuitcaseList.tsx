@@ -5,7 +5,7 @@ import { Suitcase } from "@/types/Suitcase";
 import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import { toSuitcase } from "@/utils/conversions/toSuitcase";
-import {orderByNewestCreated} from "@/utils/orderByNewestCreated";
+import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
 import Link from "next/link";
 
 const SuitcaseList = () => {
@@ -22,7 +22,7 @@ const SuitcaseList = () => {
 
     return (
         <>
-            <NewSuitcaseButton setIsCreatingSuitcase={setCreatingSuitcase}/>
+            <NewSuitcaseButton handleClick={() => setCreatingSuitcase(true)} />
             <div className="h-4/6 overflow-scroll">
                 {suitcases?.map((suitcase) =>
                     <Link href={`/suitcases/${suitcase.id}`} key={suitcase.id}>
@@ -33,7 +33,7 @@ const SuitcaseList = () => {
                 )}
             </div>
 
-            {creatingSuitcase && <NewSuitcaseModal setIsOpen={setCreatingSuitcase} setSuitcases={setSuitcases}/>}
+            {creatingSuitcase && <NewSuitcaseModal closeModal={() => setCreatingSuitcase(false)} setSuitcases={setSuitcases}/>}
         </>
     )
 }

@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import NewArticleContainer from "@/app/components/articles/new/NewArticleContainer";
-import {ArticleCategory} from "@/types/enums/ArticleCategory";
+import { ArticleCategory } from "@/types/enums/ArticleCategory";
 
 interface NewArticleModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>;

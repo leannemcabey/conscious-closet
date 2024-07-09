@@ -1,6 +1,6 @@
 'use client'
 import { WeatherCategory } from "@/types/enums/WeatherCategory";
-import { Weather } from "@/app/components/articles/new/Weather";
+import { Weather } from "@/app/components/articles/Weather";
 import { Dispatch, SetStateAction } from "react";
 
 interface WeatherFilterProps {

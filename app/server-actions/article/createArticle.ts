@@ -12,7 +12,6 @@ export async function createArticle(newArticle: NewArticleInput) {
             .insert([
                 {
                     external_image_id: newArticle.image.imageId,
-                    image_url: newArticle.image.baseUrl,
                     category: newArticle.articleCategory,
                     weather_category: newArticle.weatherCategory
                 }

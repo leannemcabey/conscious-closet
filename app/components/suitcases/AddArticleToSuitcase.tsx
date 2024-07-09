@@ -1,24 +1,21 @@
 'use client'
-import Image from "next/image";
 import { Article } from "@/types/Article";
-import {Dispatch, SetStateAction, useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { Suitcase } from "@/types/Suitcase";
 import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
-import Modal from "@/app/components/modal/Modal";
-import AddToSuitcaseMenu from "@/app/components/suitcases/AddToSuitcaseMenu";
-import {addOrRemoveArticleToSuitcases} from "@/app/server-actions/suitcase/addOrRemoveArticleToSuitcases";
-import {getArticleSuitcases} from "@/app/server-actions/suitcase/getArticleSuitcases";
-import {se} from "date-fns/locale";
-import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
+import { addOrRemoveArticleToSuitcases } from "@/app/server-actions/suitcase/addOrRemoveArticleToSuitcases";
+import { getArticleSuitcases } from "@/app/server-actions/suitcase/getArticleSuitcases";
 import AddArticleToSuitcaseModal from "@/app/components/suitcases/AddArticleToSuitcaseModal";
+import AddArticleToSuitcaseButton from "@/app/components/suitcases/AddArticleToSuitcaseButton";
+import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 
 interface AddArticleToSuitcaseProps {
     article: Article;
 }
 
 const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
-    const [isSelectingSuitcase, setIsSelectingSuitcase] = useState<boolean>(false)
-    const [isCreatingSuitcase, setIsCreatingSuitcase] = useState<boolean>(false)
+    const [selectingSuitcase, setSelectingSuitcase] = useState<boolean>(false)
+    const [creatingSuitcase, setCreatingSuitcase] = useState<boolean>(false);
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
     const [unsavedSuitcaseSelections, setUnsavedSuitcaseSelections] = useState<string[]>();
     const [savedSuitcaseSelections, setSavedSuitcaseSelections] = useState<string[]>();
@@ -45,33 +42,39 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                     const ids = data?.map((selection) => selection.suitcase_id)
                     setSavedSuitcaseSelections([...ids])
                     setUnsavedSuitcaseSelections([...ids])
-                    setIsSelectingSuitcase(false)
+                    setSelectingSuitcase(false)
                 })
         }
     }
 
+    const closeOneOpenAnother = () => {
+        setCreatingSuitcase(false)
+        setSelectingSuitcase(true)
+    }
+
     return (
         <>
-            <div className="h-12 w-12 bg-white border border-theme-blue rounded-full p-2 drop-shadow">
-                <Image
-                    src={"/luggage-icon.png"}
-                    alt={"luggage icon"}
-                    width="30" height="30"
-                    onClick={() => setIsSelectingSuitcase(!isSelectingSuitcase)}
-                />
-            </div>
-            {isSelectingSuitcase &&
+            <AddArticleToSuitcaseButton selectingSuitcase={selectingSuitcase} setIsSelectingSuitcase={setSelectingSuitcase} />
+
+            {selectingSuitcase &&
                 <AddArticleToSuitcaseModal
-                    setIsSelectingSuitcase={setIsSelectingSuitcase}
+                    setIsSelectingSuitcase={setSelectingSuitcase}
+                    setCreatingSuitcase={setCreatingSuitcase}
                     article={article}
                     suitcases={suitcases || []}
+                    setSuitcases={setSuitcases}
                     unsavedSuitcaseSelections={unsavedSuitcaseSelections || []}
                     setUnsavedSuitcaseSelections={setUnsavedSuitcaseSelections}
-                    setIsCreatingSuitcase={setIsCreatingSuitcase}
                     handleSubmit={saveSelections}
                 />
             }
-            {isCreatingSuitcase && <NewSuitcaseModal setIsOpen={setIsCreatingSuitcase} setSuitcases={setSuitcases}/>}
+
+            {creatingSuitcase &&
+                <NewSuitcaseModal
+                    closeModal={closeOneOpenAnother}
+                    setSuitcases={setSuitcases}
+                />
+            }
         </>
     )
 }

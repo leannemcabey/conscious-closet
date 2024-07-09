@@ -6,7 +6,7 @@ interface NewArticleImageProps {
     baseUrl: string;
 }
 
-export const NewArticleImage = ({ baseUrl }) => {
+export const NewArticleImage = ({ baseUrl }: NewArticleImageProps) => {
     return (
         <div className="flex justify-center items-center">
             <Image

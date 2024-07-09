@@ -2,7 +2,7 @@
 import { Article } from "@/types/Article";
 import { WeatherCategory } from "@/types/enums/WeatherCategory";
 import { useState } from "react";
-import { Weather } from "@/app/components/articles/new/Weather";
+import { Weather } from "@/app/components/articles/Weather";
 import { updateArticleWeatherCategory } from "@/app/server-actions/article/updateArticleWeatherCategory";
 
 interface ArticleWeatherCategory {

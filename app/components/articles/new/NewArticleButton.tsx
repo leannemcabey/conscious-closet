@@ -1,6 +1,5 @@
 'use client'
-
-import {Dispatch, SetStateAction} from "react";
+import { Dispatch, SetStateAction } from "react";
 
 interface NewArticleButtonProps {
     setIsAddingArticle: Dispatch<SetStateAction<boolean>>

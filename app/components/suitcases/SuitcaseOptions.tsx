@@ -1,20 +1,16 @@
 'use client'
 import { Suitcase } from "@/types/Suitcase";
 import Image from "next/image";
-import {Dispatch, SetStateAction, useState} from "react";
-import Link from "next/link";
-import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
-import {orderByNewestCreated} from "@/utils/orderByNewestCreated";
+import { Dispatch, SetStateAction, useState } from "react";
+import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
 
 interface AddToSuitcaseMenuProps {
-    articleId: string;
     suitcases: Suitcase[];
     selectedSuitcases: string[];
     setSelectedSuitcases: Dispatch<SetStateAction<string[] | undefined>>;
-    setIsCreatingSuitcase: Dispatch<SetStateAction<boolean>>;
 }
 
-const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelectedSuitcases, setIsCreatingSuitcase }: AddToSuitcaseMenuProps) => {
+const SuitcaseOptions = ({ suitcases, selectedSuitcases, setSelectedSuitcases }: AddToSuitcaseMenuProps) => {
     const suitcaseIsSelected = (suitcaseId: string): boolean => selectedSuitcases.includes(suitcaseId);
 
     const adjustSuitcaseSelection = (suitcaseId: string) => {
@@ -31,7 +27,7 @@ const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelecte
         setSelectedSuitcases(newList)
     }
 
-    const menuElement= (suitcase: Suitcase) => (
+    const option = (suitcase: Suitcase) => (
         <div key={suitcase.id} onClick={() => adjustSuitcaseSelection(suitcase.id)} className="flex space-x-2">
             <div className="min-w-7 max-w-7 min-h-7 max-w-7 rounded-full border border-theme-blue">
                 <Image
@@ -48,13 +44,11 @@ const AddToSuitcaseMenu = ({ articleId, suitcases, selectedSuitcases, setSelecte
 
     return (
         <div className="h-full mt-4">
-            <p className="text-xl mb-4 font-semibold">Select suitcase(s):</p>
-            <NewSuitcaseButton setIsCreatingSuitcase={setIsCreatingSuitcase}/>
             <div className="flex flex-col space-y-2 h-52 overflow-scroll">
-                {orderByNewestCreated(suitcases).map((suitcase) => menuElement(suitcase))}
+                {orderByNewestCreated(suitcases).map((suitcase) => option(suitcase))}
             </div>
         </div>
     )
 }
 
-export default AddToSuitcaseMenu;
+export default SuitcaseOptions;

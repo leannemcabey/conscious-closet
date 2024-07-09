@@ -1,5 +1,4 @@
 'use client'
-
 import { Article } from "@/types/Article";
 import { useState } from "react";
 import NewArticleButton from "@/app/components/articles/new/NewArticleButton";

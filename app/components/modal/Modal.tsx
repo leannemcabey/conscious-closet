@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 
 interface ModalProps {
-    setIsOpen: Dispatch<SetStateAction<boolean>>
+    setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const Modal = ({ setIsOpen, children }: ModalProps) => {
@@ -13,6 +13,7 @@ const Modal = ({ setIsOpen, children }: ModalProps) => {
     const outsideClickHandler = (event) => {
         const includesModalElement = event.composedPath().includes(modalRef.current!!);
         if (modalRef.current && !includesModalElement) {
+            console.log('outside click triggered')
             setIsOpen(false)
         }
     }

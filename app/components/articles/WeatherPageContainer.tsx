@@ -1,6 +1,6 @@
 'use client'
-import {Article} from "@/types/Article";
-import {useState} from "react";
+import { Article } from "@/types/Article";
+import { useState } from "react";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import ArticleFilters, {FilterTypes} from "@/app/components/articles/filter/ArticleFilters";
 import * as React from "react";

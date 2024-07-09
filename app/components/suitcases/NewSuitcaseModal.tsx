@@ -1,19 +1,19 @@
 'use client'
 import { createSuitcase } from "@/app/server-actions/suitcase/createSuitcase";
-import {Dispatch, SetStateAction, useState} from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
-import {Suitcase} from "@/types/Suitcase";
-import {getSuitcases} from "@/app/server-actions/suitcase/getSuitcases";
-import {toSuitcase} from "@/utils/conversions/toSuitcase";
-import {orderByNewestCreated} from "@/utils/orderByNewestCreated";
+import { Suitcase } from "@/types/Suitcase";
+import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
+import { toSuitcase } from "@/utils/conversions/toSuitcase";
+import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
 
 interface NewSuitcaseModalProps {
-    setIsOpen: Dispatch<SetStateAction<boolean>>
+    closeModal: () => void;
     setSuitcases: Dispatch<SetStateAction<Suitcase[] | undefined>>
 }
 
-const NewSuitcaseModal = ({ setIsOpen, setSuitcases }: NewSuitcaseModalProps) => {
+const NewSuitcaseModal = ({ closeModal, setSuitcases }: NewSuitcaseModalProps) => {
     const [suitcaseName, setSuitcaseName] = useState<string>();
 
     const buttonDisabled: boolean = suitcaseName === undefined;
@@ -32,13 +32,13 @@ const NewSuitcaseModal = ({ setIsOpen, setSuitcases }: NewSuitcaseModalProps) =>
             event.preventDefault()
             createSuitcase(suitcaseName)
                 .then(() => fetchAndResetSuitcases())
-                .then(() => setIsOpen(false))
+                .then(() => closeModal())
         }
     }
 
     return (
-        <Modal setIsOpen={setIsOpen}>
-            <CloseModalButton setIsOpen={setIsOpen} />
+        <Modal setIsOpen={closeModal}>
+            <CloseModalButton setIsOpen={closeModal} />
             <form onSubmit={(event) => handleSubmit(event)} className="flex flex-col pt-20">
                 <input
                     autoFocus={true}

@@ -55,9 +55,17 @@ const ArticleFilters = ({ articles, setFilteredArticles, appliedFilters }: Artic
 
     return (
         <div className="mb-4 px-1 py-2 flex place-content-between border border-theme-blue border-dotted rounded-md drop-shadow">
-            {appliedFilters.includes(FilterTypes.cleanout) && <CleanoutBagFilter showCleanoutBagItems={showCleanoutBagItems} setShowCleanoutBagItems={setShowCleanoutBagItems} />}
-            {appliedFilters.includes(FilterTypes.weather) && <WeatherFilter selectedWeatherCategories={selectedWeatherCategories} setSelectedWeatherCategories={setSelectedWeatherCategories} />}
-            {appliedFilters.includes(FilterTypes.category) && <CategoryFilter selectedArticleCategories={selectedArticleCategories} setSelectedArticleCategories={setSelectedArticleCategories} />}
+            {appliedFilters.includes(FilterTypes.cleanout) &&
+                <CleanoutBagFilter showCleanoutBagItems={showCleanoutBagItems} setShowCleanoutBagItems={setShowCleanoutBagItems} />
+            }
+
+            {appliedFilters.includes(FilterTypes.weather) &&
+                <WeatherFilter selectedWeatherCategories={selectedWeatherCategories} setSelectedWeatherCategories={setSelectedWeatherCategories} />
+            }
+
+            {appliedFilters.includes(FilterTypes.category) &&
+                <CategoryFilter selectedArticleCategories={selectedArticleCategories} setSelectedArticleCategories={setSelectedArticleCategories} />
+            }
         </div>
     )
 }

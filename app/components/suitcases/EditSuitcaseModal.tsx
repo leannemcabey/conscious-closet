@@ -11,7 +11,7 @@ interface EditSuitcaseModalProps {
 }
 
 const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
-    const [newSuitcaseName, setNewSuitcaseName] = useState<string>();
+    const [newSuitcaseName, setNewSuitcaseName] = useState<string>(suitcase.name);
 
     const buttonDisabled: boolean = newSuitcaseName === undefined;
 
@@ -19,7 +19,6 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
         if (newSuitcaseName) {
             event.preventDefault()
             updateSuitcase(suitcase.id, newSuitcaseName)
-                // .then(() => fetchAndResetSuitcases())
                 .then(() => setIsOpen(false))
         }
     }
@@ -30,7 +29,7 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
             <form onSubmit={(event) => handleSubmit(event)} className="flex flex-col pt-20">
                 <input
                     autoFocus={true}
-                    placeholder={suitcase.name}
+                    value={newSuitcaseName}
                     type="text"
                     onChange={(e) => setNewSuitcaseName(e.target.value)}
                     className="border border-theme-green bg-theme-gray rounded-md p-2 focus:outline-none"

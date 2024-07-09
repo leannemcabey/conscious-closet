@@ -1,6 +1,5 @@
 'use client'
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { User } from "@/types/user";
 import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
 import axios from "axios";
 import GalleryImage from "@/app/components/articles/new/GalleryImage";

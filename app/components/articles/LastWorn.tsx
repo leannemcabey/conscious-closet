@@ -11,7 +11,6 @@ interface LastWornProps {
 }
 
 const LastWorn = ({ article }: LastWornProps) => {
-    // const [updatedArticle, setUpdatedArticle] = useState<Article>(article)
     const initialLastWornDateValue = article.lastWorn ? new Date(article.lastWorn) : null;
     const [date, setDate] = useState<Date | null>(initialLastWornDateValue);
 

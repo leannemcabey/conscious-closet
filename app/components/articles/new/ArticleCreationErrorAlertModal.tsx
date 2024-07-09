@@ -1,10 +1,7 @@
 'use client'
 import { Dispatch, SetStateAction } from "react";
 import Modal from "@/app/components/modal/Modal";
-import CloseModalButton from "@/app/components/modal/CloseModalButton";
-import NewArticleContainer from "@/app/components/articles/new/NewArticleContainer";
-import {ArticleCategory} from "@/types/enums/ArticleCategory";
-import {GooglePhotoMetadata} from "@/types/GooglePhotoMetadata";
+import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
 import Image from "next/image";
 import * as React from "react";
 
