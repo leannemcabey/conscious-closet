@@ -23,11 +23,13 @@ export default async function ArticlePage({ params }: { id: string }) {
             <Layout>
                 <BackButton />
                 <div className="flex flex-col">
-                    <div className="mt-6 mb-4 p-2 bg-white rounded-md self-center">
+                    <div className="mt-6 mb-4 p-2 border border-white border-2 rounded-md self-center">
                         <ArticleImage externalImageId={mappedArticle.image.imageId}/>
                     </div>
-                    <LastWorn article={mappedArticle}/>
-                    <ArticleWeatherCategory article={mappedArticle} />
+                    <div className="w-full flex flex-col">
+                        <LastWorn article={mappedArticle}/>
+                        <ArticleWeatherCategory article={mappedArticle} />
+                    </div>
                 </div>
                 <div className="flex justify-center space-x-8 mt-14">
                     <AddArticleToSuitcase article={mappedArticle}/>
