@@ -1,17 +1,15 @@
 'use server'
 import Layout from "@/app/components/Layout";
-import { createClient } from "@/utils/supabase/server";
 import { Article } from "@/types/Article";
 import { ArticleCategory, categorySlugToTitleMap}  from "@/types/enums/ArticleCategory";
 import { toArticle } from "@/utils/conversions/toArticle";
 import BackButton from "@/app/components/navigation/BackButton";
 import CategoryPageContainer from "@/app/components/articles/CategoryPageContainer";
+import { getAllArticlesInCategory } from "@/app/server-actions/article/getAllArticlesInCategory";
 
 export default async function ArticleCategoryPage({ params }: { params: { id: string } }) {
-    const supabase = createClient();
-
-    const { data: articles } = await supabase.from("articles").select().eq('category', params.id);
-    const mappedArticles: Article[] = articles?.map((article) => toArticle(article)) ?? [];
+    const data = await getAllArticlesInCategory(params.id);
+    const mappedArticles: Article[] = data?.map((article) => toArticle(article)) ?? [];
 
     return (
         <Layout>

@@ -9,17 +9,24 @@ import { ArticleCategory } from "@/types/enums/ArticleCategory";
 import { createArticle } from "@/app/server-actions/article/createArticle";
 import Image from "next/image";
 import ArticleCreationErrorAlertModal from "@/app/components/articles/new/ArticleCreationErrorAlertModal";
+import {Article} from "@/types/Article";
+import {getAllArticlesInCategory} from "@/app/server-actions/article/getAllArticlesInCategory";
+import {getSuitcases} from "@/app/server-actions/suitcase/getSuitcases";
+import {toSuitcase} from "@/utils/conversions/toSuitcase";
+import {orderByNewestCreated} from "@/utils/orderByNewestCreated";
+import {toArticle} from "@/utils/conversions/toArticle";
 
 interface NewArticleContainerProps {
     category: ArticleCategory
     setAddingArticle: Dispatch<SetStateAction<boolean>>;
+    setUnfilteredArticles: Dispatch<SetStateAction<Article[]>>;
 }
 
-const NewArticleContainer = ({ category, setAddingArticle }: NewArticleContainerProps) => {
+const NewArticleContainer = ({ category, setAddingArticle, setUnfilteredArticles }: NewArticleContainerProps) => {
     const [image, setImage] = useState<GooglePhotoMetadata | undefined>(undefined);
     const [weatherCategory, setWeatherCategory] = useState<WeatherCategory | undefined>(undefined);
-    const [creationError, setCreationError] = useState<boolean>();
     const [submitted, setSubmitted] = useState<boolean>();
+    const [error, setError] = useState<boolean>();
 
     const buttonDisabled: boolean = weatherCategory === undefined
     const buttonImage = buttonDisabled ? "/disabled-check-mark-button.svg" : "/check-mark-button.svg"
@@ -28,20 +35,32 @@ const NewArticleContainer = ({ category, setAddingArticle }: NewArticleContainer
 
     if (!image) return <ImageSelection setImage={setImage}/>
 
+    const fetchAndResetArticles = () => {
+        getAllArticlesInCategory(category)
+            .then((data) => {
+                const mapped = data?.map((article) => toArticle(article))
+                const sorted = orderByNewestCreated(mapped as any[])
+                setUnfilteredArticles(sorted)
+            })
+    }
+
+
     const handleSubmit = () => {
         createArticle({
             image: image,
             articleCategory: category,
             weatherCategory: weatherCategory!!
         })
+            .then(() => fetchAndResetArticles())
             .then(() => setSubmitted(true))
+            // The setTimeout is to give the celebration gif time to display before automatically closing the modal
             .then(() => setTimeout(() => setAddingArticle(false), 750))
-            .catch(() => setCreationError(true))
+            .catch(() => setError(true))
     }
 
     return (
         <>
-            {creationError && <ArticleCreationErrorAlertModal setIsOpen={setCreationError} unsetImage={setImage}/>}
+            {error && <ArticleCreationErrorAlertModal setIsOpen={setError} unsetImage={setImage}/>}
             {submitted && celebrationGif}
 
             {!submitted && (

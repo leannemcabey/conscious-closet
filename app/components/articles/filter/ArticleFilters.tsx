@@ -14,14 +14,15 @@ export enum FilterTypes {
 }
 
 interface ArticleFiltersProps {
-    articles: Article[]; // Represents all articles in this category
+    articles: Article[]; // Represents all articles in this category, unfiltered
     setFilteredArticles: Dispatch<SetStateAction<Article[]>>;
     appliedFilters: FilterTypes[];
 }
 
 const ArticleFilters = ({ articles, setFilteredArticles, appliedFilters }: ArticleFiltersProps) => {
-    // On the cleanout bag page, we do not apply the cleanout bag filter, and we obviously want items in cleanout bag
-    // to be shown by default
+    // If the page does not allow filtering on the cleanout bag items, it means it's the cleanout bag page.
+    // In this case, we want to show the cleanout bag items by default, in contrast to the other pages
+    // where we hide them by default.
     const initialCleanoutStatus = !appliedFilters.includes(FilterTypes.cleanout)
     const [showCleanoutBagItems, setShowCleanoutBagItems] = useState<boolean>(initialCleanoutStatus);
     const [selectedWeatherCategories, setSelectedWeatherCategories] = useState<WeatherCategory[]>(
@@ -40,6 +41,8 @@ const ArticleFilters = ({ articles, setFilteredArticles, appliedFilters }: Artic
     )
 
     useEffect(() => {
+        console.log('use effect in articlefilters running')
+        console.log(selectedWeatherCategories)
         let tempFilteredArticles = articles;
 
         if (showCleanoutBagItems) tempFilteredArticles = articles;
@@ -47,8 +50,10 @@ const ArticleFilters = ({ articles, setFilteredArticles, appliedFilters }: Artic
         tempFilteredArticles = tempFilteredArticles.filter((article) => weatherCategoryIsSelected(article.weatherCategory))
         tempFilteredArticles = tempFilteredArticles.filter((article) => articleCategoryIsSelected(article.articleCategory))
 
+        console.log(`filtered: ${tempFilteredArticles.length}`)
+
         setFilteredArticles(tempFilteredArticles)
-    }, [showCleanoutBagItems, selectedWeatherCategories, selectedArticleCategories]);
+    }, [articles, showCleanoutBagItems, selectedWeatherCategories, selectedArticleCategories]);
 
     const weatherCategoryIsSelected = (category) => selectedWeatherCategories.includes(category);
     const articleCategoryIsSelected = (category) => selectedArticleCategories.includes(category);

@@ -12,7 +12,7 @@ interface ArticleCreationErrorAlertModalProps {
 
 const ArticleCreationErrorAlertModal = ({ setIsOpen, unsetImage }: ArticleCreationErrorAlertModalProps) => {
     const handleSubmit = () => {
-        unsetImage(undefined)
+        unsetImage(undefined) // This controls whether the user sees the image selection view
         setIsOpen(false)
     }
 
