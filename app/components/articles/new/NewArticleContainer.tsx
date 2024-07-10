@@ -35,6 +35,7 @@ const NewArticleContainer = ({ category, setAddingArticle }: NewArticleContainer
             weatherCategory: weatherCategory!!
         })
             .then(() => setSubmitted(true))
+            // The setTimeout is to give the celebration gif time to display before automatically closing the modal
             .then(() => setTimeout(() => setAddingArticle(false), 750))
             .catch(() => setCreationError(true))
     }

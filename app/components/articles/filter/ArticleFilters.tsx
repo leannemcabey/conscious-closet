@@ -20,8 +20,9 @@ interface ArticleFiltersProps {
 }
 
 const ArticleFilters = ({ articles, setFilteredArticles, appliedFilters }: ArticleFiltersProps) => {
-    // On the cleanout bag page, we do not apply the cleanout bag filter, and we obviously want items in cleanout bag
-    // to be shown by default
+    // If the page does not allow filtering on the cleanout bag items, it means it's the cleanout bag page.
+    // In this case, we want to show the cleanout bag items by default, in contrast to the other pages
+    // where we hide them by default.
     const initialCleanoutStatus = !appliedFilters.includes(FilterTypes.cleanout)
     const [showCleanoutBagItems, setShowCleanoutBagItems] = useState<boolean>(initialCleanoutStatus);
     const [selectedWeatherCategories, setSelectedWeatherCategories] = useState<WeatherCategory[]>(
