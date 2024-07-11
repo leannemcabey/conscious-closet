@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import NewArticleButton from "@/app/components/articles/new/NewArticleButton";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import NewArticleModal from "@/app/components/articles/new/NewArticleModal";
-import ArticleFilters, {FilterTypes} from "@/app/components/articles/filter/ArticleFilters";
+import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
 import { ArticleCategory } from "@/types/enums/ArticleCategory";
 import * as React from "react";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
@@ -27,17 +27,17 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(articlesNotInCleanoutBag);
     const [addingArticle, setAddingArticle] = useState<boolean>();
 
-    const appliedFilters= [FilterTypes.cleanout, FilterTypes.weather];
+    const filterTypes= [FilterType.cleanout, FilterType.weather];
 
     useEffect(() => {
-        const tempFilteredArticles = applyArticleFilters(articles, appliedFilters, filterSettings);
+        const tempFilteredArticles = applyArticleFilters(articles, filterTypes, filterSettings);
         setFilteredArticles(tempFilteredArticles)
     }, [filterSettings]);
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
             <div className="flex flex-col">
-                <ArticleFilters appliedFilters={appliedFilters}/>
+                <ArticleFilters filterTypes={filterTypes}/>
                 <NewArticleButton setIsAddingArticle={setAddingArticle}/>
 
                 {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles}/>}

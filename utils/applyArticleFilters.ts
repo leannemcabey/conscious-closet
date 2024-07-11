@@ -1,10 +1,10 @@
 import { Article } from "@/types/Article";
-import { FilterTypes } from "@/app/components/articles/filter/ArticleFilters";
+import { FilterType } from "@/app/components/articles/filter/ArticleFilters";
 import { FilterSettings } from "@/app/context/ArticleFilterContext";
 
 export const applyArticleFilters = (
     articles: Article[],
-    appliedFilters: FilterTypes[],
+    appliedFilters: FilterType[],
     filterSettings: FilterSettings
 ) => {
     let filteredArticles = articles;
@@ -12,12 +12,12 @@ export const applyArticleFilters = (
     if (filterSettings.showCleanoutBagItems) filteredArticles = articles;
     if (!filterSettings.showCleanoutBagItems) filteredArticles = filteredArticles.filter((article) => !article.inCleanoutBag)
 
-    if (appliedFilters.includes(FilterTypes.weather)) {
+    if (appliedFilters.includes(FilterType.weather)) {
         const weatherCategoryIsSelected = (category) => filterSettings.selectedWeatherCategories?.includes(category);
         filteredArticles = filteredArticles.filter((article) => weatherCategoryIsSelected(article.weatherCategory))
     }
 
-    if (appliedFilters.includes(FilterTypes.category)) {
+    if (appliedFilters.includes(FilterType.category)) {
         const articleCategoryIsSelected = (category) => filterSettings.selectedArticleCategories?.includes(category);
         filteredArticles = filteredArticles.filter((article) => articleCategoryIsSelected(article.articleCategory))
     }

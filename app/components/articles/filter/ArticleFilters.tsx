@@ -8,17 +8,17 @@ import CategoryFilter from "@/app/components/articles/filter/CategoryFilter";
 import { ArticleCategory } from "@/types/enums/ArticleCategory";
 import { ArticleFilterContext } from "@/app/context/ArticleFilterContext";
 
-export enum FilterTypes {
+export enum FilterType {
     "cleanout",
     "weather",
     "category"
 }
 
 interface ArticleFiltersProps {
-    appliedFilters: FilterTypes[];
+    filterTypes: FilterType[];
 }
 
-const ArticleFilters = ({ appliedFilters }: ArticleFiltersProps) => {
+const ArticleFilters = ({ filterTypes }: ArticleFiltersProps) => {
     const { filterSettings, setFilterSettings } = useContext(ArticleFilterContext);
     const [showCleanoutBagItems, setShowCleanoutBagItems] = useState<boolean>(filterSettings.showCleanoutBagItems);
     const [selectedWeatherCategories, setSelectedWeatherCategories] = useState<WeatherCategory[]>(filterSettings.selectedWeatherCategories);
@@ -34,15 +34,15 @@ const ArticleFilters = ({ appliedFilters }: ArticleFiltersProps) => {
 
     return (
         <div className="mb-4 px-1 py-2 flex place-content-between border border-theme-blue border-dotted rounded-md drop-shadow">
-            {appliedFilters.includes(FilterTypes.cleanout) &&
+            {filterTypes.includes(FilterType.cleanout) &&
                 <CleanoutBagFilter showCleanoutBagItems={showCleanoutBagItems} setShowCleanoutBagItems={setShowCleanoutBagItems} />
             }
 
-            {appliedFilters.includes(FilterTypes.weather) &&
+            {filterTypes.includes(FilterType.weather) &&
                 <WeatherFilter selectedWeatherCategories={selectedWeatherCategories} setSelectedWeatherCategories={setSelectedWeatherCategories} />
             }
 
-            {appliedFilters.includes(FilterTypes.category) &&
+            {filterTypes.includes(FilterType.category) &&
                 <CategoryFilter selectedArticleCategories={selectedArticleCategories} setSelectedArticleCategories={setSelectedArticleCategories} />
             }
         </div>

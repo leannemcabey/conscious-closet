@@ -3,7 +3,7 @@ import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import {Article} from "@/types/Article";
 import * as React from "react";
 import {useState} from "react";
-import ArticleFilters, {FilterTypes} from "@/app/components/articles/filter/ArticleFilters";
+import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
 
 interface SuitcaseContainerProps {
     articles: Article[]
@@ -14,7 +14,7 @@ const SuitcaseContainer = ({ articles }: SuitcaseContainerProps) => {
 
     return (
         <div className="flex flex-col">
-            <ArticleFilters articles={articles} setFilteredArticles={setFilteredArticles} appliedFilters={[FilterTypes.category, FilterTypes.weather]} />
+            <ArticleFilters articles={articles} setFilteredArticles={setFilteredArticles} filterTypes={[FilterType.category, FilterType.weather]} />
 
             {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles} />}
             {filteredArticles.length === 0 &&

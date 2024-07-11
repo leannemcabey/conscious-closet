@@ -6,7 +6,7 @@ import { Article } from "@/types/Article";
 import { deleteAllFromCleanoutBag } from "@/app/server-actions/cleanout-bag/deleteAllFromCleanoutBag";
 import DeleteAllFromCleanoutConfirmationModal
     from "@/app/components/cleanoutBag/DeleteAllFromCleanoutConfirmationModal";
-import ArticleFilters, {FilterTypes} from "@/app/components/articles/filter/ArticleFilters";
+import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
 import { WeatherCategory } from "@/types/enums/WeatherCategory";
 import { ArticleCategory } from "@/types/enums/ArticleCategory";
@@ -36,10 +36,10 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(cleanoutBagArticles);
     const [isDeleting, setIsDeleting] = useState<boolean>(false);
 
-    const appliedFilters = [FilterTypes.weather, FilterTypes.category];
+    const filterTypes = [FilterType.weather, FilterType.category];
 
     useEffect(() => {
-        const tempFilteredArticles = applyArticleFilters(articles, appliedFilters, filterSettings);
+        const tempFilteredArticles = applyArticleFilters(articles, filterTypes, filterSettings);
         setFilteredArticles(tempFilteredArticles)
     }, [filterSettings]);
 
@@ -64,7 +64,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                     Delete everything from cleanout bag
                 </button>
 
-                <ArticleFilters articles={articles} setFilteredArticles={setCleanoutBagArticles} appliedFilters={appliedFilters} />
+                <ArticleFilters filterTypes={filterTypes} />
 
                 {isDeleting && <DeleteAllFromCleanoutConfirmationModal setIsDeleting={setIsDeleting} handleSubmit={deleteAllAndResetData}/>}
 

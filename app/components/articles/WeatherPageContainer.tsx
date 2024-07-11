@@ -2,7 +2,7 @@
 import { Article } from "@/types/Article";
 import { useEffect, useState } from "react";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
-import ArticleFilters, {FilterTypes} from "@/app/components/articles/filter/ArticleFilters";
+import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
 import * as React from "react";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
 import { ArticleCategory } from "@/types/enums/ArticleCategory";
@@ -30,17 +30,17 @@ const WeatherPageContainer = ({ articles }: WeatherPageContainerProps) => {
     const articlesNotInCleanoutBag = articles.filter((article) => !article.inCleanoutBag)
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(articlesNotInCleanoutBag);
 
-    const appliedFilters = [FilterTypes.cleanout, FilterTypes.category];
+    const filterTypes = [FilterType.cleanout, FilterType.category];
 
     useEffect(() => {
-        const tempFilteredArticles = applyArticleFilters(articles, appliedFilters, filterSettings);
+        const tempFilteredArticles = applyArticleFilters(articles, filterTypes, filterSettings);
         setFilteredArticles(tempFilteredArticles)
     }, [filterSettings]);
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
             <div className="flex flex-col">
-                <ArticleFilters appliedFilters={appliedFilters}/>
+                <ArticleFilters filterTypes={filterTypes}/>
 
                 {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles}/>}
 
