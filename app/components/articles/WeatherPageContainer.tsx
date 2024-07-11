@@ -1,12 +1,12 @@
 'use client'
 import { Article } from "@/types/Article";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import ArticleFilters, {FilterTypes} from "@/app/components/articles/filter/ArticleFilters";
 import * as React from "react";
-import {ArticleFilterContext, FilterSettings} from "@/app/context/ArticleFilterContext";
+import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
 import { ArticleCategory } from "@/types/enums/ArticleCategory";
-import {applyArticleFilters} from "@/utils/applyArticleFilters";
+import { applyArticleFilters } from "@/utils/applyArticleFilters";
 
 interface WeatherPageContainerProps {
     articles: Article[];
