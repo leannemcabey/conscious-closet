@@ -1,22 +1,46 @@
 'use client'
 import { Article } from "@/types/Article";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import ArticleFilters, {FilterTypes} from "@/app/components/articles/filter/ArticleFilters";
 import * as React from "react";
+import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
+import { ArticleCategory } from "@/types/enums/ArticleCategory";
+import { applyArticleFilters } from "@/utils/applyArticleFilters";
 
 interface WeatherPageContainerProps {
     articles: Article[];
 }
 
 const WeatherPageContainer = ({ articles }: WeatherPageContainerProps) => {
+    const defaultFilterContext: FilterSettings = {
+        showCleanoutBagItems: false,
+        selectedArticleCategories: [
+            ArticleCategory.TOPS,
+            ArticleCategory.BOTTOMS,
+            ArticleCategory.JUMPSUITS_ROMPERS,
+            ArticleCategory.ACTIVEWEAR,
+            ArticleCategory.SHOES,
+            ArticleCategory.OUTERWEAR,
+            ArticleCategory.ACCESSORIES
+        ]
+    };
+
+    const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
     const articlesNotInCleanoutBag = articles.filter((article) => !article.inCleanoutBag)
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(articlesNotInCleanoutBag);
 
+    const appliedFilters = [FilterTypes.cleanout, FilterTypes.category];
+
+    useEffect(() => {
+        const tempFilteredArticles = applyArticleFilters(articles, appliedFilters, filterSettings);
+        setFilteredArticles(tempFilteredArticles)
+    }, [filterSettings]);
+
     return (
-        <>
+        <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
             <div className="flex flex-col">
-                <ArticleFilters articles={articles} setFilteredArticles={setFilteredArticles} appliedFilters={[FilterTypes.cleanout, FilterTypes.category]}/>
+                <ArticleFilters appliedFilters={appliedFilters}/>
 
                 {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles}/>}
 
@@ -26,7 +50,7 @@ const WeatherPageContainer = ({ articles }: WeatherPageContainerProps) => {
                     </p>
                 }
             </div>
-        </>
+        </ArticleFilterContext.Provider>
     )
 }
 
