@@ -36,7 +36,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                 Delete All
             </button>
 
-            <ArticleFilters articles={articles} setFilteredArticles={setCleanoutBagArticles} appliedFilters={[FilterTypes.category, FilterTypes.weather]} />
+            <ArticleFilters articles={articles} setFilteredArticles={setCleanoutBagArticles} filterTypes={[FilterTypes.category, FilterTypes.weather]} />
 
             {isDeleting && <DeleteAllFromCleanoutConfirmationModal setIsDeleting={setIsDeleting} handleSubmit={deleteAllAndResetData}/>}
 

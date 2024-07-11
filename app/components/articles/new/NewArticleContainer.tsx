@@ -15,6 +15,7 @@ import {getSuitcases} from "@/app/server-actions/suitcase/getSuitcases";
 import {toSuitcase} from "@/utils/conversions/toSuitcase";
 import {orderByNewestCreated} from "@/utils/orderByNewestCreated";
 import {toArticle} from "@/utils/conversions/toArticle";
+import {redirect} from "next/navigation";
 
 interface NewArticleContainerProps {
     category: ArticleCategory

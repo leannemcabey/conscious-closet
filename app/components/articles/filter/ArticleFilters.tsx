@@ -1,11 +1,12 @@
 'use client'
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import {Dispatch, SetStateAction, useContext, useEffect, useState} from "react";
 import { Article } from "@/types/Article";
 import WeatherFilter from "@/app/components/articles/filter/WeatherFilter";
 import CleanoutBagFilter from "@/app/components/articles/filter/CleanoutBagFilter";
 import { WeatherCategory } from "@/types/enums/WeatherCategory";
 import CategoryFilter from "@/app/components/articles/filter/CategoryFilter";
 import { ArticleCategory } from "@/types/enums/ArticleCategory";
+import {ArticleFilterContext} from "@/app/context/ArticleFilterContext";
 
 export enum FilterTypes {
     "cleanout",
@@ -16,33 +17,19 @@ export enum FilterTypes {
 interface ArticleFiltersProps {
     articles: Article[]; // Represents all articles in this category, unfiltered
     setFilteredArticles: Dispatch<SetStateAction<Article[]>>;
-    appliedFilters: FilterTypes[];
+    filterTypes: FilterTypes[];
 }
 
-const ArticleFilters = ({ articles, setFilteredArticles, appliedFilters }: ArticleFiltersProps) => {
-    // If the page does not allow filtering on the cleanout bag items, it means it's the cleanout bag page.
-    // In this case, we want to show the cleanout bag items by default, in contrast to the other pages
-    // where we hide them by default.
-    const initialCleanoutStatus = !appliedFilters.includes(FilterTypes.cleanout)
-    const [showCleanoutBagItems, setShowCleanoutBagItems] = useState<boolean>(initialCleanoutStatus);
-    const [selectedWeatherCategories, setSelectedWeatherCategories] = useState<WeatherCategory[]>(
-        [WeatherCategory.COLD, WeatherCategory.MIXED, WeatherCategory.WARM]
-    )
-    const [selectedArticleCategories, setSelectedArticleCategories] = useState<ArticleCategory[]>(
-        [
-            ArticleCategory.TOPS,
-            ArticleCategory.BOTTOMS,
-            ArticleCategory.JUMPSUITS_ROMPERS,
-            ArticleCategory.ACTIVEWEAR,
-            ArticleCategory.SHOES,
-            ArticleCategory.OUTERWEAR,
-            ArticleCategory.ACCESSORIES
-        ]
-    )
+const ArticleFilters = ({ articles, setFilteredArticles, filterTypes }: ArticleFiltersProps) => {
+    const { filterSettings, setFilterSettings } = useContext(ArticleFilterContext);
+    const [showCleanoutBagItems, setShowCleanoutBagItems] = useState<boolean>(filterSettings.showCleanoutBagItems);
+    const [selectedWeatherCategories, setSelectedWeatherCategories] = useState<WeatherCategory[]>(filterSettings.selectedWeatherCategories);
+    const [selectedArticleCategories, setSelectedArticleCategories] = useState<ArticleCategory[]>(filterSettings.selectedArticleCategories);
 
     useEffect(() => {
         console.log('use effect in articlefilters running')
         console.log(selectedWeatherCategories)
+
         let tempFilteredArticles = articles;
 
         if (showCleanoutBagItems) tempFilteredArticles = articles;
@@ -52,23 +39,34 @@ const ArticleFilters = ({ articles, setFilteredArticles, appliedFilters }: Artic
 
         console.log(`filtered: ${tempFilteredArticles.length}`)
 
-        setFilteredArticles(tempFilteredArticles)
+        setFilterSettings({
+            showCleanoutBagItems: showCleanoutBagItems,
+            selectedWeatherCategories: selectedWeatherCategories,
+            selectedArticleCategories: selectedArticleCategories
+        });
+        setFilteredArticles(tempFilteredArticles);
     }, [articles, showCleanoutBagItems, selectedWeatherCategories, selectedArticleCategories]);
 
-    const weatherCategoryIsSelected = (category) => selectedWeatherCategories.includes(category);
-    const articleCategoryIsSelected = (category) => selectedArticleCategories.includes(category);
+    const weatherCategoryIsSelected = (category) => selectedWeatherCategories?.includes(category);
+    const articleCategoryIsSelected = (category) => selectedArticleCategories?.includes(category);
+
+    // const context: FilterSettings = {
+    //     showCleanoutBagItems: showCleanoutBagItems,
+    //     selectedWeatherCategories: selectedWeatherCategories,
+    //     selectedArticleCategories: selectedArticleCategories
+    // }
 
     return (
         <div className="mb-4 px-1 py-2 flex place-content-between border border-theme-blue border-dotted rounded-md drop-shadow">
-            {appliedFilters.includes(FilterTypes.cleanout) &&
+            {filterTypes.includes(FilterTypes.cleanout) &&
                 <CleanoutBagFilter showCleanoutBagItems={showCleanoutBagItems} setShowCleanoutBagItems={setShowCleanoutBagItems} />
             }
 
-            {appliedFilters.includes(FilterTypes.weather) &&
+            {filterTypes.includes(FilterTypes.weather) &&
                 <WeatherFilter selectedWeatherCategories={selectedWeatherCategories} setSelectedWeatherCategories={setSelectedWeatherCategories} />
             }
 
-            {appliedFilters.includes(FilterTypes.category) &&
+            {filterTypes.includes(FilterTypes.category) &&
                 <CategoryFilter selectedArticleCategories={selectedArticleCategories} setSelectedArticleCategories={setSelectedArticleCategories} />
             }
         </div>

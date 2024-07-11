@@ -16,7 +16,7 @@ const WeatherPageContainer = ({ articles }: WeatherPageContainerProps) => {
     return (
         <>
             <div className="flex flex-col">
-                <ArticleFilters articles={articles} setFilteredArticles={setFilteredArticles} appliedFilters={[FilterTypes.cleanout, FilterTypes.category]}/>
+                <ArticleFilters articles={articles} setFilteredArticles={setFilteredArticles} filterTypes={[FilterTypes.cleanout, FilterTypes.category]}/>
 
                 {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles}/>}
 

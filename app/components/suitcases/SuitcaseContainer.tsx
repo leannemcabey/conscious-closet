@@ -14,7 +14,7 @@ const SuitcaseContainer = ({ articles }: SuitcaseContainerProps) => {
 
     return (
         <div className="flex flex-col">
-            <ArticleFilters articles={articles} setFilteredArticles={setFilteredArticles} appliedFilters={[FilterTypes.category, FilterTypes.weather]} />
+            <ArticleFilters articles={articles} setFilteredArticles={setFilteredArticles} filterTypes={[FilterTypes.category, FilterTypes.weather]} />
 
             {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles} />}
             {filteredArticles.length === 0 &&
