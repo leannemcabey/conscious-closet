@@ -22,5 +22,4 @@ export async function deleteArticle(article: Article) {
     revalidatePath(`/articles/category/${articleCategory}`);
     revalidatePath(`/articles/category/${article.weatherCategory}`);
     revalidatePath(`/cleanout-bag`);
-    // redirect(`/articles/category/${articleCategory}`);
 }
