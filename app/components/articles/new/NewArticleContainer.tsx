@@ -9,13 +9,16 @@ import { ArticleCategory } from "@/types/enums/ArticleCategory";
 import { createArticle } from "@/app/server-actions/article/createArticle";
 import Image from "next/image";
 import ArticleCreationErrorAlertModal from "@/app/components/articles/new/ArticleCreationErrorAlertModal";
+import { Article } from "@/types/Article";
 
 interface NewArticleContainerProps {
     category: ArticleCategory
     setAddingArticle: Dispatch<SetStateAction<boolean>>;
+    unfilteredArticles: Article[];
+    setUnfilteredArticles: Dispatch<SetStateAction<Article[]>>;
 }
 
-const NewArticleContainer = ({ category, setAddingArticle }: NewArticleContainerProps) => {
+const NewArticleContainer = ({ category, setAddingArticle, unfilteredArticles, setUnfilteredArticles }: NewArticleContainerProps) => {
     const [image, setImage] = useState<GooglePhotoMetadata | undefined>(undefined);
     const [weatherCategory, setWeatherCategory] = useState<WeatherCategory | undefined>(undefined);
     const [creationError, setCreationError] = useState<boolean>();
@@ -34,10 +37,15 @@ const NewArticleContainer = ({ category, setAddingArticle }: NewArticleContainer
             articleCategory: category,
             weatherCategory: weatherCategory!!
         })
+            .then((newArticle) => {
+                const copy = [...unfilteredArticles]
+                copy.unshift(newArticle)
+                setUnfilteredArticles(copy)
+            })
             .then(() => setSubmitted(true))
             // The setTimeout is to give the celebration gif time to display before automatically closing the modal
             .then(() => setTimeout(() => setAddingArticle(false), 750))
-            .catch(() => setCreationError(true))
+            .catch(() => {setCreationError(true)})
     }
 
     return (

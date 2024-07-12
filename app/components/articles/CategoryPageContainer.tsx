@@ -23,16 +23,17 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
     };
 
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
-    const articlesNotInCleanoutBag = articles.filter((article) => !article.inCleanoutBag);
+    const [unfilteredArticles, setUnfilteredArticles] = useState<Article[]>(articles)
+    const articlesNotInCleanoutBag = unfilteredArticles.filter((article) => !article.inCleanoutBag);
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(articlesNotInCleanoutBag);
     const [addingArticle, setAddingArticle] = useState<boolean>();
 
     const filterTypes= [FilterType.cleanout, FilterType.weather];
 
     useEffect(() => {
-        const tempFilteredArticles = applyArticleFilters(articles, filterTypes, filterSettings);
+        const tempFilteredArticles = applyArticleFilters(unfilteredArticles, filterTypes, filterSettings);
         setFilteredArticles(tempFilteredArticles)
-    }, [filterSettings]);
+    }, [unfilteredArticles, filterSettings]);
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
@@ -48,7 +49,13 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
                     </p>
                 }
 
-                {addingArticle && <NewArticleModal setIsOpen={setAddingArticle} category={category}/>}
+                {addingArticle &&
+                    <NewArticleModal
+                        setIsOpen={setAddingArticle}
+                        category={category}
+                        unfilteredArticles={unfilteredArticles}
+                        setUnfilteredArticles={setUnfilteredArticles}
+                    />}
             </div>
         </ArticleFilterContext.Provider>
     )
