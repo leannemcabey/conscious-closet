@@ -20,7 +20,7 @@ const LastWorn = ({ article }: LastWornProps) => {
     }
 
     return (
-        <div className="w-full flex py-6 px-8 self-center items-center justify-center text-xl border border-white border-2 rounded-md">
+        <div className="w-full flex mb-6 px-8 self-center items-center justify-center text-xl">
             <div className="flex space-x-2 mr-2 mt-1">
                 <div>
                     <Image src={"/calendar-icon.png"} alt="calendar icon" width="25" height="25" />

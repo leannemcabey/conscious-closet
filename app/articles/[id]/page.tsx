@@ -23,7 +23,7 @@ export default async function ArticlePage({ params }: { id: string }) {
             <Layout>
                 <BackButton />
                 <div className="flex flex-col">
-                    <div className="mt-6 mb-4 p-2 border border-white border-2 rounded-md self-center">
+                    <div className="mt-6 mb-4 p-2 border border-white border-4 border-double rounded-md self-center">
                         <ArticleImage externalImageId={mappedArticle.image.imageId}/>
                     </div>
                     <div className="w-full flex flex-col">
@@ -31,7 +31,7 @@ export default async function ArticlePage({ params }: { id: string }) {
                         <ArticleWeatherCategory article={mappedArticle} />
                     </div>
                 </div>
-                <div className="flex justify-center space-x-8 mt-14">
+                <div className="flex justify-center space-x-8 mt-32">
                     <AddArticleToSuitcase article={mappedArticle}/>
                     <DeleteArticle article={mappedArticle}/>
                     <AddOrRemoveFromCleanoutBag article={mappedArticle} />
