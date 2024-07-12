@@ -17,5 +17,4 @@ export async function deleteSuitcase(id: string) {
     }
 
     revalidatePath('/suitcases')
-    redirect('/suitcases')
 }

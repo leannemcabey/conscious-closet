@@ -7,15 +7,9 @@ import * as React from "react";
 
 interface ArticleCreationErrorAlertModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
-    unsetImage: Dispatch<SetStateAction<GooglePhotoMetadata | undefined>>
 }
 
-const ArticleCreationErrorAlertModal = ({ setIsOpen, unsetImage }: ArticleCreationErrorAlertModalProps) => {
-    const handleSubmit = () => {
-        unsetImage(undefined) // This controls whether the user sees the image selection view
-        setIsOpen(false)
-    }
-
+const ArticleCreationErrorAlertModal = ({ setIsOpen }: ArticleCreationErrorAlertModalProps) => {
     return (
         <Modal setIsOpen={setIsOpen}>
             <div className="flex flex-col items-center text-center">
@@ -38,7 +32,6 @@ const ArticleCreationErrorAlertModal = ({ setIsOpen, unsetImage }: ArticleCreati
                 </button>
             </div>
         </Modal>
-
     )
 }
 

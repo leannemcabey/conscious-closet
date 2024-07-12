@@ -2,6 +2,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { Article } from "@/types/Article";
+import { revalidatePath } from "next/cache";
 
 export async function deleteArticle(article: Article) {
     const supabase = createClient();
@@ -17,5 +18,9 @@ export async function deleteArticle(article: Article) {
         return
     }
 
-    redirect(`/articles/category/${articleCategory}`)
+    revalidatePath(`articles/${id}`);
+    revalidatePath(`/articles/category/${articleCategory}`);
+    revalidatePath(`/articles/category/${article.weatherCategory}`);
+    revalidatePath(`/cleanout-bag`);
+    // redirect(`/articles/category/${articleCategory}`);
 }
