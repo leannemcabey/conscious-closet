@@ -26,27 +26,29 @@ export default async function Suitcase({ params }: { id: string }) {
     const mappedArticles: Article[] = articles?.map((article) => toArticle(article)) ?? [];
 
 
-    return (
-        <Layout>
-            <div className="flex place-content-between">
-                <BackButton />
-                <div className="h-max flex space-x-2">
-                    <EditSuitcaseButton suitcase={mappedSuitcase!!}/>
-                    <DeleteSuitcaseButton suitcaseId={params.id}/>
+    if (mappedSuitcase) {
+        return (
+            <Layout>
+                <div className="flex place-content-between">
+                    <BackButton />
+                    <div className="h-max flex space-x-2">
+                        <EditSuitcaseButton suitcase={mappedSuitcase!!}/>
+                        <DeleteSuitcaseButton suitcaseId={params.id}/>
+                    </div>
                 </div>
-            </div>
-            <div className="flex justify-center mt-6">
-                <h1 className="text-2xl mb-8 mr-2">{mappedSuitcase!!.name}</h1>
-                <div>
-                    <Image
-                        src={"/luggage-icon.png"}
-                        alt={"luggage icon"}
-                        width="30"
-                        height="30"
-                    />
+                <div className="flex justify-center mt-6">
+                    <h1 className="text-2xl mb-8 mr-2">{mappedSuitcase!!.name}</h1>
+                    <div>
+                        <Image
+                            src={"/luggage-icon.png"}
+                            alt={"luggage icon"}
+                            width="30"
+                            height="30"
+                        />
+                    </div>
                 </div>
-            </div>
-            <SuitcaseContainer articles={mappedArticles}/>
-        </Layout>
-    )
+                <SuitcaseContainer articles={mappedArticles}/>
+            </Layout>
+        )
+    }
 };

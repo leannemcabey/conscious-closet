@@ -4,17 +4,19 @@ import { deleteArticle } from "@/app/server-actions/article/deleteArticle";
 import { Article } from "@/types/Article";
 import DeleteArticleModal from "@/app/components/articles/DeleteArticleModal";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface DeleteArticleProps {
     article: Article;
 }
 
 const DeleteArticle = ({ article }: DeleteArticleProps) => {
+    const router = useRouter();
     const [isDeleting, setIsDeleting] = useState<boolean>();
 
     const handleDelete = () => {
         deleteArticle(article)
-            .then(() => setIsDeleting(false))
+            .then(() => router.back())
     }
 
     return (

@@ -2,6 +2,7 @@
 import ConfirmationModal from "@/app/components/modal/ConfirmationModal";
 import { Dispatch, SetStateAction } from "react";
 import { deleteSuitcase } from "@/app/server-actions/suitcase/deleteSuitcase";
+import { useRouter } from "next/navigation";
 
 interface DeleteSuitcaseConfirmationModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>
@@ -9,9 +10,11 @@ interface DeleteSuitcaseConfirmationModalProps {
 }
 
 const DeleteSuitcaseConfirmationModal = ({setIsOpen, suitcaseId}: DeleteSuitcaseConfirmationModalProps) => {
+    const router = useRouter();
+
     const handleSubmit = () => {
         deleteSuitcase(suitcaseId)
-            // .then(() => setIsOpen(false))
+            .then(() => router.back())
     }
 
     return (

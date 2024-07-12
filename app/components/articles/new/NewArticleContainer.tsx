@@ -50,7 +50,7 @@ const NewArticleContainer = ({ category, setAddingArticle, unfilteredArticles, s
 
     return (
         <>
-            {creationError && <ArticleCreationErrorAlertModal setIsOpen={setCreationError} unsetImage={setImage}/>}
+            {creationError && <ArticleCreationErrorAlertModal setIsOpen={setCreationError} />}
             {submitted && celebrationGif}
 
             {!submitted && (
