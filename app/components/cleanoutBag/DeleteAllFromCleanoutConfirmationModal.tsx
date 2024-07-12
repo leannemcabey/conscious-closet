@@ -19,11 +19,11 @@ const DeleteAllFromCleanoutConfirmationModal = ({ setIsDeleting, handleSubmit }:
                 height="200"
                 className="self-center"
             />
-            <p className="text-center text-xl mt-4 mb-2">
+            <p className="text-center text-l mt-4 mb-2">
                 Are you sure?
             </p>
-            <p className="text-center text-l mb-8">
-                Doing this will delete these articles from your closet as well as from your clean out bag!
+            <p className="text-center text-sm mb-8">
+                Doing this will delete all cleanout bag articles, regardless of applied filters, from your closet as well as from your clean out bag!
             </p>
         </ConfirmationModal>
     )

@@ -19,8 +19,8 @@ const DeleteSuitcaseButton = ({ suitcaseId }: DeleteSuitcaseButtonProps) => {
                 <Image
                     src={"/trash-icon.svg"}
                     alt={"delete"}
-                    width="20"
-                    height="20"
+                    width="22"
+                    height="22"
                 />
             </div>
 

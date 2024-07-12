@@ -18,10 +18,10 @@ const EditSuitcaseButton = ({ suitcase }: EditSuitcaseButtonProps) => {
                 className="p-2 rounded-full border border-theme-light-green bg-white drop-shadow"
             >
                 <Image
-                    src={"/pencil-icon.svg"}
+                    src={"/pen.svg"}
                     alt={"edit"}
-                    width="20"
-                    height="20"
+                    width="22"
+                    height="22"
                 />
             </div>
 

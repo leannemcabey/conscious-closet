@@ -61,7 +61,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                     onClick={() => setIsDeleting(true)}
                     className="rounded-lg bg-white text-neutral-700 drop-shadow self-center p-2 mb-8"
                 >
-                    Delete everything from cleanout bag
+                    delete all
                 </button>
 
                 <ArticleFilters filterTypes={filterTypes} />
