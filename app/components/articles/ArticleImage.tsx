@@ -40,13 +40,12 @@ const ArticleImage = ({ externalImageId }: ArticleImageProps) => {
             <Image
                 loader={googlePhotosPathLoader}
                 src={googlePhotoMetadata.baseUrl}
-                width={300}
-                height={325}
+                width={350}
+                height={400}
                 // TODO: dynamically apply size based on what page is being rendered
                 // width={200}
                 // height={250}
                 alt="clothing article image"
-                className="rounded-md"
             />
         )
     }

@@ -21,7 +21,7 @@ const DeleteArticle = ({ article }: DeleteArticleProps) => {
 
     return (
         <>
-            <div className="h-12 w-12 w-max bg-background-green border border-theme-blue rounded-full p-2 drop-shadow">
+            <div className="h-12 w-12 w-max bg-background-green border border-neutral-700 rounded-full p-2 drop-shadow">
                 <Image
                     src={"/trash-icon.svg"}
                     alt={"trash icon"}

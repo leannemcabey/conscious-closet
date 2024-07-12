@@ -22,19 +22,21 @@ export default async function ArticlePage({ params }: { id: string }) {
         return (
             <Layout>
                 <BackButton />
-                <div className="flex flex-col">
-                    <div className="mt-6 mb-4 p-2 border border-white border-4 border-double rounded-md self-center">
-                        <ArticleImage externalImageId={mappedArticle.image.imageId}/>
+                <div className="flex flex-col items-center mt-8">
+                    <div className="flex flex-col items-center bg-white w-96 drop-shadow-lg">
+                        <div className="mt-4 mb-2 bg-white">
+                            <ArticleImage externalImageId={mappedArticle.image.imageId}/>
+                        </div>
+                        <div className="w-full flex mb-4 space-x-12 justify-center">
+                            <LastWorn article={mappedArticle}/>
+                            <ArticleWeatherCategory article={mappedArticle} />
+                        </div>
                     </div>
-                    <div className="w-full flex flex-col">
-                        <LastWorn article={mappedArticle}/>
-                        <ArticleWeatherCategory article={mappedArticle} />
+                    <div className="flex justify-center space-x-8 mt-32">
+                        <AddArticleToSuitcase article={mappedArticle}/>
+                        <DeleteArticle article={mappedArticle}/>
+                        <AddOrRemoveFromCleanoutBag article={mappedArticle} />
                     </div>
-                </div>
-                <div className="flex justify-center space-x-8 mt-32">
-                    <AddArticleToSuitcase article={mappedArticle}/>
-                    <DeleteArticle article={mappedArticle}/>
-                    <AddOrRemoveFromCleanoutBag article={mappedArticle} />
                 </div>
             </Layout>
         )
