@@ -21,7 +21,6 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategory) => {
 
     return (
         <div className="flex self-center space-x-2">
-            {/*<div className="flex">*/}
                 <div onClick={() => handleClick(WeatherCategory.WARM)}>
                     <Weather
                         weatherCategory={WeatherCategory.WARM}
@@ -48,7 +47,6 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategory) => {
                         size="large"
                     />
                 </div>
-            {/*</div>*/}
         </div>
     )
 }
