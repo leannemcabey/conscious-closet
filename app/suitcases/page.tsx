@@ -13,8 +13,8 @@ export default async function Suitcases() {
                     <h1 className="text-2xl mb-8 mr-2">Suitcases</h1>
                     <div>
                         <Image
-                            src={"/luggage-icon.png"}
-                            alt={"luggage icon"}
+                            src={"/suitcase.svg"}
+                            alt={"suitcase icon"}
                             width="30"
                             height="30"
                         />

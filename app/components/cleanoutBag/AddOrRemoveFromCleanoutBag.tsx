@@ -22,14 +22,15 @@ const AddOrRemoveFromCleanoutBag = ({ article }: AddOrRemoveFromCleanoutBagProps
     }
 
     const position = inCleanoutBag ? "justify-end" : "";
-    const toggleStyling = inCleanoutBag ? "bg-neutral-700" : "bg-background-green";
+    const toggleStyling = inCleanoutBag ? "bg-theme-mid-green" : "bg-white";
+    // const buttonStyling = inCleanoutBag ? "border-theme-mid-green" : "border-neutral-700"
 
     return (
         <>
-            <div className={`flex ${position} ${toggleStyling} border border-neutral-700 rounded-full w-20 h-max drop-shadow`}>
-                <div className={`h-12 w-12 bg-background-green border border-neutral-700 rounded-full p-2 drop-shadow`}>
+            <div className={`flex ${position} ${toggleStyling} rounded-full w-20 h-max drop-shadow`}>
+                <div className={`h-12 w-12 bg-white border border-theme-green rounded-full p-2 drop-shadow`}>
                     <Image
-                        src={"/broom-icon.png"}
+                        src={"/broom-green.svg"}
                         alt={"broom icon"}
                         width="30" height="30"
                         onClick={() => changeCleanoutBagStatus()}

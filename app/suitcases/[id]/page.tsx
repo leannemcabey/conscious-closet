@@ -40,8 +40,8 @@ export default async function Suitcase({ params }: { id: string }) {
                     <h1 className="text-2xl mb-8 mr-2">{mappedSuitcase!!.name}</h1>
                     <div>
                         <Image
-                            src={"/luggage-icon.png"}
-                            alt={"luggage icon"}
+                            src={"/suitcase.svg"}
+                            alt={"suitcase icon"}
                             width="30"
                             height="30"
                         />

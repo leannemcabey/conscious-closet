@@ -23,7 +23,7 @@ const LastWorn = ({ article }: LastWornProps) => {
         <div className="flex flex-col items-center text-xl">
             <div className="flex space-x-2 justify-start mr-2 mt-1">
                 <Image src={"/calendar-icon.png"} alt="calendar icon" width="25" height="25" />
-                <p className="text-nowrap">last worn</p>
+                <p className="text-nowrap text-sm self-end">LAST WORN</p>
             </div>
             <DatePicker
                 className="text-center py-1 w-32 bg-background-green rounded-md drop-shadow focus:outline-none"

@@ -58,8 +58,8 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
                <p className="mt-10 mb-6 py-1 px-2 bg-theme-mid-green text-sm font-bold text-white rounded-full w-max truncate">{userEmail}</p>
 
                 <MenuItem linkTo="/home" imageSrc="/hanger-icon.png" imageAltText="hanger icon" label="Closet" />
-                <MenuItem linkTo="/suitcases" imageSrc="/luggage-icon.png" imageAltText="luggage icon" label="Suitcases" />
-                <MenuItem linkTo="/cleanout" imageSrc="/broom-icon.png" imageAltText="broom icon" label="Cleanout bag" />
+                <MenuItem linkTo="/suitcases" imageSrc="/suitcase.svg" imageAltText="suitcase icon" label="Suitcases" />
+                <MenuItem linkTo="/cleanout" imageSrc="/broom.svg" imageAltText="broom icon" label="Cleanout bag" />
             </div>
         </div>
     );

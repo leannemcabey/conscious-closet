@@ -19,7 +19,7 @@ export default async function CleanoutBag() {
                     <h1 className="text-2xl mb-4 mr-2">Cleanout Bag</h1>
                     <div>
                         <Image
-                            src={"/broom-icon.png"}
+                            src={"/broom.svg"}
                             alt={"broom icon"}
                             width="30"
                             height="30"

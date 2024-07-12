@@ -11,11 +11,11 @@ const AddArticleToSuitcaseButton = ({ selectingSuitcase, setIsSelectingSuitcase 
     return (
         <div
             onClick={() => setIsSelectingSuitcase(!selectingSuitcase)}
-            className="h-12 w-12 bg-background-green border border-neutral-700 rounded-full p-2 drop-shadow"
+            className="h-12 w-12 bg-white border border-theme-green rounded-full p-2 drop-shadow"
         >
             <Image
-                src={"/luggage-icon.png"}
-                alt={"luggage icon"}
+                src={"/suitcase-green.svg"}
+                alt={"suitcase icon"}
                 width="30" height="30"
             />
         </div>
