@@ -43,8 +43,8 @@ const SuitcaseOptions = ({ suitcases, selectedSuitcases, setSelectedSuitcases }:
     )
 
     return (
-        <div className="h-full mt-4">
-            <div className="flex flex-col space-y-2 h-52 overflow-scroll">
+        <div className="h-52 mt-4 overflow-auto">
+            <div className="flex flex-col space-y-2">
                 {orderByNewestCreated(suitcases).map((suitcase) => option(suitcase))}
             </div>
         </div>
