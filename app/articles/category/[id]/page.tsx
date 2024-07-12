@@ -5,7 +5,7 @@ import { ArticleCategory, categorySlugToTitleMap}  from "@/types/enums/ArticleCa
 import { toArticle } from "@/utils/conversions/toArticle";
 import BackButton from "@/app/components/navigation/BackButton";
 import CategoryPageContainer from "@/app/components/articles/CategoryPageContainer";
-import { getAllArticlesInCategory } from "@/app/server-actions/getAllArticlesInCategory";
+import { getAllArticlesInCategory } from "@/app/server-actions/article/getAllArticlesInCategory";
 
 export default async function ArticleCategoryPage({ params }: { params: { id: string } }) {
     const data = await getAllArticlesInCategory(params.id);

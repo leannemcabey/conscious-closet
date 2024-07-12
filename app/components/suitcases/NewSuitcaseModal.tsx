@@ -4,34 +4,27 @@ import { Dispatch, SetStateAction, useState } from "react";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import { Suitcase } from "@/types/Suitcase";
-import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
-import { toSuitcase } from "@/utils/conversions/toSuitcase";
-import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
 
 interface NewSuitcaseModalProps {
     closeModal: () => void;
+    suitcases: Suitcase[];
     setSuitcases: Dispatch<SetStateAction<Suitcase[] | undefined>>
 }
 
-const NewSuitcaseModal = ({ closeModal, setSuitcases }: NewSuitcaseModalProps) => {
+const NewSuitcaseModal = ({ closeModal, suitcases, setSuitcases }: NewSuitcaseModalProps) => {
     const [suitcaseName, setSuitcaseName] = useState<string>();
 
     const buttonDisabled: boolean = suitcaseName === undefined;
-
-    const fetchAndResetSuitcases = () => {
-        getSuitcases()
-            .then((data) => {
-                const mapped = data?.map((suitcase) => toSuitcase(suitcase))
-                const sorted = orderByNewestCreated(mapped as any[])
-                setSuitcases(sorted)
-            })
-    }
 
     const handleSubmit = (event) => {
         if (suitcaseName) {
             event.preventDefault()
             createSuitcase(suitcaseName)
-                .then(() => fetchAndResetSuitcases())
+                .then((newSuitcase) => {
+                    const copy = [...suitcases]
+                    copy.unshift(newSuitcase)
+                    setSuitcases(copy)
+                })
                 .then(() => closeModal())
         }
     }

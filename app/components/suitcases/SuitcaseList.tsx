@@ -33,7 +33,12 @@ const SuitcaseList = () => {
                 )}
             </div>
 
-            {creatingSuitcase && <NewSuitcaseModal closeModal={() => setCreatingSuitcase(false)} setSuitcases={setSuitcases}/>}
+            {creatingSuitcase &&
+                <NewSuitcaseModal
+                    closeModal={() => setCreatingSuitcase(false)}
+                    suitcases={suitcases || []}
+                    setSuitcases={setSuitcases}
+                />}
         </>
     )
 }

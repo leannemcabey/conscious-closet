@@ -13,7 +13,6 @@ interface AddArticleToSuitcaseModalProps {
     suitcases: Suitcase[];
     unsavedSuitcaseSelections: string[];
     setUnsavedSuitcaseSelections: Dispatch<SetStateAction<string[] | undefined>>
-    setSuitcases: Dispatch<SetStateAction<Suitcase[] | undefined>>
     handleSubmit: () => void;
 }
 
@@ -23,8 +22,7 @@ const AddArticleToSuitcaseModal = ({
    suitcases,
    unsavedSuitcaseSelections,
    setUnsavedSuitcaseSelections,
-   handleSubmit,
-   setSuitcases
+   handleSubmit
 }: AddArticleToSuitcaseModalProps) => {
     const openNewSuitcaseModal = () => {
         // The setTimeout is used because the outsideClickHandler / eventListener inside the Modal
@@ -48,10 +46,7 @@ const AddArticleToSuitcaseModal = ({
             <NewSuitcaseButton handleClick={() => openNewSuitcaseModal()}/>
 
             <SuitcaseOptions
-                setSelectingSuitcase={setIsSelectingSuitcase}
-                setCreatingSuitcase={setCreatingSuitcase}
                 suitcases={suitcases}
-                setSuitcases={setSuitcases}
                 selectedSuitcases={unsavedSuitcaseSelections || []}
                 setSelectedSuitcases={setUnsavedSuitcaseSelections}
             />

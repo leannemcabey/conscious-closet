@@ -47,7 +47,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
         }
     }
 
-    const closeOneOpenAnother = () => {
+    const closeCreatingOpenSelectingModal = () => {
         setCreatingSuitcase(false)
         setSelectingSuitcase(true)
     }
@@ -62,7 +62,6 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                     setCreatingSuitcase={setCreatingSuitcase}
                     article={article}
                     suitcases={suitcases || []}
-                    setSuitcases={setSuitcases}
                     unsavedSuitcaseSelections={unsavedSuitcaseSelections || []}
                     setUnsavedSuitcaseSelections={setUnsavedSuitcaseSelections}
                     handleSubmit={saveSelections}
@@ -71,7 +70,8 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
 
             {creatingSuitcase &&
                 <NewSuitcaseModal
-                    closeModal={closeOneOpenAnother}
+                    closeModal={closeCreatingOpenSelectingModal}
+                    suitcases={suitcases || []}
                     setSuitcases={setSuitcases}
                 />
             }
