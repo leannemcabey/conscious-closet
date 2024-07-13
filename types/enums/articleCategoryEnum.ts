@@ -11,36 +11,36 @@ export enum ArticleCategoryEnum {
 }
 
 export enum ArticleCategoryTitle {
-    TOPS = "Tops",
-    BOTTOMS = "Bottoms",
-    DRESSES = "Dresses",
-    JUMPSUITS_ROMPERS = "Jumpsuits & Rompers",
-    ACTIVEWEAR = "Activewear",
-    SHOES = "Shoes",
-    OUTERWEAR = "Outerwear",
-    ACCESSORIES = "Accessories"
+    TOPS = "tops",
+    BOTTOMS = "bottoms",
+    DRESSES = "dresses",
+    JUMPSUITS_ROMPERS = "jumpsuits & rompers",
+    ACTIVEWEAR = "activewear",
+    SHOES = "shoes",
+    OUTERWEAR = "outerwear",
+    ACCESSORIES = "accessories"
 }
 
 export const categorySlugToTitleMap  = {
-    tops: "Tops",
-    bottoms: "Bottoms",
-    dresses: "Dresses",
-    jumpsuits_rompers: "Jumpsuits & Rompers",
-    activewear: "Activewear",
-    shoes: "Shoes",
-    outerwear: "Outerwear",
-    accessories: "Accessories"
+    tops: "tops",
+    bottoms: "bottoms",
+    dresses: "dresses",
+    jumpsuits_rompers: "jumpsuits & rompers",
+    activewear: "activewear",
+    shoes: "shoes",
+    outerwear: "outerwear",
+    accessories: "accessories"
 }
 
 export const categorySlugToSingularTitleMap = {
-    tops: "Top",
-    bottoms: "Bottom",
-    dresses: "Dress",
-    jumpsuits_rompers: "Jumpsuit & Romper",
-    activewear: "Activewear",
-    shoes: "Shoes",
-    outerwear: "Outerwear",
-    accessories: "Accessory"
+    tops: "top",
+    bottoms: "bottom",
+    dresses: "dress",
+    jumpsuits_rompers: "jumpsuit & romper",
+    activewear: "activewear",
+    shoes: "shoes",
+    outerwear: "outerwear",
+    accessories: "accessory"
 }
 
 export const categoryTitleToPathSlug = (title: ArticleCategoryTitle): ArticleCategoryEnum => {

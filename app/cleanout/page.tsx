@@ -16,7 +16,7 @@ export default async function CleanoutBag() {
             <BackButton />
             <div className="mt-4">
                 <div className="flex justify-center">
-                    <h1 className="text-2xl mb-4 mr-2">Cleanout Bag</h1>
+                    <h1 className="text-2xl mb-4 mr-2">cleanout bag</h1>
                     <div>
                         <Image
                             src={"/broom.svg"}

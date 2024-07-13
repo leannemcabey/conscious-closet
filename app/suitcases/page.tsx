@@ -10,7 +10,7 @@ export default async function Suitcases() {
             <BackButton />
             <div className="h-screen mt-8 mx-2 flex flex-col">
                 <div className="flex justify-center">
-                    <h1 className="text-2xl mb-8 mr-2">Suitcases</h1>
+                    <h1 className="text-2xl mb-8 mr-2">suitcases</h1>
                     <div>
                         <Image
                             src={"/suitcase.svg"}
