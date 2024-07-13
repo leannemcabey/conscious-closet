@@ -6,8 +6,8 @@ import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
 import { addOrRemoveArticleToSuitcases } from "@/app/server-actions/suitcase/addOrRemoveArticleToSuitcases";
 import { getArticleSuitcases } from "@/app/server-actions/suitcase/getArticleSuitcases";
 import AddArticleToSuitcaseModal from "@/app/components/suitcases/AddArticleToSuitcaseModal";
-import AddArticleToSuitcaseButton from "@/app/components/suitcases/AddArticleToSuitcaseButton";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
+import ArticleActionButton from "@/app/components/articles/ArticleActionButton";
 
 interface AddArticleToSuitcaseProps {
     article: Article;
@@ -54,7 +54,11 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
 
     return (
         <>
-            <AddArticleToSuitcaseButton selectingSuitcase={selectingSuitcase} setIsSelectingSuitcase={setSelectingSuitcase} />
+            <ArticleActionButton
+                iconFile="/suitcase-green.svg"
+                iconAlt="suitcase icon"
+                clickHandler={() => setSelectingSuitcase(!selectingSuitcase)}
+            />
 
             {selectingSuitcase &&
                 <AddArticleToSuitcaseModal

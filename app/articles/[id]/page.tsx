@@ -10,6 +10,7 @@ import AddArticleToSuitcase from "@/app/components/suitcases/AddArticleToSuitcas
 import BackButton from "@/app/components/navigation/BackButton";
 import { toArticle } from "@/utils/typeConversions/toArticle";
 import ArticleWeatherCategory from "@/app/components/articles/ArticleWeatherCategory";
+import AddOrRemoveFromTailoring from "@/app/components/needsTailoring/AddOrRemoveFromTailoring";
 
 export default async function ArticlePage({ params }: { id: string }) {
     const supabase = createClient();
@@ -35,6 +36,7 @@ export default async function ArticlePage({ params }: { id: string }) {
                     <div className="flex justify-center space-x-8 mt-16">
                         <AddArticleToSuitcase article={mappedArticle}/>
                         <DeleteArticle article={mappedArticle}/>
+                        <AddOrRemoveFromTailoring article={mappedArticle} />
                         <AddOrRemoveFromCleanoutBag article={mappedArticle} />
                     </div>
                 </div>

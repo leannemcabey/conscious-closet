@@ -42,10 +42,11 @@ const ArticleImage = ({ externalImageId }: ArticleImageProps) => {
                 src={googlePhotoMetadata.baseUrl}
                 width={350}
                 height={400}
-                // TODO: dynamically apply size based on what page is being rendered
+                // TODO: dynamically apply size based on what page is being rendered. I think this is somehow happening on its own. Needs to look into it.
                 // width={200}
                 // height={250}
                 alt="clothing article image"
+                className="border border-neutral-200 border-2"
             />
         )
     }
