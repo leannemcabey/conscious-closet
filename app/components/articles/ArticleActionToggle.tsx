@@ -15,7 +15,7 @@ const ArticleActionToggle = ({ iconFile, iconAlt, isActive, clickHandler }: Arti
 
     return (
         <div className={`flex ${position} ${toggleStyling} rounded-full w-20 h-max drop-shadow`}>
-            <div className={`h-12 w-12 bg-white border border-theme-green rounded-full p-2 drop-shadow`}>
+            <div className={`h-12 w-12 bg-white border border-theme-mid-green rounded-full p-2 drop-shadow`}>
                 <Image
                     src={iconFile}
                     alt={iconAlt}

@@ -35,9 +35,9 @@ export default async function ArticlePage({ params }: { id: string }) {
                     </div>
                     <div className="flex justify-center space-x-8 mt-16">
                         <AddArticleToSuitcase article={mappedArticle}/>
-                        <DeleteArticle article={mappedArticle}/>
                         <AddOrRemoveFromTailoring article={mappedArticle} />
                         <AddOrRemoveFromCleanoutBag article={mappedArticle} />
+                        <DeleteArticle article={mappedArticle}/>
                     </div>
                 </div>
             </Layout>
