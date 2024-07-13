@@ -11,6 +11,7 @@ import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilte
 import { WeatherCategory } from "@/types/enums/WeatherCategory";
 import { ArticleCategory } from "@/types/enums/ArticleCategory";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
+import CleanoutOptionsModal from "@/app/components/cleanoutBag/CleanoutOptionsModal";
 
 interface CleanoutBagContainerProps {
     articles: Article[]
@@ -35,6 +36,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
     const [cleanoutBagArticles, setCleanoutBagArticles] = useState<Article[]>(articles);
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(cleanoutBagArticles);
     const [isDeleting, setIsDeleting] = useState<boolean>(false);
+    const [showCleanoutOptions, setShowCleanoutOptions] = useState(false);
 
     const filterTypes = [FilterType.weather, FilterType.category];
 
@@ -75,6 +77,15 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                         There are no articles in your cleanout bag that match the applied filters.
                     </p>
                 }
+
+                <button
+                    onClick={() => setShowCleanoutOptions(true)}
+                    className="w-11/12 bottom-8 fixed bg-theme-green text-white text-lg p-2 rounded-full drop-shadow"
+                >
+                    thrifting | recycling | donating
+                </button>
+
+                {showCleanoutOptions && <CleanoutOptionsModal setShowCleanoutOptions={setShowCleanoutOptions} />}
             </div>
         </ArticleFilterContext.Provider>
     )
