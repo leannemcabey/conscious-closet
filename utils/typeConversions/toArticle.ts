@@ -9,6 +9,7 @@ export const toArticle = (dbArticle: DBArticle): Article => {
             weatherCategory: dbArticle.weather_category,
             lastWorn: dbArticle.last_worn,
             inCleanoutBag: dbArticle.in_cleanout_bag,
+            needsTailoring: dbArticle.needs_tailoring,
             articleCategory: dbArticle.category,
             image: {
                 imageId: dbArticle.external_image_id

@@ -2,7 +2,7 @@
 import Layout from "@/app/components/Layout";
 import { createClient } from "@/utils/supabase/server";
 import { Article } from "@/types/article";
-import { toArticle } from "@/utils/conversions/toArticle";
+import { toArticle } from "@/utils/typeConversions/toArticle";
 import Image from "next/image";
 import WeatherPageContainer from "@/app/components/articles/WeatherPageContainer";
 import BackButton from "@/app/components/navigation/BackButton";

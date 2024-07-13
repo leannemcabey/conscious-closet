@@ -2,8 +2,8 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import {revalidatePath} from "next/cache";
-import {toArticle} from "@/utils/conversions/toArticle";
-import {toSuitcase} from "@/utils/conversions/toSuitcase";
+import {toArticle} from "@/utils/typeConversions/toArticle";
+import {toSuitcase} from "@/utils/typeConversions/toSuitcase";
 
 export async function createSuitcase(name: string) {
     const supabase = createClient();

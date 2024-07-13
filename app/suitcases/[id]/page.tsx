@@ -2,13 +2,13 @@
 import Layout from "@/app/components/Layout";
 import { createClient } from "@/utils/supabase/server";
 import { Suitcase } from "@/types/suitcase";
-import { toSuitcase } from "@/utils/conversions/toSuitcase";
+import { toSuitcase } from "@/utils/typeConversions/toSuitcase";
 import Image from "next/image";
 import BackButton from "@/app/components/navigation/BackButton";
 import { setSuitcaseArticles } from "@/app/server-actions/suitcase/getSuitcaseArticles";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import { Article } from "@/types/article";
-import { toArticle } from "@/utils/conversions/toArticle";
+import { toArticle } from "@/utils/typeConversions/toArticle";
 import EditSuitcaseButton from "@/app/components/suitcases/EditSuitcaseButton";
 import DeleteSuitcaseButton from "@/app/components/suitcases/DeleteSuitcaseButton";
 import SuitcaseContainer from "@/app/components/suitcases/SuitcaseContainer";

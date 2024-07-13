@@ -2,7 +2,7 @@
 import Layout from "@/app/components/Layout";
 import { Article } from "@/types/article";
 import { ArticleCategoryEnum, categorySlugToTitleMap}  from "@/types/enums/articleCategoryEnum";
-import { toArticle } from "@/utils/conversions/toArticle";
+import { toArticle } from "@/utils/typeConversions/toArticle";
 import BackButton from "@/app/components/navigation/BackButton";
 import CategoryPageContainer from "@/app/components/articles/CategoryPageContainer";
 import { getAllArticlesInCategory } from "@/app/server-actions/article/getAllArticlesInCategory";

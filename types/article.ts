@@ -9,6 +9,7 @@ export interface Article {
     weatherCategory: WeatherCategoryEnum;
     lastWorn: string;
     inCleanoutBag: boolean;
+    needsTailoring: boolean;
     articleCategory: ArticleCategoryEnum;
     image: GooglePhotoMetadata;
 }
@@ -20,6 +21,7 @@ export interface DBArticle {
     weather_category: string;
     last_worn?: string;
     in_cleanout_bag: boolean;
+    needs_tailoring: boolean
     external_image_id: string;
     category: string;
 }

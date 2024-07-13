@@ -3,7 +3,7 @@ import { NewArticleInput } from "@/types/newArticleInput";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import {revalidatePath} from "next/cache";
-import {toArticle} from "@/utils/conversions/toArticle";
+import {toArticle} from "@/utils/typeConversions/toArticle";
 
 export async function createArticle(newArticle: NewArticleInput) {
     const supabase = createClient();
