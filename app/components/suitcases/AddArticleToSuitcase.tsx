@@ -1,7 +1,7 @@
 'use client'
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import { useEffect, useState } from "react";
-import { Suitcase } from "@/types/Suitcase";
+import { Suitcase } from "@/types/suitcase";
 import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
 import { addOrRemoveArticleToSuitcases } from "@/app/server-actions/suitcase/addOrRemoveArticleToSuitcases";
 import { getArticleSuitcases } from "@/app/server-actions/suitcase/getArticleSuitcases";

@@ -1,5 +1,5 @@
 // Values reflect the database enum. Also used for URL slugs.
-export enum ArticleCategory {
+export enum ArticleCategoryEnum {
     TOPS = "tops",
     BOTTOMS = "bottoms",
     DRESSES = "dresses",
@@ -43,6 +43,6 @@ export const categorySlugToSingularTitleMap = {
     accessories: "Accessory"
 }
 
-export const categoryTitleToPathSlug = (title: ArticleCategoryTitle): ArticleCategory => {
-    return title.toLowerCase().replace(" & ", "_") as ArticleCategory
+export const categoryTitleToPathSlug = (title: ArticleCategoryTitle): ArticleCategoryEnum => {
+    return title.toLowerCase().replace(" & ", "_") as ArticleCategoryEnum
 }

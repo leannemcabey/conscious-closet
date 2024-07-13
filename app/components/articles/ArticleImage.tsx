@@ -4,7 +4,7 @@ import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
+import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 
 interface ArticleImageProps {
     externalImageId: string;

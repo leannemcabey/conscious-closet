@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 import { markArticleWornDate } from "@/app/server-actions/article/markArticleWornDate";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Image from "next/image";

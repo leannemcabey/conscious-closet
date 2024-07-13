@@ -1,18 +1,18 @@
 'use client'
 import { Dispatch, SetStateAction, useState } from "react";
-import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
-import { WeatherCategory } from "@/types/enums/WeatherCategory";
+import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { NewArticleImage } from "@/app/components/articles/new/NewArticleImage";
 import { ImageSelection } from "@/app/components/articles/new/ImageSelection";
 import { WeatherPicker } from "@/app/components/articles/new/WeatherPicker";
-import { ArticleCategory } from "@/types/enums/ArticleCategory";
+import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { createArticle } from "@/app/server-actions/article/createArticle";
 import Image from "next/image";
 import ArticleCreationErrorAlertModal from "@/app/components/articles/new/ArticleCreationErrorAlertModal";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 
 interface NewArticleContainerProps {
-    category: ArticleCategory
+    category: ArticleCategoryEnum
     setAddingArticle: Dispatch<SetStateAction<boolean>>;
     unfilteredArticles: Article[];
     setUnfilteredArticles: Dispatch<SetStateAction<Article[]>>;
@@ -20,7 +20,7 @@ interface NewArticleContainerProps {
 
 const NewArticleContainer = ({ category, setAddingArticle, unfilteredArticles, setUnfilteredArticles }: NewArticleContainerProps) => {
     const [image, setImage] = useState<GooglePhotoMetadata | undefined>(undefined);
-    const [weatherCategory, setWeatherCategory] = useState<WeatherCategory | undefined>(undefined);
+    const [weatherCategory, setWeatherCategory] = useState<WeatherCategoryEnum | undefined>(undefined);
     const [creationError, setCreationError] = useState<boolean>();
     const [submitted, setSubmitted] = useState<boolean>();
 

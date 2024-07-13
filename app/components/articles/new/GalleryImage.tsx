@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
+import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import { googlePhotosPathLoader } from "@/utils/googlePhotosPathLoader";
 
 interface GalleryImageProps {

@@ -1,11 +1,11 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { WeatherCategory } from "@/types/enums/WeatherCategory";
-import { ArticleCategory } from "@/types/enums/ArticleCategory";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
+import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 
 export interface FilterSettings {
     showCleanoutBagItems: boolean,
-    selectedWeatherCategories?: WeatherCategory[],
-    selectedArticleCategories?: ArticleCategory[]
+    selectedWeatherCategories?: WeatherCategoryEnum[],
+    selectedArticleCategories?: ArticleCategoryEnum[]
 }
 
 interface FilterContext {

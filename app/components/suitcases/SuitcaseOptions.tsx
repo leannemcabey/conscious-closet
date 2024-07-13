@@ -1,5 +1,5 @@
 'use client'
-import { Suitcase } from "@/types/Suitcase";
+import { Suitcase } from "@/types/suitcase";
 import Image from "next/image";
 import { Dispatch, SetStateAction, useState } from "react";
 import { orderByNewestCreated } from "@/utils/orderByNewestCreated";

@@ -1,15 +1,15 @@
 'use client'
-import { WeatherCategory } from "@/types/enums/WeatherCategory";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { Weather } from "@/app/components/articles/Weather";
 import { Dispatch, SetStateAction } from "react";
 
 interface WeatherFilterProps {
-    selectedWeatherCategories: WeatherCategory[];
-    setSelectedWeatherCategories: Dispatch<SetStateAction<WeatherCategory[]>>;
+    selectedWeatherCategories: WeatherCategoryEnum[];
+    setSelectedWeatherCategories: Dispatch<SetStateAction<WeatherCategoryEnum[]>>;
 }
 
 const WeatherFilter = ({ selectedWeatherCategories, setSelectedWeatherCategories }: WeatherFilterProps) => {
-    const updateWeatherCategories = (category: WeatherCategory) => {
+    const updateWeatherCategories = (category: WeatherCategoryEnum) => {
         // Deselect
         if (weatherCategoryIsSelected(category)) {
             setSelectedWeatherCategories(selectedWeatherCategories.filter((c) => c !== category))
@@ -27,36 +27,36 @@ const WeatherFilter = ({ selectedWeatherCategories, setSelectedWeatherCategories
     return (
         <div className="w-1/3 flex place-content-between space-x-2">
             <div
-                onClick={() => updateWeatherCategories(WeatherCategory.WARM)}
+                onClick={() => updateWeatherCategories(WeatherCategoryEnum.WARM)}
                 className="border border-theme-blue rounded-md"
             >
                 <Weather
-                    weatherCategory={WeatherCategory.WARM}
-                    isSelected={weatherCategoryIsSelected(WeatherCategory.WARM)}
+                    weatherCategory={WeatherCategoryEnum.WARM}
+                    isSelected={weatherCategoryIsSelected(WeatherCategoryEnum.WARM)}
                     iconPath="/warm-weather-icon.svg"
                     size="small"
                 />
             </div>
 
             <div
-                onClick={() => updateWeatherCategories(WeatherCategory.MIXED)}
+                onClick={() => updateWeatherCategories(WeatherCategoryEnum.MIXED)}
                 className="border border-theme-blue rounded-md"
             >
                 <Weather
-                    weatherCategory={WeatherCategory.MIXED}
-                    isSelected={weatherCategoryIsSelected(WeatherCategory.MIXED)}
+                    weatherCategory={WeatherCategoryEnum.MIXED}
+                    isSelected={weatherCategoryIsSelected(WeatherCategoryEnum.MIXED)}
                     iconPath="/mixed-weather-icon.svg"
                     size="small"
                 />
             </div>
 
             <div
-                onClick={() => updateWeatherCategories(WeatherCategory.COLD)}
+                onClick={() => updateWeatherCategories(WeatherCategoryEnum.COLD)}
                 className="border border-theme-blue rounded-md"
             >
                 <Weather
-                    weatherCategory={WeatherCategory.COLD}
-                    isSelected={weatherCategoryIsSelected(WeatherCategory.COLD)}
+                    weatherCategory={WeatherCategoryEnum.COLD}
+                    isSelected={weatherCategoryIsSelected(WeatherCategoryEnum.COLD)}
                     iconPath="/cold-weather-icon.svg"
                     size="small"
                 />

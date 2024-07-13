@@ -1,10 +1,10 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
-import { WeatherCategory } from "@/types/enums/WeatherCategory";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { revalidatePath } from "next/cache";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 
-export async function updateArticleWeatherCategory(article: Article, weatherCategory: WeatherCategory) {
+export async function updateArticleWeatherCategory(article: Article, weatherCategory: WeatherCategoryEnum) {
     const supabase = createClient();
 
     const { error } = await supabase

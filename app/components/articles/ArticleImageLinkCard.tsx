@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { googlePhotosPathLoader } from "@/utils/googlePhotosPathLoader";
 import Link from "next/link";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 
 interface ArticleImageProps {
     article: Article;

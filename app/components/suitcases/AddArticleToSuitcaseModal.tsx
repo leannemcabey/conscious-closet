@@ -2,8 +2,8 @@
 import Modal from "@/app/components/modal/Modal";
 import SuitcaseOptions from "@/app/components/suitcases/SuitcaseOptions";
 import {Dispatch, SetStateAction, useRef} from "react";
-import { Article } from "@/types/Article";
-import { Suitcase } from "@/types/Suitcase";
+import { Article } from "@/types/article";
+import { Suitcase } from "@/types/suitcase";
 import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
 
 interface AddArticleToSuitcaseModalProps {

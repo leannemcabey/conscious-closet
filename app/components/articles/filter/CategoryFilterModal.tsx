@@ -1,23 +1,23 @@
 'use client'
 
-import { ArticleCategory, categorySlugToTitleMap } from "@/types/enums/ArticleCategory";
+import { ArticleCategoryEnum, categorySlugToTitleMap } from "@/types/enums/articleCategoryEnum";
 import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
 import { Dispatch, SetStateAction, useState } from "react";
 
 interface CategoryFilterModalProps {
-    selectedArticleCategories: ArticleCategory[];
-    setSelectedArticleCategories: Dispatch<SetStateAction<ArticleCategory[]>>;
+    selectedArticleCategories: ArticleCategoryEnum[];
+    setSelectedArticleCategories: Dispatch<SetStateAction<ArticleCategoryEnum[]>>;
     setSelectingCategories: Dispatch<SetStateAction<boolean>>;
 }
 
 const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCategories, setSelectingCategories }: CategoryFilterModalProps) => {
     // Start with the saved ones before changes begin being made
-    const [unsavedSelections, setUnsavedSelections] = useState<ArticleCategory[]>(selectedArticleCategories);
+    const [unsavedSelections, setUnsavedSelections] = useState<ArticleCategoryEnum[]>(selectedArticleCategories);
 
     const isSelected = (category) => unsavedSelections.includes(category);
 
-    const updateSelections = (category: ArticleCategory) => {
+    const updateSelections = (category: ArticleCategoryEnum) => {
         // Deselect
         if (isSelected(category)) {
             setUnsavedSelections(unsavedSelections.filter((c) => c !== category))
@@ -34,7 +34,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
         setSelectingCategories(false)
     }
 
-    const menuElement= (category: ArticleCategory) => (
+    const menuElement= (category: ArticleCategoryEnum) => (
         <div key={category} onClick={() => updateSelections(category)} className="flex space-x-2">
             <div className="min-w-7 max-w-7 min-h-7 max-w-7 rounded-full border border-theme-blue">
                 <Image
@@ -57,13 +57,13 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
             </button>
             <div className="h-full mt-10">
                 <div className="flex flex-col space-y-2">
-                    {menuElement(ArticleCategory.TOPS)}
-                    {menuElement(ArticleCategory.BOTTOMS)}
-                    {menuElement(ArticleCategory.JUMPSUITS_ROMPERS)}
-                    {menuElement(ArticleCategory.ACTIVEWEAR)}
-                    {menuElement(ArticleCategory.SHOES)}
-                    {menuElement(ArticleCategory.OUTERWEAR)}
-                    {menuElement(ArticleCategory.ACCESSORIES)}
+                    {menuElement(ArticleCategoryEnum.TOPS)}
+                    {menuElement(ArticleCategoryEnum.BOTTOMS)}
+                    {menuElement(ArticleCategoryEnum.JUMPSUITS_ROMPERS)}
+                    {menuElement(ArticleCategoryEnum.ACTIVEWEAR)}
+                    {menuElement(ArticleCategoryEnum.SHOES)}
+                    {menuElement(ArticleCategoryEnum.OUTERWEAR)}
+                    {menuElement(ArticleCategoryEnum.ACCESSORIES)}
                 </div>
             </div>
         </Modal>

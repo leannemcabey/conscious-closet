@@ -1,4 +1,4 @@
-import { Article, DBArticle } from "@/types/Article";
+import { Article, DBArticle } from "@/types/article";
 
 export const toArticle = (dbArticle: DBArticle): Article => {
     if (dbArticle) {

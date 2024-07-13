@@ -3,7 +3,7 @@ import { createSuitcase } from "@/app/server-actions/suitcase/createSuitcase";
 import { Dispatch, SetStateAction, useState } from "react";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
-import { Suitcase } from "@/types/Suitcase";
+import { Suitcase } from "@/types/suitcase";
 
 interface NewSuitcaseModalProps {
     closeModal: () => void;

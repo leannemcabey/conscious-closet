@@ -1,6 +1,6 @@
 'use client'
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
+import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import axios from "axios";
 import GalleryImage from "@/app/components/articles/new/GalleryImage";
 import { createClient } from "@/utils/supabase/client";

@@ -1,6 +1,6 @@
 import * as React from "react";
 import Layout from "@/app/components/Layout";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import { toArticle } from "@/utils/conversions/toArticle";
 import CleanoutBagContainer from "@/app/components/cleanoutBag/CleanoutBagContainer";
 import { getArticlesInCleanoutBag } from "@/app/server-actions/cleanout-bag/getArticlesInCleanoutBag";

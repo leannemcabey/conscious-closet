@@ -1,5 +1,5 @@
 'use client'
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import ArticleImageLink from "@/app/components/articles/ArticleImageLinkCard";
 import { useEffect, useState } from "react";
 import { refreshGooglePhotosBaseUrls } from "@/utils/refreshGooglePhotosBaseUrls";

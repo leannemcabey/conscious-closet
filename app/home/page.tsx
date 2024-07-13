@@ -3,7 +3,7 @@ import { LogoutButton } from "@/app/components/auth/LogoutButton";
 import Layout from "@/app/components/Layout";
 import WeatherCategories from "@/app/components/home/WeatherCategories";
 import ArticleCategoryCard from "@/app/components/home/ArticleCategoryCard";
-import { ArticleCategoryTitle } from "@/types/enums/ArticleCategory";
+import { ArticleCategoryTitle } from "@/types/enums/articleCategoryEnum";
 
 export default async function Home() {
     return (

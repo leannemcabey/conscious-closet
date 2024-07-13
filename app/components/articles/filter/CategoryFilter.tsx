@@ -1,11 +1,11 @@
 'use client'
 import { Dispatch, SetStateAction, useState } from "react";
-import { ArticleCategory } from "@/types/enums/ArticleCategory";
+import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import CategoryFilterModal from "@/app/components/articles/filter/CategoryFilterModal";
 
 interface CategoryFilterProps {
-    selectedArticleCategories: ArticleCategory[];
-    setSelectedArticleCategories: Dispatch<SetStateAction<ArticleCategory[]>>;
+    selectedArticleCategories: ArticleCategoryEnum[];
+    setSelectedArticleCategories: Dispatch<SetStateAction<ArticleCategoryEnum[]>>;
 }
 
 const CategoryFilter = ({ selectedArticleCategories, setSelectedArticleCategories }: CategoryFilterProps) => {

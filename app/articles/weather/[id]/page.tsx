@@ -1,7 +1,7 @@
 'use server'
 import Layout from "@/app/components/Layout";
 import { createClient } from "@/utils/supabase/server";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import { toArticle } from "@/utils/conversions/toArticle";
 import Image from "next/image";
 import WeatherPageContainer from "@/app/components/articles/WeatherPageContainer";

@@ -60,6 +60,7 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
                 <MenuItem linkTo="/home" imageSrc="/hanger.svg" imageAltText="hanger icon" label="Closet" />
                 <MenuItem linkTo="/suitcases" imageSrc="/suitcase.svg" imageAltText="suitcase icon" label="Suitcases" />
                 <MenuItem linkTo="/cleanout" imageSrc="/broom.svg" imageAltText="broom icon" label="Cleanout bag" />
+                <MenuItem linkTo="/cleanout/recommendations" imageSrc="/earth.svg" imageAltText="earth icon" label="Cleanout Recs" />
             </div>
         </div>
     );

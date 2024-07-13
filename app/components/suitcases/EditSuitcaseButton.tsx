@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import EditSuitcaseModal from "@/app/components/suitcases/EditSuitcaseModal";
-import { Suitcase } from "@/types/Suitcase";
+import { Suitcase } from "@/types/suitcase";
 
 interface EditSuitcaseButtonProps {
     suitcase: Suitcase;

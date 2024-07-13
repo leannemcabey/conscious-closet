@@ -1,10 +1,10 @@
-import { WeatherCategory } from "@/types/enums/WeatherCategory";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import Image from "next/image";
 
 interface WeatherPickerProps {
     isSelected: boolean
     iconPath: string
-    weatherCategory: WeatherCategory
+    weatherCategory: WeatherCategoryEnum
     size: "small" | "large"
 }
 

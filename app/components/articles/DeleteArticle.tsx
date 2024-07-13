@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import { deleteArticle } from "@/app/server-actions/article/deleteArticle";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import DeleteArticleModal from "@/app/components/articles/DeleteArticleModal";
 import { useState } from "react";
 import { useRouter } from "next/navigation";

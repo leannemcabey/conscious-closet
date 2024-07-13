@@ -1,7 +1,7 @@
 'use server'
 import Layout from "@/app/components/Layout";
-import { Article } from "@/types/Article";
-import { ArticleCategory, categorySlugToTitleMap}  from "@/types/enums/ArticleCategory";
+import { Article } from "@/types/article";
+import { ArticleCategoryEnum, categorySlugToTitleMap}  from "@/types/enums/articleCategoryEnum";
 import { toArticle } from "@/utils/conversions/toArticle";
 import BackButton from "@/app/components/navigation/BackButton";
 import CategoryPageContainer from "@/app/components/articles/CategoryPageContainer";
@@ -17,7 +17,7 @@ export default async function ArticleCategoryPage({ params }: { params: { id: st
                 <BackButton />
                 <h1 className="mb-8">{categorySlugToTitleMap[params.id]}</h1>
 
-                <CategoryPageContainer articles={mappedArticles} category={params.id as ArticleCategory}/>
+                <CategoryPageContainer articles={mappedArticles} category={params.id as ArticleCategoryEnum}/>
             </div>
         </Layout>
     )

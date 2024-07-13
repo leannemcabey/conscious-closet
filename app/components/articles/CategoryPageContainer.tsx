@@ -1,25 +1,25 @@
 'use client'
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import { useEffect, useState } from "react";
 import NewArticleButton from "@/app/components/articles/new/NewArticleButton";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import NewArticleModal from "@/app/components/articles/new/NewArticleModal";
 import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
-import { ArticleCategory } from "@/types/enums/ArticleCategory";
+import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import * as React from "react";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
-import { WeatherCategory } from "@/types/enums/WeatherCategory";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
 
 interface CategoryPageContainerProps {
     articles: Article[];
-    category: ArticleCategory;
+    category: ArticleCategoryEnum;
 }
 
 const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: false,
-        selectedWeatherCategories: [WeatherCategory.COLD, WeatherCategory.MIXED, WeatherCategory.WARM]
+        selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM]
     };
 
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);

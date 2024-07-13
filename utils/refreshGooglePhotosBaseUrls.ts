@@ -1,7 +1,7 @@
 'use client'
 import axios from "axios";
-import { GooglePhotoMetadata } from "@/types/GooglePhotoMetadata";
-import { Article } from "@/types/Article";
+import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
+import { Article } from "@/types/article";
 import { createClient } from "@/utils/supabase/client";
 import { mediaItemToGooglePhotoMetadata } from "@/utils/conversions/mediaItemToGooglePhotoMetadata";
 import { orderByNewestCreated } from "@/utils/orderByNewestCreated";

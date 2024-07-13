@@ -3,7 +3,7 @@ import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import {Dispatch, SetStateAction, useState} from "react";
 import {updateSuitcase} from "@/app/server-actions/suitcase/updateSuitcase";
-import {Suitcase} from "@/types/Suitcase";
+import {Suitcase} from "@/types/suitcase";
 
 interface EditSuitcaseModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>

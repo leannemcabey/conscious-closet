@@ -1,4 +1,4 @@
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import { FilterType } from "@/app/components/articles/filter/ArticleFilters";
 import { FilterSettings } from "@/app/context/ArticleFilterContext";
 

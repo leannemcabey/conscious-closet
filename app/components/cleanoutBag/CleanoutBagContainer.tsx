@@ -2,16 +2,17 @@
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import { deleteAllFromCleanoutBag } from "@/app/server-actions/cleanout-bag/deleteAllFromCleanoutBag";
 import DeleteAllFromCleanoutConfirmationModal
     from "@/app/components/cleanoutBag/DeleteAllFromCleanoutConfirmationModal";
 import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
-import { WeatherCategory } from "@/types/enums/WeatherCategory";
-import { ArticleCategory } from "@/types/enums/ArticleCategory";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
+import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
-import CleanoutOptionsModal from "@/app/components/cleanoutBag/CleanoutOptionsModal";
+import CleanoutRecommendationsContainer from "@/app/components/cleanoutBag/CleanoutRecommendationsContainer";
+import Link from "next/link";
 
 interface CleanoutBagContainerProps {
     articles: Article[]
@@ -20,15 +21,15 @@ interface CleanoutBagContainerProps {
 const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: true,
-        selectedWeatherCategories: [WeatherCategory.COLD, WeatherCategory.MIXED, WeatherCategory.WARM],
+        selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM],
         selectedArticleCategories: [
-            ArticleCategory.TOPS,
-            ArticleCategory.BOTTOMS,
-            ArticleCategory.JUMPSUITS_ROMPERS,
-            ArticleCategory.ACTIVEWEAR,
-            ArticleCategory.SHOES,
-            ArticleCategory.OUTERWEAR,
-            ArticleCategory.ACCESSORIES
+            ArticleCategoryEnum.TOPS,
+            ArticleCategoryEnum.BOTTOMS,
+            ArticleCategoryEnum.JUMPSUITS_ROMPERS,
+            ArticleCategoryEnum.ACTIVEWEAR,
+            ArticleCategoryEnum.SHOES,
+            ArticleCategoryEnum.OUTERWEAR,
+            ArticleCategoryEnum.ACCESSORIES
         ]
     };
 
@@ -36,7 +37,6 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
     const [cleanoutBagArticles, setCleanoutBagArticles] = useState<Article[]>(articles);
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(cleanoutBagArticles);
     const [isDeleting, setIsDeleting] = useState<boolean>(false);
-    const [showCleanoutOptions, setShowCleanoutOptions] = useState(false);
 
     const filterTypes = [FilterType.weather, FilterType.category];
 
@@ -78,14 +78,11 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                     </p>
                 }
 
-                <button
-                    onClick={() => setShowCleanoutOptions(true)}
-                    className="w-11/12 bottom-8 fixed bg-theme-green text-white text-lg p-2 rounded-full drop-shadow"
-                >
-                    thrifting | recycling | donating
-                </button>
-
-                {showCleanoutOptions && <CleanoutOptionsModal setShowCleanoutOptions={setShowCleanoutOptions} />}
+                <Link href="/cleanout/recommendations">
+                    <button className="w-11/12 bottom-8 fixed bg-theme-green text-white text-lg p-2 rounded-full drop-shadow">
+                        recycling | donating | thrifting
+                    </button>
+                </Link>
             </div>
         </ArticleFilterContext.Provider>
     )

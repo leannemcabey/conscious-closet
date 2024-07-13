@@ -3,12 +3,12 @@ import { Dispatch, SetStateAction } from "react";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import NewArticleContainer from "@/app/components/articles/new/NewArticleContainer";
-import { ArticleCategory } from "@/types/enums/ArticleCategory";
-import { Article } from "@/types/Article";
+import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
+import { Article } from "@/types/article";
 
 interface NewArticleModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
-    category: ArticleCategory;
+    category: ArticleCategoryEnum;
     unfilteredArticles: Article[];
     setUnfilteredArticles: Dispatch<SetStateAction<Article[]>>;
 }

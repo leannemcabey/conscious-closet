@@ -1,4 +1,4 @@
-import { DBSuitcase, Suitcase } from "@/types/Suitcase";
+import { DBSuitcase, Suitcase } from "@/types/suitcase";
 
 export const toSuitcase = (dbSuitcase: DBSuitcase): Suitcase => {
     if (dbSuitcase) {

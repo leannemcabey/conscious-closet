@@ -1,12 +1,12 @@
 'use client'
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import * as React from "react";
 import {useEffect, useState} from "react";
 import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
 import {ArticleFilterContext, FilterSettings} from "@/app/context/ArticleFilterContext";
-import { WeatherCategory } from "@/types/enums/WeatherCategory";
-import { ArticleCategory } from "@/types/enums/ArticleCategory";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
+import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import {applyArticleFilters} from "@/utils/applyArticleFilters";
 
 interface SuitcaseContainerProps {
@@ -16,15 +16,15 @@ interface SuitcaseContainerProps {
 const SuitcaseContainer = ({ articles }: SuitcaseContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: true,
-        selectedWeatherCategories: [WeatherCategory.COLD, WeatherCategory.MIXED, WeatherCategory.WARM],
+        selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM],
         selectedArticleCategories: [
-            ArticleCategory.TOPS,
-            ArticleCategory.BOTTOMS,
-            ArticleCategory.JUMPSUITS_ROMPERS,
-            ArticleCategory.ACTIVEWEAR,
-            ArticleCategory.SHOES,
-            ArticleCategory.OUTERWEAR,
-            ArticleCategory.ACCESSORIES
+            ArticleCategoryEnum.TOPS,
+            ArticleCategoryEnum.BOTTOMS,
+            ArticleCategoryEnum.JUMPSUITS_ROMPERS,
+            ArticleCategoryEnum.ACTIVEWEAR,
+            ArticleCategoryEnum.SHOES,
+            ArticleCategoryEnum.OUTERWEAR,
+            ArticleCategoryEnum.ACCESSORIES
         ]
     };
 

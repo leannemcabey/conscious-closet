@@ -2,7 +2,7 @@
 import { createClient } from "@/utils/supabase/server";
 import Layout from "@/app/components/Layout";
 import ArticleImage from "@/app/components/articles/ArticleImage";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import LastWorn from "@/app/components/articles/LastWorn";
 import DeleteArticle from "@/app/components/articles/DeleteArticle";
 import AddOrRemoveFromCleanoutBag from "@/app/components/cleanoutBag/AddOrRemoveFromCleanoutBag";

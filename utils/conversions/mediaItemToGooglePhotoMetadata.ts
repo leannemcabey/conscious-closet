@@ -1,4 +1,4 @@
-import { MediaItemResult } from "@/types/GooglePhotoMetadata";
+import { MediaItemResult } from "@/types/googlePhotoMetadata";
 
 // Takes the format returned from Google and returns the GooglePhotoMetadata type
 export const mediaItemToGooglePhotoMetadata = (mediaItemResult: MediaItemResult) => {

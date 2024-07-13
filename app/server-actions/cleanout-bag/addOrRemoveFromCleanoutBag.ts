@@ -1,6 +1,6 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import { revalidatePath } from "next/cache";
 
 export async function addOrRemoveFromCleanoutBag(article: Article) {

@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import { ArticleCategory, ArticleCategoryTitle, categoryTitleToPathSlug } from "@/types/enums/ArticleCategory";
+import { ArticleCategoryEnum, ArticleCategoryTitle, categoryTitleToPathSlug } from "@/types/enums/articleCategoryEnum";
 
 interface ArticleCategoryCardProps {
     title: ArticleCategoryTitle
 }
 
 export default function ArticleCategoryCard({ title }) {
-    const pathSlug: ArticleCategory = categoryTitleToPathSlug(title);
+    const pathSlug: ArticleCategoryEnum = categoryTitleToPathSlug(title);
 
     return (
         <Link href={`/articles/category/${pathSlug}`}>

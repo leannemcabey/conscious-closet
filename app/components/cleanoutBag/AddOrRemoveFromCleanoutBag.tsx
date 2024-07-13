@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { addOrRemoveFromCleanoutBag } from "@/app/server-actions/cleanout-bag/addOrRemoveFromCleanoutBag";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/article";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 
