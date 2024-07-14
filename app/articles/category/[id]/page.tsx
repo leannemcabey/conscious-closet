@@ -13,9 +13,9 @@ export default async function ArticleCategoryPage({ params }: { params: { id: st
 
     return (
         <Layout>
-            <div className="h-full text-center justify-center mt-4 text-2xl">
+            <div className="h-full text-center justify-center mt-2.5 text-2xl">
                 <BackButton />
-                <h1 className="mb-8">{categorySlugToTitleMap[params.id]}</h1>
+                <h1 className="mb-4">{categorySlugToTitleMap[params.id]}</h1>
 
                 <CategoryPageContainer articles={mappedArticles} category={params.id as ArticleCategoryEnum}/>
             </div>

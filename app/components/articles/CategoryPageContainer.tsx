@@ -41,7 +41,7 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
                 <ArticleFilters filterTypes={filterTypes}/>
                 <NewArticleButton setIsAddingArticle={setAddingArticle}/>
 
-                {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles}/>}
+                {filteredArticles.length > 0 && <ArticlesContainer headerSize="small" articles={filteredArticles}/>}
 
                 {filteredArticles.length === 0 &&
                     <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">

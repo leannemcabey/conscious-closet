@@ -7,7 +7,7 @@ import BackButton from "@/app/components/navigation/BackButton";
 import {getArticlesNeedingTailoring} from "@/app/server-actions/needs-tailoring/getArticlesNeedingTailoring";
 import NeedsTailoringContainer from "@/app/components/needsTailoring/NeedsTailoringContainer";
 import {getLeastWornArticles} from "@/app/server-actions/article/getLeastWornArticles";
-import LeastWornContainer from "@/app/components/articles/LeastWornContainer";
+import RediscoveryContainer from "@/app/components/articles/RediscoveryContainer";
 
 export default async function Rediscovery() {
     const articles = await getLeastWornArticles();
@@ -16,9 +16,9 @@ export default async function Rediscovery() {
     return (
         <Layout>
             <BackButton />
-            <div className="mt-4">
+            <div className="mt-2.5">
                 <div className="flex justify-center">
-                    <h1 className="text-2xl mb-4 mr-2">rediscovery</h1>
+                    <h1 className="text-2xl mb-2.5 mr-2">rediscovery</h1>
                     <div>
                         <Image
                             src={"/lightbulb.svg"}
@@ -39,7 +39,7 @@ export default async function Rediscovery() {
                     </p>
                 </div>
 
-                <LeastWornContainer articles={mappedArticles}/>
+                <RediscoveryContainer articles={mappedArticles}/>
             </div>
         </Layout>
     )

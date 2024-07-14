@@ -7,9 +7,10 @@ import Link from "next/link";
 
 interface ArticlesContainerProps {
     articles: Article[];
+    headerSize: "small" | "large"
 }
 
-const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
+const ArticlesContainer = ({ articles, headerSize }: ArticlesContainerProps) => {
     const [refreshedArticles, setRefreshedArticles] = useState<Article[]>();
 
     useEffect(() => {
@@ -19,9 +20,14 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
         }
     }, [articles]);
 
+    // 2/3 : , , ,
+    // 3/5: , tailoring
+
+    const height = headerSize === "small" ? "h-2/3" : "h-3/5";
+
     return (
         <div className="h-screen">
-            <div className="h-2/3 overflow-scroll">
+            <div className={`${height} overflow-scroll`}>
                 <div className="grid grid-cols-3 gap-x-2 gap-y-2 p-2 rounded-md">
                     {/*
                         Checking articles.length is a workaround to handle when all articles in the cleanout bag have been

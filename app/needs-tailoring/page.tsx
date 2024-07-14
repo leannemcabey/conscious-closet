@@ -27,6 +27,13 @@ export default async function NeedsTailoring() {
                     </div>
                 </div>
 
+                <div className="mt-2 mb-6 text-center">
+                    <p>
+                        Often times we don't wear certain clothes because they just don't fit us right.
+                        Tailoring is a great way to give new life to an item and avoid creating waste!
+                    </p>
+                </div>
+
                 <NeedsTailoringContainer articles={mappedArticles}/>
             </div>
         </Layout>

@@ -42,7 +42,7 @@ const WeatherPageContainer = ({ articles }: WeatherPageContainerProps) => {
             <div className="flex flex-col">
                 <ArticleFilters filterTypes={filterTypes}/>
 
-                {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles}/>}
+                {filteredArticles.length > 0 && <ArticlesContainer headerSize="small" articles={filteredArticles}/>}
 
                 {filteredArticles.length === 0 &&
                     <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">

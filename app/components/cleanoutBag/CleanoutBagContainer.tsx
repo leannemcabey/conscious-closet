@@ -11,7 +11,6 @@ import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilte
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
-import CleanoutRecommendationsContainer from "@/app/components/cleanoutBag/CleanoutRecommendationsContainer";
 import Link from "next/link";
 
 interface CleanoutBagContainerProps {
@@ -61,7 +60,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                 <button
                     disabled={deleteDisabled}
                     onClick={() => setIsDeleting(true)}
-                    className="rounded-lg bg-white text-neutral-700 drop-shadow self-center p-2 mb-8"
+                    className="rounded-lg bg-white text-neutral-700 drop-shadow self-center p-2 mb-6"
                 >
                     delete all
                 </button>
@@ -70,7 +69,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
 
                 {isDeleting && <DeleteAllFromCleanoutConfirmationModal setIsDeleting={setIsDeleting} handleSubmit={deleteAllAndResetData}/>}
 
-                {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles} />}
+                {filteredArticles.length > 0 && <ArticlesContainer headerSize="small" articles={filteredArticles} />}
 
                 {filteredArticles.length === 0 &&
                     <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">
@@ -79,7 +78,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                 }
 
                 <Link href="/cleanout/recommendations">
-                    <button className="w-11/12 bottom-8 fixed bg-theme-mid-green text-lg p-2 rounded-full drop-shadow">
+                    <button className="w-11/12 bottom-8 fixed bg-theme-green text-white text-lg p-2 rounded-full drop-shadow">
                         recycling | donating | thrifting
                     </button>
                 </Link>

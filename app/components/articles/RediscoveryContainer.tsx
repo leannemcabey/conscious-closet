@@ -3,22 +3,17 @@ import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { Article } from "@/types/article";
-import { deleteAllFromCleanoutBag } from "@/app/server-actions/cleanout-bag/deleteAllFromCleanoutBag";
-import DeleteAllFromCleanoutConfirmationModal
-    from "@/app/components/cleanoutBag/DeleteAllFromCleanoutConfirmationModal";
 import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
-import CleanoutRecommendationsContainer from "@/app/components/cleanoutBag/CleanoutRecommendationsContainer";
-import Link from "next/link";
 
-interface LeastWornContainerProps {
+interface RediscoveryContainerProps {
     articles: Article[]
 }
 
-const LeastWornContainer = ({ articles }: LeastWornContainerProps) => {
+const RediscoveryContainer = ({ articles }: RediscoveryContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: true,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM],
@@ -49,7 +44,7 @@ const LeastWornContainer = ({ articles }: LeastWornContainerProps) => {
             <div className="flex flex-col">
                 <ArticleFilters filterTypes={filterTypes} />
 
-                {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles} />}
+                {filteredArticles.length > 0 && <ArticlesContainer headerSize="large" articles={filteredArticles} />}
 
                 {filteredArticles.length === 0 &&
                     <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">
@@ -61,4 +56,4 @@ const LeastWornContainer = ({ articles }: LeastWornContainerProps) => {
     )
 }
 
-export default LeastWornContainer;
+export default RediscoveryContainer;
