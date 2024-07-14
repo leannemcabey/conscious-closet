@@ -14,6 +14,7 @@ const CleanoutRecommendationSection = ({ sectionName, sectionRecs }: CleanoutRec
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const arrow = isOpen ? "arrow-down-white" : "arrow-up-white";
+    const alt = isOpen ? "collapse" : "expand";
 
     return (
 
@@ -27,7 +28,7 @@ const CleanoutRecommendationSection = ({ sectionName, sectionRecs }: CleanoutRec
                     src={`/${arrow}.svg`}
                     height="14"
                     width="14"
-                    alt={arrow}
+                    alt={alt}
                 />
             </div>
             <h2>{sectionName}</h2>

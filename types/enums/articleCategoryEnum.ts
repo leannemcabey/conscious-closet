@@ -46,3 +46,12 @@ export const categorySlugToSingularTitleMap = {
 export const categoryTitleToPathSlug = (title: ArticleCategoryTitle): ArticleCategoryEnum => {
     return title.toLowerCase().replace(" & ", "_") as ArticleCategoryEnum
 }
+
+export const articleCategoryMenuSubItems = () => {
+    return Object.values(ArticleCategoryEnum).map((category) => {
+        return {
+            label: categorySlugToTitleMap[category],
+            linkTo: `/articles/category/${category}`
+        }
+    })
+}

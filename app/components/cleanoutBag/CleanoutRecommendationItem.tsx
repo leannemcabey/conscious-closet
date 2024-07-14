@@ -11,11 +11,12 @@ const CleanoutRecommendationItem = ({ recommendation }: CleanoutRecommendationIt
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const arrow = isOpen ? "arrow-down" : "arrow-up";
+    const alt = isOpen ? "collapse" : "expand";
 
     return (
         <div className="ml-2 py-1">
             <div className="flex" onClick={() => setIsOpen(!isOpen)}>
-                <Image src={`/${arrow}.svg`} height="14" width="14" alt={arrow} className="mr-2"/>
+                <Image src={`/${arrow}.svg`} height="14" width="14" alt={alt} className="mr-2"/>
                 <h3>{recommendation.name}</h3>
             </div>
 
