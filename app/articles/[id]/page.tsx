@@ -25,7 +25,7 @@ export default async function ArticlePage({ params }: { id: string }) {
                 <BackButton />
                 <div className="flex flex-col items-center mt-12">
                     <div className="flex flex-col items-center bg-white w-96 drop-shadow-lg">
-                        <div className="mt-4 mb-2 bg-white">
+                        <div className="mt-4 mb-4 bg-white">
                             <ArticleImage externalImageId={mappedArticle.image.imageId}/>
                         </div>
                         <div className="w-full flex mb-4 space-x-12 justify-center">
