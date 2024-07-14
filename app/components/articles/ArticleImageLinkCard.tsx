@@ -24,8 +24,6 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
                         className="border border-neutral-200"
                     />
                 </div>
-                {/*<div className="w-full flex mb-4 space-x-12 justify-center">*/}
-                {/*</div>*/}
             </div>
         </Link>
     )

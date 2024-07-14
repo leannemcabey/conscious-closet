@@ -10,9 +10,9 @@ interface WeatherPickerProps {
 
 export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPickerProps) => {
     return (
-        <div className="mt-4 flex flex-col justify-center items-center">
-            <p className="text-lg">Select a weather category:</p>
-            <div className="w-3/4 flex justify-evenly mt-2">
+        <div className="flex flex-col justify-center items-center space-y-4">
+            {/*<p className="text-lg">Select a weather category:</p>*/}
+            {/*<div className="w-3/4 flex justify-evenly mt-2">*/}
                 <div onClick={() => setWeatherCategory(WeatherCategoryEnum.WARM)}>
                     <Weather
                         weatherCategory={WeatherCategoryEnum.WARM}
@@ -42,7 +42,7 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
                         size="large"
                     />
                 </div>
-            </div>
+            {/*</div>*/}
         </div>
     )
 }

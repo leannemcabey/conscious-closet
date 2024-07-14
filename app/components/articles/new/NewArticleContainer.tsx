@@ -54,8 +54,8 @@ const NewArticleContainer = ({ category, setAddingArticle, unfilteredArticles, s
             {submitted && celebrationGif}
 
             {!submitted && (
-                <div className="flex flex-col mt-4">
-                    <div className="text-center justify-center">
+                <div className="flex flex-col">
+                    <div className="flex justify-center space-x-4">
                         <NewArticleImage baseUrl={image.baseUrl}/>
                         <WeatherPicker weatherCategory={weatherCategory} setWeatherCategory={setWeatherCategory}/>
                     </div>
@@ -63,7 +63,7 @@ const NewArticleContainer = ({ category, setAddingArticle, unfilteredArticles, s
                     {image &&
                         <button disabled={buttonDisabled}
                                 onClick={() => handleSubmit()}
-                                className="mt-2 self-end rounded-full"
+                                className="mt-4 self-end rounded-full"
                         >
                             <Image src={buttonImage} height="32" width="32" alt="check mark icon"/>
                         </button>

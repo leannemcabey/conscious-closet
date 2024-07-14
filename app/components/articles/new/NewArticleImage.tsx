@@ -9,14 +9,18 @@ interface NewArticleImageProps {
 export const NewArticleImage = ({ baseUrl }: NewArticleImageProps) => {
     return (
         <div className="flex justify-center items-center">
-            <Image
-                loader={googlePhotosPathLoader}
-                width={125}
-                height={140}
-                src={baseUrl}
-                alt={`clothing image`}
-                className="rounded-md"
-            />
+            <div className="flex justify-center bg-white w-48 drop-shadow-lg">
+                <div className="mt-2 mb-10 bg-white">
+                    <Image
+                        loader={googlePhotosPathLoader}
+                        width={175}
+                        height={225}
+                        src={baseUrl}
+                        alt={`clothing image`}
+                        className="border border-neutral-200"
+                    />
+                </div>
+            </div>
         </div>
     )
 }
