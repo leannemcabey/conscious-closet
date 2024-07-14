@@ -2,7 +2,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
-import { NewArticleImage } from "@/app/components/articles/new/NewArticleImage";
 import { ImageSelection } from "@/app/components/articles/new/ImageSelection";
 import { WeatherPicker } from "@/app/components/articles/new/WeatherPicker";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
@@ -10,6 +9,7 @@ import { createArticle } from "@/app/server-actions/article/createArticle";
 import Image from "next/image";
 import ArticleCreationErrorAlertModal from "@/app/components/articles/new/ArticleCreationErrorAlertModal";
 import { Article } from "@/types/article";
+import Polaroid from "@/app/components/articles/Polaroid";
 
 interface NewArticleContainerProps {
     category: ArticleCategoryEnum
@@ -56,7 +56,7 @@ const NewArticleContainer = ({ category, setAddingArticle, unfilteredArticles, s
             {!submitted && (
                 <div className="flex flex-col">
                     <div className="flex justify-center space-x-4">
-                        <NewArticleImage baseUrl={image.baseUrl}/>
+                        <Polaroid imageUrl={image.baseUrl} size="medium" />
                         <WeatherPicker weatherCategory={weatherCategory} setWeatherCategory={setWeatherCategory}/>
                     </div>
 

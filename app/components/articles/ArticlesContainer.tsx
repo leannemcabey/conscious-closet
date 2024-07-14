@@ -1,8 +1,9 @@
 'use client'
 import { Article } from "@/types/article";
-import ArticleImageLink from "@/app/components/articles/ArticleImageLinkCard";
 import { useEffect, useState } from "react";
 import { refreshGooglePhotosBaseUrls } from "@/utils/refreshGooglePhotosBaseUrls";
+import Polaroid from "@/app/components/articles/Polaroid";
+import Link from "next/link";
 
 interface ArticlesContainerProps {
     articles: Article[];
@@ -30,7 +31,9 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
                         render here.
                     */}
                     {articles.length > 0 && refreshedArticles?.map((article) => (
-                        <ArticleImageLink article={article} key={article.id}/>
+                        <Link href={`/articles/${article.id}`} key={article.id}>
+                            <Polaroid imageUrl={article.image.baseUrl} size="small" />
+                        </Link>
                     ))}
                 </div>
             </div>
