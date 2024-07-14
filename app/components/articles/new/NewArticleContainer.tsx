@@ -2,7 +2,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
-import { NewArticleImage } from "@/app/components/articles/new/NewArticleImage";
 import { ImageSelection } from "@/app/components/articles/new/ImageSelection";
 import { WeatherPicker } from "@/app/components/articles/new/WeatherPicker";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
@@ -10,6 +9,7 @@ import { createArticle } from "@/app/server-actions/article/createArticle";
 import Image from "next/image";
 import ArticleCreationErrorAlertModal from "@/app/components/articles/new/ArticleCreationErrorAlertModal";
 import { Article } from "@/types/article";
+import Polaroid from "@/app/components/articles/Polaroid";
 
 interface NewArticleContainerProps {
     category: ArticleCategoryEnum
@@ -54,16 +54,16 @@ const NewArticleContainer = ({ category, setAddingArticle, unfilteredArticles, s
             {submitted && celebrationGif}
 
             {!submitted && (
-                <div className="flex flex-col mt-4">
-                    <div className="text-center justify-center">
-                        <NewArticleImage baseUrl={image.baseUrl}/>
+                <div className="flex flex-col">
+                    <div className="flex justify-center space-x-4">
+                        <Polaroid imageUrl={image.baseUrl} size="medium" />
                         <WeatherPicker weatherCategory={weatherCategory} setWeatherCategory={setWeatherCategory}/>
                     </div>
 
                     {image &&
                         <button disabled={buttonDisabled}
                                 onClick={() => handleSubmit()}
-                                className="mt-2 self-end rounded-full"
+                                className="mt-2.5 self-end rounded-full"
                         >
                             <Image src={buttonImage} height="32" width="32" alt="check mark icon"/>
                         </button>
