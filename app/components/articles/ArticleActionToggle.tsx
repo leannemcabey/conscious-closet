@@ -11,7 +11,6 @@ interface ArticleActionToggleProps {
 const ArticleActionToggle = ({ iconFile, iconAlt, isActive, clickHandler }: ArticleActionToggleProps) => {
     const position = isActive ? "justify-end" : "";
     const toggleStyling = isActive ? "bg-theme-mid-green" : "bg-white";
-    // const buttonStyling = inCleanoutBag ? "border-theme-mid-green" : "border-neutral-700"
 
     return (
         <div className={`flex ${position} ${toggleStyling} rounded-full w-20 h-max drop-shadow`}>

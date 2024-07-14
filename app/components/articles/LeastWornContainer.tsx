@@ -14,11 +14,11 @@ import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import CleanoutRecommendationsContainer from "@/app/components/cleanoutBag/CleanoutRecommendationsContainer";
 import Link from "next/link";
 
-interface CleanoutBagContainerProps {
+interface LeastWornContainerProps {
     articles: Article[]
 }
 
-const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
+const LeastWornContainer = ({ articles }: LeastWornContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: true,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM],
@@ -34,9 +34,8 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
     };
 
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
-    const [cleanoutBagArticles, setCleanoutBagArticles] = useState<Article[]>(articles);
-    const [filteredArticles, setFilteredArticles] = useState<Article[]>(cleanoutBagArticles);
-    const [isDeleting, setIsDeleting] = useState<boolean>(false);
+    const [unfilteredArticles, setUnfilteredArticles] = useState<Article[]>(articles);
+    const [filteredArticles, setFilteredArticles] = useState<Article[]>(unfilteredArticles);
 
     const filterTypes = [FilterType.weather, FilterType.category];
 
@@ -45,47 +44,21 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
         setFilteredArticles(tempFilteredArticles)
     }, [filterSettings]);
 
-    const deleteAllAndResetData = () => {
-        deleteAllFromCleanoutBag()
-            .then(() => {
-                setCleanoutBagArticles([])
-                setIsDeleting(false)
-            })
-    }
-
-    const deleteDisabled: boolean = cleanoutBagArticles.length <= 0;
-
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
             <div className="flex flex-col">
-                <button
-                    disabled={deleteDisabled}
-                    onClick={() => setIsDeleting(true)}
-                    className="rounded-lg bg-white text-neutral-700 drop-shadow self-center p-2 mb-8"
-                >
-                    delete all
-                </button>
-
                 <ArticleFilters filterTypes={filterTypes} />
-
-                {isDeleting && <DeleteAllFromCleanoutConfirmationModal setIsDeleting={setIsDeleting} handleSubmit={deleteAllAndResetData}/>}
 
                 {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles} />}
 
                 {filteredArticles.length === 0 &&
                     <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">
-                        There are no articles in your cleanout bag that match the applied filters.
+                        There are no articles that match the applied filters.
                     </p>
                 }
-
-                <Link href="/cleanout/recommendations">
-                    <button className="w-11/12 bottom-8 fixed bg-theme-mid-green text-lg p-2 rounded-full drop-shadow">
-                        recycling | donating | thrifting
-                    </button>
-                </Link>
             </div>
         </ArticleFilterContext.Provider>
     )
 }
 
-export default CleanoutBagContainer;
+export default LeastWornContainer;

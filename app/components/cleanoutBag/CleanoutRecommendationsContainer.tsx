@@ -17,9 +17,9 @@ const CleanoutRecommendationsContainer = () => {
             </div>
 
             <div className="my-4 h-1/2 overflow-scroll">
-                <CleanoutRecommendationSection sectionName="Recycling" sectionRecs={cleanoutRecommendations.recycling} />
-                <CleanoutRecommendationSection sectionName="Donating" sectionRecs={cleanoutRecommendations.donating} />
-                <CleanoutRecommendationSection sectionName="Thrifting" sectionRecs={cleanoutRecommendations.thrifting} />
+                <CleanoutRecommendationSection sectionName="recycling" sectionRecs={cleanoutRecommendations.recycling} />
+                <CleanoutRecommendationSection sectionName="donating" sectionRecs={cleanoutRecommendations.donating} />
+                <CleanoutRecommendationSection sectionName="thrifting" sectionRecs={cleanoutRecommendations.thrifting} />
             </div>
 
             <p className="text-center p-1 border border-theme-blue rounded-md">

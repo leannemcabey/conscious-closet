@@ -1,5 +1,6 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
+import {revalidatePath} from "next/cache";
 
 export async function markArticleWornDate(articleId: string, date: Date) {
     const supabase = createClient();
@@ -13,4 +14,6 @@ export async function markArticleWornDate(articleId: string, date: Date) {
         console.log(error)
         return
     }
+
+    revalidatePath('/rediscovery');
 }
