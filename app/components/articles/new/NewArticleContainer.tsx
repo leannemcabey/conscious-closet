@@ -27,7 +27,7 @@ const NewArticleContainer = ({ category, setAddingArticle, unfilteredArticles, s
     const buttonDisabled: boolean = weatherCategory === undefined
     const buttonImage = buttonDisabled ? "/disabled-check-mark-button.svg" : "/check-mark-button.svg"
 
-    const celebrationGif = <Image unoptimized={true} src="/celebration.gif" alt="celebration gif" height="320" width="320"/>
+    const successGif = <Image unoptimized={true} src="/check-green-black.gif" alt="success" height="200" width="200"/>
 
     if (!image) return <ImageSelection setImage={setImage}/>
 
@@ -44,14 +44,18 @@ const NewArticleContainer = ({ category, setAddingArticle, unfilteredArticles, s
             })
             .then(() => setSubmitted(true))
             // The setTimeout is to give the celebration gif time to display before automatically closing the modal
-            .then(() => setTimeout(() => setAddingArticle(false), 750))
+            .then(() => setTimeout(() => setAddingArticle(false), 2000))
             .catch(() => {setCreationError(true)})
     }
 
     return (
         <>
             {creationError && <ArticleCreationErrorAlertModal setIsOpen={setCreationError} />}
-            {submitted && celebrationGif}
+            {submitted &&
+                <div className="flex justify-center mt-10">
+                    {successGif}
+                </div>
+            }
 
             {!submitted && (
                 <div className="flex flex-col">

@@ -13,13 +13,13 @@ const DeleteAllFromCleanoutConfirmationModal = ({ setIsDeleting, handleSubmit }:
     return (
         <ConfirmationModal setIsOpen={setIsDeleting} confirmAction={handleSubmit}>
             <Image
-                src={"/hanger-warning.png"}
+                src={"/warning-gold.gif"}
                 alt={"warning"}
-                width="200"
-                height="200"
+                width="125"
+                height="125"
                 className="self-center"
             />
-            <p className="text-center text-l mt-4 mb-2">
+            <p className="text-center text-l mt-1 mb-2">
                 Are you sure?
             </p>
             <p className="text-center text-sm mb-8">

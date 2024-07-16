@@ -15,10 +15,10 @@ const ArticleCreationErrorAlertModal = ({ setIsOpen }: ArticleCreationErrorAlert
             <div className="flex flex-col items-center text-center">
                 <div>
                     <Image
-                        src={"/hanger-warning.png"}
+                        src={"/warning-gold.gif"}
                         alt={"warning"}
-                        width="200"
-                        height="100"
+                        width="125"
+                        height="125"
                     />
                 </div>
                 <p className="text-2xl mb-2">Oops!</p>
