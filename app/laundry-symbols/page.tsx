@@ -10,18 +10,7 @@ export default async function CleanoutBag() {
     return (
         <Layout>
             <BackButton />
-            <div className="mt-4 flex justify-center">
-                <h1 className="text-2xl mb-4 mr-2">laundry symbol cheat sheet</h1>
-                <div>
-                    <Image
-                        src={"/laundry.svg"}
-                        alt={"laundry icon"}
-                        width="30"
-                        height="30"
-                    />
-                </div>
-
-            </div>
+            <h1 className="text-center text-2xl mt-4 mb-12 mr-2">laundry symbol cheat sheet</h1>
             <LaundrySymbolsContainer />
         </Layout>
     )
