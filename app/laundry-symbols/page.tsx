@@ -1,7 +1,5 @@
 'use server'
 import Layout from "@/app/components/Layout";
-import CleanoutRecommendationsContainer from "@/app/components/cleanoutBag/CleanoutRecommendationsContainer";
-import Image from "next/image";
 import * as React from "react";
 import BackButton from "@/app/components/navigation/BackButton";
 import LaundrySymbolsContainer from "@/app/components/laundry/LaundrySymbolsContainer";
