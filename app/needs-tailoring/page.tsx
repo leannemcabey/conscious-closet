@@ -1,7 +1,5 @@
 import * as React from "react";
 import Layout from "@/app/components/Layout";
-import { Article } from "@/types/article";
-import { toArticle } from "@/utils/typeConversions/toArticle";
 import Image from "next/image";
 import BackButton from "@/app/components/navigation/BackButton";
 import {getArticlesNeedingTailoring} from "@/app/server-actions/needs-tailoring/getArticlesNeedingTailoring";
@@ -9,7 +7,6 @@ import NeedsTailoringContainer from "@/app/components/needsTailoring/NeedsTailor
 
 export default async function NeedsTailoring() {
     const articles = await getArticlesNeedingTailoring();
-    const mappedArticles: Article[] = articles?.map((article) => toArticle(article)) ?? [];
 
     return (
         <Layout>
@@ -34,7 +31,7 @@ export default async function NeedsTailoring() {
                     </p>
                 </div>
 
-                <NeedsTailoringContainer articles={mappedArticles}/>
+                <NeedsTailoringContainer articles={articles}/>
             </div>
         </Layout>
     )

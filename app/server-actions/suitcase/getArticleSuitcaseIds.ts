@@ -1,18 +1,18 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
 
-export async function getAllArticlesInCategory(categoryId: string) {
+export async function getArticleSuitcaseIds(articleId: string) {
     const supabase = createClient();
 
     const { data, error } = await supabase
-        .from("articles")
-        .select()
-        .eq('category', categoryId);
+        .from('suitcase_articles')
+        .select('suitcase_id')
+        .eq('article_id', articleId)
 
     if (error) {
         console.log(error)
         return
     }
 
-    return data;
+    return data?.map((s) => s.suitcase_id)
 }

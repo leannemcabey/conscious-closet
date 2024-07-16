@@ -5,11 +5,10 @@ import { ArticleCategoryEnum, categorySlugToTitleMap}  from "@/types/enums/artic
 import { toArticle } from "@/utils/typeConversions/toArticle";
 import BackButton from "@/app/components/navigation/BackButton";
 import CategoryPageContainer from "@/app/components/articles/CategoryPageContainer";
-import { getAllArticlesInCategory } from "@/app/server-actions/article/getAllArticlesInCategory";
+import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesByCategory";
 
 export default async function ArticleCategoryPage({ params }: { params: { id: string } }) {
-    const data = await getAllArticlesInCategory(params.id);
-    const mappedArticles: Article[] = data?.map((article) => toArticle(article)) ?? [];
+    const articles = await getArticlesByCategory(params.id);
 
     return (
         <Layout>
@@ -17,7 +16,7 @@ export default async function ArticleCategoryPage({ params }: { params: { id: st
                 <BackButton />
                 <h1 className="mb-4">{categorySlugToTitleMap[params.id]}</h1>
 
-                <CategoryPageContainer articles={mappedArticles} category={params.id as ArticleCategoryEnum}/>
+                <CategoryPageContainer articles={articles} category={params.id as ArticleCategoryEnum}/>
             </div>
         </Layout>
     )

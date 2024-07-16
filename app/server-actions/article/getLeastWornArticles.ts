@@ -1,5 +1,6 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
+import {toArticle} from "@/utils/typeConversions/toArticle";
 
 const getSixMonthsAgo = () => {
     const d = new Date();
@@ -22,5 +23,5 @@ export async function getLeastWornArticles() {
         return
     }
 
-    return data;
+    return data?.map((article) => toArticle(article)) ?? [];
 }

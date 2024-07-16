@@ -1,7 +1,5 @@
 import * as React from "react";
 import Layout from "@/app/components/Layout";
-import { Article } from "@/types/article";
-import { toArticle } from "@/utils/typeConversions/toArticle";
 import CleanoutBagContainer from "@/app/components/cleanoutBag/CleanoutBagContainer";
 import { getArticlesInCleanoutBag } from "@/app/server-actions/cleanout-bag/getArticlesInCleanoutBag";
 import Image from "next/image";
@@ -9,7 +7,6 @@ import BackButton from "@/app/components/navigation/BackButton";
 
 export default async function CleanoutBag() {
     const articles = await getArticlesInCleanoutBag();
-    const mappedArticles: Article[] = articles?.map((article) => toArticle(article)) ?? [];
 
     return (
         <Layout>
@@ -27,7 +24,7 @@ export default async function CleanoutBag() {
                     </div>
                 </div>
 
-                <CleanoutBagContainer articles={mappedArticles}/>
+                <CleanoutBagContainer articles={articles}/>
             </div>
         </Layout>
     )

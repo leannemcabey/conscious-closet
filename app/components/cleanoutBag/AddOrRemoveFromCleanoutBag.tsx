@@ -31,7 +31,7 @@ const AddOrRemoveFromCleanoutBag = ({ article }: AddOrRemoveFromCleanoutBagProps
                     <div className="flex flex-col items-center text-center">
                         <Image unoptimized={true} src="/check-green-black.gif" alt="success" height="200" width="200"/>
                         <p className="text-xl mt-4">
-                            {inCleanoutBag ? "Added to cleanout bag!" : "Removed from cleanout bag!"}
+                            {inCleanoutBag ? "Added to cleanout bag" : "Removed from cleanout bag"}
                         </p>
                     </div>
                 </Modal>

@@ -30,7 +30,7 @@ const AddOrRemoveFromTailoring = ({ article }: AddOrRemoveFromTailoringProps) =>
                     <div className="flex flex-col items-center text-center">
                         <Image unoptimized={true} src="/reuse.gif" alt="shirt with recycle symbol" height="200" width="200"/>
                         <p className="text-xl mt-4">
-                            {inTailoring ? "Added to tailoring!" : "Removed from tailoring!"}
+                            {inTailoring ? "Added to tailoring" : "Removed from tailoring"}
                         </p>
                     </div>
                 </Modal>

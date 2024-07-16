@@ -1,5 +1,6 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
+import { toArticle } from "@/utils/typeConversions/toArticle";
 
 export async function getArticlesInCleanoutBag() {
     const supabase = createClient();
@@ -14,5 +15,5 @@ export async function getArticlesInCleanoutBag() {
         return
     }
 
-    return data;
+    return data?.map((article) => toArticle(article)) ?? [];
 }

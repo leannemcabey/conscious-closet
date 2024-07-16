@@ -1,17 +1,12 @@
 import * as React from "react";
 import Layout from "@/app/components/Layout";
-import { Article } from "@/types/article";
-import { toArticle } from "@/utils/typeConversions/toArticle";
 import Image from "next/image";
 import BackButton from "@/app/components/navigation/BackButton";
-import {getArticlesNeedingTailoring} from "@/app/server-actions/needs-tailoring/getArticlesNeedingTailoring";
-import NeedsTailoringContainer from "@/app/components/needsTailoring/NeedsTailoringContainer";
-import {getLeastWornArticles} from "@/app/server-actions/article/getLeastWornArticles";
+import { getLeastWornArticles } from "@/app/server-actions/article/getLeastWornArticles";
 import RediscoveryContainer from "@/app/components/articles/RediscoveryContainer";
 
 export default async function Rediscovery() {
     const articles = await getLeastWornArticles();
-    const mappedArticles: Article[] = articles?.map((article) => toArticle(article)) ?? [];
 
     return (
         <Layout>
@@ -39,7 +34,7 @@ export default async function Rediscovery() {
                     </p>
                 </div>
 
-                <RediscoveryContainer articles={mappedArticles}/>
+                <RediscoveryContainer articles={articles}/>
             </div>
         </Layout>
     )

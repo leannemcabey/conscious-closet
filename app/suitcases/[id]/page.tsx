@@ -1,29 +1,21 @@
 'use server'
 import Layout from "@/app/components/Layout";
-import { createClient } from "@/utils/supabase/server";
 import { Suitcase } from "@/types/suitcase";
 import { toSuitcase } from "@/utils/typeConversions/toSuitcase";
 import Image from "next/image";
 import BackButton from "@/app/components/navigation/BackButton";
-import { setSuitcaseArticles } from "@/app/server-actions/suitcase/getSuitcaseArticles";
-import { Article } from "@/types/article";
-import { toArticle } from "@/utils/typeConversions/toArticle";
+import { getSuitcaseArticles } from "@/app/server-actions/suitcase/getSuitcaseArticles";
 import EditSuitcaseButton from "@/app/components/suitcases/EditSuitcaseButton";
 import DeleteSuitcaseButton from "@/app/components/suitcases/DeleteSuitcaseButton";
 import SuitcaseContainer from "@/app/components/suitcases/SuitcaseContainer";
+import { getSuitcase } from "@/app/server-actions/suitcase/getSuitcase";
 
 export default async function Suitcase({ params }: { id: string }) {
-    const supabase = createClient();
-
-    const { data: suitcases } = await supabase.from("suitcases").select().eq('id', params.id);
+    const suitcases = await getSuitcase(params.id);
     // Converts the suitcase to non-db Suitcase type
     const mappedSuitcase: Suitcase | undefined = suitcases?.map((suitcase) => toSuitcase(suitcase))[0]
 
-    const articlesIds = await setSuitcaseArticles(params.id);
-    const { data: articles } = await supabase.from("articles").select().in('id', articlesIds || []);
-    // Converts the articles to non-db Article type
-    const mappedArticles: Article[] = articles?.map((article) => toArticle(article)) ?? [];
-
+    const articles = await getSuitcaseArticles(params.id)
 
     if (mappedSuitcase) {
         return (
@@ -46,7 +38,7 @@ export default async function Suitcase({ params }: { id: string }) {
                         />
                     </div>
                 </div>
-                <SuitcaseContainer articles={mappedArticles}/>
+                <SuitcaseContainer articles={articles}/>
             </Layout>
         )
     }

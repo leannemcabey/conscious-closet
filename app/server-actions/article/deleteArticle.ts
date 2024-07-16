@@ -1,6 +1,5 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
 import { Article } from "@/types/article";
 import { revalidatePath } from "next/cache";
 

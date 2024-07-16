@@ -1,6 +1,7 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
+import {getArticleSuitcaseIds} from "@/app/server-actions/suitcase/getArticleSuitcaseIds";
 
 interface insertPayloadType {
     article_id: string,
@@ -53,31 +54,23 @@ export async function addOrRemoveArticleToSuitcases(
         .from('suitcase_articles')
         .insert(insertPayload)
 
+    if (insertError) {
+        console.log(insertError)
+        return
+    }
+
     const { error: deleteError } = await supabase
         .from('suitcase_articles')
         .delete()
         .eq('article_id', articleId)
         .in('suitcase_id', deletePayload)
 
-    const { data, error: fetchError } = await supabase
-        .from('suitcase_articles')
-        .select('suitcase_id')
-        .eq('article_id', articleId)
-
-    if (insertError) {
-        console.log(insertError)
-        return
-    }
-
     if (deleteError) {
         console.log(deleteError)
         return
     }
 
-    if (fetchError) {
-        console.log(fetchError)
-        return
-    }
+    const suitcaseIds = await getArticleSuitcaseIds(articleId);
 
     insertPayload.forEach((insert) => {
         revalidatePath(`/suitcases/${insert.suitcase_id}`)
@@ -87,5 +80,5 @@ export async function addOrRemoveArticleToSuitcases(
         revalidatePath(`/suitcases/${id}`)
     })
 
-    return data;
+    return suitcaseIds;
 }

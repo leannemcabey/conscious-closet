@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Suitcase } from "@/types/suitcase";
 import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
 import { addOrRemoveArticleToSuitcases } from "@/app/server-actions/suitcase/addOrRemoveArticleToSuitcases";
-import { getArticleSuitcases } from "@/app/server-actions/suitcase/getArticleSuitcases";
+import { getArticleSuitcaseIds } from "@/app/server-actions/suitcase/getArticleSuitcaseIds";
 import AddArticleToSuitcaseModal from "@/app/components/suitcases/AddArticleToSuitcaseModal";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import ArticleActionButton from "@/app/components/articles/ArticleActionButton";
@@ -26,7 +26,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
     }, [])
 
     useEffect(() => {
-        getArticleSuitcases(article.id)
+        getArticleSuitcaseIds(article.id)
             .then((data) => {
                 setSavedSuitcaseSelections(data)
                 // `unsavedSuitcaseSelections` should at least have the saved suitcases before
@@ -38,10 +38,9 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
     const saveSelections = () => {
         if (unsavedSuitcaseSelections) {
             addOrRemoveArticleToSuitcases(article.id, unsavedSuitcaseSelections, savedSuitcaseSelections || [])
-                .then((data) => {
-                    const ids = data?.map((selection) => selection.suitcase_id)
-                    setSavedSuitcaseSelections([...ids])
-                    setUnsavedSuitcaseSelections([...ids])
+                .then((suitcaseIds) => {
+                    setSavedSuitcaseSelections([...suitcaseIds])
+                    setUnsavedSuitcaseSelections([...suitcaseIds])
                     setSelectingSuitcase(false)
                 })
         }
