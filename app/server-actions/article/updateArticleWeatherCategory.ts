@@ -14,7 +14,7 @@ export async function updateArticleWeatherCategory(article: Article, weatherCate
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
     revalidatePath(`/articles/${article.id}`);
