@@ -9,7 +9,7 @@ interface MenuSubItemProps {
 const MenuSubItem = ({ label, linkTo }: MenuSubItemProps) => {
     return (
         <Link href={linkTo}>
-            <h3 className="text-sm truncate">{label}</h3>
+            <h3 className="w-max bg-background-green p-1 rounded-md text-sm truncate">{label}</h3>
         </Link>
     )
 }
