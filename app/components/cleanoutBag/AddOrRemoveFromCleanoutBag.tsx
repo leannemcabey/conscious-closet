@@ -6,6 +6,7 @@ import { Article } from "@/types/article";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import ArticleActionToggle from "@/app/components/articles/ArticleActionToggle";
+import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface AddOrRemoveFromCleanoutBagProps {
     article: Article;
@@ -14,12 +15,18 @@ interface AddOrRemoveFromCleanoutBagProps {
 const AddOrRemoveFromCleanoutBag = ({ article }: AddOrRemoveFromCleanoutBagProps) => {
     const [inCleanoutBag, setInCleanoutBag] = useState<boolean>(article.inCleanoutBag);
     const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>();
+
+    const errorVerb = inCleanoutBag ? "removing" : "adding";
+    const errorPreposition = inCleanoutBag ? "from" : "to";
+    const errorMessage = `An error occurred while ${errorVerb} this article ${errorPreposition} your cleanout bag. Please try again.`
 
     const changeCleanoutBagStatus = () => {
         addOrRemoveFromCleanoutBag(article)
             .then(() => setInCleanoutBag(!inCleanoutBag))
             .then(() => setShowConfirmation(true))
             .then(() => setTimeout(() => setShowConfirmation(false), 2000))
+            .catch(() => setError(true))
     }
 
     return (
@@ -36,6 +43,8 @@ const AddOrRemoveFromCleanoutBag = ({ article }: AddOrRemoveFromCleanoutBagProps
                     </div>
                 </Modal>
             }
+
+            {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}
         </>
     )
 };

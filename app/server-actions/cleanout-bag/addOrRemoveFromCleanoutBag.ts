@@ -13,7 +13,7 @@ export async function addOrRemoveFromCleanoutBag(article: Article) {
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
     revalidatePath('/cleanout')
