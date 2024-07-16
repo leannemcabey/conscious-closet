@@ -14,7 +14,7 @@ export async function deleteArticle(article: Article) {
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
     revalidatePath(`articles/${id}`);

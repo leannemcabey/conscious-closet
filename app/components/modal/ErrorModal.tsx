@@ -1,15 +1,16 @@
 'use client'
-import { Dispatch, SetStateAction } from "react";
-import Modal from "@/app/components/modal/Modal";
-import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
-import Image from "next/image";
-import * as React from "react";
 
-interface ArticleCreationErrorAlertModalProps {
+import Image from "next/image";
+import Modal from "@/app/components/modal/Modal";
+import * as React from "react";
+import { Dispatch, SetStateAction } from "react";
+
+interface ErrorModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
+    errorMessage: string;
 }
 
-const ArticleCreationErrorAlertModal = ({ setIsOpen }: ArticleCreationErrorAlertModalProps) => {
+const ErrorModal = ({ setIsOpen, errorMessage }: ErrorModalProps) => {
     return (
         <Modal setIsOpen={setIsOpen}>
             <div className="flex flex-col items-center text-center">
@@ -17,13 +18,17 @@ const ArticleCreationErrorAlertModal = ({ setIsOpen }: ArticleCreationErrorAlert
                     <Image
                         src={"/warning-gold.gif"}
                         alt={"warning"}
-                        width="125"
-                        height="125"
+                        width="100"
+                        height="100"
                     />
                 </div>
                 <p className="text-2xl mb-2">Oops!</p>
-                <p className="text-l">An error occurred when trying to add this article.
-                    It may be that you already have it in your closet.</p>
+                <p className="text-l">
+                    {errorMessage}
+                </p>
+                <p className="text-xs text-neutral-400 my-2">
+                    If the error persists, please contact us at leanne@consciouscloset.co.
+                </p>
                 <button
                     className="mt-4 px-4 py-2 bg-theme-gray rounded-md drop-shadow"
                     onClick={() => setIsOpen(false)}
@@ -35,4 +40,4 @@ const ArticleCreationErrorAlertModal = ({ setIsOpen }: ArticleCreationErrorAlert
     )
 }
 
-export default ArticleCreationErrorAlertModal;
+export default ErrorModal;
