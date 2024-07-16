@@ -12,7 +12,7 @@ export async function markArticleWornDate(articleId: string, date: Date) {
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
     revalidatePath('/rediscovery');
