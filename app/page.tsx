@@ -8,7 +8,7 @@ export default async function Index() {
         <div>
             <Head>
                 <title>Conscious Closet</title>
-                <link rel="icon" href="/cc-icon.svg"/>
+                <link rel="icon" href="/cc-icon_old.svg"/>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
                 <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;1,300&display=swap"
