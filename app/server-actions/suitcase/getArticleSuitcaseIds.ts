@@ -11,7 +11,7 @@ export async function getArticleSuitcaseIds(articleId: string) {
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
     return data?.map((s) => s.suitcase_id)

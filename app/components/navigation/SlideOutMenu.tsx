@@ -68,6 +68,7 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
                 })
                 setSuitcaseSubItems(orderByNewestCreated(menuSubItems))
             })
+            .catch(() => setSuitcaseSubItems(undefined))
     }, [])
 
     return (

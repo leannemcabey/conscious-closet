@@ -9,37 +9,46 @@ import EditSuitcaseButton from "@/app/components/suitcases/EditSuitcaseButton";
 import DeleteSuitcaseButton from "@/app/components/suitcases/DeleteSuitcaseButton";
 import SuitcaseContainer from "@/app/components/suitcases/SuitcaseContainer";
 import { getSuitcase } from "@/app/server-actions/suitcase/getSuitcase";
+import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 
 export default async function Suitcase({ params }: { id: string }) {
-    const suitcases = await getSuitcase(params.id);
-    // Converts the suitcase to non-db Suitcase type
-    const mappedSuitcase: Suitcase | undefined = suitcases?.map((suitcase) => toSuitcase(suitcase))[0]
+    const { suitcase, error: suitcaseError } = await getSuitcase(params.id);
+    const { articles, error: articlesError } = await getSuitcaseArticles(params.id)
 
-    const articles = await getSuitcaseArticles(params.id)
+    const errorMessage = "An error occurred while fetching your suitcase. Please go back and try again."
 
-    if (mappedSuitcase) {
-        return (
-            <Layout>
-                <div className="flex place-content-between">
+    return (
+        <Layout>
+            {suitcaseError || articlesError && (
+                <>
                     <BackButton />
-                    <div className="h-max flex space-x-2">
-                        <EditSuitcaseButton suitcase={mappedSuitcase!!}/>
-                        <DeleteSuitcaseButton suitcaseId={params.id}/>
+                    <ErrorPageContainer errorMessage={errorMessage} />
+                </>
+            )}
+
+            {suitcase && articles && (
+                <>
+                    <div className="flex place-content-between">
+                        <BackButton />
+                        <div className="h-max flex space-x-2">
+                            <EditSuitcaseButton suitcase={suitcase!!}/>
+                            <DeleteSuitcaseButton suitcaseId={params.id}/>
+                        </div>
                     </div>
-                </div>
-                <div className="flex justify-center mt-6">
-                    <h1 className="text-2xl mb-8 mr-2">{mappedSuitcase!!.name}</h1>
-                    <div>
-                        <Image
-                            src={"/suitcase.svg"}
-                            alt={"suitcase icon"}
-                            width="30"
-                            height="30"
-                        />
+                    <div className="flex justify-center mt-6">
+                        <h1 className="text-2xl mb-8 mr-2">{suitcase!!.name}</h1>
+                        <div>
+                            <Image
+                                src={"/suitcase.svg"}
+                                alt={"suitcase icon"}
+                                width="30"
+                                height="30"
+                            />
+                        </div>
                     </div>
-                </div>
-                <SuitcaseContainer articles={articles}/>
-            </Layout>
-        )
-    }
+                    <SuitcaseContainer articles={articles}/>
+                </>
+            )}
+        </Layout>
+    )
 };

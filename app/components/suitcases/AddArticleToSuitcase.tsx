@@ -20,13 +20,16 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
     const [unsavedSuitcaseSelections, setUnsavedSuitcaseSelections] = useState<string[]>();
     const [savedSuitcaseSelections, setSavedSuitcaseSelections] = useState<string[]>();
-    const [error, setError] = useState<boolean>();
+    const [fetchError, setFetchError] = useState<boolean>();
+    const [updateError, setUpdateError] = useState<boolean>();
 
-    const errorMessage = "An error occurred when updating this article's suitcases. Please try again."
+    const fetchErrorMessage = "An error occurred when retrieving your suitcases. Please go back and try again."
+    const updateErrorMessage = "An error occurred when updating this article's suitcases. Please try again."
 
     useEffect(() => {
         getSuitcases()
             .then((data) => setSuitcases(data))
+            .catch(() => setFetchError(true))
     }, [])
 
     useEffect(() => {
@@ -37,6 +40,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                 // changes are made as this is what controls whether the suitcase is checked off
                 setUnsavedSuitcaseSelections(data)
             })
+            .catch(() => setFetchError(true))
     }, [])
 
     const saveSelections = () => {
@@ -47,7 +51,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                     setUnsavedSuitcaseSelections([...suitcaseIds])
                     setSelectingSuitcase(false)
                 })
-                .catch(() => setError(true))
+                .catch(() => setUpdateError(true))
         }
     }
 
@@ -64,7 +68,10 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                 clickHandler={() => setSelectingSuitcase(!selectingSuitcase)}
             />
 
-            {selectingSuitcase &&
+            {selectingSuitcase && fetchError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={fetchErrorMessage} />}
+            {selectingSuitcase && updateError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={updateErrorMessage} />}
+
+            {selectingSuitcase && !fetchError &&
                 <AddArticleToSuitcaseModal
                     setIsSelectingSuitcase={setSelectingSuitcase}
                     setCreatingSuitcase={setCreatingSuitcase}
@@ -83,8 +90,6 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                     setSuitcases={setSuitcases}
                 />
             }
-
-            {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}
         </>
     )
 }

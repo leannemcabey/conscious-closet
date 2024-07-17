@@ -10,7 +10,7 @@ export async function getSuitcases() {
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
     return data;

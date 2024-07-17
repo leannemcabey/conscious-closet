@@ -1,5 +1,6 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
+import {toSuitcase} from "@/utils/typeConversions/toSuitcase";
 
 export async function getSuitcase(suitcaseId: string) {
     const supabase = createClient();
@@ -9,10 +10,8 @@ export async function getSuitcase(suitcaseId: string) {
         .select()
         .eq('id', suitcaseId)
 
-    if (error) {
-        console.log(error)
-        return
+    return {
+        suitcase: data?.map((suitcase) => toSuitcase(suitcase))[0],
+        error: error
     }
-
-    return data;
 }
