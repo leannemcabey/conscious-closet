@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import GoogleSignIn from "@/app/components/auth/GoogleSignIn";
+import * as React from "react";
 
 export default async function Index() {
     return (
@@ -15,12 +16,10 @@ export default async function Index() {
             </Head>
 
             <div className="flex justify-center min-h-screen max-h-screen relative">
-                <Image priority src="/pexels-liza-summer-closet.jpg" fill style={{opacity: 0.4}}
+                <Image priority src="/pexels-liza-summer-closet.jpg" fill style={{opacity: 0.2}}
                        alt="Photo of clothing on hangers by Liza Summer from Pexels"/>
-                <div className="flex flex-col items-center self-center space-y-14 absolute">
-                    <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-7xl">
-                        <span className="text-theme-green">CONSCIOUS</span> CLOSET
-                    </h1>
+                <div className="flex flex-col items-center self-center absolute space-y-8 pb-36">
+                    <Image src="/cc_full.svg" width="350" height="200" alt="Conscious Closet"/>
                     <GoogleSignIn />
                 </div>
             </div>
