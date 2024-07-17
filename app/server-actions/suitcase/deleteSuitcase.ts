@@ -13,7 +13,7 @@ export async function deleteSuitcase(id: string) {
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
     revalidatePath('/suitcases')

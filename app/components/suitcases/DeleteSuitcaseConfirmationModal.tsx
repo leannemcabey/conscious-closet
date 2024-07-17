@@ -1,8 +1,9 @@
 'use client'
 import ConfirmationModal from "@/app/components/modal/ConfirmationModal";
-import { Dispatch, SetStateAction } from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import { deleteSuitcase } from "@/app/server-actions/suitcase/deleteSuitcase";
 import { useRouter } from "next/navigation";
+import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface DeleteSuitcaseConfirmationModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>
@@ -11,11 +12,17 @@ interface DeleteSuitcaseConfirmationModalProps {
 
 const DeleteSuitcaseConfirmationModal = ({setIsOpen, suitcaseId}: DeleteSuitcaseConfirmationModalProps) => {
     const router = useRouter();
+    const [error, setError] = useState<boolean>();
+
+    const errorMessage = "An error occurred while trying to delete your suitcase. Please try again."
 
     const handleSubmit = () => {
         deleteSuitcase(suitcaseId)
             .then(() => router.back())
+            .catch(() => setError(true))
     }
+
+    if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
     return (
         <ConfirmationModal setIsOpen={setIsOpen} confirmAction={handleSubmit}>
