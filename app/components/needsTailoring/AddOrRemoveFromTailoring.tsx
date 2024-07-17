@@ -5,6 +5,7 @@ import ArticleActionToggle from "@/app/components/articles/ArticleActionToggle";
 import Modal from "@/app/components/modal/Modal";
 import Image from "next/image";
 import {addOrRemoveFromTailoring} from "@/app/server-actions/needs-tailoring/addOrRemoveFromTailoring";
+import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface AddOrRemoveFromTailoringProps {
     article: Article;
@@ -13,12 +14,18 @@ interface AddOrRemoveFromTailoringProps {
 const AddOrRemoveFromTailoring = ({ article }: AddOrRemoveFromTailoringProps) => {
     const [inTailoring, setInTailoring] = useState<boolean>(article.needsTailoring);
     const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>();
+
+    const errorVerb = inTailoring ? "removing" : "adding";
+    const errorPreposition = inTailoring ? "from" : "to"
+    const errorMessage = `An error occurred while ${errorVerb} this article ${errorPreposition} tailoring. Please try again.`
 
     const changeTailoringStatus = () => {
         addOrRemoveFromTailoring(article)
             .then(() => setInTailoring(!inTailoring))
             .then(() => setShowConfirmation(true))
             .then(() => setTimeout(() => setShowConfirmation(false), 2000))
+            .catch(() => setError(true))
     }
 
     return (
@@ -35,6 +42,8 @@ const AddOrRemoveFromTailoring = ({ article }: AddOrRemoveFromTailoringProps) =>
                     </div>
                 </Modal>
             }
+
+            {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}
         </>
     )
 }
