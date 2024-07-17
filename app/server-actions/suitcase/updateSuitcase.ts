@@ -13,7 +13,7 @@ export async function updateSuitcase(id: string, name: string) {
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
     revalidatePath(`/suitcases/${id}`)

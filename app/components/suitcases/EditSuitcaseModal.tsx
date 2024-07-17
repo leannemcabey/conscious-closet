@@ -4,6 +4,7 @@ import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import {Dispatch, SetStateAction, useState} from "react";
 import {updateSuitcase} from "@/app/server-actions/suitcase/updateSuitcase";
 import {Suitcase} from "@/types/suitcase";
+import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface EditSuitcaseModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>
@@ -12,6 +13,9 @@ interface EditSuitcaseModalProps {
 
 const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
     const [newSuitcaseName, setNewSuitcaseName] = useState<string>(suitcase.name);
+    const [error, setError] = useState<boolean>();
+
+    const errorMessage = "An error occurred while updating your suitcase name. Please try again."
 
     const buttonDisabled: boolean = newSuitcaseName === undefined;
 
@@ -20,8 +24,11 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
             event.preventDefault()
             updateSuitcase(suitcase.id, newSuitcaseName)
                 .then(() => setIsOpen(false))
+                .catch(() => setError(true))
         }
     }
+
+    if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
     return (
         <Modal setIsOpen={setIsOpen}>
