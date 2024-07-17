@@ -1,6 +1,6 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
-import {toArticle} from "@/utils/typeConversions/toArticle";
+import { toArticle } from "@/utils/typeConversions/toArticle";
 
 const getSixMonthsAgo = () => {
     const d = new Date();
@@ -18,10 +18,8 @@ export async function getLeastWornArticles() {
         .select()
         .or(`last_worn.lte.${sixMonthsAgo},last_worn.is.null`)
 
-    if (error) {
-        console.log(error)
-        return
+    return {
+        articles: data?.map((article) => toArticle(article)),
+        error: error
     }
-
-    return data?.map((article) => toArticle(article)) ?? [];
 }
