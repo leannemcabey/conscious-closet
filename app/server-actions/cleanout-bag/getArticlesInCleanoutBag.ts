@@ -10,10 +10,10 @@ export async function getArticlesInCleanoutBag() {
         .select()
         .eq('in_cleanout_bag', true)
 
-    if (error) {
-        console.log(error)
-        return
+    return {
+        articles: data?.map((article) => toArticle(article)) ?? [],
+        error: error
     }
 
-    return data?.map((article) => toArticle(article)) ?? [];
+
 }
