@@ -1,6 +1,6 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
-import {toArticle} from "@/utils/typeConversions/toArticle";
+import { toArticle } from "@/utils/typeConversions/toArticle";
 
 export async function getArticlesByCategory(categoryId: string) {
     const supabase = createClient();
@@ -10,10 +10,8 @@ export async function getArticlesByCategory(categoryId: string) {
         .select()
         .eq('category', categoryId);
 
-    if (error) {
-        console.log(error)
-        return
+    return {
+        articles: data?.map((article) => toArticle(article)),
+        error: error
     }
-
-    return data?.map((article) => toArticle(article)) ?? [];
 }
