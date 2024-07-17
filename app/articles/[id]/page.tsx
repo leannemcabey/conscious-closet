@@ -7,24 +7,19 @@ import AddArticleToSuitcase from "@/app/components/suitcases/AddArticleToSuitcas
 import BackButton from "@/app/components/navigation/BackButton";
 import AddOrRemoveFromTailoring from "@/app/components/needsTailoring/AddOrRemoveFromTailoring";
 import { getArticle } from "@/app/server-actions/article/getArticle";
+import ArticlePageContainer from "@/app/components/articles/ArticlePageContainer";
+import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 
 export default async function ArticlePage({ params }: { id: string }) {
-    const article = await getArticle(params.id)
+    const { article, error} = await getArticle(params.id)
 
-    if (article) {
-        return (
-            <Layout>
-                <BackButton />
-                <div className="flex flex-col items-center mt-12">
-                    <ArticleImage article={article} />
-                    <div className="flex justify-center space-x-8 mt-16">
-                        <AddArticleToSuitcase article={article}/>
-                        <AddOrRemoveFromTailoring article={article} />
-                        <AddOrRemoveFromCleanoutBag article={article} />
-                        <DeleteArticle article={article}/>
-                    </div>
-                </div>
-            </Layout>
-        )
-    }
+    const errorMessage = "An error occurred when retrieving this article. Please go back and try again."
+
+    return (
+        <Layout>
+            <BackButton />
+            {error && <ErrorPageContainer errorMessage={errorMessage} />}
+            {article && <ArticlePageContainer article={article} />}
+        </Layout>
+    )
 }

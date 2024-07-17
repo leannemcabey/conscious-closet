@@ -9,10 +9,8 @@ export async function getArticle(articleId: string) {
         .from("articles")
         .select().eq('id', articleId);
 
-    if (error) {
-        console.log(error)
-        return
+    return {
+        article: data?.map((article) => toArticle(article))[0],
+        error: error
     }
-
-    return data?.map((article) => toArticle(article))[0]
 }
