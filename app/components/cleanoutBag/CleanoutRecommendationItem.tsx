@@ -25,7 +25,7 @@ const CleanoutRecommendationItem = ({ recommendation }: CleanoutRecommendationIt
                     {recommendation.url && (
                             <a href={recommendation.url} target="_blank">
                                 <button className="flex items-center border border-theme-blue rounded-full px-2 w-max" >
-                                    <Image src={`/external-link.svg`} height="14" width="14" alt={arrow} className="mr-2"/>
+                                    <Image src={`/external-link-icon.svg`} height="14" width="14" alt={arrow} className="mr-2"/>
                                     <p>{recommendation.name}</p>
                                 </button>
                             </a>

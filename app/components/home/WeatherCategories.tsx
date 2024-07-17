@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function WeatherCategories() {
     return (
-        <div className="mt-5 flex space-x-4">
+        <div className="mt-5 mb-2 flex space-x-4">
             <Link href="/articles/weather/warm" className="drop-shadow">
                 <Image src="/warm-weather-icon.svg" height="150" width="150" alt="warm weather icon" />
             </Link>

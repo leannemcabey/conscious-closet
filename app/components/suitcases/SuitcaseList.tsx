@@ -8,6 +8,7 @@ import { toSuitcase } from "@/utils/typeConversions/toSuitcase";
 import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
 import Link from "next/link";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
+import * as React from "react";
 
 const SuitcaseList = () => {
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
@@ -30,15 +31,24 @@ const SuitcaseList = () => {
     return (
         <>
             <NewSuitcaseButton handleClick={() => setCreatingSuitcase(true)} />
-            <div className="h-4/6 overflow-scroll">
-                {suitcases?.map((suitcase) =>
-                    <Link href={`/suitcases/${suitcase.id}`} key={suitcase.id}>
-                        <div className="w-full text-lg truncate py-4 border border-dotted border-neutral-300 border-b-2 border-t-0 border-l-0 border-r-0">
-                            {suitcase.name}
-                        </div>
-                    </Link>
-                )}
-            </div>
+
+            {suitcases && suitcases?.length > 0 && (
+                <div className="h-4/6 overflow-scroll">
+                    {suitcases.map((suitcase) =>
+                        <Link href={`/suitcases/${suitcase.id}`} key={suitcase.id}>
+                            <div className="w-full text-lg truncate py-4 border border-dotted border-neutral-300 border-b-2 border-t-0 border-l-0 border-r-0">
+                                {suitcase.name}
+                            </div>
+                        </Link>
+                    )}
+                </div>
+            )}
+
+            {suitcases && suitcases.length === 0 && (
+                <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">
+                    You don't have any suitcases yet.
+                </p>
+            )}
 
             {creatingSuitcase &&
                 <NewSuitcaseModal

@@ -4,11 +4,10 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { LogoutButton } from "@/app/components/auth/LogoutButton";
 import { createClient } from "@/utils/supabase/client";
 import MenuItem from "@/app/components/navigation/MenuItem";
-import {Suitcase} from "@/types/suitcase";
-import {getSuitcases} from "@/app/server-actions/suitcase/getSuitcases";
-import {toSuitcase} from "@/utils/typeConversions/toSuitcase";
-import {orderByNewestCreated} from "@/utils/orderByNewestCreated";
-import {articleCategoryMenuSubItems} from "@/types/enums/articleCategoryEnum";
+import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
+import { toSuitcase } from "@/utils/typeConversions/toSuitcase";
+import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
+import { articleCategoryMenuSubItems } from "@/types/enums/articleCategoryEnum";
 
 interface SlideOutMenuProps {
     isVisible: boolean
@@ -31,7 +30,7 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
     const supabase = createClient();
 
     const [userEmail, setUserEmail] = useState<string | undefined>();
-    const [suitcaseSubItems, setSuitcaseSubItems] = useState<Suitcase[]>();
+    const [suitcaseSubItems, setSuitcaseSubItems] = useState<{label: string, linkTo: string} | undefined>();
     const menuRef = useRef(null);
 
     // Closes the menu if the user clicks outside of it
@@ -66,7 +65,7 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
                         linkTo: `/suitcases/${suitcase.id}`
                     }
                 })
-                setSuitcaseSubItems(orderByNewestCreated(menuSubItems))
+                if (menuSubItems.length !== 0) setSuitcaseSubItems(menuSubItems)
             })
             .catch(() => setSuitcaseSubItems(undefined))
     }, [])
