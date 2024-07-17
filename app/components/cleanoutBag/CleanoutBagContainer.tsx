@@ -12,6 +12,7 @@ import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import Link from "next/link";
+import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface CleanoutBagContainerProps {
     articles: Article[]
@@ -36,6 +37,9 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
     const [cleanoutBagArticles, setCleanoutBagArticles] = useState<Article[]>(articles);
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(cleanoutBagArticles);
     const [isDeleting, setIsDeleting] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>();
+
+    const errorMessage = "An error occurred when deleting these articles. Please try again."
 
     const filterTypes = [FilterType.weather, FilterType.category];
 
@@ -50,6 +54,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                 setCleanoutBagArticles([])
                 setIsDeleting(false)
             })
+            .catch(() => setError(true))
     }
 
     const deleteDisabled: boolean = cleanoutBagArticles.length <= 0;
@@ -68,6 +73,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                 <ArticleFilters filterTypes={filterTypes} />
 
                 {isDeleting && <DeleteAllFromCleanoutConfirmationModal setIsDeleting={setIsDeleting} handleSubmit={deleteAllAndResetData}/>}
+                {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}
 
                 {filteredArticles.length > 0 && <ArticlesContainer headerSize="small" articles={filteredArticles} />}
 

@@ -1,6 +1,7 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
+import {ArticleCategoryEnum} from "@/types/enums/articleCategoryEnum";
 
 export async function deleteAllFromCleanoutBag() {
     const supabase = createClient();
@@ -12,8 +13,9 @@ export async function deleteAllFromCleanoutBag() {
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
     revalidatePath('/cleanout')
+    Object.values(ArticleCategoryEnum).forEach((category) => revalidatePath(`articles/${category}`))
 }
