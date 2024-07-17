@@ -8,6 +8,7 @@ import { getArticleSuitcaseIds } from "@/app/server-actions/suitcase/getArticleS
 import AddArticleToSuitcaseModal from "@/app/components/suitcases/AddArticleToSuitcaseModal";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import ArticleActionButton from "@/app/components/articles/ArticleActionButton";
+import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface AddArticleToSuitcaseProps {
     article: Article;
@@ -19,6 +20,9 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
     const [unsavedSuitcaseSelections, setUnsavedSuitcaseSelections] = useState<string[]>();
     const [savedSuitcaseSelections, setSavedSuitcaseSelections] = useState<string[]>();
+    const [error, setError] = useState<boolean>();
+
+    const errorMessage = "An error occurred when updating this article's suitcases. Please try again."
 
     useEffect(() => {
         getSuitcases()
@@ -43,6 +47,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                     setUnsavedSuitcaseSelections([...suitcaseIds])
                     setSelectingSuitcase(false)
                 })
+                .catch(() => setError(true))
         }
     }
 
@@ -78,6 +83,8 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                     setSuitcases={setSuitcases}
                 />
             }
+
+            {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}
         </>
     )
 }

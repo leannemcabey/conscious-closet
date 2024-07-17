@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import { Suitcase } from "@/types/suitcase";
+import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface NewSuitcaseModalProps {
     closeModal: () => void;
@@ -13,6 +14,9 @@ interface NewSuitcaseModalProps {
 
 const NewSuitcaseModal = ({ closeModal, suitcases, setSuitcases }: NewSuitcaseModalProps) => {
     const [suitcaseName, setSuitcaseName] = useState<string>();
+    const [error, setError] = useState<boolean>();
+
+    const errorMessage = "An error occurred while creating your new suitcase. Please try again."
 
     const buttonDisabled: boolean = suitcaseName === undefined;
 
@@ -26,8 +30,11 @@ const NewSuitcaseModal = ({ closeModal, suitcases, setSuitcases }: NewSuitcaseMo
                     setSuitcases(copy)
                 })
                 .then(() => closeModal())
+                .catch(() => setError(true))
         }
     }
+
+    if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
     return (
         <Modal setIsOpen={closeModal}>

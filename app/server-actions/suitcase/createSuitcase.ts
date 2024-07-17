@@ -19,7 +19,7 @@ export async function createSuitcase(name: string) {
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
     revalidatePath(`/suitcases`)

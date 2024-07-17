@@ -56,7 +56,7 @@ export async function addOrRemoveArticleToSuitcases(
 
     if (insertError) {
         console.log(insertError)
-        return
+        throw insertError
     }
 
     const { error: deleteError } = await supabase
@@ -67,7 +67,7 @@ export async function addOrRemoveArticleToSuitcases(
 
     if (deleteError) {
         console.log(deleteError)
-        return
+        throw deleteError
     }
 
     const suitcaseIds = await getArticleSuitcaseIds(articleId);
