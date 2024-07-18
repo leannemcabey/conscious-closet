@@ -77,7 +77,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
                     save
                 </button>
             </div>
-            <div className="h-full mt-28">
+            <div className="h-full mt-10">
                 <div className="flex flex-col space-y-2">
                     {Object.keys(ArticleCategoryEnum)
                         .map((category) => menuElement(ArticleCategoryEnum[category]))

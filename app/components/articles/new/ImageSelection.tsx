@@ -48,10 +48,14 @@ export const ImageSelection = ({ setImage }) => {
             <p className="mb-4 text-lg text-center">Select from your Google Photos</p>
 
             <div>
-                {!googlePhotos && <div>Loading...</div>}
+                {!googlePhotos &&
+                    <div className="text-neutral-400 text-center text-lg">
+                        Loading...
+                    </div>
+                }
 
                 {googlePhotos && (
-                    <div className="h-64 overflow-scroll">
+                    <div className="h-[450px] overflow-scroll">
                         <div className="grid grid-cols-4 gap-2">
                             {googlePhotos!.map((photoData) =>
                                 <GalleryImage

@@ -25,11 +25,12 @@ const AddArticleToSuitcaseModal = ({
    handleSubmit
 }: AddArticleToSuitcaseModalProps) => {
     const openNewSuitcaseModal = () => {
+        setIsSelectingSuitcase(false)
+        setTimeout(() => setCreatingSuitcase(true), 150);
         // The setTimeout is used because the outsideClickHandler / eventListener inside the Modal
         // component conflicts with the action of opening the new modal. They essentially cancel each
         // other out. I believe the new modal tries to render and then closes very quickly. With this
         // timeout, we can avoid the two things conflicting with each other.
-        setTimeout(() => setCreatingSuitcase(true), 150);
     }
 
     return (
