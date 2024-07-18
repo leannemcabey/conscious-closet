@@ -17,15 +17,7 @@ const SuitcaseContainer = ({ articles }: SuitcaseContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: true,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM],
-        selectedArticleCategories: [
-            ArticleCategoryEnum.TOPS,
-            ArticleCategoryEnum.BOTTOMS,
-            ArticleCategoryEnum.JUMPSUITS_ROMPERS,
-            ArticleCategoryEnum.ACTIVEWEAR,
-            ArticleCategoryEnum.SHOES,
-            ArticleCategoryEnum.OUTERWEAR,
-            ArticleCategoryEnum.ACCESSORIES
-        ]
+        selectedArticleCategories: Object.keys(ArticleCategoryEnum).map((category) => ArticleCategoryEnum[category])
     };
 
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
