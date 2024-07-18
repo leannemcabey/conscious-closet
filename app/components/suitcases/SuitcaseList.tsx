@@ -19,9 +19,8 @@ const SuitcaseList = () => {
 
     useEffect(() => {
         getSuitcases()
-            .then((data) => {
-                const suitcases = data?.map((suitcase) => toSuitcase(suitcase)) || []
-                setSuitcases(orderByNewestCreated(suitcases))
+            .then((suitcases) => {
+                setSuitcases(suitcases)
             })
             .catch(() => setError(true))
     }, [])

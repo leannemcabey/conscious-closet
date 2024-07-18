@@ -35,7 +35,7 @@ const MenuItem = ({ linkTo, imageSrc, imageAltText, label, subItems }: MenuItemP
 
             {subItems && isOpen &&
                 <div className="mt-4 ml-7 flex flex-col space-y-2.5">
-                    {subItems.map((item) => <MenuSubItem label={item.label} linkTo={item.linkTo}/>)}
+                    {subItems.map((item) => <MenuSubItem label={item.label} linkTo={item.linkTo} key={item.label} />)}
                 </div>
             }
         </div>

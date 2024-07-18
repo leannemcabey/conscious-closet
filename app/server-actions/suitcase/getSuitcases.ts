@@ -1,5 +1,7 @@
 'use server'
 import { createClient } from "@/utils/supabase/server";
+import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
+import { toSuitcase } from "@/utils/typeConversions/toSuitcase";
 
 export async function getSuitcases() {
     const supabase = createClient();
@@ -13,5 +15,6 @@ export async function getSuitcases() {
         throw error
     }
 
-    return data;
+    const suitcases = data?.map((suitcase) => toSuitcase(suitcase)) || []
+    return orderByNewestCreated(suitcases);
 }

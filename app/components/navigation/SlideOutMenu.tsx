@@ -5,8 +5,6 @@ import { LogoutButton } from "@/app/components/auth/LogoutButton";
 import { createClient } from "@/utils/supabase/client";
 import MenuItem from "@/app/components/navigation/MenuItem";
 import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
-import { toSuitcase } from "@/utils/typeConversions/toSuitcase";
-import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
 import { articleCategoryMenuSubItems } from "@/types/enums/articleCategoryEnum";
 
 interface SlideOutMenuProps {
@@ -56,10 +54,8 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
 
     useEffect(() => {
         getSuitcases()
-            .then((data) => {
-                const suitcases = data?.map((suitcase) => toSuitcase(suitcase)) || [];
-                const orderedSuitcases = orderByNewestCreated(suitcases)
-                const menuSubItems = orderedSuitcases.map((suitcase) => {
+            .then((suitcases) => {
+                const menuSubItems = suitcases.map((suitcase) => {
                     return {
                         label: suitcase.name,
                         linkTo: `/suitcases/${suitcase.id}`

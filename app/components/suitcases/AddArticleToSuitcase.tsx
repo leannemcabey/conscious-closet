@@ -28,7 +28,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
 
     useEffect(() => {
         getSuitcases()
-            .then((data) => setSuitcases(data))
+            .then((suitcases) => setSuitcases(suitcases))
             .catch(() => setFetchError(true))
     }, [])
 
@@ -42,6 +42,10 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
             })
             .catch(() => setFetchError(true))
     }, [])
+
+    const sortBySelected = (suitcases?: Suitcase[]) => {
+        return suitcases?.sort((suitcase) => (savedSuitcaseSelections?.includes(suitcase.id)) ? -1 : 1)
+    }
 
     const saveSelections = () => {
         if (unsavedSuitcaseSelections) {
@@ -76,7 +80,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
                     setIsSelectingSuitcase={setSelectingSuitcase}
                     setCreatingSuitcase={setCreatingSuitcase}
                     article={article}
-                    suitcases={suitcases || []}
+                    suitcases={sortBySelected(suitcases) || []}
                     unsavedSuitcaseSelections={unsavedSuitcaseSelections || []}
                     setUnsavedSuitcaseSelections={setUnsavedSuitcaseSelections}
                     handleSubmit={saveSelections}
