@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { refreshGooglePhotosBaseUrls } from "@/utils/refreshGooglePhotosBaseUrls";
 import Polaroid from "@/app/components/articles/Polaroid";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ArticlesContainerProps {
     articles: Article[];
@@ -25,7 +26,13 @@ const ArticlesContainer = ({ articles, headerSize }: ArticlesContainerProps) => 
 
     const height = headerSize === "small" ? "h-2/3" : "h-3/5";
 
-    return (
+    if (!refreshedArticles) return (
+        <div className="flex justify-center h-[450px]">
+            <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin"/>
+        </div>
+    )
+
+    if (refreshedArticles) return (
         <div className="h-screen">
             <div className={`${height} overflow-scroll`}>
                 <div className="grid grid-cols-3 gap-x-2 gap-y-2 p-2 rounded-md">

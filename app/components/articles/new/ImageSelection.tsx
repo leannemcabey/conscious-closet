@@ -4,6 +4,7 @@ import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import axios from "axios";
 import GalleryImage from "@/app/components/articles/new/GalleryImage";
 import { createClient } from "@/utils/supabase/client";
+import Image from "next/image";
 
 interface ImageSelection {
     setImage: Dispatch<SetStateAction<string | undefined>>;
@@ -47,11 +48,9 @@ export const ImageSelection = ({ setImage }) => {
         <div>
             <p className="mb-4 text-lg text-center">Select from your Google Photos</p>
 
-            <div>
+            <div className="flex justify-center">
                 {!googlePhotos &&
-                    <div className="text-neutral-400 text-center text-lg">
-                        Loading...
-                    </div>
+                    <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin mt-10" />
                 }
 
                 {googlePhotos && (

@@ -7,6 +7,7 @@ import Polaroid from "@/app/components/articles/Polaroid";
 import LastWorn from "@/app/components/articles/LastWorn";
 import ArticleWeatherCategory from "@/app/components/articles/ArticleWeatherCategory";
 import { Article } from "@/types/article";
+import Image from "next/image";
 
 interface ArticleImageProps {
     article: Article
@@ -37,14 +38,19 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
             })
     }, []);
 
-    if (googlePhotoMetadata) {
-        return (
+    if (!googlePhotoMetadata) return (
+        <div className="flex justify-center h-[583px]">
+            <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin" />
+        </div>
+    )
+
+    if (googlePhotoMetadata) return (
             <Polaroid imageUrl={googlePhotoMetadata.baseUrl} size="large">
                 <LastWorn article={article}/>
                 <ArticleWeatherCategory article={article} />
             </Polaroid>
         )
-    }
+
 }
 
 export default ArticleImage;
