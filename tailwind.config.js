@@ -18,7 +18,20 @@ module.exports = {
         'theme-brown': '#552d16',
         'theme-gray': '#f4f3f3',
         'theme-red': '#c27070'
-      }
+      },
+      keyframes: {
+        'enter-from-bottom': {
+          from: {
+            bottom: '-500px'
+          },
+          to: {
+            bottom: '25%'
+          },
+        },
+      },
+      animation: {
+        'enter-from-bottom': 'enter-from-bottom .2s forwards',
+      },
     }
   },
   plugins: [],
