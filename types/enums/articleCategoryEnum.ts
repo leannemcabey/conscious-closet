@@ -1,7 +1,8 @@
 // Values reflect the database enum. Also used for URL slugs.
 export enum ArticleCategoryEnum {
     TOPS = "tops",
-    BOTTOMS = "bottoms",
+    PANTS = "pants",
+    SKIRTS = "skirts",
     DRESSES = "dresses",
     JUMPSUITS_ROMPERS = "jumpsuits_rompers",
     ACTIVEWEAR = "activewear",
@@ -12,7 +13,8 @@ export enum ArticleCategoryEnum {
 
 export enum ArticleCategoryTitle {
     TOPS = "tops",
-    BOTTOMS = "bottoms",
+    PANTS = "pants",
+    SKIRTS = "skirts",
     DRESSES = "dresses",
     JUMPSUITS_ROMPERS = "jumpsuits & rompers",
     ACTIVEWEAR = "activewear",
@@ -23,7 +25,8 @@ export enum ArticleCategoryTitle {
 
 export const categorySlugToTitleMap  = {
     tops: "tops",
-    bottoms: "bottoms",
+    pants: "pants",
+    skirts: "skirts",
     dresses: "dresses",
     jumpsuits_rompers: "jumpsuits & rompers",
     activewear: "activewear",
@@ -34,7 +37,8 @@ export const categorySlugToTitleMap  = {
 
 export const categorySlugToSingularTitleMap = {
     tops: "top",
-    bottoms: "bottom",
+    pants: "pants",
+    skirts: "skirt",
     dresses: "dress",
     jumpsuits_rompers: "jumpsuit & romper",
     activewear: "activewear",
