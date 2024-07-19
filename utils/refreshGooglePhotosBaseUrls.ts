@@ -33,6 +33,7 @@ export const refreshGooglePhotosBaseUrls = (articles: Article[], setRefreshedArt
             const providerToken = session.data.session?.provider_token;
             const params = buildParams(articles);
 
+            // TODO The maximum number of media items that can be retrieved in one call is 50.
             axios.get(`https://photoslibrary.googleapis.com/v1/mediaItems:batchGet`, {
                 params: params,
                 headers: {
