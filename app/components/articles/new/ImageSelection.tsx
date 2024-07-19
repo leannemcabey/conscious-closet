@@ -13,8 +13,8 @@ interface ImageSelection {
 export const ImageSelection = ({ setImage }) => {
     const supabase = createClient();
     const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>()
-    const [nextPageToken, setNextPageToken] = useState<string>();
-    const [page, setPage] = useState<number>(1);
+    const [pageTokens, setPageTokens] = useState<string|undefined[]>([]);
+    const [page, setPage] = useState<number>(0);
 
     useEffect(() => {
         supabase.auth.getSession()
@@ -27,8 +27,8 @@ export const ImageSelection = ({ setImage }) => {
                         'Authorization': 'Bearer ' + providerToken
                     },
                     params: {
-                        pageSize: "25",
-                        pageToken: nextPageToken
+                        pageSize: "16",
+                        pageToken: pageTokens[page - 1]
                     }
                 })
                     .then((response) => {
@@ -39,7 +39,7 @@ export const ImageSelection = ({ setImage }) => {
                             }
                         })
                         setGooglePhotos(data)
-                        setNextPageToken(response.data.nextPageToken)
+                        setPageTokens([ ...pageTokens, response.data.nextPageToken])
                     })
             })
     }, [page]);
@@ -50,7 +50,7 @@ export const ImageSelection = ({ setImage }) => {
 
     return (
         <div>
-            <p className="mb-4 text-lg text-center">Select from your Google Photos</p>
+            <p className="mt-2 mb-8 text-xl text-center">Select from your Google Photos</p>
 
             <div className="flex justify-center">
                 {!googlePhotos &&
@@ -58,8 +58,8 @@ export const ImageSelection = ({ setImage }) => {
                 }
 
                 {googlePhotos && (
-                    <div className="h-[450px] overflow-scroll">
-                        <div className="grid grid-cols-4 gap-2">
+                    <div className="flex flex-col h-[450px] overflow-scroll">
+                        <div className="h-[345px] grid grid-cols-4 gap-2">
                             {googlePhotos!.map((photoData) =>
                                 <GalleryImage
                                     photoData={photoData}
@@ -68,12 +68,20 @@ export const ImageSelection = ({ setImage }) => {
                                 />)}
                         </div>
 
-                        <button
-                            className="bg-theme-blue rounded-md p-1"
-                            onClick={() => setPage(page + 1)}
-                        >
-                            next page
-                        </button>
+                        <div className="flex content-end place-content-between mt-8">
+                            <button
+                                className={`${page === 0 && "invisible"} border border-theme-green bg-white text-theme-green rounded-md p-1 w-20 drop-shadow`}
+                                onClick={() => setPage(page - 1)}
+                            >
+                                previous
+                            </button>
+                            <button
+                                className={`${pageTokens[pageTokens.length -1] === undefined && "invisible"} border border-theme-green bg-white text-theme-green rounded-md p-1 w-20 drop-shadow`}
+                                onClick={() => setPage(page + 1)}
+                            >
+                                next
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>
