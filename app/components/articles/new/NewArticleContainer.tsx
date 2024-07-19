@@ -59,8 +59,8 @@ const NewArticleContainer = ({ category, setAddingArticle, unfilteredArticles, s
             }
 
             {!submitted && (
-                <div className="flex flex-col">
-                    <div className="flex justify-center space-x-4">
+                <div className="mt-4 flex flex-col place-content-center">
+                    <div className="flex self-center space-x-4">
                         <Polaroid imageUrl={image.baseUrl} size="medium" />
                         <WeatherPicker weatherCategory={weatherCategory} setWeatherCategory={setWeatherCategory}/>
                     </div>
@@ -68,9 +68,9 @@ const NewArticleContainer = ({ category, setAddingArticle, unfilteredArticles, s
                     {image &&
                         <button disabled={buttonDisabled}
                                 onClick={() => handleSubmit()}
-                                className="mt-2.5 self-end rounded-full"
+                                className="self-end mt-8 rounded-full"
                         >
-                            <Image src={buttonImage} height="32" width="32" alt="check mark icon"/>
+                            <Image src={buttonImage} height="40" width="40" alt="check mark icon"/>
                         </button>
                     }
                 </div>
