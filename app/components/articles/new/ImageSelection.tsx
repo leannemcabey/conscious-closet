@@ -13,6 +13,8 @@ interface ImageSelection {
 export const ImageSelection = ({ setImage }) => {
     const supabase = createClient();
     const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>()
+    const [nextPageToken, setNextPageToken] = useState<string>();
+    const [page, setPage] = useState<number>(1);
 
     useEffect(() => {
         supabase.auth.getSession()
@@ -25,7 +27,8 @@ export const ImageSelection = ({ setImage }) => {
                         'Authorization': 'Bearer ' + providerToken
                     },
                     params: {
-                        pageSize: "50"
+                        pageSize: "25",
+                        pageToken: nextPageToken
                     }
                 })
                     .then((response) => {
@@ -36,9 +39,10 @@ export const ImageSelection = ({ setImage }) => {
                             }
                         })
                         setGooglePhotos(data)
+                        setNextPageToken(response.data.nextPageToken)
                     })
             })
-    }, []);
+    }, [page]);
 
     const handleClick = async (image: GooglePhotoMetadata) => {
         setImage(image)
@@ -63,6 +67,13 @@ export const ImageSelection = ({ setImage }) => {
                                     key={photoData.imageId}
                                 />)}
                         </div>
+
+                        <button
+                            className="bg-theme-blue rounded-md p-1"
+                            onClick={() => setPage(page + 1)}
+                        >
+                            next page
+                        </button>
                     </div>
                 )}
             </div>

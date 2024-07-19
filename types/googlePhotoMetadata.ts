@@ -10,3 +10,8 @@ export interface MediaItemResult {
         id: string;
     }
 }
+
+export interface MediaItemListResult {
+    mediaItems: MediaItemResult,
+    nextPageToken: string
+}
