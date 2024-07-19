@@ -6,6 +6,7 @@ import { createClient } from "@/utils/supabase/client";
 import MenuItem from "@/app/components/navigation/MenuItem";
 import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
 import { articleCategoryMenuSubItems } from "@/types/enums/articleCategoryEnum";
+import {MenuSubItem} from "@/app/components/navigation/MenuSubItemLink";
 
 interface SlideOutMenuProps {
     isVisible: boolean
@@ -26,9 +27,7 @@ const classNames = [
 
 export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) => {
     const supabase = createClient();
-
-    const [userEmail, setUserEmail] = useState<string | undefined>();
-    const [suitcaseSubItems, setSuitcaseSubItems] = useState<{label: string, linkTo: string} | undefined>();
+    const [suitcaseSubItems, setSuitcaseSubItems] = useState<MenuSubItem[] | undefined>();
     const menuRef = useRef(null);
 
     // Closes the menu if the user clicks outside of it
@@ -38,11 +37,6 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
             setMenuVisible(false)
         }
     }
-
-    useEffect(() => {
-        supabase.auth.getSession()
-            .then((session) => setUserEmail(session.data.session?.user.email))
-    }, [])
 
     useEffect(() => {
         // Closes the menu if the user clicks outside of it
@@ -74,16 +68,13 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
                     <BurgerMenuButton menuVisible={isVisible} setMenuVisible={setMenuVisible} />
                 </div>
 
-               <p className="mt-10 mb-6 py-1 px-2 bg-theme-mid-green text-sm font-bold text-white rounded-full w-max truncate">{userEmail}</p>
-
-                <div className="h-full overflow-scroll">
+                <div className="mt-10 h-full overflow-scroll">
                     <MenuItem linkTo="/home" imageSrc="/hanger.svg" imageAltText="hanger icon" label="closet" subItems={articleCategoryMenuSubItems()}/>
                     <MenuItem linkTo="/suitcases" imageSrc="/suitcase.svg" imageAltText="suitcase icon" label="suitcases" subItems={suitcaseSubItems} />
                     <MenuItem linkTo="/needs-tailoring" imageSrc="/needle.svg" imageAltText="needle icon" label="needs tailoring" />
                     <MenuItem linkTo="/redisovery" imageSrc="/lightbulb.svg" imageAltText="lightbulb icon" label="redisovery" />
                     <MenuItem linkTo="/laundry-symbols" imageSrc="/laundry.svg" imageAltText="laundry icon" label="laundry symbols" />
-                    <MenuItem linkTo="/cleanout" imageSrc="/broom.svg" imageAltText="broom icon" label="cleanout bag" />
-                    <MenuItem linkTo="/cleanout/recommendations" imageSrc="/earth.svg" imageAltText="earth icon" label="cleanout recs" />
+                    <MenuItem linkTo="/cleanout" imageSrc="/broom.svg" imageAltText="broom icon" label="cleanout bag" subItems={[{label: "cleanout recs", linkTo: "/cleanout/recommendations"}]}/>
                 </div>
             </div>
         </div>

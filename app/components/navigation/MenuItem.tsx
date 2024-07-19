@@ -2,14 +2,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import MenuSubItem from "@/app/components/navigation/MenuSubItem";
+import MenuSubItemLink, {MenuSubItem} from "@/app/components/navigation/MenuSubItemLink";
 
 interface MenuItemProps {
     linkTo: string;
     imageSrc: string;
     imageAltText: string;
     label: string;
-    subItems?: any[]
+    subItems?: MenuSubItem[]
 }
 
 const MenuItem = ({ linkTo, imageSrc, imageAltText, label, subItems }: MenuItemProps) => {
@@ -26,7 +26,7 @@ const MenuItem = ({ linkTo, imageSrc, imageAltText, label, subItems }: MenuItemP
                 }
 
                 <Link href={linkTo}>
-                    <div className={`flex space-x-2 ${!subItems ? "ml-6": ""}`}>
+                    <div className={`flex space-x-4 ${!subItems ? "ml-6": ""}`}>
                         <Image src={imageSrc} width="28" height="28" alt={imageAltText}/>
                         <h2>{label}</h2>
                     </div>
@@ -34,8 +34,8 @@ const MenuItem = ({ linkTo, imageSrc, imageAltText, label, subItems }: MenuItemP
             </div>
 
             {subItems && isOpen &&
-                <div className="mt-4 ml-7 flex flex-col space-y-2.5">
-                    {subItems.map((item) => <MenuSubItem label={item.label} linkTo={item.linkTo} key={item.label} />)}
+                <div className="mt-4 ml-16 pl-2 flex flex-col space-y-2.5 border border-neutral-300 border-b-0 border-t-0 border-l-1 border-r-0">
+                    {subItems.map((item) => <MenuSubItemLink label={item.label} linkTo={item.linkTo} key={item.label} />)}
                 </div>
             }
         </div>
