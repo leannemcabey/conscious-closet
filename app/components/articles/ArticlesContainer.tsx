@@ -21,9 +21,6 @@ const ArticlesContainer = ({ articles, headerSize }: ArticlesContainerProps) => 
         }
     }, [articles]);
 
-    // 2/3 : , , ,
-    // 3/5: , tailoring
-
     const height = headerSize === "small" ? "h-2/3" : "h-3/5";
 
     if (!refreshedArticles) return (

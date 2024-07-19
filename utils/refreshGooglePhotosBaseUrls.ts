@@ -48,3 +48,13 @@ export const refreshGooglePhotosBaseUrls = (articles: Article[], setRefreshedArt
                 })
         })
 }
+
+const batchGetMediaItems = (providerToken: string) => {
+    return axios.get(`https://photoslibrary.googleapis.com/v1/mediaItems:batchGet`, {
+        params: params,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + providerToken
+        }
+    })
+}

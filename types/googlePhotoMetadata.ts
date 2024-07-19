@@ -11,6 +11,7 @@ export interface MediaItemResult {
     }
 }
 
+// Represents the data coming back from the Google Photos API
 export interface MediaItemListResult {
     mediaItems: MediaItemResult,
     nextPageToken: string
