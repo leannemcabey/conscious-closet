@@ -29,7 +29,7 @@ const Modal = ({ setIsOpen, children }: ModalProps) => {
         <>
             {createPortal(
                 <div ref={modalRef} data-testid="modal" className="flex justify-center w-full h-full">
-                    <div className="flex flex-col bg-white px-4 py-4 rounded-md border border-neutral-200 drop-shadow-2xl w-5/6 min-h-80 max-h-[550px] absolute top-1/3">
+                    <div className="flex flex-col bg-white px-4 py-4 rounded-md border border-neutral-200 drop-shadow-2xl w-5/6 min-h-80 max-h-[550px] absolute animate-enter-from-bottom">
                         <div className="mt-6 mx-2">
                             {children}
                         </div>

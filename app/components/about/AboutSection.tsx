@@ -1,16 +1,14 @@
 'use client'
-import CleanoutRecommendationItem from "@/app/components/cleanoutBag/CleanoutRecommendationItem";
-import * as React from "react";
-import { CleanoutRecommendation } from "@/types/cleanoutRecommendation";
 import { useState } from "react";
 import Image from "next/image";
+import CleanoutRecommendationItem from "@/app/components/cleanoutBag/CleanoutRecommendationItem";
+import * as React from "react";
 
-interface CleanoutRecommendationSectionProps {
+interface AboutSectionProps {
     sectionName: string;
-    sectionRecs: CleanoutRecommendation[];
 }
 
-const CleanoutRecommendationSection = ({ sectionName, sectionRecs }: CleanoutRecommendationSectionProps) => {
+const AboutSection = ({ sectionName, children }: AboutSectionProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const arrow = isOpen ? "arrow-down-white" : "arrow-up-white";
@@ -19,7 +17,7 @@ const CleanoutRecommendationSection = ({ sectionName, sectionRecs }: CleanoutRec
     return (
         <div className="flex flex-col mb-4 space-y-1">
             <div
-                className="flex sticky top-0 w-full bg-theme-blue text-white rounded-md p-2 drop-shadow"
+                className="flex sticky top-0 w-full bg-theme-mid-green text-white rounded-md p-2 mb-2 drop-shadow"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <div className="flex border border-white rounded-full items-center p-1 mr-2">
@@ -30,15 +28,15 @@ const CleanoutRecommendationSection = ({ sectionName, sectionRecs }: CleanoutRec
                         alt={alt}
                     />
                 </div>
-                <h2>{sectionName}</h2>
+                <h2 className="text-center">{sectionName}</h2>
             </div>
 
-                {isOpen && sectionRecs.map((rec) => {
-                    return <CleanoutRecommendationItem recommendation={rec}/>
-                }
-                )}
+            {isOpen &&
+                <div className="mx-2 p-2 border border-white border-4 rounded-md space-y-4">
+                    {children}
+                </div>}
         </div>
     )
 }
 
-export default CleanoutRecommendationSection;
+export default AboutSection;

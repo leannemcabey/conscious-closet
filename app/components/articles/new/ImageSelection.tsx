@@ -52,13 +52,13 @@ export const ImageSelection = ({ setImage }) => {
         <div>
             <p className="mt-2 mb-8 text-xl text-center">Select from your Google Photos</p>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center h-[450px]">
                 {!googlePhotos &&
                     <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin mt-10" />
                 }
 
                 {googlePhotos && (
-                    <div className="flex flex-col h-[450px] overflow-scroll">
+                    <div className="flex flex-col">
                         <div className="h-[345px] grid grid-cols-4 gap-2">
                             {googlePhotos!.map((photoData) =>
                                 <GalleryImage

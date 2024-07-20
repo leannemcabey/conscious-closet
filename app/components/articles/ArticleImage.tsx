@@ -45,10 +45,12 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
     )
 
     if (googlePhotoMetadata) return (
+        <div className="h-[583px]">
             <Polaroid imageUrl={googlePhotoMetadata.baseUrl} size="large">
                 <LastWorn article={article}/>
                 <ArticleWeatherCategory article={article} />
             </Polaroid>
+        </div>
         )
 
 }

@@ -1,4 +1,6 @@
 // Values reflect the database enum. Also used for URL slugs.
+import {MenuSubItem} from "@/app/components/navigation/MenuSubItemLink";
+
 export enum ArticleCategoryEnum {
     TOPS = "tops",
     PANTS = "pants",
@@ -51,7 +53,7 @@ export const categoryTitleToPathSlug = (title: ArticleCategoryTitle): ArticleCat
     return title.toLowerCase().replace(" & ", "_") as ArticleCategoryEnum
 }
 
-export const articleCategoryMenuSubItems = () => {
+export const articleCategoryMenuSubItems = (): MenuSubItem[] => {
     return Object.values(ArticleCategoryEnum).map((category) => {
         return {
             label: categorySlugToTitleMap[category],
