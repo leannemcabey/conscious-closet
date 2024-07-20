@@ -17,7 +17,7 @@ module.exports = {
         'theme-gold': '#97682b',
         'theme-brown': '#552d16',
         'theme-gray': '#f4f3f3',
-        'theme-red': '#c27070'
+        'theme-red': '#edbcbc'
       },
       keyframes: {
         'enter-from-bottom': {
@@ -25,7 +25,7 @@ module.exports = {
             bottom: '-500px'
           },
           to: {
-            bottom: '25%'
+            bottom: '20%'
           },
         },
       },
