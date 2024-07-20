@@ -30,7 +30,7 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
     const buttonDisabled: boolean = weatherCategory === undefined
     const buttonImage = buttonDisabled ? "/disabled-check-mark-button.svg" : "/check-mark-button.svg"
 
-    const successGif = <Image unoptimized={true} src="/check-green-black.gif" alt="success" height="200" width="200"/>
+    const successGif = <Image unoptimized={true} src="/fireworks.gif" alt="success" height="200" width="200"/>
     const errorMessage = "An error occurred when trying to add this article. It may be that you already have it in your closet."
 
     const handleSubmit = () => {
@@ -46,7 +46,7 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
             })
             .then(() => setSubmitted(true))
             // The setTimeout is to give the celebration gif time to display before automatically closing the modal
-            .then(() => setTimeout(() => setIsOpen(false), 2000))
+            .then(() => setTimeout(() => setIsOpen(false), 1000))
             .catch(() => setCreationError(true))
     }
 
@@ -90,7 +90,7 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
             )}
 
             {submitted &&
-                <div className="flex justify-center mt-10">
+                <div className="flex justify-center mt-6">
                     {successGif}
                 </div>
             }
