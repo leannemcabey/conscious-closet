@@ -4,6 +4,7 @@ import {MenuSubItem} from "@/app/components/navigation/MenuSubItemLink";
 export enum ArticleCategoryEnum {
     TOPS = "tops",
     PANTS = "pants",
+    SHORTS = "shorts",
     SKIRTS = "skirts",
     DRESSES = "dresses",
     JUMPSUITS_ROMPERS = "jumpsuits_rompers",
@@ -16,6 +17,7 @@ export enum ArticleCategoryEnum {
 export enum ArticleCategoryTitle {
     TOPS = "tops",
     PANTS = "pants",
+    SHORTS = "shorts",
     SKIRTS = "skirts",
     DRESSES = "dresses",
     JUMPSUITS_ROMPERS = "jumpsuits & rompers",
@@ -28,6 +30,7 @@ export enum ArticleCategoryTitle {
 export const categorySlugToTitleMap  = {
     tops: "tops",
     pants: "pants",
+    shorts: "shorts",
     skirts: "skirts",
     dresses: "dresses",
     jumpsuits_rompers: "jumpsuits & rompers",
@@ -40,6 +43,7 @@ export const categorySlugToTitleMap  = {
 export const categorySlugToSingularTitleMap = {
     tops: "top",
     pants: "pants",
+    shorts: "shorts",
     skirts: "skirt",
     dresses: "dress",
     jumpsuits_rompers: "jumpsuit & romper",
