@@ -26,7 +26,7 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
     const [unfilteredArticles, setUnfilteredArticles] = useState<Article[]>(articles)
     const articlesNotInCleanoutBag = unfilteredArticles.filter((article) => !article.inCleanoutBag);
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(articlesNotInCleanoutBag);
-    const [addingArticle, setAddingArticle] = useState<boolean>();
+    const [addingArticle, setAddingArticle] = useState<boolean>(false);
 
     const filterTypes= [FilterType.cleanout, FilterType.weather];
 

@@ -35,6 +35,7 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
                         }
                         setGooglePhotoMetadata(data)
                     })
+                    .catch(() => setGooglePhotoMetadata({ imageId: article.image.imageId, baseUrl: "" }))
             })
     }, []);
 

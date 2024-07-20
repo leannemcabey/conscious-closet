@@ -11,6 +11,13 @@ export interface MediaItemResult {
     }
 }
 
+export interface MediaItemErrorResult {
+    status: {
+        code: number,
+        message: string
+    }
+}
+
 export interface MediaItemBatchResult {
     data: {
         mediaItemResults: MediaItemResult[]

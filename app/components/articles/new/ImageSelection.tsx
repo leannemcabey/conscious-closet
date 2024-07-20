@@ -11,6 +11,7 @@ interface ImageSelection {
 }
 
 export const ImageSelection = ({ setImage }) => {
+    console.log('image selection rendering')
     const supabase = createClient();
     const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>()
     const [pageTokens, setPageTokens] = useState<string|undefined[]>([]);
