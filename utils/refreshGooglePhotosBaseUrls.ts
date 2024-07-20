@@ -1,10 +1,26 @@
-'use client'
 import axios from "axios";
-import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
+import { GooglePhotoMetadata, MediaItemBatchResult } from "@/types/googlePhotoMetadata";
 import { Article } from "@/types/article";
-import { createClient } from "@/utils/supabase/client";
 import { mediaItemToGooglePhotoMetadata } from "@/utils/typeConversions/mediaItemToGooglePhotoMetadata";
 import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
+
+const splitArticlesIntoBatches = (articles: Article[]): [Article[]] => {
+    // The maximum number of media items that can be retrieved in one call is 50.
+    if (articles.length < 50) return [articles];
+
+    const articleSubsections: [Article[]] = [];
+
+    let startingIndex = 0;
+    let endingIndex = 49;
+
+    while (endingIndex < articles.length) {
+        articleSubsections.push(articles.slice(startingIndex, endingIndex));
+        startingIndex += 50;
+        endingIndex += 50;
+    }
+
+    return articleSubsections;
+}
 
 const buildParams = (articles: Article[]): URLSearchParams => {
     const params = new URLSearchParams();
@@ -12,12 +28,29 @@ const buildParams = (articles: Article[]): URLSearchParams => {
     return params;
 };
 
+const batchGetMediaItems = (providerToken: string, articles: Article[]): Promise<GooglePhotoMetadata[]> => {
+    const params = buildParams(articles);
+
+    return axios.get(`https://photoslibrary.googleapis.com/v1/mediaItems:batchGet`, {
+        params: params,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + providerToken
+        }
+    })
+        .then((response: MediaItemBatchResult) => {
+            return response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
+        }
+    )
+}
+
 const replaceWithRefreshedGooglePhotosBaseUrl = (
     articles: Article[],
     refreshedGooglePhotoMetadata: GooglePhotoMetadata[]
 ): Article[] => {
     return articles.map((article) => {
         const match = refreshedGooglePhotoMetadata.find((photo) => photo.imageId === article.image.imageId)
+
         return {
             ...article,
             image: { ...match }
@@ -25,26 +58,14 @@ const replaceWithRefreshedGooglePhotosBaseUrl = (
     })
 }
 
-export const refreshGooglePhotosBaseUrls = (articles: Article[], setRefreshedArticlesState) => {
-    const supabase = createClient();
+export const refreshGooglePhotosBaseUrls = async (providerToken: string, articles: Article[]): Promise<Article[]> => {
+    const articleBatches = splitArticlesIntoBatches(articles);
+    let refreshedArticles: Article[] = [];
 
-    supabase.auth.getSession()
-        .then((session) => {
-            const providerToken = session.data.session?.provider_token;
-            const params = buildParams(articles);
+    for (const batch of articleBatches) {
+        const result = await batchGetMediaItems(providerToken, batch)
+        refreshedArticles = [...refreshedArticles, ...replaceWithRefreshedGooglePhotosBaseUrl(batch, result)];
+    }
 
-            // TODO The maximum number of media items that can be retrieved in one call is 50.
-            axios.get(`https://photoslibrary.googleapis.com/v1/mediaItems:batchGet`, {
-                params: params,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + providerToken
-                }
-            })
-                .then((response) => {
-                    const data: GooglePhotoMetadata[] = response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
-                    const refreshed = replaceWithRefreshedGooglePhotosBaseUrl(articles, data);
-                    setRefreshedArticlesState(orderByNewestCreated(refreshed))
-                })
-        })
+    return orderByNewestCreated(refreshedArticles);
 }

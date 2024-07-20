@@ -11,7 +11,8 @@ export interface MediaItemResult {
     }
 }
 
-export interface MediaItemListResult {
-    mediaItems: MediaItemResult,
-    nextPageToken: string
+export interface MediaItemBatchResult {
+    data: {
+        mediaItemResults: MediaItemResult[]
+    }
 }
