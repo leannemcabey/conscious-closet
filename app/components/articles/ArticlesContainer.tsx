@@ -5,7 +5,7 @@ import { refreshGooglePhotosBaseUrls } from "@/utils/refreshGooglePhotosBaseUrls
 import Polaroid from "@/app/components/articles/Polaroid";
 import Link from "next/link";
 import Image from "next/image";
-import { createClient } from "@/utils/supabase/client";
+import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 
 interface ArticlesContainerProps {
     articles: Article[];
@@ -13,18 +13,16 @@ interface ArticlesContainerProps {
 }
 
 const ArticlesContainer = ({ articles, headerSize }: ArticlesContainerProps) => {
-    const supabase = createClient();
     const [refreshedArticles, setRefreshedArticles] = useState<Article[]>();
 
     useEffect(() => {
         if (articles.length > 0) {
-            supabase.auth.getSession()
-                .then((session) => {
-                    const providerToken = session.data.session?.provider_token;
+            refreshGoogleProviderTokenIfNeeded()
+                .then((providerToken) => {
                     if (providerToken) {
                         refreshGooglePhotosBaseUrls(providerToken, articles)
                             .then((articles) => setRefreshedArticles(articles))
-                    } else setRefreshedArticles([])
+                    } else setRefreshedArticles([]) // TODO: show some error page saying "something went wrong, please sign out and back in"
                 })
         }
     }, [articles]);

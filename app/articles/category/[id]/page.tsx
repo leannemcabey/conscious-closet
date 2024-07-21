@@ -9,8 +9,13 @@ import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesB
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import Image from "next/image";
 import * as React from "react";
+import {createClient} from "@/utils/supabase/server";
 
 export default async function ArticleCategoryPage({ params }: { params: { id: string } }) {
+    const supabase = createClient();
+    supabase.auth.getUser()
+        .then((user) => console.log(`getUser: ${JSON.stringify(user)}`))
+
     const { articles, error} = await getArticlesByCategory(params.id);
 
     const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."

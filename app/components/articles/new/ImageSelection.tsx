@@ -5,42 +5,42 @@ import axios from "axios";
 import GalleryImage from "@/app/components/articles/new/GalleryImage";
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
+import {refreshGoogleProviderTokenIfNeeded} from "@/utils/refreshGoogleProviderTokenIfNeeded";
 
 interface ImageSelection {
     setImage: Dispatch<SetStateAction<string | undefined>>;
 }
 
 export const ImageSelection = ({ setImage }) => {
-    const supabase = createClient();
     const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>()
     const [pageTokens, setPageTokens] = useState<string|undefined[]>([]);
     const [page, setPage] = useState<number>(0);
 
     useEffect(() => {
-        supabase.auth.getSession()
-            .then((session) => {
-                const providerToken = session.data.session?.provider_token;
-
-                axios.get("https://photoslibrary.googleapis.com/v1/mediaItems", {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + providerToken
-                    },
-                    params: {
-                        pageSize: "16",
-                        pageToken: pageTokens[page - 1]
-                    }
-                })
-                    .then((response) => {
-                        const data = response.data.mediaItems.map((item: any) => {
-                            return {
-                                baseUrl: item.baseUrl,
-                                imageId: item.id
-                            }
-                        })
-                        setGooglePhotos(data)
-                        setPageTokens([ ...pageTokens, response.data.nextPageToken])
+        refreshGoogleProviderTokenIfNeeded()
+            .then((providerToken) => {
+                if (providerToken) {
+                    axios.get("https://photoslibrary.googleapis.com/v1/mediaItems", {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + providerToken
+                        },
+                        params: {
+                            pageSize: "16",
+                            pageToken: pageTokens[page - 1]
+                        }
                     })
+                        .then((response) => {
+                            const data = response.data.mediaItems.map((item: any) => {
+                                return {
+                                    baseUrl: item.baseUrl,
+                                    imageId: item.id
+                                }
+                            })
+                            setGooglePhotos(data)
+                            setPageTokens([ ...pageTokens, response.data.nextPageToken])
+                        })
+                }
             })
     }, [page]);
 

@@ -1,7 +1,10 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createClient } from "@/utils/supabase/server";
+import {refreshGoogleProviderTokenIfNeeded} from "@/utils/refreshGoogleProviderTokenIfNeeded";
 
 export async function updateSession(req: NextRequest) {
+  console.log('utils middleware running')
+  console.log(`req: ${JSON.stringify(req.body)}`)
   let res = NextResponse.next({request: req,})
 
   const supabase = createClient()

@@ -4,7 +4,7 @@ import WeatherCategories from "@/app/components/home/WeatherCategories";
 import ArticleCategoryCard from "@/app/components/home/ArticleCategoryCard";
 import { ArticleCategoryTitle } from "@/types/enums/articleCategoryEnum";
 
-export default async function Home() {
+export default async function Home(req: Request) {
     return (
         <Layout>
             <div className="flex justify-center">

@@ -10,6 +10,7 @@ import * as React from "react";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
+import {createClient} from "@/utils/supabase/client";
 
 interface CategoryPageContainerProps {
     articles: Article[];
@@ -17,6 +18,10 @@ interface CategoryPageContainerProps {
 }
 
 const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProps) => {
+    // const supabase = createClient()
+    // supabase.auth.getSession()
+    //     .then((session) => console.log(`session provider token: ${session.data.session?.provider_token}`))
+
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: false,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM]
