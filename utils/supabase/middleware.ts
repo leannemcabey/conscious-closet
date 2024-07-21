@@ -22,7 +22,6 @@ export async function updateSession(req: NextRequest) {
 
   // If the user is logged in, and they try to reach the login page, redirect them to the home page
   if (user && req.nextUrl.pathname === '/') {
-    console.log("user logged in, redirecting to home")
     const url = req.nextUrl.clone()
     url.pathname = '/home'
     return NextResponse.redirect(url)
