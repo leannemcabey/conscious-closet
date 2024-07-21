@@ -5,27 +5,12 @@ import { createClient } from "@/utils/supabase/client";
 const GoogleSignIn = () => {
     const supabase = createClient();
 
-    supabase.auth.onAuthStateChange((event, session) => {
-        if (session && session.provider_token) {
-            window.localStorage.setItem('oauth_provider_token', session.provider_token)
-        }
-
-        if (session && session.provider_refresh_token) {
-            window.localStorage.setItem('oauth_provider_refresh_token', session.provider_refresh_token)
-        }
-
-        if (event === 'SIGNED_OUT') {
-            window.localStorage.removeItem('oauth_provider_token')
-            window.localStorage.removeItem('oauth_provider_refresh_token')
-        }
-    })
-
     const googleSignIn = () => supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
             scopes: 'email profile openid https://www.googleapis.com/auth/photoslibrary.readonly',
             queryParams: {
-                // access_type: 'offline',
+                access_type: 'offline',
                 prompt: 'consent',
             },
             redirectTo: 'http://localhost:3000/auth/callback' // TODO: make variable
