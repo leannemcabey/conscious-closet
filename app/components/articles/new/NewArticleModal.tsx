@@ -21,7 +21,6 @@ interface NewArticleModalProps {
 }
 
 const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfilteredArticles }: NewArticleModalProps) => {
-    console.log('new article modal rendering')
     const [image, setImage] = useState<GooglePhotoMetadata | undefined>(undefined);
     const [weatherCategory, setWeatherCategory] = useState<WeatherCategoryEnum | undefined>(undefined);
     const [creationError, setCreationError] = useState<boolean>();

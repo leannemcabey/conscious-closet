@@ -14,7 +14,6 @@ const Modal = ({ setIsOpen, children }: ModalProps) => {
         event.preventDefault()
         const includesModalElement = event.composedPath().includes(modalRef.current!!);
         if (modalRef.current && !includesModalElement) {
-            console.log('outside click triggered')
             setIsOpen(false)
         }
     }
