@@ -11,6 +11,7 @@ const Modal = ({ setIsOpen, children }: ModalProps) => {
 
     // Closes the modal if the user clicks outside of it
     const outsideClickHandler = (event) => {
+        event.preventDefault()
         const includesModalElement = event.composedPath().includes(modalRef.current!!);
         if (modalRef.current && !includesModalElement) {
             console.log('outside click triggered')

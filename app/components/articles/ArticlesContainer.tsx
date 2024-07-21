@@ -40,7 +40,7 @@ const ArticlesContainer = ({ articles, headerSize }: ArticlesContainerProps) => 
     if (refreshedArticles) return (
         <div className="h-screen">
             <div className={`${height} overflow-scroll`}>
-                <div className="grid grid-cols-3 gap-x-2 gap-y-2 p-2 rounded-md">
+                <div className="grid grid-cols-3 gap-x-2 gap-y-2 p-2 rounded-md justify-items-center">
                     {/*
                         Checking articles.length is a workaround to handle when all articles in the cleanout bag have been
                         deleted. In that scenario, `useEffect` doesn't rerun and therefore `refreshedArticles` becomes stale

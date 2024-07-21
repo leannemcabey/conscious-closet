@@ -1,5 +1,4 @@
 'use server'
-import { LogoutButton } from "@/app/components/auth/LogoutButton";
 import Layout from "@/app/components/Layout";
 import WeatherCategories from "@/app/components/home/WeatherCategories";
 import ArticleCategoryCard from "@/app/components/home/ArticleCategoryCard";
@@ -12,7 +11,7 @@ export default async function Home() {
                 <WeatherCategories />
             </div>
             <div className="h-4/5 overflow-scroll">
-                <div className="flex flex-col items-center justify-center mt-10 pb-1 space-y-5">
+                <div className="flex flex-col items-center justify-center my-4 space-y-5">
                     {Object.values(ArticleCategoryTitle)
                         .map((title) => <ArticleCategoryCard title={title} key={title}/>)}
                 </div>
