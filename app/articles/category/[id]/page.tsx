@@ -1,21 +1,14 @@
 'use server'
 import Layout from "@/app/components/Layout";
-import { Article } from "@/types/article";
 import { ArticleCategoryEnum, categorySlugToTitleMap}  from "@/types/enums/articleCategoryEnum";
-import { toArticle } from "@/utils/typeConversions/toArticle";
 import BackButton from "@/app/components/navigation/BackButton";
 import CategoryPageContainer from "@/app/components/articles/CategoryPageContainer";
 import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesByCategory";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import Image from "next/image";
 import * as React from "react";
-import {createClient} from "@/utils/supabase/server";
 
 export default async function ArticleCategoryPage({ params }: { params: { id: string } }) {
-    const supabase = createClient();
-    supabase.auth.getUser()
-        .then((user) => console.log(`getUser: ${JSON.stringify(user)}`))
-
     const { articles, error} = await getArticlesByCategory(params.id);
 
     const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."

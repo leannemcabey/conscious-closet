@@ -1,8 +1,6 @@
 'use server'
 
 export async function refreshGoogleProviderToken(refreshToken: string) {
-    console.log('refreshing token')
-
     const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
     const clientId = process.env.GOOGLE_CLIENT_ID;
 
