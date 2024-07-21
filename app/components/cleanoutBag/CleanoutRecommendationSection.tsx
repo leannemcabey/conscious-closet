@@ -34,7 +34,7 @@ const CleanoutRecommendationSection = ({ sectionName, sectionRecs }: CleanoutRec
             </div>
 
                 {isOpen && sectionRecs.map((rec) => {
-                    return <CleanoutRecommendationItem recommendation={rec}/>
+                    return <CleanoutRecommendationItem recommendation={rec} key={rec.name}/>
                 }
                 )}
         </div>
