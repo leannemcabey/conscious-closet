@@ -48,10 +48,10 @@ export const ImageSelection = ({ setImage }) => {
     }
 
     return (
-        <div>
-            <p className="mt-2 mb-8 text-xl text-center">Select from your Google Photos</p>
+        <div className="flex flex-col items-center space-y-4">
+            <Image src="/google-photos-icon.png" height="50" width="50" alt="Google Photos icon" />
 
-            <div className="flex justify-center h-[450px]">
+            <div className="flex justify-center h-[415px]">
                 {!googlePhotos &&
                     <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin mt-10" />
                 }
