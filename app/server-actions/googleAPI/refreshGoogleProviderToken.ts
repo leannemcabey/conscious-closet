@@ -20,5 +20,8 @@ export async function refreshGoogleProviderToken(refreshToken: string) {
     });
 
     const data = await response.json();
-    return data.access_token
+    return {
+        token: data.access_token,
+        expiresIn: data.expires_in
+    }
 }

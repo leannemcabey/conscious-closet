@@ -5,7 +5,7 @@ import { createClient } from "@/utils/supabase/client";
 export const refreshGoogleProviderTokenIfNeeded = async () => {
     const supabase = createClient();
 
-    const providerTokenExpires = window.localStorage.getItem('expires_at');
+    const providerTokenExpires = parseInt(window.localStorage.getItem('expires_at')) || 0;
 
     // Get the current timestamp in seconds
     const now = Math.round(Date.now() / 1000);
@@ -16,8 +16,9 @@ export const refreshGoogleProviderTokenIfNeeded = async () => {
         const refreshToken =  window.localStorage.getItem('oauth_provider_refresh_token');
 
         refreshGoogleProviderToken(refreshToken)
-            .then((token) => {
-                window.localStorage.setItem('oauth_provider_token', token)
+            .then(({ token, expiresIn }) => {
+                window.localStorage.setItem('oauth_provider_token', token);
+                window.localStorage.setItem('expires_at', (now + expiresIn).toString())
                 return token;
             })
             .catch(() => supabase.auth.signOut()) // TODO: haven't been able to confirm that this works yet
@@ -25,3 +26,5 @@ export const refreshGoogleProviderTokenIfNeeded = async () => {
 
     return window.localStorage.getItem('oauth_provider_token');
 }
+
+// "expires_in":3599
