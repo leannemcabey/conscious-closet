@@ -17,7 +17,8 @@ module.exports = {
         'theme-gold': '#97682b',
         'theme-brown': '#552d16',
         'theme-gray': '#f4f3f3',
-        'theme-red': '#edbcbc'
+        'theme-red': '#edbcbc',
+        'transparent-bg': 'rgba(64, 64, 64, 0.5)'
       },
       keyframes: {
         'enter-from-bottom': {
