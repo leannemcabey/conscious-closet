@@ -17,11 +17,8 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
 
     const errorMessage = "An error occurred while updating your suitcase name. Please try again."
 
-    const buttonDisabled: boolean = newSuitcaseName === undefined;
-
-    const handleSubmit = (event) => {
+    const handleSubmit = () => {
         if (newSuitcaseName) {
-            event.preventDefault()
             updateSuitcase(suitcase.id, newSuitcaseName)
                 .then(() => setIsOpen(false))
                 .catch(() => setError(true))
@@ -33,17 +30,15 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
     return (
         <Modal setIsOpen={setIsOpen}>
             <CloseModalButton setIsOpen={setIsOpen} />
-            <form onSubmit={(event) => handleSubmit(event)} className="flex flex-col pt-20">
+            <form className="flex flex-col pt-20">
                 <input
-                    autoFocus={true}
                     value={newSuitcaseName}
                     type="text"
                     onChange={(e) => setNewSuitcaseName(e.target.value)}
                     className="border border-theme-green bg-theme-gray rounded-md p-2 focus:outline-none"
                 />
-                <button type="submit"
-                        disabled={buttonDisabled}
-                        className={`${buttonDisabled ? "bg-theme-gray text-neutral-300" : "bg-theme-mid-green text-white"} rounded-md drop-shadow w-max py-2 px-4 mt-4 self-end`}
+                <button onClick={() => handleSubmit()}
+                        className="bg-theme-mid-green text-white rounded-md drop-shadow w-max py-2 px-4 mt-4 self-end"
                 >
                     Update
                 </button>

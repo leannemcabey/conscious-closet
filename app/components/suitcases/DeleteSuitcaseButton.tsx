@@ -8,7 +8,7 @@ interface DeleteSuitcaseButtonProps {
 }
 
 const DeleteSuitcaseButton = ({ suitcaseId }: DeleteSuitcaseButtonProps) => {
-    const [deletingSuitcase, setDeletingSuitcase] = useState<boolean>();
+    const [deletingSuitcase, setDeletingSuitcase] = useState<boolean>(false);
 
     return (
         <>
