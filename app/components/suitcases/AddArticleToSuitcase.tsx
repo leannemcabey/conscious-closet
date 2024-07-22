@@ -59,10 +59,10 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
         }
     }
 
-    const closeCreatingOpenSelectingModal = () => {
-        setCreatingSuitcase(false)
-        setSelectingSuitcase(true)
-    }
+    // const closeCreatingOpenSelectingModal = () => {
+    //     setCreatingSuitcase(false)
+    //     setSelectingSuitcase(true)
+    // }
 
     return (
         <>
@@ -89,7 +89,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
 
             {creatingSuitcase &&
                 <NewSuitcaseModal
-                    closeModal={closeCreatingOpenSelectingModal}
+                    isOpen={setCreatingSuitcase}
                     suitcases={suitcases || []}
                     setSuitcases={setSuitcases}
                 />
