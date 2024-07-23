@@ -4,6 +4,7 @@ import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import GalleryImage from "@/app/components/articles/new/GalleryImage";
 import Image from "next/image";
 import { getPaginatedMediaItems } from "@/app/googleService/client/getPaginatedMediaItems";
+import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface ImageSelectionProps {
     setImage: Dispatch<SetStateAction<GooglePhotoMetadata>>;
@@ -16,7 +17,6 @@ export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
     const [error, setError] = useState<boolean>();
 
     const errorMessage = "An error occurred while retrieving your Google Photos. Please try again."
-    // TODO: show an error modal
 
     useEffect(() => {
         getPaginatedMediaItems(pageTokens[page - 1])
@@ -31,7 +31,9 @@ export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
         setImage(image)
     }
 
-    return (
+    if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
+
+    if (!error) return (
         <div className="flex flex-col items-center space-y-4">
             <Image src="/google-photos-icon.png" height="50" width="50" alt="Google Photos icon" />
 

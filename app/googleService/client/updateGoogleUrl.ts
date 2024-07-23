@@ -4,7 +4,11 @@ import axios from "axios";
 import { Article } from "@/types/article";
 import { mediaItemToGooglePhotoMetadata } from "@/utils/typeConversions/mediaItemToGooglePhotoMetadata";
 
+let attemptCounter = 0;
+
 export const updateGoogleUrl = (article: Article): Promise<Article> => {
+    attemptCounter++
+
     return refreshGoogleProviderTokenIfNeeded()
         .then((providerToken) => {
             if (providerToken) {
@@ -18,8 +22,9 @@ export const updateGoogleUrl = (article: Article): Promise<Article> => {
                         const googleMetaData = mediaItemToGooglePhotoMetadata({ mediaItem: response.data })
                         return { ...article, image: { ...googleMetaData } }
                     })
-                    .catch(() => {
-                        return { ...article, imageId: article.image.imageId, baseUrl: "" }
+                    .catch((error) => {
+                        if (attemptCounter > 1) return { ...article, image: { imageId: article.image.imageId, baseUrl: "" }}
+                        updateGoogleUrl(article)
                     })
             }
         })

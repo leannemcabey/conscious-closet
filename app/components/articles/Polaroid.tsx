@@ -59,8 +59,7 @@ const Polaroid = ({ imageUrl, size, children }: PolaroidProps) => {
     )
 
     return (
-        <div
-            className={`flex flex-col items-center justify-center bg-white ${styling[size].outerDivWidth} drop-shadow-lg`}>
+        <div className={`flex flex-col items-center justify-center bg-white ${styling[size].outerDivWidth} drop-shadow-lg`}>
             {imageUrl !== "" && (
                 <div className={`${styling[size].innerDivMargin} bg-white`}>
                     <Image
