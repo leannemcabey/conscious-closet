@@ -19,5 +19,7 @@ export interface MediaItemErrorResult {
 }
 
 export interface MediaItemBatchResult {
-    mediaItemResults: MediaItemResult[]
+    data: {
+        mediaItemResults: MediaItemResult[]
+    }
 }
