@@ -1,8 +1,9 @@
 'use client'
-import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 import axios from "axios";
+import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProviderTokenIfNeeded";
+import { PaginatedMediaItems } from "@/types/googlePhotoMetadata";
 
-export const getPaginatedMediaItems = (pageToken: string) => {
+export const getPaginatedMediaItems = (pageToken: string): Promise<PaginatedMediaItems> => {
     return refreshGoogleProviderTokenIfNeeded()
         .then((providerToken) => {
             if (providerToken) {

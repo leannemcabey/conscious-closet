@@ -1,5 +1,5 @@
 'use client'
-import { refreshGoogleProviderToken } from "@/app/googleService/oauth2/refreshGoogleProviderToken";
+import { refreshGoogleProviderToken } from "@/app/googleService/server/refreshGoogleProviderToken";
 import { createClient } from "@/utils/supabase/client";
 
 export const refreshGoogleProviderTokenIfNeeded = async () => {
