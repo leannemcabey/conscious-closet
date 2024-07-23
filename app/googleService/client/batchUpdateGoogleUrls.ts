@@ -24,18 +24,18 @@ export const batchUpdateGoogleUrls = async (articles: Article[]): Promise<Articl
 const getBatchMediaItems = (articles: Article[]): Promise<GooglePhotoMetadata[]> => {
     return refreshGoogleProviderTokenIfNeeded()
         .then((providerToken) => {
-        const params = buildParams(articles);
+            const params = buildParams(articles);
 
-        return axios.get(`https://photoslibrary.googleapis.com/v1/mediaItems:batchGet`, {
-            params: params,
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + providerToken
-            }
-        })
-            .then((response) => {
-                    return response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
+            return axios.get(`https://photoslibrary.googleapis.com/v1/mediaItems:batchGet`, {
+                params: params,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + providerToken
                 }
-            )
+            })
+                .then((response) => {
+                        return response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
+                    }
+                )
         })
 }
