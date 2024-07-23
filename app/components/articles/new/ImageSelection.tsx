@@ -1,46 +1,30 @@
 'use client'
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
-import axios from "axios";
 import GalleryImage from "@/app/components/articles/new/GalleryImage";
 import Image from "next/image";
-import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProviderTokenIfNeeded";
+import { getPaginatedMediaItems } from "@/app/googleService/photos/getPaginatedMediaItems";
 
-interface ImageSelection {
-    setImage: Dispatch<SetStateAction<string | undefined>>;
+interface ImageSelectionProps {
+    setImage: Dispatch<SetStateAction<GooglePhotoMetadata>>;
 }
 
-export const ImageSelection = ({ setImage }) => {
+export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
     const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>()
     const [pageTokens, setPageTokens] = useState<string|undefined[]>([]);
     const [page, setPage] = useState<number>(0);
+    const [error, setError] = useState<boolean>();
+
+    const errorMessage = "An error occurred while retrieving your Google Photos. Please try again."
+    // TODO: show an error modal
 
     useEffect(() => {
-        refreshGoogleProviderTokenIfNeeded()
-            .then((providerToken) => {
-                if (providerToken) {
-                    axios.get("https://photoslibrary.googleapis.com/v1/mediaItems", {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + providerToken
-                        },
-                        params: {
-                            pageSize: "16",
-                            pageToken: pageTokens[page - 1]
-                        }
-                    })
-                        .then((response) => {
-                            const data = response.data.mediaItems.map((item: any) => {
-                                return {
-                                    baseUrl: item.baseUrl,
-                                    imageId: item.id
-                                }
-                            })
-                            setGooglePhotos(data)
-                            setPageTokens([ ...pageTokens, response.data.nextPageToken])
-                        })
-                }
+        getPaginatedMediaItems(pageTokens[page - 1])
+            .then(({ data, nextPageToken }) => {
+                setGooglePhotos(data)
+                setPageTokens([ ...pageTokens, nextPageToken])
             })
+            .catch(() => setError(true))
     }, [page]);
 
     const handleClick = async (image: GooglePhotoMetadata) => {

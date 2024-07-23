@@ -1,7 +1,7 @@
 'use client'
 import { Article } from "@/types/article";
 import { useEffect, useState } from "react";
-import { refreshGooglePhotosBaseUrls } from "@/utils/refreshGooglePhotosBaseUrls";
+import { refreshGooglePhotosBaseUrls } from "@/app/googleService/photos/refreshGooglePhotosBaseUrls";
 import Polaroid from "@/app/components/articles/Polaroid";
 import Link from "next/link";
 import Image from "next/image";

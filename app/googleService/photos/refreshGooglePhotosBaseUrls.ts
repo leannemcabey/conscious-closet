@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GooglePhotoMetadata, MediaItemBatchResult } from "@/types/googlePhotoMetadata";
+import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import { Article } from "@/types/article";
 import { mediaItemToGooglePhotoMetadata } from "@/utils/typeConversions/mediaItemToGooglePhotoMetadata";
 import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
@@ -38,7 +38,7 @@ const batchGetMediaItems = (providerToken: string, articles: Article[]): Promise
             'Authorization': 'Bearer ' + providerToken
         }
     })
-        .then((response: MediaItemBatchResult) => {
+        .then((response) => {
             return response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
         }
     )
