@@ -2,8 +2,9 @@
 import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 import axios from "axios";
 import { Article } from "@/types/article";
+import {GooglePhotoMetadata} from "@/types/googlePhotoMetadata";
 
-export const getMediaItem = (article: Article): Promise<any> => {
+export const getMediaItem = (article: Article): Promise<GooglePhotoMetadata> => {
     return refreshGoogleProviderTokenIfNeeded()
         .then((providerToken) => {
             if (providerToken) {

@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import GalleryImage from "@/app/components/articles/new/GalleryImage";
 import Image from "next/image";
-import { getPaginatedMediaItems } from "@/app/googleService/photos/getPaginatedMediaItems";
+import { getPaginatedMediaItems } from "@/app/googleService/clientSide/photos/getPaginatedMediaItems";
 
 interface ImageSelectionProps {
     setImage: Dispatch<SetStateAction<GooglePhotoMetadata>>;

@@ -6,7 +6,7 @@ import LastWorn from "@/app/components/articles/LastWorn";
 import ArticleWeatherCategory from "@/app/components/articles/ArticleWeatherCategory";
 import { Article } from "@/types/article";
 import Image from "next/image";
-import { getMediaItem } from "@/app/googleService/photos/getMediaItem";
+import { getMediaItem } from "@/app/googleService/clientSide/photos/getMediaItem";
 
 interface ArticleImageProps {
     article: Article
