@@ -3,12 +3,19 @@ export interface GooglePhotoMetadata {
     imageId: string;
 }
 
+export interface PaginatedMediaItems {
+    data: GooglePhotoMetadata[];
+    nextPageToken: string
+}
+
+export interface MediaItem {
+    baseUrl: string;
+    id: string;
+}
+
 // Represents the data coming back from the Google Photos API
 export interface MediaItemResult {
-    mediaItem: {
-        baseUrl: string;
-        id: string;
-    }
+    mediaItem: MediaItem
 }
 
 export interface MediaItemErrorResult {
@@ -22,4 +29,9 @@ export interface MediaItemBatchResult {
     data: {
         mediaItemResults: MediaItemResult[]
     }
+}
+
+export interface PaginatedMediaItemsResult {
+    mediaItems: MediaItem[],
+    nextPageToken: string
 }

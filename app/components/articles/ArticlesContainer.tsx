@@ -1,11 +1,11 @@
 'use client'
 import { Article } from "@/types/article";
 import { useEffect, useState } from "react";
-import { refreshGooglePhotosBaseUrls } from "@/app/googleService/photos/refreshGooglePhotosBaseUrls";
 import Polaroid from "@/app/components/articles/Polaroid";
 import Link from "next/link";
 import Image from "next/image";
 import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProviderTokenIfNeeded";
+import {batchUpdateGoogleUrls} from "@/app/googleService/client/batchUpdateGoogleUrls";
 
 interface ArticlesContainerProps {
     articles: Article[];
@@ -17,13 +17,9 @@ const ArticlesContainer = ({ articles, headerSize }: ArticlesContainerProps) => 
 
     useEffect(() => {
         if (articles.length > 0) {
-            refreshGoogleProviderTokenIfNeeded()
-                .then((providerToken) => {
-                    if (providerToken) {
-                        refreshGooglePhotosBaseUrls(providerToken, articles)
-                            .then((articles) => setRefreshedArticles(articles))
-                    } else setRefreshedArticles([]) // TODO: show some error page saying "something went wrong, please sign out and back in"
-                })
+            batchUpdateGoogleUrls(articles)
+                // .then((response) => console.log(JSON.stringify(response)))
+                .then((articles) => setRefreshedArticles(articles))
         }
     }, [articles]);
 

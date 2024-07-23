@@ -2,8 +2,9 @@
 import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 import axios from "axios";
 import { Article } from "@/types/article";
+import { mediaItemToGooglePhotoMetadata } from "@/utils/typeConversions/mediaItemToGooglePhotoMetadata";
 
-export const getMediaItem = (article: Article): Promise<any> => {
+export const updateGoogleUrl = (article: Article): Promise<Article> => {
     return refreshGoogleProviderTokenIfNeeded()
         .then((providerToken) => {
             if (providerToken) {
@@ -14,13 +15,11 @@ export const getMediaItem = (article: Article): Promise<any> => {
                     }
                 })
                     .then((response) => {
-                        return {
-                            baseUrl: response.data.baseUrl,
-                            imageId: response.data.id
-                        }
+                        const googleMetaData = mediaItemToGooglePhotoMetadata({ mediaItem: response.data })
+                        return { ...article, image: { ...googleMetaData } }
                     })
                     .catch(() => {
-                        return { imageId: article.image.imageId, baseUrl: "" }
+                        return { ...article, imageId: article.image.imageId, baseUrl: "" }
                     })
             }
         })
