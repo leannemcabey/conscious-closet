@@ -11,17 +11,30 @@ import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProvide
 
 export const batchUpdateGoogleUrls = async (articles: Article[]): Promise<Article[]> => {
     const articleBatches = splitArticlesIntoBatches(articles);
+
     let refreshedArticles: Article[] = [];
 
     for (const batch of articleBatches) {
-        const result = await getBatchMediaItems(batch)
+        let result;
+
+        try {
+            result = await getBatchMediaItems(batch)
+        } catch(error) {
+            throw error
+        }
+
         refreshedArticles = [...refreshedArticles, ...refreshGooglePhotosBaseUrls(batch, result)];
     }
 
     return orderByNewestCreated(refreshedArticles);
 }
 
+
+let attemptCounter = 0;
+
 const getBatchMediaItems = (articles: Article[]): Promise<GooglePhotoMetadata[]> => {
+    attemptCounter++
+
     return refreshGoogleProviderTokenIfNeeded()
         .then((providerToken) => {
             const params = buildParams(articles);
@@ -34,8 +47,11 @@ const getBatchMediaItems = (articles: Article[]): Promise<GooglePhotoMetadata[]>
                 }
             })
                 .then((response) => {
-                        return response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
-                    }
-                )
+                    return response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
+                })
+                .catch((error) => {
+                    if (attemptCounter > 1) throw error;
+                    getBatchMediaItems(articles)
+                })
         })
 }

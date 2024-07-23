@@ -1,6 +1,7 @@
 'use client'
 import { refreshGoogleProviderToken } from "@/app/googleService/server/refreshGoogleProviderToken";
 import { createClient } from "@/utils/supabase/client";
+import { redirect } from "next/navigation";
 
 export const refreshGoogleProviderTokenIfNeeded = async () => {
     const supabase = createClient();
@@ -21,7 +22,10 @@ export const refreshGoogleProviderTokenIfNeeded = async () => {
                 window.localStorage.setItem('expires_at', (now + expiresIn).toString())
                 return token;
             })
-            .catch(() => supabase.auth.signOut()) // TODO: haven't been able to confirm that this works yet
+            .catch(() => {
+                return supabase.auth.signOut()
+                    .then(() => redirect("/"))
+            })
     }
 
     return window.localStorage.getItem('oauth_provider_token');

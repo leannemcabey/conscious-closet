@@ -5,6 +5,7 @@ import Polaroid from "@/app/components/articles/Polaroid";
 import Link from "next/link";
 import Image from "next/image";
 import { batchUpdateGoogleUrls } from "@/app/googleService/client/batchUpdateGoogleUrls";
+import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface ArticlesContainerProps {
     articles: Article[];
@@ -13,17 +14,28 @@ interface ArticlesContainerProps {
 
 const ArticlesContainer = ({ articles, headerSize }: ArticlesContainerProps) => {
     const [refreshedArticles, setRefreshedArticles] = useState<Article[]>();
+    const [error, setError] = useState<boolean>();
+    // The `stopSpinner` state value is used so that when the error modal is closed, the loading spinner stops showing as well
+    const [stopSpinner, setStopSpinner] = useState<boolean>();
+
+    const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
 
     useEffect(() => {
         if (articles.length > 0) {
             batchUpdateGoogleUrls(articles)
                 .then((articles) => setRefreshedArticles(articles))
+                .catch(() => {
+                    setStopSpinner(true)
+                    setError(true)
+                })
         }
     }, [articles]);
 
     const height = headerSize === "small" ? "h-2/3" : "h-3/5";
 
-    if (!refreshedArticles) return (
+    if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
+
+    if (!refreshedArticles && !error && !stopSpinner) return (
         <div className="flex justify-center h-[450px]">
             <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin"/>
         </div>
