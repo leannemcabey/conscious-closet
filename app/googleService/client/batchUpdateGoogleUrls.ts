@@ -12,10 +12,11 @@ import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProvide
 export const batchUpdateGoogleUrls = async (articles: Article[]): Promise<Article[]> => {
     const articleBatches = splitArticlesIntoBatches(articles);
 
-    let result;
     let refreshedArticles: Article[] = [];
 
     for (const batch of articleBatches) {
+        let result;
+
         try {
             result = await getBatchMediaItems(batch)
         } catch(error) {
