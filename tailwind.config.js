@@ -22,16 +22,22 @@ module.exports = {
       },
       keyframes: {
         'enter-from-bottom': {
+          // from: {
+          //   bottom: '-500px'
+          // },
+          // to: {
+          //   bottom: '20%'
+          // },
           from: {
-            bottom: '-500px'
+            top: '100%'
           },
           to: {
-            bottom: '20%'
+            top: '15%'
           },
         },
       },
       animation: {
-        'enter-from-bottom': 'enter-from-bottom .2s forwards',
+        'enter-from-bottom': 'enter-from-bottom .5s forwards',
       },
     }
   },
