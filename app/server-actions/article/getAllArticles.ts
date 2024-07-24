@@ -11,8 +11,8 @@ export async function getAllArticles() {
 
     if (error) {
         console.log(error)
-        return
+        throw error
     }
 
-    return data?.map((article) => toArticle(article));
+    return data?.map((article) => toArticle(article)) || [];
 }
