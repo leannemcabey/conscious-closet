@@ -70,6 +70,7 @@ export const SlideOutMenu = ({ isVisible, setMenuVisible }: SlideOutMenuProps) =
 
                 <div className="mt-10 h-full overflow-scroll">
                     <MenuItem linkTo="/home" imageSrc="/hanger.svg" imageAltText="hanger icon" label="closet" subItems={articleCategoryMenuSubItems()}/>
+                    <MenuItem linkTo={"/outfit-generator"} imageSrc="/lightbulb.svg" imageAltText="lightbulb icon" label="outfit generator" />
                     <MenuItem linkTo="/suitcases" imageSrc="/suitcase.svg" imageAltText="suitcase icon" label="suitcases" subItems={suitcaseSubItems} />
                     <MenuItem linkTo="/needs-tailoring" imageSrc="/needle.svg" imageAltText="needle icon" label="needs tailoring" />
                     <MenuItem linkTo="/redisovery" imageSrc="/lightbulb.svg" imageAltText="lightbulb icon" label="redisovery" />
