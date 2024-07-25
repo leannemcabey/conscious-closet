@@ -13,9 +13,8 @@ const DropdownMenu = ({ selectedCategory, setSelectedCategory }: DropdownMenuPro
     const [isOpen, setIsOpen] = useState<boolean>();
     const menuRef = useRef(null);
 
-    // Closes the modal if the user clicks outside of it
+    // Closes the menu if the user clicks outside of it
     const outsideClickHandler = (event) => {
-        // event.preventDefault()
         const includesMenuElement = event.composedPath().includes(menuRef.current!!);
 
         if (menuRef.current && !includesMenuElement) {
@@ -34,8 +33,6 @@ const DropdownMenu = ({ selectedCategory, setSelectedCategory }: DropdownMenuPro
         setSelectedCategory(ArticleCategoryEnum[category])
         setIsOpen(false)
     }
-
-    // add filters
 
     return (
         <div className="flex flex-col w-[155px] self-center items-center">
