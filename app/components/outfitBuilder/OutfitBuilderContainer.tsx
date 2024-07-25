@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import * as React from "react";
-import OutfitElement from "@/app/components/outfitGenerator/OutfitElement";
+import OutfitElement from "@/app/components/outfitBuilder/OutfitElement";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { Article } from "@/types/article";
 import { useEffect, useState } from "react";
@@ -11,7 +11,7 @@ interface OutfitGeneratorContainerProps {
     articlesMap: { string: Article[] }
 }
 
-const OutfitGeneratorContainer = ({ articlesMap }: OutfitGeneratorContainerProps) => {
+const OutfitBuilderContainer = ({ articlesMap }: OutfitGeneratorContainerProps) => {
     // const [refreshedArticlesMap, setRefreshedArticlesMap] = useState<{ ArticleCategoryEnum: Article[] }>({});
     // const [error, setError] = useState<boolean>();
     //
@@ -37,7 +37,7 @@ const OutfitGeneratorContainer = ({ articlesMap }: OutfitGeneratorContainerProps
     return (
         <div className="h-full">
             <div className="flex justify-center mb-8">
-                <h1 className="text-2xl mb-2.5 mr-2">outfit generator</h1>
+                <h1 className="text-2xl mb-2.5 mr-2">outfit builder</h1>
                 <div>
                     <Image
                         src={"/lightbulb.svg"}
@@ -62,4 +62,4 @@ const OutfitGeneratorContainer = ({ articlesMap }: OutfitGeneratorContainerProps
     )
 }
 
-export default OutfitGeneratorContainer;
+export default OutfitBuilderContainer;

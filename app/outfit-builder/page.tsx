@@ -4,10 +4,10 @@ import BackButton from "@/app/components/navigation/BackButton";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesByCategory";
-import OutfitGeneratorContainer from "@/app/components/outfitGenerator/OutfitGeneratorContainer";
+import OutfitBuilderContainer from "@/app/components/outfitBuilder/OutfitBuilderContainer";
 import { Article } from "@/types/article";
 
-export default async function OutfitGenerator() {
+export default async function OutfitBuilder() {
     const errorState = (
         <Layout>
             <BackButton />
@@ -31,7 +31,7 @@ export default async function OutfitGenerator() {
     return (
         <Layout>
             <BackButton />
-            <OutfitGeneratorContainer articlesMap={articlesMap}/>
+            <OutfitBuilderContainer articlesMap={articlesMap}/>
         </Layout>
     )
 }
