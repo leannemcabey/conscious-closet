@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import * as React from "react";
-import OutfitElement from "@/app/components/outfitBuilder/OutfitElement";
+import CapsuleElement from "@/app/components/capsuleCreator/CapsuleElement";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { Article } from "@/types/article";
 import { useEffect, useState } from "react";
@@ -14,11 +14,11 @@ interface CategoryArticlesMap {
     string: Article[]
 }
 
-interface OutfitGeneratorContainerProps {
+interface CapsuleCreatorContainerProps {
     articlesMap: CategoryArticlesMap
 }
 
-const OutfitBuilderContainer = ({ articlesMap }: OutfitGeneratorContainerProps) => {
+const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: false,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM]
@@ -44,7 +44,7 @@ const OutfitBuilderContainer = ({ articlesMap }: OutfitGeneratorContainerProps) 
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
             <div className="h-full">
                 <div className="flex justify-center mb-4">
-                    <h1 className="text-2xl mr-2">outfit builder</h1>
+                    <h1 className="text-2xl mr-2">capsule creator</h1>
                     <div>
                         <Image
                             src={"/lightbulb.svg"}
@@ -58,16 +58,16 @@ const OutfitBuilderContainer = ({ articlesMap }: OutfitGeneratorContainerProps) 
                 <ArticleFilters filterTypes={filterTypes} />
 
                 <div className="h-4/5 grid grid-cols-2 place-content-between">
-                    <OutfitElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} />
-                    <OutfitElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} />
-                    <OutfitElement defaultArticleType={ArticleCategoryEnum.OUTERWEAR} articlesMap={filteredArticlesMap} />
-                    <OutfitElement defaultArticleType={ArticleCategoryEnum.PANTS} articlesMap={filteredArticlesMap} />
-                    <OutfitElement defaultArticleType={ArticleCategoryEnum.ACCESSORIES} articlesMap={filteredArticlesMap} />
-                    <OutfitElement defaultArticleType={ArticleCategoryEnum.SHOES} articlesMap={filteredArticlesMap} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.OUTERWEAR} articlesMap={filteredArticlesMap} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.PANTS} articlesMap={filteredArticlesMap} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.ACCESSORIES} articlesMap={filteredArticlesMap} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.SHOES} articlesMap={filteredArticlesMap} />
                 </div>
             </div>
         </ArticleFilterContext.Provider>
     )
 }
 
-export default OutfitBuilderContainer;
+export default CapsuleCreatorContainer;

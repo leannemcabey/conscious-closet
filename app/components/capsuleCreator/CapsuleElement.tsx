@@ -6,21 +6,19 @@ import {ArticleCategoryEnum} from "@/types/enums/articleCategoryEnum";
 import {Article} from "@/types/article";
 import {batchUpdateGoogleUrls} from "@/app/googleService/client/batchUpdateGoogleUrls";
 import Polaroid from "@/app/components/articles/Polaroid";
-import DropdownMenu from "@/app/components/outfitBuilder/DropdownMenu";
+import DropdownMenu from "@/app/components/capsuleCreator/DropdownMenu";
 import UndevelopedPolaroid from "@/app/components/articles/UndevelopedPolaroid";
 
-interface OutfitElementProps {
+interface CapsuleElementProps {
     defaultArticleType: ArticleCategoryEnum,
     articlesMap: { string: Article[] }
 }
 
-const OutfitElement = ({ defaultArticleType, articlesMap }: OutfitElementProps) => {
+const CapsuleElement = ({ defaultArticleType, articlesMap }: CapsuleElementProps) => {
     const [index, setIndex] = useState<number>(0);
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum>(defaultArticleType);
     const [refreshedArticlesOfSelectedCategory, setRefreshedArticlesOfSelectedCategory] = useState<Article[]>();
     const [currentArticle, setCurrentArticle] = useState<Article>();
-
-    // if (selectedCategory === ArticleCategoryEnum.TOPS) console.log(`outfit element: ${JSON.stringify(articlesMap["tops"])}`)
 
     useEffect(() => {
         const articles = articlesMap[selectedCategory];
@@ -105,4 +103,4 @@ const OutfitElement = ({ defaultArticleType, articlesMap }: OutfitElementProps) 
     )
 }
 
-export default OutfitElement
+export default CapsuleElement
