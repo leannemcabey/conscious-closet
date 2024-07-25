@@ -15,7 +15,7 @@ interface MenuItemProps {
 const MenuItem = ({ linkTo, imageSrc, imageAltText, label, subItems }: MenuItemProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    const arrow = isOpen ? "arrow-down" : "arrow-up";
+    const arrow = isOpen ? "arrow-up" : "arrow-down";
     const alt = isOpen ? "collapse" : "expand";
 
     return (

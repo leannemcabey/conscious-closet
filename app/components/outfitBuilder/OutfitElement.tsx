@@ -1,9 +1,9 @@
 'use client'
 import * as React from "react";
-import Image from "next/image";
-import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
-import {Article} from "@/types/article";
 import {useEffect, useState} from "react";
+import Image from "next/image";
+import {ArticleCategoryEnum} from "@/types/enums/articleCategoryEnum";
+import {Article} from "@/types/article";
 import {batchUpdateGoogleUrls} from "@/app/googleService/client/batchUpdateGoogleUrls";
 import Polaroid from "@/app/components/articles/Polaroid";
 import DropdownMenu from "@/app/components/outfitBuilder/DropdownMenu";
@@ -15,33 +15,36 @@ interface OutfitElementProps {
 }
 
 const OutfitElement = ({ defaultArticleType, articlesMap }: OutfitElementProps) => {
-    const { TOPS, PANTS, SHORTS, SKIRTS, DRESSES, JUMPSUITS_ROMPERS, ACTIVEWEAR, SHOES, OUTERWEAR, ACCESSORIES }
-        = articlesMap
-
     const [index, setIndex] = useState<number>(0);
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum>(defaultArticleType);
     const [refreshedArticlesOfSelectedCategory, setRefreshedArticlesOfSelectedCategory] = useState<Article[]>();
     const [currentArticle, setCurrentArticle] = useState<Article>();
 
+    // if (selectedCategory === ArticleCategoryEnum.TOPS) console.log(`outfit element: ${JSON.stringify(articlesMap["tops"])}`)
+
     useEffect(() => {
-        const articles = articlesMap[selectedCategory]
+        const articles = articlesMap[selectedCategory];
 
         if (articles.length > 0) {
             batchUpdateGoogleUrls(articles)
                 .then((articles) => {
-                    setRefreshedArticlesOfSelectedCategory(articles)
+                    console.log(`${selectedCategory}: ${articles.length}`)
+                    setRefreshedArticlesOfSelectedCategory(articles);
+                    setIndex(0);
                 })
+        } else {
+            setRefreshedArticlesOfSelectedCategory([])
         }
     }, [articlesMap, selectedCategory]);
 
     useEffect(() => {
+        console.log(`setting current ${selectedCategory} with ${refreshedArticlesOfSelectedCategory?.length} articles`)
+        console.log(`trying to use index ${index}`)
+        // console.log("getting current article" + defaultArticleType)
         if (refreshedArticlesOfSelectedCategory) {
             setCurrentArticle(refreshedArticlesOfSelectedCategory[index])
         }
-    }, [refreshedArticlesOfSelectedCategory, index]);
-
-    // TODO fade in the images???
-    // TODO selecting something without articles (accessories) doesn't reset the image to undevelopedpolaroid
+    }, [articlesMap, refreshedArticlesOfSelectedCategory, index]);
 
     const handleLeftArrowClick = () => {
         if (index === 0) {
@@ -59,8 +62,10 @@ const OutfitElement = ({ defaultArticleType, articlesMap }: OutfitElementProps) 
         }
     }
 
+    if (selectedCategory === ArticleCategoryEnum.TOPS) console.log(`current article: ${JSON.stringify(currentArticle)}`)
+
     return (
-        <div className="flex flex-col m-1 flex-col-reverse">
+        <div className="flex flex-col m-1 flex-col-reverse justify-end">
             {!currentArticle && (
                 <div className="flex justify-center">
                     <UndevelopedPolaroid />
@@ -68,13 +73,14 @@ const OutfitElement = ({ defaultArticleType, articlesMap }: OutfitElementProps) 
             )}
 
             {currentArticle && (
-                <div className="flex space-x-1 justify-center">
+                <div className="flex h-full space-x-1 justify-center items-center">
                     <Image
                         src={"/arrow-left.svg"}
                         alt={"left arrow"}
-                        width="20"
-                        height="20"
+                        width="25"
+                        height="25"
                         onClick={() => handleLeftArrowClick()}
+                        className="h-max rounded-full bg-theme-background-green drop-shadow"
                     />
 
                     <Polaroid imageUrl={currentArticle?.image.baseUrl || ""} size="small" />
@@ -82,13 +88,18 @@ const OutfitElement = ({ defaultArticleType, articlesMap }: OutfitElementProps) 
                     <Image
                         src={"/arrow-right.svg"}
                         alt={"right arrow"}
-                        width="20"
-                        height="20"
+                        width="25"
+                        height="25"
                         onClick={() => handleRightArrowClick()}
+                        className="h-max rounded-full bg-theme-background-green drop-shadow"
                     />
                 </div>
             )}
 
+            {/*
+            This is placed last in the div so that the dropdown goes on top of the article image when opened.
+            flex-col-reverse is used on the div to make this render at the top.
+            */}
             <DropdownMenu selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
         </div>
     )

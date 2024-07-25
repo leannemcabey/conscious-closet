@@ -50,7 +50,7 @@ const getBatchMediaItems = (articles: Article[]): Promise<GooglePhotoMetadata[]>
                     return response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
                 })
                 .catch((error) => {
-                    if (attemptCounter > 1) throw error;
+                    if (attemptCounter > 2) throw error;
                     getBatchMediaItems(articles)
                 })
         })

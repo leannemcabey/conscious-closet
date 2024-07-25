@@ -3,7 +3,11 @@ import { refreshGoogleProviderToken } from "@/app/googleService/server/refreshGo
 import { createClient } from "@/utils/supabase/client";
 import { redirect } from "next/navigation";
 
+let attemptCounter = 0;
+
 export const refreshGoogleProviderTokenIfNeeded = async () => {
+    attemptCounter++
+
     const supabase = createClient();
 
     const providerTokenExpires = parseInt(window.localStorage.getItem('expires_at')) || 0;
@@ -23,8 +27,12 @@ export const refreshGoogleProviderTokenIfNeeded = async () => {
                 return token;
             })
             .catch(() => {
-                return supabase.auth.signOut()
-                    .then(() => redirect("/"))
+                if (attemptCounter > 1) {
+                    return supabase.auth.signOut()
+                        .then(() => redirect("/"))
+                } else {
+                    refreshGoogleProviderTokenIfNeeded()
+                }
             })
     }
 

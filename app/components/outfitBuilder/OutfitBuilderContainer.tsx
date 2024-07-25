@@ -5,60 +5,68 @@ import OutfitElement from "@/app/components/outfitBuilder/OutfitElement";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { Article } from "@/types/article";
 import { useEffect, useState } from "react";
-import { batchUpdateGoogleUrls } from "@/app/googleService/client/batchUpdateGoogleUrls";
+import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
+import ArticleFilters, { FilterType } from "@/app/components/articles/filter/ArticleFilters";
+import { applyArticleFilters } from "@/utils/applyArticleFilters";
+
+interface CategoryArticlesMap {
+    string: Article[]
+}
 
 interface OutfitGeneratorContainerProps {
-    articlesMap: { string: Article[] }
+    articlesMap: CategoryArticlesMap
 }
 
 const OutfitBuilderContainer = ({ articlesMap }: OutfitGeneratorContainerProps) => {
-    // const [refreshedArticlesMap, setRefreshedArticlesMap] = useState<{ ArticleCategoryEnum: Article[] }>({});
-    // const [error, setError] = useState<boolean>();
-    //
-    // const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
+    const defaultFilterContext: FilterSettings = {
+        showCleanoutBagItems: false,
+        selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM]
+    };
 
-    // useEffect(() => {
-    //     Object.keys(articlesMap).forEach((category) => {
-    //         const articles = articlesMap[category];
-    //         if (articles > 0) {
-    //             batchUpdateGoogleUrls(articles)
-    //                 .then((articles) => {
-    //                     const refreshedObject = { [category]: articles }
-    //                     setRefreshedArticlesMap({ ...refreshedArticlesMap, refreshedObject })
-    //                 })
-    //                 .catch(() => {
-    //                     setError(true)
-    //                 })
-    //         }
-    //     })
-    //
-    // }, [articlesMap]);
+    const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
+    const [unfilteredArticlesMap, setUnfilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap)
+    const [filteredArticlesMap, setFilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap);
+
+    const filterTypes= [FilterType.cleanout, FilterType.weather];
+
+    useEffect(() => {
+        let tempFilteredArticlesMap: CategoryArticlesMap = { ...unfilteredArticlesMap };
+
+        Object.keys(tempFilteredArticlesMap).forEach((category) => {
+            tempFilteredArticlesMap[category] = applyArticleFilters(unfilteredArticlesMap[category], filterTypes, filterSettings);
+        })
+
+        setFilteredArticlesMap(tempFilteredArticlesMap)
+    }, [unfilteredArticlesMap, filterSettings]);
 
     return (
-        <div className="h-full">
-            <div className="flex justify-center mb-8">
-                <h1 className="text-2xl mb-2.5 mr-2">outfit builder</h1>
-                <div>
-                    <Image
-                        src={"/lightbulb.svg"}
-                        alt={"light bulb icon"}
-                        width="30"
-                        height="30"
-                    />
+        <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
+            <div className="h-full">
+                <div className="flex justify-center mb-4">
+                    <h1 className="text-2xl mr-2">outfit builder</h1>
+                    <div>
+                        <Image
+                            src={"/lightbulb.svg"}
+                            alt={"light bulb icon"}
+                            width="30"
+                            height="30"
+                        />
+                    </div>
+                </div>
+
+                <ArticleFilters filterTypes={filterTypes} />
+
+                <div className="h-4/5 grid grid-cols-2 place-content-between">
+                    <OutfitElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} />
+                    <OutfitElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} />
+                    <OutfitElement defaultArticleType={ArticleCategoryEnum.OUTERWEAR} articlesMap={filteredArticlesMap} />
+                    <OutfitElement defaultArticleType={ArticleCategoryEnum.PANTS} articlesMap={filteredArticlesMap} />
+                    <OutfitElement defaultArticleType={ArticleCategoryEnum.ACCESSORIES} articlesMap={filteredArticlesMap} />
+                    <OutfitElement defaultArticleType={ArticleCategoryEnum.SHOES} articlesMap={filteredArticlesMap} />
                 </div>
             </div>
-
-            {/*<p>{refreshedArticlesMap[ArticleCategoryEnum.TOPS].length}</p>*/}
-
-            <div className="h-4/5 grid grid-cols-2">
-                <OutfitElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={articlesMap} />
-                <OutfitElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={articlesMap} />
-                <OutfitElement defaultArticleType={ArticleCategoryEnum.OUTERWEAR} articlesMap={articlesMap} />
-                <OutfitElement defaultArticleType={ArticleCategoryEnum.PANTS} articlesMap={articlesMap} />
-                <OutfitElement defaultArticleType={ArticleCategoryEnum.ACCESSORIES} articlesMap={articlesMap} />
-                <OutfitElement defaultArticleType={ArticleCategoryEnum.SHOES} articlesMap={articlesMap} />
-            </div>
-        </div>
+        </ArticleFilterContext.Provider>
     )
 }
 
