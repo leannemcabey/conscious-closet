@@ -1,10 +1,10 @@
 'use client'
 import * as React from "react";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import {ArticleCategoryEnum} from "@/types/enums/articleCategoryEnum";
-import {Article} from "@/types/article";
-import {batchUpdateGoogleUrls} from "@/app/googleService/client/batchUpdateGoogleUrls";
+import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
+import { Article } from "@/types/article";
+import { batchUpdateGoogleUrls } from "@/app/googleService/client/batchUpdateGoogleUrls";
 import Polaroid from "@/app/components/articles/Polaroid";
 import DropdownMenu from "@/app/components/capsuleCreator/DropdownMenu";
 import UndevelopedPolaroid from "@/app/components/articles/UndevelopedPolaroid";
@@ -36,9 +36,6 @@ const CapsuleElement = ({ defaultArticleType, articlesMap }: CapsuleElementProps
     }, [articlesMap, selectedCategory]);
 
     useEffect(() => {
-        console.log(`setting current ${selectedCategory} with ${refreshedArticlesOfSelectedCategory?.length} articles`)
-        console.log(`trying to use index ${index}`)
-        // console.log("getting current article" + defaultArticleType)
         if (refreshedArticlesOfSelectedCategory) {
             setCurrentArticle(refreshedArticlesOfSelectedCategory[index])
         }
@@ -59,8 +56,6 @@ const CapsuleElement = ({ defaultArticleType, articlesMap }: CapsuleElementProps
             setIndex(index + 1)
         }
     }
-
-    if (selectedCategory === ArticleCategoryEnum.TOPS) console.log(`current article: ${JSON.stringify(currentArticle)}`)
 
     return (
         <div className="flex flex-col m-1 flex-col-reverse justify-end">
