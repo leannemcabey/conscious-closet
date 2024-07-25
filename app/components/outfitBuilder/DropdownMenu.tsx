@@ -38,9 +38,15 @@ const DropdownMenu = ({ selectedCategory, setSelectedCategory }: DropdownMenuPro
     // add filters
 
     return (
-        <div className="flex flex-col w-[155px] self-center items-center flex-col-reverse">
+        <div className="flex flex-col w-[155px] self-center items-center">
+            <button onClick={() => setIsOpen(!isOpen)}
+                    className="flex w-full space-x-2 border border-neutral-400 rounded-md px-2 mb-1 justify-center">
+                <Image src={`/arrow-down-gray.svg`} width="12" height="12" alt="down arrow" className="self-center"/>
+                <p className="truncate text-neutral-500">{categorySlugToTitleMap[selectedCategory]}</p>
+            </button>
+
             {isOpen && (
-                <div ref={menuRef} className="absolute h-32 overflow-scroll mb-1 mx-2 bg-white rounded-md text-center">
+                <div ref={menuRef} className="absolute h-40 overflow-scroll mx-2 bg-white rounded-md text-center">
                     {Object.keys(ArticleCategoryEnum).map((category) => {
                         const selected = ArticleCategoryEnum[category] === selectedCategory
                         return (
@@ -55,11 +61,6 @@ const DropdownMenu = ({ selectedCategory, setSelectedCategory }: DropdownMenuPro
                     })}
                 </div>
             )}
-
-            <button onClick={() => setIsOpen(!isOpen)} className="flex w-full space-x-2 border border-neutral-400 rounded-md px-2 mb-1 justify-center">
-                <Image src={`/arrow-down-gray.svg`} width="12" height="12" alt="down arrow" className="self-center"/>
-                <p className="truncate text-neutral-500">{categorySlugToTitleMap[selectedCategory]}</p>
-            </button>
         </div>
     )
 }

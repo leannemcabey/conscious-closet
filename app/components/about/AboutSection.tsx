@@ -11,7 +11,7 @@ interface AboutSectionProps {
 const AboutSection = ({ sectionName, children }: AboutSectionProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    const arrow = isOpen ? "arrow-down-white" : "arrow-up-white";
+    const arrow = isOpen ? "arrow-up-white" : "arrow-down-white";
     const alt = isOpen ? "collapse" : "expand";
 
     return (
