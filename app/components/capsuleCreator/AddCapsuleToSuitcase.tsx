@@ -1,10 +1,8 @@
 import * as React from "react";
-import {useEffect, useState} from "react";
-import {Suitcase} from "@/types/suitcase";
-import {getSuitcases} from "@/app/server-actions/suitcase/getSuitcases";
-import {addOrRemoveArticleToSuitcases} from "@/app/server-actions/suitcase/addOrRemoveArticleToSuitcases";
-import addArticleToSuitcase from "@/app/components/suitcases/AddArticleToSuitcase";
-import {addArticlesToSuitcases} from "@/app/server-actions/suitcase/addArticlesToSuitcases";
+import { useEffect, useState } from "react";
+import { Suitcase } from "@/types/suitcase";
+import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
+import { addArticlesToSuitcases } from "@/app/server-actions/suitcase/addArticlesToSuitcases";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 import AddArticleToSuitcaseModal from "@/app/components/suitcases/AddArticleToSuitcaseModal";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
@@ -20,12 +18,11 @@ const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps)
     const [creatingSuitcase, setCreatingSuitcase] = useState<boolean>(false);
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
     const [unsavedSuitcaseSelections, setUnsavedSuitcaseSelections] = useState<string[]>();
-    // const [savedSuitcaseSelections, setSavedSuitcaseSelections] = useState<string[]>([]);
     const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
     const [fetchError, setFetchError] = useState<boolean>();
     const [updateError, setUpdateError] = useState<boolean>();
 
-    const fetchErrorMessage = "An error occurred when retrieving your suitcases. Please go back and try again."
+    const fetchErrorMessage = "An error occurred when retrieving your suitcases. Please try again."
     const updateErrorMessage = "An error occurred when adding this capsule to your suitcase(s). Please try again."
 
     useEffect(() => {
@@ -42,8 +39,6 @@ const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps)
     }
 
     const saveSelections = () => {
-        console.log(`selected articles: ${selectedArticleIds.length}`)
-        console.log(`unsaved suitcases: ${unsavedSuitcaseSelections?.length}`)
         if (unsavedSuitcaseSelections) {
             addArticlesToSuitcases(selectedArticleIds, unsavedSuitcaseSelections)
                 .then(() => {
@@ -52,8 +47,7 @@ const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps)
                     setShowConfirmation(true)
                 })
                 .then(() => setTimeout(() => setShowConfirmation(false), 2000))
-                .catch((error) => {
-                    console.log(`error: ${error}`)
+                .catch(() => {
                     setUpdateError(true)
                 })
         }

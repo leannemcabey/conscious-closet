@@ -17,10 +17,8 @@ const classNames = [
     "absolute",
     'w-3/4',
     "top-0",
-    // "right-0",
     "bg-white",
     "z-10",
-    // "duration-500",
     "h-full",
     "whitespace-nowrap",
     "drop-shadow-lg"

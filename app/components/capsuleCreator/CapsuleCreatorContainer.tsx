@@ -43,8 +43,6 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
     }, [unfilteredArticlesMap, filterSettings]);
 
     const updateSelectedArticles = (articleId: string | undefined, slot: number) => {
-        console.log(`updating slot ${slot} with ${articleId}`)
-
         const tempSelectedArticleIds = [ ...selectedArticleIds ];
         tempSelectedArticleIds[slot] = articleId;
         setSelectedArticleIds(tempSelectedArticleIds)
