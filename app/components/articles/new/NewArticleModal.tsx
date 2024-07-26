@@ -46,10 +46,12 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
             .then(() => setSubmitted(true))
             // The setTimeout is to give the celebration gif time to display before automatically closing the modal
             .then(() => setTimeout(() => setIsOpen(false), 1000))
-            .catch(() => setCreationError(true))
+            .catch(() => {
+                setCreationError(true)
+            })
     }
 
-    if (creationError) return <ErrorModal setIsOpen={setCreationError} errorMessage={errorMessage} />
+    if (creationError) return <ErrorModal setIsOpen={setIsOpen} errorMessage={errorMessage} />
 
     return (
         <Modal setIsOpen={setIsOpen}>
