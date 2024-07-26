@@ -24,6 +24,7 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM]
     };
 
+    const [selectedArticleIds, setSelectedArticleIds] = useState<string | undefined[]>([]);
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
     const [unfilteredArticlesMap, setUnfilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap)
     const [filteredArticlesMap, setFilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap);
@@ -39,6 +40,16 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
         setFilteredArticlesMap(tempFilteredArticlesMap)
     }, [unfilteredArticlesMap, filterSettings]);
+
+    const updateSelectedArticles = (articleId: string | undefined, slot: number) => {
+        console.log(`updating slot ${slot} with ${articleId}`)
+
+        const tempSelectedArticleIds = [ ...selectedArticleIds ];
+        tempSelectedArticleIds[slot] = articleId;
+        setSelectedArticleIds(tempSelectedArticleIds)
+    }
+
+    //ultimately before sending to suitcase api action, dedupe the list
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
@@ -57,13 +68,20 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
                 <ArticleFilters filterTypes={filterTypes} />
 
-                <div className="h-4/5 grid grid-cols-2 place-content-between">
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.OUTERWEAR} articlesMap={filteredArticlesMap} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.PANTS} articlesMap={filteredArticlesMap} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.ACCESSORIES} articlesMap={filteredArticlesMap} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.SHOES} articlesMap={filteredArticlesMap} />
+                <button
+                    className="rounded-md bg-white border border-theme-light-green w-full py-1 mb-2 mt-1 drop-shadow text-theme-green"
+                    onClick={() => console.log(selectedArticleIds.length)}
+                >
+                    + add capsule to a suitcase
+                </button>
+
+                <div className="h-3/5 grid grid-cols-2 place-content-between">
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={0} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={1} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={2} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={3} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.PANTS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={4} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.SKIRTS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={5} />
                 </div>
             </div>
         </ArticleFilterContext.Provider>
