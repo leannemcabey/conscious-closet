@@ -28,6 +28,7 @@ export const refreshGoogleProviderTokenIfNeeded = async () => {
             })
             .catch(() => {
                 if (attemptCounter > 1) {
+                    console.log('max attempts for refreshing token reached. should redirect to login')
                     return supabase.auth.signOut()
                         .then(() => redirect("/"))
                 } else {

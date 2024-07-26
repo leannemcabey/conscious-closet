@@ -9,6 +9,7 @@ import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilte
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import ArticleFilters, { FilterType } from "@/app/components/articles/filter/ArticleFilters";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
+import AddCapsuleToSuitcase from "@/app/components/capsuleCreator/AddCapsuleToSuitcase";
 
 interface CategoryArticlesMap {
     string: Article[]
@@ -24,7 +25,7 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM]
     };
 
-    const [selectedArticleIds, setSelectedArticleIds] = useState<string | undefined[]>([]);
+    const [selectedArticleIds, setSelectedArticleIds] = useState<(string | undefined)[]>([]);
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
     const [unfilteredArticlesMap, setUnfilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap)
     const [filteredArticlesMap, setFilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap);
@@ -49,8 +50,6 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
         setSelectedArticleIds(tempSelectedArticleIds)
     }
 
-    //ultimately before sending to suitcase api action, dedupe the list
-
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
             <div className="h-full">
@@ -68,12 +67,7 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
                 <ArticleFilters filterTypes={filterTypes} />
 
-                <button
-                    className="rounded-md bg-white border border-theme-light-green w-full py-1 mb-2 mt-1 drop-shadow text-theme-green"
-                    onClick={() => console.log(selectedArticleIds.length)}
-                >
-                    + add capsule to a suitcase
-                </button>
+                <AddCapsuleToSuitcase selectedArticleIds={selectedArticleIds}/>
 
                 <div className="h-3/5 grid grid-cols-2 place-content-between">
                     <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={0} />

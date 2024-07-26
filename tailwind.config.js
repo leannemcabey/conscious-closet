@@ -29,9 +29,27 @@ module.exports = {
             top: '15%'
           },
         },
+        'enter-from-right': {
+          from: {
+            left: '100%'
+          },
+          to: {
+            left: '25%'
+          }
+        },
+        'exit-to-right': {
+          from: {
+            left: '25%'
+          },
+          to: {
+            left: '100%'
+          }
+        }
       },
       animation: {
         'enter-from-bottom': 'enter-from-bottom .5s forwards',
+        'enter-from-right': 'enter-from-right .5s forwards',
+        'exit-to-right': 'exit-to-right .5s forwards'
       },
     }
   },

@@ -1,15 +1,13 @@
 'use client'
 import Modal from "@/app/components/modal/Modal";
 import SuitcaseOptions from "@/app/components/suitcases/SuitcaseOptions";
-import {Dispatch, SetStateAction, useRef} from "react";
-import { Article } from "@/types/article";
+import { Dispatch, SetStateAction } from "react";
 import { Suitcase } from "@/types/suitcase";
 import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
 
 interface AddArticleToSuitcaseModalProps {
     setIsSelectingSuitcase: Dispatch<SetStateAction<boolean>>;
     setCreatingSuitcase: Dispatch<SetStateAction<boolean>>;
-    article: Article;
     suitcases: Suitcase[];
     unsavedSuitcaseSelections: string[];
     setUnsavedSuitcaseSelections: Dispatch<SetStateAction<string[] | undefined>>
