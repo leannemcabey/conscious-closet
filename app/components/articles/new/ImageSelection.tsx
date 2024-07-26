@@ -37,14 +37,14 @@ export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
         <div className="flex flex-col items-center space-y-4">
             <Image src="/google-photos-icon.png" height="50" width="50" alt="Google Photos icon" />
 
-            <div className="flex justify-center h-[415px]">
+            <div className="flex justify-center">
                 {!googlePhotos &&
                     <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin mt-10" />
                 }
 
                 {googlePhotos && (
                     <div className="flex flex-col">
-                        <div className="h-[345px] grid grid-cols-4 gap-2">
+                        <div className="grid grid-cols-4 gap-1">
                             {googlePhotos!.map((photoData) =>
                                 <GalleryImage
                                     photoData={photoData}

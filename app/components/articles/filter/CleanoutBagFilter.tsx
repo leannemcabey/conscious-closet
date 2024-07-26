@@ -10,12 +10,12 @@ const CleanoutBagFilter = ({ showCleanoutBagItems, setShowCleanoutBagItems }: Cl
     const styling = (active: boolean) => active ? "bg-white" : ""
 
     return (
-        <div
+        <button
             onClick={() => setShowCleanoutBagItems(!showCleanoutBagItems)}
-            className={`${styling(showCleanoutBagItems)} px-2 py-1 rounded-full text-sm border border-theme-blue text-theme-blue`}
+            className={`${styling(showCleanoutBagItems)} px-1 rounded-full text-xs border border-theme-blue text-theme-blue`}
         >
-            <p className="mt-0.5">show stuff in cleanout bag</p>
-        </div>
+            show stuff in cleanout bag
+        </button>
     )
 }
 

@@ -25,7 +25,7 @@ const WeatherFilter = ({ selectedWeatherCategories, setSelectedWeatherCategories
     const weatherCategoryIsSelected = (category) => selectedWeatherCategories.includes(category)
 
     return (
-        <div className="w-1/3 flex place-content-between space-x-2">
+        <div className="flex place-content-between space-x-1">
             <div
                 onClick={() => updateWeatherCategories(WeatherCategoryEnum.WARM)}
                 className="border border-theme-blue rounded-md"

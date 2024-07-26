@@ -9,10 +9,10 @@ interface GalleryImageProps {
 }
 
 const GalleryImage = ({ photoData, handleSelection }: GalleryImageProps) => {
-    const { baseUrl, imageId } = photoData
+    const { baseUrl } = photoData
 
     return (
-        <div className="overflow-hidden h-20" onClick={() => handleSelection(photoData)}>
+        <div className="overflow-hidden" onClick={() => handleSelection(photoData)}>
             <Image
                 loader={googlePhotosPathLoader}
                 src={baseUrl}
