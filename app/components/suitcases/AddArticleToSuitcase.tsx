@@ -59,11 +59,6 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
         }
     }
 
-    // const closeCreatingOpenSelectingModal = () => {
-    //     setCreatingSuitcase(false)
-    //     setSelectingSuitcase(true)
-    // }
-
     return (
         <>
             <ArticleActionButton
@@ -75,11 +70,10 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
             {selectingSuitcase && fetchError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={fetchErrorMessage} />}
             {selectingSuitcase && updateError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={updateErrorMessage} />}
 
-            {selectingSuitcase && !fetchError &&
+            {selectingSuitcase && !fetchError && !updateError &&
                 <AddArticleToSuitcaseModal
                     setIsSelectingSuitcase={setSelectingSuitcase}
                     setCreatingSuitcase={setCreatingSuitcase}
-                    article={article}
                     suitcases={sortBySelected(suitcases) || []}
                     unsavedSuitcaseSelections={unsavedSuitcaseSelections || []}
                     setUnsavedSuitcaseSelections={setUnsavedSuitcaseSelections}

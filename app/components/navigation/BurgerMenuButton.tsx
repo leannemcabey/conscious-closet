@@ -2,14 +2,13 @@ import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 
 interface BergerMenuButtonProps {
-    menuVisible: boolean
-    setMenuVisible: Dispatch<SetStateAction<boolean>>
+    transitionMenu: () => void
 }
 
-export const BurgerMenuButton = ({ menuVisible, setMenuVisible }) => {
+export const BurgerMenuButton = ({ transitionMenu }) => {
     return (
         <Image
-            onClick={() => setMenuVisible(!menuVisible)}
+            onClick={() => transitionMenu()}
             src="/burger-menu-icon.svg"
             height="24"
             width="24"

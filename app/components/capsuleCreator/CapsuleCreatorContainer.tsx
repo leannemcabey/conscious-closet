@@ -9,6 +9,7 @@ import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilte
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import ArticleFilters, { FilterType } from "@/app/components/articles/filter/ArticleFilters";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
+import AddCapsuleToSuitcase from "@/app/components/capsuleCreator/AddCapsuleToSuitcase";
 
 interface CategoryArticlesMap {
     string: Article[]
@@ -24,6 +25,7 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM]
     };
 
+    const [selectedArticleIds, setSelectedArticleIds] = useState<(string | undefined)[]>([]);
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
     const [unfilteredArticlesMap, setUnfilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap)
     const [filteredArticlesMap, setFilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap);
@@ -39,6 +41,12 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
         setFilteredArticlesMap(tempFilteredArticlesMap)
     }, [unfilteredArticlesMap, filterSettings]);
+
+    const updateSelectedArticles = (articleId: string | undefined, slot: number) => {
+        const tempSelectedArticleIds = [ ...selectedArticleIds ];
+        tempSelectedArticleIds[slot] = articleId;
+        setSelectedArticleIds(tempSelectedArticleIds)
+    }
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
@@ -57,13 +65,15 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
                 <ArticleFilters filterTypes={filterTypes} />
 
-                <div className="h-4/5 grid grid-cols-2 place-content-between">
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.OUTERWEAR} articlesMap={filteredArticlesMap} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.PANTS} articlesMap={filteredArticlesMap} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.ACCESSORIES} articlesMap={filteredArticlesMap} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.SHOES} articlesMap={filteredArticlesMap} />
+                <AddCapsuleToSuitcase selectedArticleIds={selectedArticleIds}/>
+
+                <div className="h-3/5 grid grid-cols-2 place-content-between">
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={0} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={1} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={2} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={3} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.PANTS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={4} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.SKIRTS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={5} />
                 </div>
             </div>
         </ArticleFilterContext.Provider>

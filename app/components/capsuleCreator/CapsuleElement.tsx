@@ -1,6 +1,6 @@
 'use client'
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Image from "next/image";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { Article } from "@/types/article";
@@ -10,11 +10,13 @@ import DropdownMenu from "@/app/components/capsuleCreator/DropdownMenu";
 import UndevelopedPolaroid from "@/app/components/articles/UndevelopedPolaroid";
 
 interface CapsuleElementProps {
-    defaultArticleType: ArticleCategoryEnum,
-    articlesMap: { string: Article[] }
+    defaultArticleType: ArticleCategoryEnum;
+    articlesMap: { string: Article[] };
+    updateSelectedArticles: (articleId: string, slot: number) => void;
+    slot: number;
 }
 
-const CapsuleElement = ({ defaultArticleType, articlesMap }: CapsuleElementProps) => {
+const CapsuleElement = ({ defaultArticleType, articlesMap, updateSelectedArticles, slot }: CapsuleElementProps) => {
     const [index, setIndex] = useState<number>(0);
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum>(defaultArticleType);
     const [refreshedArticlesOfSelectedCategory, setRefreshedArticlesOfSelectedCategory] = useState<Article[]>();
@@ -26,7 +28,6 @@ const CapsuleElement = ({ defaultArticleType, articlesMap }: CapsuleElementProps
         if (articles.length > 0) {
             batchUpdateGoogleUrls(articles)
                 .then((articles) => {
-                    console.log(`${selectedCategory}: ${articles.length}`)
                     setRefreshedArticlesOfSelectedCategory(articles);
                     setIndex(0);
                 })
@@ -38,6 +39,7 @@ const CapsuleElement = ({ defaultArticleType, articlesMap }: CapsuleElementProps
     useEffect(() => {
         if (refreshedArticlesOfSelectedCategory) {
             setCurrentArticle(refreshedArticlesOfSelectedCategory[index])
+            updateSelectedArticles(refreshedArticlesOfSelectedCategory[index]?.id, slot)
         }
     }, [articlesMap, refreshedArticlesOfSelectedCategory, index]);
 

@@ -4,8 +4,6 @@ import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
 import { Suitcase } from "@/types/suitcase";
 import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
-import { toSuitcase } from "@/utils/typeConversions/toSuitcase";
-import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
 import Link from "next/link";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import * as React from "react";
