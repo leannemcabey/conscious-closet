@@ -9,10 +9,12 @@ export default function ArticleCategoryCard({ title }) {
     const pathSlug: ArticleCategoryEnum = categoryTitleToPathSlug(title);
 
     return (
-        <Link href={`/articles/category/${pathSlug}`}>
-            <div className="flex items-center justify-center w-80 h-20 text-2xl text-neutral-800 rounded-lg bg-white drop-shadow">
-                {title}
-            </div>
-        </Link>
+        <div className="flex flex-col justify-center w-11/12 h-20 rounded-lg bg-white drop-shadow">
+            <Link href={`/articles/category/${pathSlug}`}>
+                <div className="text-center text-2xl text-neutral-800">
+                    {title}
+                </div>
+            </Link>
+        </div>
     )
 };
