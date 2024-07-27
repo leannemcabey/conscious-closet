@@ -52,7 +52,7 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
             <div className="h-full">
                 <div className="flex justify-center mb-4">
-                    <h1 className="text-2xl mr-2">capsule creator</h1>
+                    <h1 className="text-lg mr-2">capsule creator</h1>
                     <div>
                         <Image
                             src={"/lightbulb.svg"}

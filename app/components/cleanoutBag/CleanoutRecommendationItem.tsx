@@ -14,9 +14,9 @@ const CleanoutRecommendationItem = ({ recommendation }: CleanoutRecommendationIt
     const alt = isOpen ? "collapse" : "expand";
 
     return (
-        <div className="ml-2 py-1">
+        <div className="ml-2 py-1 text-sm">
             <div className="flex" onClick={() => setIsOpen(!isOpen)}>
-                <Image src={`/${arrow}.svg`} height="14" width="14" alt={alt} className="mr-2"/>
+                <Image src={`/${arrow}.svg`} height="10" width="10" alt={alt} className="mr-2"/>
                 <h3>{recommendation.name}</h3>
             </div>
 
@@ -25,7 +25,7 @@ const CleanoutRecommendationItem = ({ recommendation }: CleanoutRecommendationIt
                     {recommendation.url && (
                             <a href={recommendation.url} target="_blank">
                                 <button className="flex items-center border border-theme-blue rounded-full px-2 w-max" >
-                                    <Image src={`/external-link-icon.svg`} height="14" width="14" alt={arrow} className="mr-2"/>
+                                    <Image src={`/external-link-icon.svg`} height="10" width="10" alt={arrow} className="mr-2"/>
                                     <p>{recommendation.name}</p>
                                 </button>
                             </a>

@@ -21,13 +21,13 @@ export default async function NeedsTailoring() {
                 <div className="mt-4">
                     <div className="flex flex-col items-center">
                         <div className="flex">
-                            <h1 className="text-2xl mb-2 mr-2">needs tailoring</h1>
+                            <h1 className="text-lg mb-2 mr-2">needs tailoring</h1>
                             <div>
                                 <Image
                                     src={"/needle.svg"}
                                     alt={"needle icon"}
-                                    width="30"
-                                    height="30"
+                                    width="25"
+                                    height="25"
                                 />
                             </div>
                         </div>

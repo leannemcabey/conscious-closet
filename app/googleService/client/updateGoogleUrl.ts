@@ -23,7 +23,7 @@ export const updateGoogleUrl = (article: Article): Promise<Article> => {
                         return { ...article, image: { ...googleMetaData } }
                     })
                     .catch((error) => {
-                        if (attemptCounter > 1) return { ...article, image: { imageId: article.image.imageId, baseUrl: "" }}
+                        if (attemptCounter > 1) throw error;
                         updateGoogleUrl(article)
                     })
             }

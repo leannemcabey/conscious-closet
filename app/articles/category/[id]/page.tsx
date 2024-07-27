@@ -23,7 +23,7 @@ export default async function ArticleCategoryPage({ params }: { params: { id: st
                 {articles && (
                     <>
                         <div className="flex justify-center">
-                            <h1 className="text-2xl mb-4 mr-2">{categorySlugToTitleMap[params.id]}</h1>
+                            <h1 className="text-lg mb-4 mr-2">{categorySlugToTitleMap[params.id]}</h1>
                             <div>
                                 <Image
                                     src={"/hanger.svg"}

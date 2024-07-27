@@ -23,7 +23,7 @@ const ErrorModal = ({ setIsOpen, errorMessage }: ErrorModalProps) => {
                     />
                 </div>
                 <p className="text-2xl mb-2">Oops!</p>
-                <p className="text-l">
+                <p className="text-lg">
                     {errorMessage}
                 </p>
                 <p className="text-xs text-neutral-400 my-2">

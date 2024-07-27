@@ -19,7 +19,7 @@ export default async function WeatherPage({ params }: { params: { id: string } }
 
             {articles && (
                 <div className="flex flex-col justify-center mt-4 text-2xl">
-                    <Image src={`/${params.id}-weather-icon.svg`} height="75" width="75" alt={`${params.id} weather icon`} className="self-center mb-4" />
+                    <Image src={`/${params.id}-weather-icon.svg`} height="60" width="60" alt={`${params.id} weather icon`} className="self-center mb-4" />
 
                     <WeatherPageContainer articles={articles} />
                 </div>

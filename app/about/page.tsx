@@ -10,7 +10,7 @@ export default async function About() {
                 <BackButton/>
 
                 <div className="h-full flex flex-col">
-                    <h1 className="text-2xl mb-8 mr-2">about us</h1>
+                    <h1 className="text-lg mb-8 mr-2">about us</h1>
                     <AboutPageContainer />
                 </div>
             </div>

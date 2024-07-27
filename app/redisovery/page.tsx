@@ -20,13 +20,13 @@ export default async function Rediscovery() {
             {articles && (
                 <div className="flex flex-col items-center mt-2.5">
                     <div className="flex justify-center">
-                        <h1 className="text-2xl mb-2.5 mr-2">rediscovery</h1>
+                        <h1 className="text-lg mb-2.5 mr-2">rediscovery</h1>
                         <div>
                             <Image
                                 src={"/lightbulb.svg"}
                                 alt={"light bulb icon"}
-                                width="30"
-                                height="30"
+                                width="25"
+                                height="25"
                             />
                         </div>
                     </div>

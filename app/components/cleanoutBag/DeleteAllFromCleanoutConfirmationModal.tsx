@@ -19,7 +19,7 @@ const DeleteAllFromCleanoutConfirmationModal = ({ setIsDeleting, handleSubmit }:
                 height="125"
                 className="self-center"
             />
-            <p className="text-center text-l mt-1 mb-2">
+            <p className="text-center text-lg mt-1 mb-2">
                 Are you sure?
             </p>
             <p className="text-center text-sm mb-8">

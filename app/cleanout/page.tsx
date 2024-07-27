@@ -20,13 +20,13 @@ export default async function CleanoutBag() {
             {articles && (
                 <div className="mt-2.5">
                     <div className="flex justify-center">
-                        <h1 className="text-2xl mb-4 mr-2">cleanout bag</h1>
+                        <h1 className="text-lg mb-4 mr-2">cleanout bag</h1>
                         <div>
                             <Image
                                 src={"/broom.svg"}
                                 alt={"broom icon"}
-                                width="30"
-                                height="30"
+                                width="25"
+                                height="25"
                             />
                         </div>
                     </div>

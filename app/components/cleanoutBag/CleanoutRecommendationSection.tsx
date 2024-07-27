@@ -25,12 +25,12 @@ const CleanoutRecommendationSection = ({ sectionName, sectionRecs }: CleanoutRec
                 <div className="flex border border-white rounded-full items-center p-1 mr-2">
                     <Image
                         src={`/${arrow}.svg`}
-                        height="14"
-                        width="14"
+                        height="10"
+                        width="10"
                         alt={alt}
                     />
                 </div>
-                <h2>{sectionName}</h2>
+                <h2 className="text-sm">{sectionName}</h2>
             </div>
 
                 {isOpen && sectionRecs.map((rec) => {

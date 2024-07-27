@@ -8,7 +8,7 @@ export default async function CleanoutBag() {
     return (
         <Layout>
             <BackButton />
-            <h1 className="text-center text-2xl mt-4 mb-12 mr-2">laundry symbol cheat sheet</h1>
+            <h1 className="text-center text-lg mt-4 mb-12 mr-2">laundry symbol cheat sheet</h1>
             <LaundrySymbolsContainer />
         </Layout>
     )

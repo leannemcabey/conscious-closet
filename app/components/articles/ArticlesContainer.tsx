@@ -24,7 +24,10 @@ const ArticlesContainer = ({ articles, headerSize }: ArticlesContainerProps) => 
     useEffect(() => {
         if (articles.length > 0) {
             batchUpdateGoogleUrls(articles)
-                .then((articles) => setRefreshedArticles(articles))
+                .then((articles) => {
+                    setRefreshedArticles(articles)
+                    setError(false)
+                })
                 .catch(() => {
                     setStopSpinner(true)
                     setError(true)
