@@ -54,13 +54,21 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
             <div className="flex flex-col">
-                <button
-                    disabled={deleteDisabled}
-                    onClick={() => setIsDeleting(true)}
-                    className="rounded-lg bg-white text-neutral-700 drop-shadow self-center p-2 mb-6"
-                >
-                    delete all
-                </button>
+                <div className="flex place-content-between mb-4">
+                    <Link href="/cleanout/recommendations">
+                        <button className="w-max bg-white text-neutral-700 text-sm p-2 rounded-lg drop-shadow">
+                            recycling | donating | thrifting
+                        </button>
+                    </Link>
+
+                    <button
+                        disabled={deleteDisabled}
+                        onClick={() => setIsDeleting(true)}
+                        className="rounded-lg bg-white text-neutral-700 text-sm drop-shadow p-2"
+                    >
+                        delete all
+                    </button>
+                </div>
 
                 <ArticleFilters filterTypes={filterTypes} />
 
@@ -74,12 +82,6 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                         There are no articles in your cleanout bag that match the applied filters.
                     </p>
                 }
-
-                <Link href="/cleanout/recommendations">
-                    <button className="w-11/12 bottom-8 fixed bg-theme-green text-white text-lg p-2 rounded-full drop-shadow">
-                        recycling | donating | thrifting
-                    </button>
-                </Link>
             </div>
         </ArticleFilterContext.Provider>
     )
