@@ -66,13 +66,13 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
         <Modal setIsOpen={setSelectingCategories}>
             <div className="flex flex-start place-content-between">
                 <button
-                    className="border border-theme-blue text-theme-blue self-end px-2 py-1 rounded-md drop-shadow w-28"
+                    className="border border-theme-blue text-sm text-theme-blue py-1 mx-1 rounded-md drop-shadow w-28"
                     onClick={() => selectOrDeselectAll()}
                 >
                     {allAreSelected ? "deselect all" : "select all"}
                 </button>
                 <button onClick={() => saveSelections()}
-                        className="bg-theme-blue text-white self-end px-2 py-1 rounded-md drop-shadow w-28"
+                        className="bg-theme-blue text-sm text-white py-1 mx-1 rounded-md drop-shadow w-28"
                 >
                     save
                 </button>
