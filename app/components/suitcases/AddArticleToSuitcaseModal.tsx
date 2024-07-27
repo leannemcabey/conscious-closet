@@ -40,7 +40,7 @@ const AddArticleToSuitcaseModal = ({
                 Save
             </button>
 
-            <p className="text-xl mb-4 font-semibold">Select suitcase(s):</p>
+            <p className="text-xl mt-4 mb-4">Select suitcase(s):</p>
 
             <NewSuitcaseButton handleClick={() => openNewSuitcaseModal()}/>
 

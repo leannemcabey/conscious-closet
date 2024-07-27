@@ -13,8 +13,8 @@ const ArticleActionToggle = ({ iconFile, iconAlt, isActive, clickHandler }: Arti
     const toggleStyling = isActive ? "bg-theme-mid-green" : "bg-white";
 
     return (
-        <div className={`flex ${position} ${toggleStyling} rounded-full w-20 max-w-1/3 mx-1 drop-shadow`}>
-            <button className={`bg-white border border-theme-mid-green rounded-full p-2 drop-shadow`}>
+        <div className={`flex max-w-[80px] ${position} ${toggleStyling} rounded-full mx-1 drop-shadow`}>
+            <button className={`w-[60%] bg-white border border-theme-mid-green rounded-full p-2 drop-shadow`}>
                 <Image
                     src={iconFile}
                     alt={iconAlt}

@@ -38,7 +38,7 @@ const SuitcaseOptions = ({ suitcases, selectedSuitcases, setSelectedSuitcases }:
                     className={suitcaseIsSelected(suitcase.id) ? "" : "hidden"}
                 />
             </div>
-            <span>{suitcase.name}</span>
+            <span className="truncate">{suitcase.name}</span>
         </div>
     )
 
