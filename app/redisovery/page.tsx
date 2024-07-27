@@ -18,7 +18,7 @@ export default async function Rediscovery() {
             {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
             {articles && (
-                <div className="mt-2.5">
+                <div className="flex flex-col items-center mt-2.5">
                     <div className="flex justify-center">
                         <h1 className="text-2xl mb-2.5 mr-2">rediscovery</h1>
                         <div>
@@ -31,15 +31,10 @@ export default async function Rediscovery() {
                         </div>
                     </div>
 
-                    <div className="mt-2 mb-6 text-center">
-                        <p className="text-xl mb-2 text-theme-blue">
-                            Rediscover your forgotten clothes!
-                        </p>
-                        <p>
-                            We noticed you haven't worn these items in the last 6 months.
-                            By rediscovering what you already own, you'll feel less compelled to purchase more.
-                        </p>
-                    </div>
+                    <p className="mt-1 mb-6 text-center text-sm text-neutral-400 max-w-[500px]">
+                        We noticed you haven't worn these items in the last 6 months.
+                        By rediscovering what you already own, you'll feel less compelled to purchase more.
+                    </p>
 
                     <RediscoveryContainer articles={articles}/>
                 </div>
