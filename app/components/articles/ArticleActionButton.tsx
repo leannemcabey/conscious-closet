@@ -9,14 +9,14 @@ interface ArticleActionButtonProps {
 
 const ArticleActionButton = ({ iconFile, iconAlt, clickHandler }: ArticleActionButtonProps) => {
     return (
-        <div className="h-12 w-12 w-max bg-white border border-theme-mid-green rounded-full p-2 drop-shadow">
+        <button className="mx-1 bg-white border border-theme-mid-green rounded-full p-2 drop-shadow">
             <Image
                 src={iconFile}
                 alt={iconAlt}
                 width="30" height="30"
                 onClick={() => clickHandler()}
             />
-        </div>
+        </button>
     )
 }
 

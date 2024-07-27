@@ -11,9 +11,9 @@ interface ArticlePageContainerProps {
 
 const ArticlePageContainer = ({ article }: ArticlePageContainerProps) => {
     return (
-        <div className="flex flex-col items-center mt-12">
+        <div className="h-full flex flex-col items-center mt-[10%] space-y-[3%]">
             <ArticleImage article={article}/>
-            <div className="flex justify-center space-x-8 mt-16">
+            <div className="flex w-[90%] justify-between">
                 <AddArticleToSuitcase article={article}/>
                 <AddOrRemoveFromTailoring article={article}/>
                 <AddOrRemoveFromCleanoutBag article={article}/>

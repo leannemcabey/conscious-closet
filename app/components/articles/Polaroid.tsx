@@ -19,7 +19,7 @@ const Polaroid = ({ imageUrl, size, children }: PolaroidProps) => {
         },
         medium: {
             outerDivWidth: "w-48",
-            innerDivMargin: "mt-2 mb-10",
+            innerDivMargin: "mt-[7%] mb-10",
             imageSize: {
                 width: 175,
                 height: 225
@@ -27,7 +27,7 @@ const Polaroid = ({ imageUrl, size, children }: PolaroidProps) => {
         },
         large: {
             outerDivWidth: "w-96",
-            innerDivMargin: "mt-4 mb-4",
+            innerDivMargin: "mt-[7%] mb-4",
             imageSize: {
                 width: 350,
                 height: 465
@@ -49,7 +49,7 @@ const Polaroid = ({ imageUrl, size, children }: PolaroidProps) => {
             </div>
 
             {children && (
-                <div className="w-full flex mb-4 space-x-12 justify-center">
+                <div className="w-[90%] flex mb-4 place-content-between">
                     {children}
                 </div>
             )}
