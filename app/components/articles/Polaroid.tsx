@@ -10,7 +10,6 @@ interface PolaroidProps {
 const Polaroid = ({ imageUrl, size, children }: PolaroidProps) => {
     const styling = {
         small: {
-            outerDivWidth: "w-28",
             innerDivMargin: "mt-[7%] mb-7",
             imageSize: {
                 width: 100,
@@ -18,16 +17,14 @@ const Polaroid = ({ imageUrl, size, children }: PolaroidProps) => {
             }
         },
         medium: {
-            outerDivWidth: "w-48",
-            innerDivMargin: "mt-2 mb-10",
+            innerDivMargin: "mt-[7%] mb-10",
             imageSize: {
                 width: 175,
                 height: 225
             }
         },
         large: {
-            outerDivWidth: "w-96",
-            innerDivMargin: "mt-4 mb-4",
+            innerDivMargin: "mt-[6%] mb-[5%]",
             imageSize: {
                 width: 350,
                 height: 465
@@ -36,20 +33,20 @@ const Polaroid = ({ imageUrl, size, children }: PolaroidProps) => {
     }
 
     return (
-        <div className={`flex flex-col items-center bg-white w-full drop-shadow-lg`}>
-            <div className={`${styling[size].innerDivMargin} w-[88%] bg-white`}>
+        <div className={`flex flex-col items-center bg-white md:h-full md:w-full drop-shadow-lg`}>
+            <div className={`${styling[size].innerDivMargin} w-[88%] md:h-full bg-white`}>
                 <Image
                     loader={googlePhotosPathLoader}
                     src={imageUrl}
                     width={styling[size].imageSize.width}
                     height={styling[size].imageSize.height}
                     alt="article image"
-                    className="border border-neutral-200"
+                    className="border border-neutral-200 md:h-[93%] md:w-full"
                 />
             </div>
 
             {children && (
-                <div className="w-full flex mb-4 space-x-12 justify-center">
+                <div className="w-[90%] flex mb-4 place-content-between">
                     {children}
                 </div>
             )}

@@ -11,13 +11,27 @@ interface ArticlePageContainerProps {
 
 const ArticlePageContainer = ({ article }: ArticlePageContainerProps) => {
     return (
-        <div className="flex flex-col items-center mt-12">
-            <ArticleImage article={article}/>
-            <div className="flex justify-center space-x-8 mt-16">
-                <AddArticleToSuitcase article={article}/>
-                <AddOrRemoveFromTailoring article={article}/>
-                <AddOrRemoveFromCleanoutBag article={article}/>
-                <DeleteArticle article={article}/>
+        <div className="h-full flex flex-col items-center mt-[10%] space-y-[3%]">
+            <div className="h-[80%]">
+                <ArticleImage article={article}/>
+            </div>
+
+            <div className="flex w-[90%] max-w-[350px] justify-between">
+                <div className="basis-[15%]">
+                    <AddArticleToSuitcase article={article}/>
+                </div>
+
+                <div className="basis-[28%]">
+                    <AddOrRemoveFromTailoring article={article}/>
+                </div>
+
+                <div className="basis-[28%]">
+                    <AddOrRemoveFromCleanoutBag article={article}/>
+                </div>
+
+                <div className="basis-[15%]">
+                    <DeleteArticle article={article}/>
+                </div>
             </div>
         </div>
     )

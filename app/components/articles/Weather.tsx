@@ -14,7 +14,7 @@ export const Weather = ({ isSelected, iconPath, weatherCategory, size }: Weather
 
     return (
         <div className={`flex justify-center p-1 rounded-md ${isSelected && bgColor} drop-shadow`}>
-            <Image src={iconPath} height={imageSize} width={imageSize} alt={`${weatherCategory} weather icon`} className="max-w-10"/>
+            <Image src={iconPath} height={imageSize} width={imageSize} alt={`${weatherCategory} weather icon`} className="max-w-full"/>
         </div>
     )
 }

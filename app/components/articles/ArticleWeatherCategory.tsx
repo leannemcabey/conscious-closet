@@ -6,11 +6,11 @@ import { Weather } from "@/app/components/articles/Weather";
 import { updateArticleWeatherCategory } from "@/app/server-actions/article/updateArticleWeatherCategory";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 
-interface ArticleWeatherCategory {
+interface ArticleWeatherCategoryProps {
     article: Article;
 }
 
-const ArticleWeatherCategory = ({ article }: ArticleWeatherCategory) => {
+const ArticleWeatherCategory = ({ article }: ArticleWeatherCategoryProps) => {
     const [weatherCategory, setWeatherCategory] = useState<WeatherCategoryEnum>(article.weatherCategory);
     const [error, setError] = useState<boolean>();
 
@@ -26,7 +26,7 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategory) => {
 
     return (
         <>
-            <div className="flex self-center space-x-2">
+            <div className="flex self-center space-x-1 max-w-[50%]">
                     <div onClick={() => handleClick(WeatherCategoryEnum.WARM)}>
                         <Weather
                             weatherCategory={WeatherCategoryEnum.WARM}

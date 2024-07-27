@@ -20,13 +20,13 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
     }, []);
 
     if (!refreshedArticle) return (
-        <div className="flex justify-center h-[583px]">
+        <div className="flex justify-center h-4/5">
             <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin" />
         </div>
     )
 
     if (refreshedArticle) return (
-        <div className="h-[583px]">
+        <div className="h-4/5">
             <Polaroid imageUrl={refreshedArticle.image.baseUrl} size="large">
                 <LastWorn article={refreshedArticle}/>
                 <ArticleWeatherCategory article={refreshedArticle} />
