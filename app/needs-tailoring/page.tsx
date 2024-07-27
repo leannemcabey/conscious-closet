@@ -19,22 +19,21 @@ export default async function NeedsTailoring() {
 
             {articles && (
                 <div className="mt-4">
-                    <div className="flex justify-center">
-                        <h1 className="text-2xl mb-4 mr-2">needs tailoring</h1>
-                        <div>
-                            <Image
-                                src={"/needle.svg"}
-                                alt={"needle icon"}
-                                width="30"
-                                height="30"
-                            />
+                    <div className="flex flex-col items-center">
+                        <div className="flex">
+                            <h1 className="text-2xl mb-2 mr-2">needs tailoring</h1>
+                            <div>
+                                <Image
+                                    src={"/needle.svg"}
+                                    alt={"needle icon"}
+                                    width="30"
+                                    height="30"
+                                />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="mt-1 mb-6 text-center">
-                        <p>
-                            Oftentimes the reason we don't wear certain clothes is simply because they don't fit us right.
-                            Tailoring is a great way to give new life to an item and avoid creating waste!
+                        <p className="mt-1 mb-6 text-center max-w-[300px] text-neutral-400 text-sm">
+                            ⓘ Tailoring is a great way to give new life to an item and avoid creating waste
                         </p>
                     </div>
 
