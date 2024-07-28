@@ -18,7 +18,7 @@ export default async function NeedsTailoring() {
             {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
             {articles && (
-                <div className="mt-4">
+                <div className="mt-4 h-[93%]">
                     <div className="flex flex-col items-center">
                         <div className="flex">
                             <h1 className="text-lg mb-2 mr-2">needs tailoring</h1>
@@ -33,7 +33,7 @@ export default async function NeedsTailoring() {
                         </div>
 
                         <p className="mt-1 mb-6 text-center max-w-[300px] text-neutral-400 text-sm">
-                            ⓘ Tailoring is a great way to give new life to an item and avoid creating waste
+                            Tailoring is a great way to give new life to an item and avoid creating waste
                         </p>
                     </div>
 

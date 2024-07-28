@@ -19,6 +19,6 @@ export async function deleteArticle(article: Article) {
 
     revalidatePath(`articles/${id}`);
     revalidatePath(`/articles/category/${articleCategory}`);
-    revalidatePath(`/articles/category/${article.weatherCategory}`);
+    revalidatePath(`/articles/weather/${article.weatherCategory}`);
     revalidatePath(`/cleanout-bag`);
 }

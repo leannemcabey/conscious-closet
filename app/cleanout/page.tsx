@@ -18,7 +18,7 @@ export default async function CleanoutBag() {
             {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
             {articles && (
-                <div className="mt-2.5">
+                <div className="h-[95%] mt-2.5">
                     <div className="flex justify-center">
                         <h1 className="text-lg mb-4 mr-2">cleanout bag</h1>
                         <div>

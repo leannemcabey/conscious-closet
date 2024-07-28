@@ -94,8 +94,8 @@ export const SlideOutMenu = ({ menuVisible, setMenuVisible }: SlideOutMenuProps)
                                   label="suitcases"/>
                         <MenuItem linkTo="/needs-tailoring" imageSrc="/needle.svg" imageAltText="needle icon"
                                   label="needs tailoring"/>
-                        <MenuItem linkTo="/redisovery" imageSrc="/magnifying-glass.svg"
-                                  imageAltText="magnifying glass icon" label="redisovery"/>
+                        <MenuItem linkTo="/rediscovery" imageSrc="/magnifying-glass.svg"
+                                  imageAltText="magnifying glass icon" label="rediscovery"/>
                         <MenuItem linkTo="/laundry-symbols" imageSrc="/wash-with-water.svg" imageAltText="laundry icon"
                                   label="laundry symbols"/>
                         <MenuItem linkTo="/cleanout" imageSrc="/broom.svg" imageAltText="broom icon"

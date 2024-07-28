@@ -9,16 +9,14 @@ import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface ArticlesContainerProps {
     articles: Article[];
-    headerSize: "small" | "large"
 }
 
-const ArticlesContainer = ({ articles, headerSize }: ArticlesContainerProps) => {
+const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
     const [refreshedArticles, setRefreshedArticles] = useState<Article[]>();
     const [error, setError] = useState<boolean>();
     // The `stopSpinner` state value is used so that when the error modal is closed, the loading spinner stops showing as well
     const [stopSpinner, setStopSpinner] = useState<boolean>();
 
-    const height = headerSize === "small" ? "h-2/3 md:4/5" : "h-3/5 md:h-3/4";
     const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
 
     useEffect(() => {
@@ -45,27 +43,25 @@ const ArticlesContainer = ({ articles, headerSize }: ArticlesContainerProps) => 
     )
 
     if (refreshedArticles) return (
-        <div className="h-screen">
-            <div className={`${height} overflow-scroll pb-20`}>
-                <div className="grid grid-cols-3 md:grid-cols-6 gap-2 p-2 justify-items-center">
-                    {/*
-                        Checking articles.length is a workaround to handle when all articles in the cleanout bag have been
-                        deleted. In that scenario, `useEffect` doesn't rerun and therefore `refreshedArticles` becomes stale
-                        (ironic). However, the `articles` prop is fresh, because it is a state value in its parent component
-                        that gets updated when the articles are deleted. So we can use this to check if there's anything to
-                        render here.
-                    */}
-                    {articles.length > 0 && refreshedArticles?.map((article) => {
-                        // the baseUrl will be an empty string when the image has been deleted from the user's Google Photos
-                        if (article.image.baseUrl !== "") {
-                            return (
-                                <Link href={`/articles/${article.id}`} key={article.id}>
-                                    <Polaroid imageUrl={article.image.baseUrl} size="small" />
-                                </Link>
-                            )
-                        }
-                    })}
-                </div>
+        <div className="h-full overflow-scroll">
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-2 p-2 justify-items-center">
+                {/*
+                    Checking articles.length is a workaround to handle when all articles in the cleanout bag have been
+                    deleted. In that scenario, `useEffect` doesn't rerun and therefore `refreshedArticles` becomes stale
+                    (ironic). However, the `articles` prop is fresh, because it is a state value in its parent component
+                    that gets updated when the articles are deleted. So we can use this to check if there's anything to
+                    render here.
+                */}
+                {articles.length > 0 && refreshedArticles?.map((article) => {
+                    // the baseUrl will be an empty string when the image has been deleted from the user's Google Photos
+                    if (article.image.baseUrl !== "") {
+                        return (
+                            <Link href={`/articles/${article.id}`} key={article.id}>
+                                <Polaroid imageUrl={article.image.baseUrl} size="small" />
+                            </Link>
+                        )
+                    }
+                })}
             </div>
         </div>
     )

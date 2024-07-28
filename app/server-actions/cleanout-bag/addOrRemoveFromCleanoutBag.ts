@@ -18,5 +18,5 @@ export async function addOrRemoveFromCleanoutBag(article: Article) {
 
     revalidatePath('/cleanout')
     revalidatePath(`/articles/category/${article.articleCategory}`)
-    revalidatePath(`/articles/category/${article.weatherCategory}`)
+    revalidatePath(`/articles/weather/${article.weatherCategory}`)
 }
