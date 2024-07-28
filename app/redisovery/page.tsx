@@ -18,7 +18,7 @@ export default async function Rediscovery() {
             {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
             {articles && (
-                <div className="flex flex-col items-center mt-2.5">
+                <div className="flex flex-col items-center mt-2.5 h-[90%]">
                     <div className="flex justify-center">
                         <h1 className="text-lg mb-2.5 mr-2">rediscovery</h1>
                         <div>
