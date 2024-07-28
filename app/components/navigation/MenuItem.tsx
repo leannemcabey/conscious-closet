@@ -19,7 +19,7 @@ const MenuItem = ({ linkTo, imageSrc, imageAltText, label, subItems }: MenuItemP
     const alt = isOpen ? "collapse" : "expand";
 
     return (
-        <div className="text-xl flex flex-col py-6 border border-dotted border-neutral-300 border-b-2 border-t-0 border-l-0 border-r-0">
+        <div className="text-lg flex flex-col py-4 border border-dotted border-neutral-300 border-b-2 border-t-0 border-l-0 border-r-0">
             <div className="flex space-x-4">
                 {subItems &&
                     <Image src={`/${arrow}.svg`} width="12" height="12" alt={alt} onClick={() => setIsOpen(!isOpen)}/>
@@ -27,7 +27,7 @@ const MenuItem = ({ linkTo, imageSrc, imageAltText, label, subItems }: MenuItemP
 
                 <Link href={linkTo}>
                     <div className={`flex space-x-4 ${!subItems ? "ml-6": ""}`}>
-                        <Image src={imageSrc} width="28" height="28" alt={imageAltText}/>
+                        <Image src={imageSrc} width="23" height="23" alt={imageAltText}/>
                         <h2>{label}</h2>
                     </div>
                 </Link>
