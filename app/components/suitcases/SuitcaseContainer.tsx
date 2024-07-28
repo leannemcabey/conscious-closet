@@ -32,10 +32,15 @@ const SuitcaseContainer = ({ articles }: SuitcaseContainerProps) => {
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex flex-col">
+            <div className="flex flex-col h-[85%] md:h-[90%]">
                 <ArticleFilters filterTypes={filterTypes} />
 
-                {filteredArticles.length > 0 && <ArticlesContainer headerSize="small" articles={filteredArticles} />}
+                {filteredArticles.length > 0 && (
+                    <div className="h-[90%] pb-4">
+                        <ArticlesContainer headerSize="small" articles={filteredArticles} />
+                    </div>
+                )}
+
                 {filteredArticles.length === 0 &&
                     <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">
                         There are no articles that match the applied filters.

@@ -37,11 +37,15 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex flex-col">
+            <div className="flex flex-col h-[90%] md:h-[95%]">
                 <ArticleFilters filterTypes={filterTypes}/>
                 <NewArticleButton setIsAddingArticle={setAddingArticle}/>
 
-                {filteredArticles.length > 0 && <ArticlesContainer headerSize="small" articles={filteredArticles}/>}
+                {filteredArticles.length > 0 && (
+                    <div className="h-[80%] pb-4">
+                        <ArticlesContainer headerSize="small" articles={filteredArticles}/>
+                    </div>
+                )}
 
                 {filteredArticles.length === 0 &&
                     <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">

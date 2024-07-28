@@ -53,7 +53,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex flex-col">
+            <div className="flex flex-col h-[97%]">
                 <div className="flex place-content-between mb-4">
                     <Link href="/cleanout/recommendations">
                         <button className="w-max bg-white text-neutral-700 text-sm p-2 rounded-lg drop-shadow">
@@ -75,7 +75,11 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                 {isDeleting && <DeleteAllFromCleanoutConfirmationModal setIsDeleting={setIsDeleting} handleSubmit={deleteAllAndResetData}/>}
                 {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}
 
-                {filteredArticles.length > 0 && <ArticlesContainer headerSize="small" articles={filteredArticles} />}
+                {filteredArticles.length > 0 && (
+                    <div className="h-[80%] md:h-[90%] pb-4">
+                        <ArticlesContainer headerSize="small" articles={filteredArticles} />
+                    </div>
+                )}
 
                 {filteredArticles.length === 0 &&
                     <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">

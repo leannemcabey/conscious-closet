@@ -36,7 +36,7 @@ export default async function Suitcase({ params }: { id: string }) {
                         </div>
                     </div>
                     <div className="flex justify-center mt-6">
-                        <h1 className="text-lg mb-8 mr-2">{suitcase!!.name}</h1>
+                        <h1 className="text-lg mb-4 mr-2">{suitcase!!.name}</h1>
                         <div>
                             <Image
                                 src={"/suitcase.svg"}

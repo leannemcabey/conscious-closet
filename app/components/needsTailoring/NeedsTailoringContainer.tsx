@@ -3,16 +3,11 @@ import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { Article } from "@/types/article";
-import { deleteAllFromCleanoutBag } from "@/app/server-actions/cleanout-bag/deleteAllFromCleanoutBag";
-import DeleteAllFromCleanoutConfirmationModal
-    from "@/app/components/cleanoutBag/DeleteAllFromCleanoutConfirmationModal";
 import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
-import CleanoutRecommendationsContainer from "@/app/components/cleanoutBag/CleanoutRecommendationsContainer";
-import Link from "next/link";
 
 interface NeedsTailoringContainerProps {
     articles: Article[]
@@ -38,10 +33,14 @@ const NeedsTailoringContainer = ({ articles }: NeedsTailoringContainerProps) => 
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex flex-col">
+            <div className="flex flex-col h-[87%] md:h-[90%]">
                 <ArticleFilters filterTypes={filterTypes} />
 
-                {filteredArticles.length > 0 && <ArticlesContainer headerSize="large" articles={filteredArticles} />}
+                {filteredArticles.length > 0 && (
+                    <div className="h-[90%] md:h-[95%] pb-4">
+                        <ArticlesContainer headerSize="large" articles={filteredArticles} />
+                    </div>
+                )}
 
                 {filteredArticles.length === 0 &&
                     <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">

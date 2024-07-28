@@ -19,5 +19,7 @@ export async function updateArticleWeatherCategory(article: Article, weatherCate
 
     revalidatePath(`/articles/${article.id}`);
     revalidatePath(`/articles/category/${article.articleCategory}`)
-    revalidatePath(`/articles/category/${article.weatherCategory}`)
+    revalidatePath(`/articles/weather/cold`)
+    revalidatePath(`/articles/weather/mixed`)
+    revalidatePath(`/articles/weather/warm`)
 }
