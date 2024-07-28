@@ -1,14 +1,13 @@
 'use client'
-
 import LaundrySymbol from "@/app/components/laundry/LaundrySymbol";
 
 const LaundrySymbolsContainer = () => {
     const headerStyling = "w-full sticky top-0 text-xl text-white bg-theme-blue rounded-md p-2";
-    const symbolContainerStyling = "w-full grid grid-cols-3 gap-x-4 gap-y-4";
+    const symbolContainerStyling = "w-full grid grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-4";
 
     return (
-        <div className="h-4/5 w-full overflow-scroll mt-8 flex flex-col items-center text-center space-y-4">
-            <div>
+        <div className="h-[90%] w-full overflow-scroll mt-8 flex flex-col items-center text-center space-y-4">
+            <div className="w-full">
                 <h2 className={headerStyling}>the basics</h2>
                 <div className={symbolContainerStyling}>
                     <LaundrySymbol src="/normal-cycle.svg" label="machine wash"/>
@@ -19,7 +18,7 @@ const LaundrySymbolsContainer = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="w-full">
                 <h2 className={headerStyling}>wash cycle</h2>
                 <div className={symbolContainerStyling}>
                     <LaundrySymbol src="/normal-cycle.svg" label="normal cycle"/>
@@ -28,7 +27,7 @@ const LaundrySymbolsContainer = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="w-full">
                 <h2 className={headerStyling}>water temperature</h2>
                 <div className={symbolContainerStyling}>
                     <LaundrySymbol src="/machine-wash-cold.svg" label="machine wash cold"/>
@@ -37,7 +36,7 @@ const LaundrySymbolsContainer = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="w-full">
                 <h2 className={headerStyling}>bleach</h2>
                 <div className={symbolContainerStyling}>
                     <LaundrySymbol src="/bleach.svg" label="bleach"/>
@@ -46,7 +45,7 @@ const LaundrySymbolsContainer = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="w-full">
                 <h2 className={headerStyling}>dry</h2>
                 <div className={symbolContainerStyling}>
                     <LaundrySymbol src="/tumble-dry.svg" label="tumble dry"/>
@@ -57,7 +56,7 @@ const LaundrySymbolsContainer = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="w-full">
                 <h2 className={headerStyling}>dry cycle</h2>
                 <div className={symbolContainerStyling}>
                     <LaundrySymbol src="/tumble-dry.svg" label="tumble dry"/>
@@ -66,7 +65,7 @@ const LaundrySymbolsContainer = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="w-full">
                 <h2 className={headerStyling}>dry temperature</h2>
                 <div className={symbolContainerStyling}>
                     <LaundrySymbol src="/low-heat-dry.svg" label="low heat dry"/>
@@ -75,7 +74,7 @@ const LaundrySymbolsContainer = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="w-full">
                 <h2 className={headerStyling}>ironing</h2>
                 <div className={symbolContainerStyling}>
                     <LaundrySymbol src="/iron-low.svg" label="iron low heat"/>
