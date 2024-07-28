@@ -43,7 +43,7 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
 
                 {filteredArticles.length > 0 && (
                     <div className="h-[80%] pb-4">
-                        <ArticlesContainer headerSize="small" articles={filteredArticles}/>
+                        <ArticlesContainer articles={filteredArticles}/>
                     </div>
                 )}
 

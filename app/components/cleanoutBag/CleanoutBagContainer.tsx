@@ -77,7 +77,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
 
                 {filteredArticles.length > 0 && (
                     <div className="h-[80%] md:h-[90%] pb-4">
-                        <ArticlesContainer headerSize="small" articles={filteredArticles} />
+                        <ArticlesContainer articles={filteredArticles} />
                     </div>
                 )}
 

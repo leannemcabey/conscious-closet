@@ -9,16 +9,14 @@ import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface ArticlesContainerProps {
     articles: Article[];
-    headerSize: "small" | "large"
 }
 
-const ArticlesContainer = ({ articles, headerSize }: ArticlesContainerProps) => {
+const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
     const [refreshedArticles, setRefreshedArticles] = useState<Article[]>();
     const [error, setError] = useState<boolean>();
     // The `stopSpinner` state value is used so that when the error modal is closed, the loading spinner stops showing as well
     const [stopSpinner, setStopSpinner] = useState<boolean>();
 
-    // const height = headerSize === "small" ? "h-2/3 md:4/5" : "h-3/5 md:h-3/4";
     const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
 
     useEffect(() => {
