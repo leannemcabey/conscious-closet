@@ -17,7 +17,7 @@ const AboutSection = ({ sectionName, children }: AboutSectionProps) => {
     return (
         <div className="flex flex-col mb-4 space-y-1">
             <div
-                className="flex sticky top-0 w-full bg-theme-mid-green text-white rounded-md p-2 mb-2 drop-shadow"
+                className="flex sticky top-0 w-full bg-neutral-700 text-white rounded-md p-2 mb-2 drop-shadow"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <div className="flex border border-white rounded-full items-center p-1 mr-2">
