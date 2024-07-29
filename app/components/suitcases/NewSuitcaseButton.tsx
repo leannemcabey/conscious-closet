@@ -8,7 +8,7 @@ const NewSuitcaseButton = ({ handleClick }: NewSuitcaseButtonProps) => {
     return (
         <>
             <button
-                className="rounded-md bg-white border border-theme-light-green w-full max-w-[350px] self-center py-1 mb-4 drop-shadow text-theme-green text-lg"
+                className="rounded-md bg-neutral-700 w-full max-w-[350px] self-center py-1 mb-4 drop-shadow text-white text-lg"
                 onClick={() => handleClick()}
             >
                 +

@@ -62,7 +62,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
     return (
         <>
             <ArticleActionButton
-                iconFile="/suitcase-green.svg"
+                iconFile="/suitcase-white.svg"
                 iconAlt="suitcase icon"
                 clickHandler={() => setSelectingSuitcase(!selectingSuitcase)}
             />

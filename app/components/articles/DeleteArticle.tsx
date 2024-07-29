@@ -28,7 +28,7 @@ const DeleteArticle = ({ article }: DeleteArticleProps) => {
     return (
         <>
             <ArticleActionButton
-                iconFile="/trash-icon-green.svg"
+                iconFile="/trash-icon-white.svg"
                 iconAlt="trash icon"
                 clickHandler={() => setIsDeleting(true)}
             />

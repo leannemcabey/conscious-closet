@@ -56,7 +56,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
             <div className="flex flex-col h-[97%]">
                 <div className="flex place-content-between mb-4">
                     <Link href="/cleanout/recommendations">
-                        <button className="w-max bg-white text-neutral-700 text-sm p-2 rounded-lg drop-shadow">
+                        <button className="w-max bg-neutral-700 text-white text-sm p-2 rounded-lg drop-shadow">
                             recycling | donating | thrifting
                         </button>
                     </Link>
@@ -64,7 +64,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                     <button
                         disabled={deleteDisabled}
                         onClick={() => setIsDeleting(true)}
-                        className="rounded-lg bg-white text-neutral-700 text-sm drop-shadow p-2"
+                        className="rounded-lg bg-neutral-700 text-white text-sm drop-shadow p-2"
                     >
                         delete all
                     </button>

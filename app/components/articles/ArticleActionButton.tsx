@@ -9,7 +9,7 @@ interface ArticleActionButtonProps {
 
 const ArticleActionButton = ({ iconFile, iconAlt, clickHandler }: ArticleActionButtonProps) => {
     return (
-        <button className="bg-white border border-theme-mid-green rounded-full p-2 drop-shadow">
+        <button className="bg-neutral-700 rounded-full p-2 drop-shadow">
             <Image
                 src={iconFile}
                 alt={iconAlt}
