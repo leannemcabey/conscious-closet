@@ -33,7 +33,7 @@ const ArticleFilters = ({ filterTypes }: ArticleFiltersProps) => {
     }, [showCleanoutBagItems, selectedWeatherCategories, selectedArticleCategories]);
 
     return (
-        <div className="mb-4 px-1 py-2 flex place-content-between border border-theme-blue border-dotted rounded-md drop-shadow">
+        <div className="mb-4 px-1 py-2 flex place-content-between items-center border border-theme-blue border-dotted rounded-md drop-shadow">
             {filterTypes.includes(FilterType.cleanout) &&
                 <CleanoutBagFilter showCleanoutBagItems={showCleanoutBagItems} setShowCleanoutBagItems={setShowCleanoutBagItems} />
             }

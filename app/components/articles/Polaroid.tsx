@@ -32,7 +32,7 @@ const Polaroid = ({ imageUrl, size, children }: PolaroidProps) => {
                     width={imageSize[size].width}
                     height={imageSize[size].height}
                     alt="article image"
-                    className="border border-neutral-200"
+                    className="border border-neutral-200 md:w-full"
                 />
             </div>
 

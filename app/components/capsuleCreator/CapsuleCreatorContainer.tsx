@@ -10,6 +10,7 @@ import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import ArticleFilters, { FilterType } from "@/app/components/articles/filter/ArticleFilters";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import AddCapsuleToSuitcase from "@/app/components/capsuleCreator/AddCapsuleToSuitcase";
+import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface CategoryArticlesMap {
     string: Article[]
@@ -29,6 +30,9 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
     const [unfilteredArticlesMap, setUnfilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap)
     const [filteredArticlesMap, setFilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap);
+    const [error, setError] = useState<boolean>(false);
+
+    const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
 
     const filterTypes= [FilterType.cleanout, FilterType.weather];
 
@@ -48,11 +52,13 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
         setSelectedArticleIds(tempSelectedArticleIds)
     }
 
+    if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
+
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="h-[95%]">
+            <div className="h-[95%] flex flex-col">
                 <div className="flex justify-center mb-4">
-                    <h1 className="text-lg mr-2">capsule creator</h1>
+                    <h1 className="text-lg mr-2 md:text-3xl">capsule creator</h1>
                     <div>
                         <Image
                             src={"/lightbulb.svg"}
@@ -67,13 +73,13 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
                 <AddCapsuleToSuitcase selectedArticleIds={selectedArticleIds}/>
 
-                <div className="h-[80%] md:h-[83%] grid grid-cols-2 md:grid-cols-3 place-content-between md:place-content-around pb-4">
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={0} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={1} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={2} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={3} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.PANTS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={4} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.SKIRTS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={5} />
+                <div className="h-[78%] md:h-[83%] grid grid-cols-2 md:grid-cols-3 pb-4">
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={0} setError={setError} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={1} setError={setError} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={2} setError={setError} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={3} setError={setError} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.PANTS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={4} setError={setError} />
+                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.SKIRTS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={5} setError={setError} />
                 </div>
             </div>
         </ArticleFilterContext.Provider>
