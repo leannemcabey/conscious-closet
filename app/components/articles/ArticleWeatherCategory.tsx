@@ -1,11 +1,11 @@
 'use client'
 import { Article } from "@/types/article";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useState } from "react";
 import { Weather } from "@/app/components/articles/Weather";
 import { updateArticleWeatherCategory } from "@/app/server-actions/article/updateArticleWeatherCategory";
 import ErrorModal from "@/app/components/modal/ErrorModal";
-import {ArticleCategoryEnum, ArticleCategoryTitle} from "@/types/enums/articleCategoryEnum";
+import { ArticleCategoryEnum, ArticleCategoryTitle } from "@/types/enums/articleCategoryEnum";
 import * as React from "react";
 
 interface ArticleWeatherCategoryProps {

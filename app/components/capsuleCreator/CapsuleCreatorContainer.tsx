@@ -10,7 +10,6 @@ import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import ArticleFilters, { FilterType } from "@/app/components/articles/filter/ArticleFilters";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import AddCapsuleToSuitcase from "@/app/components/capsuleCreator/AddCapsuleToSuitcase";
-import {batchUpdateGoogleUrls} from "@/app/googleService/client/batchUpdateGoogleUrls";
 
 interface CategoryArticlesMap {
     string: Article[]
