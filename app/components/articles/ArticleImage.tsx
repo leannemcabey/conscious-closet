@@ -44,9 +44,7 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
                 <LastWorn article={refreshedArticle}/>
             </Polaroid>
 
-            <div className="flex justify-center">
-                <ArticleWeatherCategory article={refreshedArticle} />
-            </div>
+            <ArticleWeatherCategory article={refreshedArticle} />
         </div>
     )
 

@@ -33,20 +33,20 @@ const Polaroid = ({ imageUrl, size, children }: PolaroidProps) => {
     }
 
     return (
-        <div className={`flex flex-col items-center bg-white md:h-full md:w-full drop-shadow-lg`}>
-            <div className={`mt-[7%] ${children ? "mb-[5%] md:mb-[-1%]" : "mb-[30%]"} w-[88%] md:h-full bg-white`}>
+        <div className={`flex flex-col items-center bg-white md:h-full drop-shadow-lg`}>
+            <div className={`mt-[7%] ${children ? "mb-[5%]" : "mb-[30%]"} w-[88%] md:h-full bg-white`}>
                 <Image
                     loader={googlePhotosPathLoader}
                     src={imageUrl}
                     width={styling[size].imageSize.width}
                     height={styling[size].imageSize.height}
                     alt="article image"
-                    className="border border-neutral-200 md:h-[93%] md:w-full"
+                    className="border border-neutral-200 md:h-full md:w-full"
                 />
             </div>
 
             {children && (
-                <div className="w-[95%] flex justify-center mb-4">
+                <div className="w-full flex justify-center mb-4">
                     {children}
                 </div>
             )}
