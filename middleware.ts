@@ -4,6 +4,7 @@ import { updateSession } from "@/utils/supabase/middleware";
 
 export async function middleware(req: NextRequest) {
   return await updateSession(req)
+      .catch((error) => console.log(`error in middleware: ${error}`))
 }
 
 /**
