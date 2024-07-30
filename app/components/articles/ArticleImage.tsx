@@ -35,7 +35,7 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
 
     if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
-    if (!refreshedArticle && !error) return (
+    if (!refreshedArticle && !error && !stopSpinner) return (
         <div className="flex justify-center h-4/5">
             <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin" />
         </div>
