@@ -13,23 +13,6 @@ interface CategorySelectorProps {
 
 const CategorySelector = ({ selectedCategory, setSelectedCategory }: CategorySelectorProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const menuRef = useRef(null);
-
-    // Closes the menu if the user clicks outside of it
-    const outsideClickHandler = (event) => {
-        const includesMenuElement = event.composedPath().includes(menuRef.current!!);
-
-        if (menuRef.current && !includesMenuElement) {
-            setIsOpen(false)
-        }
-    }
-
-    useEffect(() => {
-        document.body.addEventListener('click', outsideClickHandler);
-        return () => {
-            document.body.removeEventListener('click', outsideClickHandler);
-        }
-    }, []);
 
     const handleClick = (category) => {
         setSelectedCategory(ArticleCategoryEnum[category])
