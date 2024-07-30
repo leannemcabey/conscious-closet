@@ -28,36 +28,36 @@ const WeatherFilter = ({ selectedWeatherCategories, setSelectedWeatherCategories
         <div className="flex place-content-between space-x-1">
             <div
                 onClick={() => updateWeatherCategories(WeatherCategoryEnum.WARM)}
-                className="border border-theme-blue rounded-md"
+                className="border border-theme-blue rounded-full"
             >
                 <Weather
                     weatherCategory={WeatherCategoryEnum.WARM}
                     isSelected={weatherCategoryIsSelected(WeatherCategoryEnum.WARM)}
-                    iconPath="/warm-weather-icon.svg"
+                    iconPath="/weather-icon-warm.svg"
                     size="small"
                 />
             </div>
 
             <div
                 onClick={() => updateWeatherCategories(WeatherCategoryEnum.MIXED)}
-                className="border border-theme-blue rounded-md"
+                className="border border-theme-blue rounded-full"
             >
                 <Weather
                     weatherCategory={WeatherCategoryEnum.MIXED}
                     isSelected={weatherCategoryIsSelected(WeatherCategoryEnum.MIXED)}
-                    iconPath="/mixed-weather-icon.svg"
+                    iconPath="/weather-icon-mixed.svg"
                     size="small"
                 />
             </div>
 
             <div
                 onClick={() => updateWeatherCategories(WeatherCategoryEnum.COLD)}
-                className="border border-theme-blue rounded-md"
+                className="border border-theme-blue rounded-full"
             >
                 <Weather
                     weatherCategory={WeatherCategoryEnum.COLD}
                     isSelected={weatherCategoryIsSelected(WeatherCategoryEnum.COLD)}
-                    iconPath="/cold-weather-icon.svg"
+                    iconPath="/weather-icon-cold.svg"
                     size="small"
                 />
             </div>

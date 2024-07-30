@@ -15,7 +15,7 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
                 <Weather
                     weatherCategory={WeatherCategoryEnum.WARM}
                     isSelected={weatherCategory === WeatherCategoryEnum.WARM}
-                    iconPath="/warm-weather-icon.svg"
+                    iconPath="/weather-icon-warm.svg"
                     select={setWeatherCategory}
                     size="large"
                 />
@@ -25,7 +25,7 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
                 <Weather
                     weatherCategory={WeatherCategoryEnum.MIXED}
                     isSelected={weatherCategory === WeatherCategoryEnum.MIXED}
-                    iconPath="/mixed-weather-icon.svg"
+                    iconPath="/weather-icon-mixed.svg"
                     select={setWeatherCategory}
                     size="large"
                 />
@@ -35,7 +35,7 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
                 <Weather
                     weatherCategory={WeatherCategoryEnum.COLD}
                     isSelected={weatherCategory === WeatherCategoryEnum.COLD}
-                    iconPath="/cold-weather-icon.svg"
+                    iconPath="/weather-icon-cold.svg"
                     select={setWeatherCategory}
                     size="large"
                 />

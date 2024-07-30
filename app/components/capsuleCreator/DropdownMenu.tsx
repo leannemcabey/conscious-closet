@@ -10,7 +10,7 @@ interface DropdownMenuProps {
 }
 
 const DropdownMenu = ({ selectedCategory, setSelectedCategory }: DropdownMenuProps) => {
-    const [isOpen, setIsOpen] = useState<boolean>();
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const menuRef = useRef(null);
 
     // Closes the menu if the user clicks outside of it

@@ -21,6 +21,9 @@ const CapsuleElement = ({ defaultArticleType, articlesMap, updateSelectedArticle
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum>(defaultArticleType);
     const [refreshedArticlesOfSelectedCategory, setRefreshedArticlesOfSelectedCategory] = useState<Article[]>();
     const [currentArticle, setCurrentArticle] = useState<Article>();
+    const [error, setError] = useState<boolean>(false);
+
+    const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
 
     useEffect(() => {
         const articles = articlesMap[selectedCategory];
@@ -29,7 +32,12 @@ const CapsuleElement = ({ defaultArticleType, articlesMap, updateSelectedArticle
             batchUpdateGoogleUrls(articles)
                 .then((articles) => {
                     setRefreshedArticlesOfSelectedCategory(articles);
+                    setError(false)
                     setIndex(0);
+                })
+                .catch((error) => {
+                    console.log(error)
+                    setError(true)
                 })
         } else {
             setRefreshedArticlesOfSelectedCategory([])
@@ -70,23 +78,25 @@ const CapsuleElement = ({ defaultArticleType, articlesMap, updateSelectedArticle
             {currentArticle && (
                 <div className="flex h-full space-x-1 justify-center items-center">
                     <Image
-                        src={"/arrow-left.svg"}
+                        src={"/arrow-down-gray.svg"}
                         alt={"left arrow"}
-                        width="25"
-                        height="25"
+                        width="15"
+                        height="15"
                         onClick={() => handleLeftArrowClick()}
-                        className="h-max rounded-full bg-theme-background-green drop-shadow"
+                        className="rotate-90 h-max rounded-full bg-theme-background-green drop-shadow"
                     />
 
-                    <Polaroid imageUrl={currentArticle?.image.baseUrl || ""} size="small" />
+                    <div>
+                        <Polaroid imageUrl={currentArticle?.image.baseUrl || ""} size="small" />
+                    </div>
 
                     <Image
-                        src={"/arrow-right.svg"}
+                        src={"/arrow-down-gray.svg"}
                         alt={"right arrow"}
-                        width="25"
-                        height="25"
+                        width="15"
+                        height="15"
                         onClick={() => handleRightArrowClick()}
-                        className="h-max rounded-full bg-theme-background-green drop-shadow"
+                        className="-rotate-90 h-max rounded-full bg-theme-background-green drop-shadow"
                     />
                 </div>
             )}

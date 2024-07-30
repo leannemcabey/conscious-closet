@@ -26,12 +26,14 @@ const LastWorn = ({ article }: LastWornProps) => {
 
     return (
         <>
-            <div className="flex flex-col items-center">
-                <Image src={"/last-worn.svg"} alt="last worn" width="70" height="15" />
+            <div className="flex flex-col items-center w-full">
+                <div className="flex justify-center w-[50%] md:w-[50%]">
+                    <Image src={"/last-worn.svg"} alt="last worn" width="100" height="30" className="h-full"/>
+                </div>
 
                 <DatePicker
-                    className="text-sm text-center py-1 w-full max-w-[100px] rounded-md drop-shadow focus:outline-none"
-                    wrapperClassName="mt-1 w-[90%] max-w-[100px]"
+                    className="text-lg md:text-2xl text-center py-1 w-full rounded-md drop-shadow focus:outline-none"
+                    wrapperClassName="mt-2 w-[50%] h-1/2"
                     popperPlacement="top-start"
                     dateFormat="M/d/YYYY"
                     selected={date}
