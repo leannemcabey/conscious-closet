@@ -8,40 +8,31 @@ interface PolaroidProps {
 }
 
 const Polaroid = ({ imageUrl, size, children }: PolaroidProps) => {
-    const styling = {
+    const imageSize = {
         small: {
-            innerDivMargin: "mt-[7%] mb-[30%]",
-            imageSize: {
-                width: 100,
-                height: 132
-            }
+            width: 100,
+            height: 132
         },
         medium: {
-            innerDivMargin: "mt-[7%] mb-10",
-            imageSize: {
-                width: 175,
-                height: 225
-            }
+            width: 175,
+            height: 225
         },
         large: {
-            innerDivMargin: "mt-[6%] mb-[5%]",
-            imageSize: {
-                width: 350,
-                height: 465
-            }
+            width: 350,
+            height: 465
         }
     }
 
     return (
-        <div className={`flex flex-col items-center bg-white md:h-full drop-shadow-lg`}>
-            <div className={`mt-[7%] ${children ? "mb-[5%]" : "mb-[30%]"} w-[88%] md:h-full bg-white`}>
+        <div className={`flex flex-col items-center bg-white drop-shadow-lg`}>
+            <div className={`mt-[5%] mx-[5%] ${children ? "mb-[5%]" : "mb-[25%]"} bg-white`}>
                 <Image
                     loader={googlePhotosPathLoader}
                     src={imageUrl}
-                    width={styling[size].imageSize.width}
-                    height={styling[size].imageSize.height}
+                    width={imageSize[size].width}
+                    height={imageSize[size].height}
                     alt="article image"
-                    className="border border-neutral-200 md:h-full md:w-full"
+                    className="border border-neutral-200"
                 />
             </div>
 

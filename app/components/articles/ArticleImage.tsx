@@ -15,6 +15,8 @@ interface ArticleImageProps {
 const ArticleImage = ({ article }: ArticleImageProps) => {
     const [refreshedArticle, setRefreshedArticle] = useState<Article>();
     const [error, setError] = useState<boolean>(false);
+    // The `stopSpinner` state value is used so that when the error modal is closed, the loading spinner stops showing as well
+    const [stopSpinner, setStopSpinner] = useState<boolean>();
 
     const errorMessage = "An error occurred when retrieving your article. Please go back and try again."
 
@@ -26,6 +28,7 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
             })
             .catch((error) => {
                 console.log(error)
+                setStopSpinner(true)
                 setError(true)
             })
     }, []);
@@ -39,7 +42,7 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
     )
 
     if (refreshedArticle) return (
-        <div className="h-4/5 space-y-4">
+        <div className="space-y-4">
             <Polaroid imageUrl={refreshedArticle.image.baseUrl} size="large">
                 <LastWorn article={refreshedArticle}/>
             </Polaroid>
