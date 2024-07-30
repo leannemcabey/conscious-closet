@@ -12,18 +12,18 @@ import UndevelopedPolaroid from "@/app/components/articles/UndevelopedPolaroid";
 interface CapsuleElementProps {
     defaultArticleType: ArticleCategoryEnum;
     articlesMap: { string: Article[] };
-    updateSelectedArticles: (articleId: string, slot: number) => void;
+    updateSelectedArticles: (articleId: string | undefined, slot: number) => void;
     slot: number;
+    setError: Dispatch<SetStateAction<boolean>>;
 }
 
-const CapsuleElement = ({ defaultArticleType, articlesMap, updateSelectedArticles, slot }: CapsuleElementProps) => {
+const CapsuleElement = ({ defaultArticleType, articlesMap, updateSelectedArticles, slot, setError }: CapsuleElementProps) => {
     const [index, setIndex] = useState<number>(0);
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum>(defaultArticleType);
     const [refreshedArticlesOfSelectedCategory, setRefreshedArticlesOfSelectedCategory] = useState<Article[]>();
     const [currentArticle, setCurrentArticle] = useState<Article>();
-    const [error, setError] = useState<boolean>(false);
 
-    const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
+    const noArticlesInCategory = articlesMap[selectedCategory].length === 0;
 
     useEffect(() => {
         const articles = articlesMap[selectedCategory];
@@ -68,44 +68,43 @@ const CapsuleElement = ({ defaultArticleType, articlesMap, updateSelectedArticle
     }
 
     return (
-        <div className="flex flex-col m-1 justify-end">
+        <div className="flex flex-col h-full m-1 md:mt-8">
             <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
 
-            {!currentArticle && (
-                <div className="flex h-full justify-center">
-                    <UndevelopedPolaroid />
-                </div>
-            )}
+            <div className="flex space-x-1 justify-center items-center">
+                {noArticlesInCategory &&
+                    <p className="text-sm w-3/4 mt-8 text-center self-center text-neutral-400 md:text-2xl">
+                        There are no articles in this category
+                    </p>}
 
-            {currentArticle && (
-                <div className="flex space-x-1 justify-center items-center">
-                    <div className="w-[10%]">
-                        <Image
-                            src={"/arrow-down-gray.svg"}
-                            alt={"left arrow"}
-                            width="15"
-                            height="15"
-                            onClick={() => handleLeftArrowClick()}
-                            className="rotate-90 h-max rounded-full bg-theme-background-green drop-shadow w-full"
-                        />
-                    </div>
+                {currentArticle &&
+                    <>
+                        <div className="w-[10%]">
+                            <Image
+                                src={"/arrow-down-gray.svg"}
+                                alt={"left arrow"}
+                                width="15"
+                                height="15"
+                                onClick={() => handleLeftArrowClick()}
+                                className="rotate-90 h-max rounded-full bg-theme-background-green drop-shadow w-full"
+                            />
+                        </div>
 
-                    <div>
-                        <Polaroid imageUrl={currentArticle?.image.baseUrl || ""} size="small" />
-                    </div>
+                        <Polaroid imageUrl={currentArticle?.image.baseUrl || ""} size="small"/>
 
-                    <div className="w-[10%]">
-                        <Image
-                            src={"/arrow-down-gray.svg"}
-                            alt={"right arrow"}
-                            width="15"
-                            height="15"
-                            onClick={() => handleRightArrowClick()}
-                            className="-rotate-90 h-max rounded-full bg-theme-background-green drop-shadow w-full"
-                        />
-                    </div>
-                </div>
-            )}
+                        <div className="w-[10%]">
+                            <Image
+                                src={"/arrow-down-gray.svg"}
+                                alt={"right arrow"}
+                                width="15"
+                                height="15"
+                                onClick={() => handleRightArrowClick()}
+                                className="-rotate-90 h-max rounded-full bg-theme-background-green drop-shadow w-full"
+                            />
+                        </div>
+                    </>
+                }
+            </div>
         </div>
     )
 }
