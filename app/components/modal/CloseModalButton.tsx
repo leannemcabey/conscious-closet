@@ -1,6 +1,5 @@
 'use client'
 import { Dispatch, SetStateAction } from "react";
-import {googlePhotosPathLoader} from "@/utils/googlePhotosPathLoader";
 import Image from "next/image";
 
 interface CloseModalProps {
