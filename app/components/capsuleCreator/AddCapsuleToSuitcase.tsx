@@ -56,7 +56,7 @@ const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps)
     return (
         <>
             <button
-                className="rounded-md bg-neutral-700 w-full py-1 mb-2 mt-1 drop-shadow text-white"
+                className="rounded-md bg-neutral-700 w-full py-1 mb-2 mt-1 drop-shadow text-white md:text-2xl"
                 onClick={() => openSuitcaseSelectionModal()}
             >
                 + add capsule to a suitcase

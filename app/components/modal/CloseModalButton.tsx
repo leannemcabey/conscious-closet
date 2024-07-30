@@ -1,5 +1,7 @@
 'use client'
 import { Dispatch, SetStateAction } from "react";
+import {googlePhotosPathLoader} from "@/utils/googlePhotosPathLoader";
+import Image from "next/image";
 
 interface CloseModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>
@@ -7,10 +9,14 @@ interface CloseModalProps {
 
 const CloseModalButton = ({ setIsOpen }: CloseModalProps) => {
     return (
-        <p onClick={() => setIsOpen(false)}
-           className="fixed top-2 right-4 mb-4 text-2xl self-end">
-            x
-        </p>
+        <div onClick={() => setIsOpen(false)} className="fixed top-4 right-4 mb-4 text-2xl self-end">
+            <Image
+                src="/close.svg"
+                width="15"
+                height="15"
+                alt="close"
+            />
+        </div>
     )
 }
 

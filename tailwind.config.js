@@ -47,7 +47,7 @@ module.exports = {
         }
       },
       animation: {
-        'enter-from-bottom': 'enter-from-bottom .5s forwards',
+        'enter-from-bottom': 'enter-from-bottom .3s forwards',
         'enter-from-right': 'enter-from-right .5s forwards',
         'exit-to-right': 'exit-to-right .5s forwards'
       },

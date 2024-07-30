@@ -6,7 +6,7 @@ import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { Article } from "@/types/article";
 import { batchUpdateGoogleUrls } from "@/app/googleService/client/batchUpdateGoogleUrls";
 import Polaroid from "@/app/components/articles/Polaroid";
-import DropdownMenu from "@/app/components/capsuleCreator/DropdownMenu";
+import CategorySelector from "@/app/components/capsuleCreator/CategorySelector";
 import UndevelopedPolaroid from "@/app/components/articles/UndevelopedPolaroid";
 
 interface CapsuleElementProps {
@@ -68,44 +68,44 @@ const CapsuleElement = ({ defaultArticleType, articlesMap, updateSelectedArticle
     }
 
     return (
-        <div className="flex flex-col m-1 flex-col-reverse justify-end">
+        <div className="flex flex-col m-1 justify-end">
+            <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
+
             {!currentArticle && (
-                <div className="flex justify-center">
+                <div className="flex h-full justify-center">
                     <UndevelopedPolaroid />
                 </div>
             )}
 
             {currentArticle && (
-                <div className="flex h-full space-x-1 justify-center items-center">
-                    <Image
-                        src={"/arrow-down-gray.svg"}
-                        alt={"left arrow"}
-                        width="15"
-                        height="15"
-                        onClick={() => handleLeftArrowClick()}
-                        className="rotate-90 h-max rounded-full bg-theme-background-green drop-shadow"
-                    />
+                <div className="flex space-x-1 justify-center items-center">
+                    <div className="w-[10%]">
+                        <Image
+                            src={"/arrow-down-gray.svg"}
+                            alt={"left arrow"}
+                            width="15"
+                            height="15"
+                            onClick={() => handleLeftArrowClick()}
+                            className="rotate-90 h-max rounded-full bg-theme-background-green drop-shadow w-full"
+                        />
+                    </div>
 
                     <div>
                         <Polaroid imageUrl={currentArticle?.image.baseUrl || ""} size="small" />
                     </div>
 
-                    <Image
-                        src={"/arrow-down-gray.svg"}
-                        alt={"right arrow"}
-                        width="15"
-                        height="15"
-                        onClick={() => handleRightArrowClick()}
-                        className="-rotate-90 h-max rounded-full bg-theme-background-green drop-shadow"
-                    />
+                    <div className="w-[10%]">
+                        <Image
+                            src={"/arrow-down-gray.svg"}
+                            alt={"right arrow"}
+                            width="15"
+                            height="15"
+                            onClick={() => handleRightArrowClick()}
+                            className="-rotate-90 h-max rounded-full bg-theme-background-green drop-shadow w-full"
+                        />
+                    </div>
                 </div>
             )}
-
-            {/*
-            This is placed last in the div so that the dropdown goes on top of the article image when opened.
-            flex-col-reverse is used on the div to make this render at the top.
-            */}
-            <DropdownMenu selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
         </div>
     )
 }
