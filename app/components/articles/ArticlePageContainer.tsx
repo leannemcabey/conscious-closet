@@ -10,11 +10,12 @@ interface ArticlePageContainerProps {
 }
 
 const ArticlePageContainer = ({ article }: ArticlePageContainerProps) => {
+    const baseStyles = "h-[90%] flex flex-col items-center place-content-between space-y-4 mt-[5%] py-[5%]"
+    const mdStyles = "md:h-[80%] md:mx-[10%] md:border md:border-double md:border-[10px] md:border-neutral-500 md:rounded-2xl"
+
     return (
-        <div className="h-[90%] md:h-[80%] flex flex-col items-center place-content-between space-y-4 mt-[5%] py-[5%] md:mx-[10%] md:border md:border-double md:border-[10px] md:border-neutral-500 md:rounded-2xl">
-            {/*<div className="h-[80%]">*/}
+        <div className={`${baseStyles} ${mdStyles}`}>
                 <ArticleImage article={article}/>
-            {/*</div>*/}
 
             <div className="flex w-[90%] max-w-[350px] justify-between">
                 <div className="basis-[15%]">
