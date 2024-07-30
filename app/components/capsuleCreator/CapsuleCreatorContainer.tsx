@@ -10,6 +10,7 @@ import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import ArticleFilters, { FilterType } from "@/app/components/articles/filter/ArticleFilters";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import AddCapsuleToSuitcase from "@/app/components/capsuleCreator/AddCapsuleToSuitcase";
+import {batchUpdateGoogleUrls} from "@/app/googleService/client/batchUpdateGoogleUrls";
 
 interface CategoryArticlesMap {
     string: Article[]
@@ -50,7 +51,7 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="h-full">
+            <div className="h-[95%]">
                 <div className="flex justify-center mb-4">
                     <h1 className="text-lg mr-2">capsule creator</h1>
                     <div>
@@ -67,7 +68,7 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
                 <AddCapsuleToSuitcase selectedArticleIds={selectedArticleIds}/>
 
-                <div className="h-3/5 grid grid-cols-2 place-content-between">
+                <div className="h-[80%] md:h-[83%] grid grid-cols-2 md:grid-cols-3 place-content-between md:place-content-around pb-4">
                     <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={0} />
                     <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={1} />
                     <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={2} />

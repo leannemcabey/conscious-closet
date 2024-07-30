@@ -39,11 +39,14 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
     )
 
     if (refreshedArticle) return (
-        <div className="h-4/5">
+        <div className="h-4/5 space-y-4">
             <Polaroid imageUrl={refreshedArticle.image.baseUrl} size="large">
                 <LastWorn article={refreshedArticle}/>
-                <ArticleWeatherCategory article={refreshedArticle} />
             </Polaroid>
+
+            <div className="flex justify-center">
+                <ArticleWeatherCategory article={refreshedArticle} />
+            </div>
         </div>
     )
 
