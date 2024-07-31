@@ -22,14 +22,14 @@ export default async function ArticleCategoryPage({ params }: { params: { id: st
 
                 {articles && (
                     <>
-                        <div className="flex justify-center">
-                            <h1 className="text-lg mb-4 mr-2">{categorySlugToTitleMap[params.id]}</h1>
+                        <div className="flex justify-center items-center mb-4">
+                            <h1 className="text-lg md:text-3xl mr-2">{categorySlugToTitleMap[params.id]}</h1>
                             <div>
                                 <Image
                                     src={"/hanger.svg"}
                                     alt={"hanger icon"}
-                                    width="30"
-                                    height="30"
+                                    width="25"
+                                    height="25"
                                 />
                             </div>
                         </div>

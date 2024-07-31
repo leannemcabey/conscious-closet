@@ -10,6 +10,7 @@ import * as React from "react";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
+import NewButton from "@/app/components/NewButton";
 
 interface CategoryPageContainerProps {
     articles: Article[];
@@ -39,10 +40,9 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
             <div className="flex flex-col h-[90%] md:h-[95%]">
                 <ArticleFilters filterTypes={filterTypes}/>
-                <NewArticleButton setIsAddingArticle={setAddingArticle}/>
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[80%] pb-4">
+                    <div className="h-[85%] pb-4">
                         <ArticlesContainer articles={filteredArticles}/>
                     </div>
                 )}
@@ -60,6 +60,8 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
                         unfilteredArticles={unfilteredArticles}
                         setUnfilteredArticles={setUnfilteredArticles}
                     />}
+
+                <NewButton handleClick={() => setAddingArticle(true)} />
             </div>
         </ArticleFilterContext.Provider>
     )

@@ -7,6 +7,7 @@ import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import Link from "next/link";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import * as React from "react";
+import NewButton from "@/app/components/NewButton";
 
 const SuitcaseList = () => {
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
@@ -27,7 +28,7 @@ const SuitcaseList = () => {
 
     return (
         <>
-            <NewSuitcaseButton handleClick={() => setCreatingSuitcase(true)} />
+            <NewButton handleClick={() => setCreatingSuitcase(true)} />
 
             {suitcases && suitcases?.length > 0 && (
                 <div className="h-4/6 overflow-scroll pb-8">

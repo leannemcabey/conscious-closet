@@ -5,6 +5,7 @@ import CleanoutRecommendationSection from "@/app/components/cleanoutBag/Cleanout
 import {useState} from "react";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
+import NewButton from "@/app/components/NewButton";
 
 const CleanoutRecommendationsContainer = () => {
     const [showAddRecModal, setShowAddRecModal] = useState<boolean>();
@@ -28,12 +29,7 @@ const CleanoutRecommendationsContainer = () => {
                 <CleanoutRecommendationSection sectionName="thrifting" sectionRecs={cleanoutRecommendations.thrifting} />
             </div>
 
-            <button
-                onClick={() => setShowAddRecModal(true)}
-                className="fixed bottom-5 right-5 h-8 w-8 rounded-full bg-neutral-700 text-white drop-shadow"
-            >
-                <p className="mb-1">+</p>
-            </button>
+            <NewButton handleClick={() => setShowAddRecModal(true)} />
 
             {showAddRecModal && (
                 <Modal setIsOpen={setShowAddRecModal}>
