@@ -34,7 +34,7 @@ export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
     if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
     if (!error) return (
-        <div className="flex flex-col items-center space-y-4">
+        <div className="flex flex-col items-center space-y-4 md:space-y-8">
             <Image src="/google-photos-icon.png" height="50" width="50" alt="Google Photos icon" />
 
             <div className="flex justify-center">
@@ -55,13 +55,13 @@ export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
 
                         <div className="flex content-end place-content-between mt-8">
                             <button
-                                className={`${page === 0 && "invisible"} border border-theme-green bg-white text-theme-green rounded-md p-1 w-20 drop-shadow`}
+                                className={`${page === 0 && "invisible"} border border-theme-green bg-white text-theme-green rounded-md p-1 w-20 drop-shadow md:text-lg`}
                                 onClick={() => setPage(page - 1)}
                             >
                                 previous
                             </button>
                             <button
-                                className={`${pageTokens[pageTokens.length -1] === undefined && "invisible"} border border-theme-green bg-white text-theme-green rounded-md p-1 w-20 drop-shadow`}
+                                className={`${pageTokens[pageTokens.length -1] === undefined && "invisible"} border border-theme-green bg-white text-theme-green rounded-md p-1 w-20 drop-shadow md:text-lg`}
                                 onClick={() => setPage(page + 1)}
                             >
                                 next
