@@ -7,6 +7,7 @@ import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesB
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import Image from "next/image";
 import * as React from "react";
+import PageHeader from "@/app/components/PageHeader";
 
 export default async function ArticleCategoryPage({ params }: { params: { id: string } }) {
     const { articles, error} = await getArticlesByCategory(params.id);
@@ -22,17 +23,7 @@ export default async function ArticleCategoryPage({ params }: { params: { id: st
 
                 {articles && (
                     <>
-                        <div className="flex justify-center items-center mb-4">
-                            <h1 className="text-lg md:text-3xl mr-2">{categorySlugToTitleMap[params.id]}</h1>
-                            <div>
-                                <Image
-                                    src={"/hanger.svg"}
-                                    alt={"hanger icon"}
-                                    width="25"
-                                    height="25"
-                                />
-                            </div>
-                        </div>
+                        <PageHeader title={categorySlugToTitleMap[params.id]} iconPath={"/hanger.svg"} iconAlt={"hanger icon"} />
                         <CategoryPageContainer articles={articles} category={params.id as ArticleCategoryEnum}/>
                     </>
                 )}
