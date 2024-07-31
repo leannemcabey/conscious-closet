@@ -58,7 +58,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
                     className={isSelected(category) ? "" : "hidden"}
                 />
             </div>
-            <span>{categorySlugToTitleMap[category]}</span>
+            <span className="text-md md:text-lg">{categorySlugToTitleMap[category]}</span>
         </div>
     )
 
@@ -66,13 +66,13 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
         <Modal setIsOpen={setSelectingCategories}>
             <div className="flex flex-start place-content-between">
                 <button
-                    className="border border-theme-blue text-sm text-theme-blue py-1 mx-1 rounded-md drop-shadow w-28"
+                    className="border border-theme-blue text-sm text-theme-blue py-1 mx-1 rounded-md drop-shadow w-28 md:text-lg"
                     onClick={() => selectOrDeselectAll()}
                 >
                     {allAreSelected ? "deselect all" : "select all"}
                 </button>
                 <button onClick={() => saveSelections()}
-                        className="bg-theme-blue text-sm text-white py-1 mx-1 rounded-md drop-shadow w-28"
+                        className="bg-theme-blue text-sm text-white py-1 mx-1 rounded-md drop-shadow w-28 md:text-lg"
                 >
                     save
                 </button>
