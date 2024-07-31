@@ -10,7 +10,7 @@ export default async function Home() {
             <div className="flex justify-center">
                 <WeatherCategories />
             </div>
-            <div className="h-4/5 overflow-scroll mt-2 pb-8">
+            <div className="h-4/5 overflow-scroll mt-2 pb-8 place-content-around md:h-[87%]">
                 <div className="flex flex-col w-full items-center justify-center space-y-5">
                     {Object.values(ArticleCategoryTitle)
                         .map((title) => <ArticleCategoryCard title={title} key={title}/>)}
