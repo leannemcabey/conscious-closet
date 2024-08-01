@@ -37,7 +37,7 @@ const RediscoveryContainer = ({ articles }: RediscoveryContainerProps) => {
                 <ArticleFilters filterTypes={filterTypes} />
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[83%] pb-4">
+                    <div className="h-[76%] pb-4">
                         <ArticlesContainer articles={filteredArticles} />
                     </div>
                 )}

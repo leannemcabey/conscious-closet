@@ -8,7 +8,9 @@ const Menu = () => {
 
     return (
         <>
-            <BurgerMenuButton transitionMenu={() => setMenuVisible(true)} />
+            <div className="mt-3">
+                <BurgerMenuButton transitionMenu={() => setMenuVisible(true)} />
+            </div>
             <SlideOutMenu menuVisible={menuVisible} setMenuVisible={setMenuVisible} />
         </>
     )

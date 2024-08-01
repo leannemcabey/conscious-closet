@@ -6,14 +6,16 @@ const BackButton = () => {
     const router = useRouter();
 
     return (
-        <Image
-            src={"/left-arrow.svg"}
-            alt={"Back arrow"}
-            width={25}
-            height={25}
-            onClick={() => router.back()}
-            className="mb-2.5"
-        />
+        <div className="mb-2.5 w-[25px] h-[25px] md:mt-4 md:w-[30px] md:h-[30px]">
+            <Image
+                src={"/left-arrow.svg"}
+                alt={"Back arrow"}
+                width={25}
+                height={25}
+                onClick={() => router.back()}
+                className="w-full"
+            />
+        </div>
     )
 };
 
