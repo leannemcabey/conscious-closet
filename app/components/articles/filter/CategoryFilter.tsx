@@ -14,7 +14,7 @@ const CategoryFilter = ({ selectedArticleCategories, setSelectedArticleCategorie
     return (
         <>
             <button
-                className="px-2 h-8 rounded-full text-sm border border-theme-blue bg-white text-theme-blue md:text-xl md:px-4 md:h-10"
+                className="px-2 h-8 rounded-full text-sm border border-theme-blue bg-white text-theme-blue md:text-2xl md:px-4 md:h-12"
                 onClick={() => setSelectingCategories(!selectingCategories)}
             >
                 categories
