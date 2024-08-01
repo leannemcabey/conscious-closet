@@ -6,13 +6,13 @@ const AboutPageContainer = () => {
     return (
         <div className="h-[87%] mb-8">
             <div className="flex justify-center">
-                <p className="text-md mb-6 max-w-[450px]">
+                <p className="text-base mb-6 max-w-[450px] md:text-lg md:max-w-[500px]">
                     Conscious Closet is a female-founded and owned wardrobe sustainability tool with three
                     primary philosophies.
                 </p>
             </div>
 
-            <div className="h-[87%] md:h-[95%] overflow-scroll">
+            <div className="h-[87%] md:h-[90%] overflow-scroll pb-4">
                 <AboutSection sectionName="Shop your own closet">
                     <p>
                         How many times have you rediscovered an item of clothing that you completely forgot you had?
@@ -41,7 +41,7 @@ const AboutPageContainer = () => {
                     </p>
                 </AboutSection>
 
-                <AboutSection sectionName="Clothes don't belong in the trash">
+                <AboutSection sectionName="Clothes aren't trash">
                     <p>
                         Don't throw those items you never wear in the trash! The world produces an estimated 92 million
                         tons of textile waste each year. You can avoid contributing to that by finding an alternative
