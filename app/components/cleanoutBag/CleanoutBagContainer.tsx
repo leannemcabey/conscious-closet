@@ -53,10 +53,10 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex flex-col h-[97%]">
+            <div className="flex flex-col h-[97%] md:mt-8">
                 <div className="flex place-content-between mb-4">
                     <Link href="/cleanout/recommendations">
-                        <button className="w-max bg-neutral-700 text-white text-sm p-2 rounded-lg drop-shadow">
+                        <button className="w-max bg-theme-green text-white text-sm p-2 rounded-lg drop-shadow md:text-xl">
                             recycling | donating | thrifting
                         </button>
                     </Link>
@@ -64,7 +64,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                     <button
                         disabled={deleteDisabled}
                         onClick={() => setIsDeleting(true)}
-                        className="rounded-lg bg-neutral-700 text-white text-sm drop-shadow p-2"
+                        className="rounded-lg bg-theme-green text-white text-sm drop-shadow p-2 md:text-xl"
                     >
                         delete all
                     </button>
@@ -76,7 +76,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                 {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[80%] md:h-[90%] pb-4">
+                    <div className="h-[80%] md:h-[79%] pb-4">
                         <ArticlesContainer articles={filteredArticles} />
                     </div>
                 )}

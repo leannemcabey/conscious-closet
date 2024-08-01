@@ -16,7 +16,7 @@ const ConfirmationModal = ({ setIsOpen, confirmAction, children }: ConfirmationM
 
                 <div className="flex justify-center space-x-4 mb-2">
                     <button
-                        className="w-20 p-2 rounded-md border border-theme-mid-green drop-shadow md:w-24 md:text-lg"
+                        className="w-20 p-2 rounded-md border border-theme-green drop-shadow md:w-24 md:text-lg"
                         onClick={() => confirmAction()}
                     >
                         Confirm
