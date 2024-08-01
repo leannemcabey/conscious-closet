@@ -5,6 +5,7 @@ import BackButton from "@/app/components/navigation/BackButton";
 import { getArticlesNeedingTailoring } from "@/app/server-actions/needs-tailoring/getArticlesNeedingTailoring";
 import NeedsTailoringContainer from "@/app/components/needsTailoring/NeedsTailoringContainer";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
+import PageHeader from "@/app/components/PageHeader";
 
 export default async function NeedsTailoring() {
     const { articles, error } = await getArticlesNeedingTailoring();
@@ -20,20 +21,10 @@ export default async function NeedsTailoring() {
             {articles && (
                 <div className="mt-4 h-[93%]">
                     <div className="flex flex-col items-center">
-                        <div className="flex">
-                            <h1 className="text-lg mb-2 mr-2">needs tailoring</h1>
-                            <div>
-                                <Image
-                                    src={"/needle.svg"}
-                                    alt={"needle icon"}
-                                    width="25"
-                                    height="25"
-                                />
-                            </div>
-                        </div>
+                        <PageHeader title="needs tailoring" iconPath="/needle.svg" iconAlt="needle icon" />
 
-                        <p className="mt-1 mb-6 text-center max-w-[300px] text-neutral-400 text-sm">
-                            Tailoring is a great way to give new life to an item and avoid creating waste
+                        <p className="mt-1 mb-4 text-center max-w-[300px] text-neutral-400 text-sm md:text-lg md:max-w-[400px]">
+                            Tailoring is a great way to give new life to an item and avoid creating waste.
                         </p>
                     </div>
 
