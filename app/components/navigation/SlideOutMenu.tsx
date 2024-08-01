@@ -92,7 +92,7 @@ export const SlideOutMenu = ({ menuVisible, setMenuVisible }: SlideOutMenuProps)
                                   label="capsule creator"/>
                         <MenuItem linkTo="/suitcases" imageSrc="/suitcase.svg" imageAltText="suitcase icon"
                                   label="suitcases"/>
-                        <MenuItem linkTo="/needs-tailoring" imageSrc="/needle.svg" imageAltText="needle icon"
+                        <MenuItem linkTo="/needs-tailoring" imageSrc="/sewing-machine.svg" imageAltText="needle icon"
                                   label="needs tailoring"/>
                         <MenuItem linkTo="/rediscovery" imageSrc="/magnifying-glass.svg"
                                   imageAltText="magnifying glass icon" label="rediscovery"/>

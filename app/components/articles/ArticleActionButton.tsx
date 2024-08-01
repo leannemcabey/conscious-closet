@@ -9,12 +9,14 @@ interface ArticleActionButtonProps {
 
 const ArticleActionButton = ({ iconFile, iconAlt, clickHandler }: ArticleActionButtonProps) => {
     return (
-        <button className="bg-neutral-700 rounded-full p-2 drop-shadow">
+        <button className="flex flex-col justify-center bg-theme-green rounded-full p-2 drop-shadow w-[48px] h-[48px] md:w-[60px] md:h-[60px]">
             <Image
                 src={iconFile}
                 alt={iconAlt}
-                width="30" height="30"
+                width="40"
+                height="40"
                 onClick={() => clickHandler()}
+                className="w-[90%] self-center"
             />
         </button>
     )

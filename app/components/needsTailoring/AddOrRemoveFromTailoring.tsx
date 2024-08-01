@@ -30,7 +30,7 @@ const AddOrRemoveFromTailoring = ({ article }: AddOrRemoveFromTailoringProps) =>
 
     return (
         <>
-            <ArticleActionToggle iconFile="/needle-white.svg" iconAlt="needle icon" isActive={inTailoring} clickHandler={changeTailoringStatus} />
+            <ArticleActionToggle iconFile="/sewing-machine-white.svg" iconAlt="needle icon" isActive={inTailoring} clickHandler={changeTailoringStatus} />
 
             {showConfirmation &&
                 <Modal setIsOpen={setShowConfirmation}>

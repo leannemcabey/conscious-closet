@@ -9,11 +9,17 @@ interface WeatherPickerProps {
 }
 
 export const Weather = ({ isSelected, iconPath, weatherCategory, size }: WeatherPickerProps) => {
-    const imageSize = size === "small" ? "25" : "40"
+    const imageSize = size === "small" ? "40" : "60"
+    const sizeStyles = `w-[${imageSize}px] h-[${imageSize}px] md:w-[${imageSize * 1.5}px] md:h-[${imageSize * 1.5}px]`
 
     return (
-        <div className={`flex justify-center p-2 rounded-full ${isSelected && "bg-white"} drop-shadow`}>
-            <Image src={iconPath} height={imageSize} width={imageSize} alt={`${weatherCategory} weather icon`} className=""/>
+        <div className={`flex justify-center p-2 rounded-full ${isSelected && "bg-white"} drop-shadow ${sizeStyles}`}>
+            <Image
+                src={iconPath}
+                height={imageSize}
+                width={imageSize}
+                alt={`${weatherCategory} weather icon`}
+                className="w-full"/>
         </div>
     )
 }

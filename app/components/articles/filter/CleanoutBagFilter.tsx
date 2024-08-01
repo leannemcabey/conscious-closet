@@ -12,7 +12,7 @@ const CleanoutBagFilter = ({ showCleanoutBagItems, setShowCleanoutBagItems }: Cl
     return (
         <button
             onClick={() => setShowCleanoutBagItems(!showCleanoutBagItems)}
-            className={`${styling(showCleanoutBagItems)} px-2 mr-1 h-8 rounded-full text-sm border border-theme-blue text-theme-blue truncate md:text-xl md:px-4 md:h-10`}
+            className={`${styling(showCleanoutBagItems)} px-2 mr-1 h-8 rounded-full text-sm border border-theme-blue text-theme-blue truncate md:text-2xl md:px-4 md:h-12`}
         >
             show stuff in cleanout bag
         </button>
