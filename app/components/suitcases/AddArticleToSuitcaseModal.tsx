@@ -33,22 +33,24 @@ const AddArticleToSuitcaseModal = ({
 
     return (
         <Modal setIsOpen={setIsSelectingSuitcase}>
-            <button
-                onClick={() => handleSubmit()}
-                className="fixed top-4 right-4 bg-theme-blue text-white self-end px-2 py-1 rounded-md drop-shadow"
-            >
-                Save
-            </button>
+            <div className="md:h-[500px] md:w-[350px]">
+                <button
+                    onClick={() => handleSubmit()}
+                    className="fixed top-4 right-4 bg-theme-light-green text-text-green self-end px-2 py-1 rounded-md drop-shadow md:text-xl"
+                >
+                    Save
+                </button>
 
-            <p className="text-xl mt-4 mb-4">Select suitcase(s):</p>
+                <p className="text-xl mt-4 mb-4 md:text-2xl">Select suitcase(s):</p>
 
-            <NewSuitcaseButton handleClick={() => openNewSuitcaseModal()}/>
+                <NewSuitcaseButton handleClick={() => openNewSuitcaseModal()}/>
 
-            <SuitcaseOptions
-                suitcases={suitcases}
-                selectedSuitcases={unsavedSuitcaseSelections || []}
-                setSelectedSuitcases={setUnsavedSuitcaseSelections}
-            />
+                <SuitcaseOptions
+                    suitcases={suitcases}
+                    selectedSuitcases={unsavedSuitcaseSelections || []}
+                    setSelectedSuitcases={setUnsavedSuitcaseSelections}
+                />
+            </div>
         </Modal>
     )
 }

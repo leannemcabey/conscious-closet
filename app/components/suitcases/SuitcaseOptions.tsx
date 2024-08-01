@@ -38,12 +38,12 @@ const SuitcaseOptions = ({ suitcases, selectedSuitcases, setSelectedSuitcases }:
                     className={suitcaseIsSelected(suitcase.id) ? "" : "hidden"}
                 />
             </div>
-            <span className="truncate">{suitcase.name}</span>
+            <span className="truncate text-base md:text-xl">{suitcase.name}</span>
         </div>
     )
 
     return (
-        <div className="h-72 mt-4 overflow-auto">
+        <div className="h-72 mt-4 overflow-auto md:h-96">
             <div className="flex flex-col space-y-2">
                 {suitcases.map((suitcase) => option(suitcase))}
             </div>

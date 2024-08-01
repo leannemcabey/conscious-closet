@@ -56,24 +56,12 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="h-[95%] flex flex-col">
-                <div className="flex justify-center mb-4">
-                    <h1 className="text-lg mr-2 md:text-3xl">capsule creator</h1>
-                    <div>
-                        <Image
-                            src={"/lightbulb.svg"}
-                            alt={"light bulb icon"}
-                            width="30"
-                            height="30"
-                        />
-                    </div>
-                </div>
-
+            <div className="h-[89%] flex flex-col">
                 <ArticleFilters filterTypes={filterTypes} />
 
                 <AddCapsuleToSuitcase selectedArticleIds={selectedArticleIds}/>
 
-                <div className="h-[78%] md:h-[83%] grid grid-cols-2 md:grid-cols-3 pb-4">
+                <div className="h-[85%] md:h-[83%] grid grid-cols-2 md:grid-cols-3 pb-4">
                     <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={0} setError={setError} />
                     <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={1} setError={setError} />
                     <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={2} setError={setError} />

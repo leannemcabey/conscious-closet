@@ -64,24 +64,26 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
 
     return (
         <Modal setIsOpen={setSelectingCategories}>
-            <div className="flex flex-start place-content-between">
-                <button
-                    className="border border-theme-blue text-sm text-theme-blue py-1 mx-1 rounded-md drop-shadow w-28 md:text-lg"
-                    onClick={() => selectOrDeselectAll()}
-                >
-                    {allAreSelected ? "deselect all" : "select all"}
-                </button>
-                <button onClick={() => saveSelections()}
-                        className="bg-theme-blue text-sm text-white py-1 mx-1 rounded-md drop-shadow w-28 md:text-lg"
-                >
-                    save
-                </button>
-            </div>
-            <div className="h-full mt-10">
-                <div className="flex flex-col space-y-2">
-                    {Object.keys(ArticleCategoryEnum)
-                        .map((category) => menuElement(ArticleCategoryEnum[category]))
-                    }
+            <div className="md:w-[300px]">
+                <div className="flex flex-start place-content-between">
+                    <button
+                        className="border border-theme-blue text-sm text-theme-blue py-1 mx-1 rounded-md drop-shadow w-28 md:text-lg"
+                        onClick={() => selectOrDeselectAll()}
+                    >
+                        {allAreSelected ? "deselect all" : "select all"}
+                    </button>
+                    <button onClick={() => saveSelections()}
+                            className="bg-theme-blue text-sm text-white py-1 mx-1 rounded-md drop-shadow w-28 md:text-lg"
+                    >
+                        save
+                    </button>
+                </div>
+                <div className="h-full mt-10">
+                    <div className="flex flex-col space-y-2">
+                        {Object.keys(ArticleCategoryEnum)
+                            .map((category) => menuElement(ArticleCategoryEnum[category]))
+                        }
+                    </div>
                 </div>
             </div>
         </Modal>

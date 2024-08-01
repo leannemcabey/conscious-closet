@@ -32,21 +32,23 @@ const CategorySelector = ({ selectedCategory, setSelectedCategory }: CategorySel
 
             {isOpen && (
                 <Modal setIsOpen={setIsOpen}>
-                    <CloseModalButton setIsOpen={setIsOpen} />
-                    <div className="flex flex-col justify-center text-center mt-2">
-                        {Object.keys(ArticleCategoryEnum).map((category) => {
-                            const selected = ArticleCategoryEnum[category] === selectedCategory
-                            return (
-                                <p
-                                    key={category}
-                                    className={`truncate p-1 border border-dotted border-b-0 border-t-2 border-l-0 border-r-0 ${selected ? "text-text-green" : ""} md:text-xl md:p-2`}
-                                    onClick={() => handleClick(category)}
-                                >
-                                    {ArticleCategoryTitle[category]}
-                                </p>
-                            )
-                        })}
-                        <div className="border border-dotted border-b-0 border-t-2 border-l-0 border-r-0"></div>
+                    <div className="md:w-[300px]">
+                        <CloseModalButton setIsOpen={setIsOpen} />
+                        <div className="flex flex-col justify-center text-center mt-2">
+                            {Object.keys(ArticleCategoryEnum).map((category) => {
+                                const selected = ArticleCategoryEnum[category] === selectedCategory
+                                return (
+                                    <p
+                                        key={category}
+                                        className={`truncate p-1 border border-dotted border-b-0 border-t-2 border-l-0 border-r-0 ${selected ? "text-text-green" : ""} md:text-2xl md:p-2`}
+                                        onClick={() => handleClick(category)}
+                                    >
+                                        {ArticleCategoryTitle[category]}
+                                    </p>
+                                )
+                            })}
+                            <div className="border border-dotted border-b-0 border-t-2 border-l-0 border-r-0"></div>
+                        </div>
                     </div>
                 </Modal>
             )}

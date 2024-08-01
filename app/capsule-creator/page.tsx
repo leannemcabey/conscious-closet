@@ -6,6 +6,9 @@ import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesByCategory";
 import CapsuleCreatorContainer from "@/app/components/capsuleCreator/CapsuleCreatorContainer";
 import { Article } from "@/types/article";
+import Image from "next/image";
+import * as React from "react";
+import PageHeader from "@/app/components/PageHeader";
 
 export default async function CapsuleCreator() {
     const errorState = (
@@ -30,7 +33,8 @@ export default async function CapsuleCreator() {
 
     return (
         <Layout>
-            <BackButton />
+            <BackButton/>
+            <PageHeader title="capsule creator" iconPath="/lightbulb.svg" iconAlt="light bulb icon" />
             <CapsuleCreatorContainer articlesMap={articlesMap}/>
         </Layout>
     )

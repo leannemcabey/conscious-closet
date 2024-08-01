@@ -37,21 +37,23 @@ const NewSuitcaseModal = ({ isOpen, suitcases, setSuitcases }: NewSuitcaseModalP
 
     return (
         <Modal setIsOpen={isOpen}>
-            <CloseModalButton setIsOpen={isOpen} />
-            <form className="flex flex-col pt-20">
-                <input
-                    placeholder="New suitcase name"
-                    type="text"
-                    onChange={(e) => setSuitcaseName(e.target.value)}
-                    className="border border-theme-green bg-theme-gray rounded-md p-2 focus:outline-none"
-                />
-                <button onClick={() => handleSubmit()}
-                        disabled={buttonDisabled}
-                        className={`${buttonDisabled ? "bg-theme-gray text-neutral-300" : "bg-theme-mid-green text-white"} rounded-md drop-shadow w-max py-2 px-4 mt-4 self-end`}
-                >
-                    Add
-                </button>
-            </form>
+            <div className="md:w-[400px]">
+                <CloseModalButton setIsOpen={isOpen} />
+                <form className="flex flex-col pt-20">
+                    <input
+                        placeholder="New suitcase name"
+                        type="text"
+                        onChange={(e) => setSuitcaseName(e.target.value)}
+                        className="border border-theme-green bg-theme-gray rounded-md p-2 focus:outline-none md:text-xl"
+                    />
+                    <button onClick={() => handleSubmit()}
+                            disabled={buttonDisabled}
+                            className={`${buttonDisabled ? "bg-theme-gray text-neutral-300" : "bg-theme-green text-white"} rounded-md drop-shadow w-max py-2 px-4 mt-4 self-end md:text-lg`}
+                    >
+                        Add
+                    </button>
+                </form>
+            </div>
         </Modal>
     )
 }
