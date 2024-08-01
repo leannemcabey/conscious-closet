@@ -12,7 +12,7 @@ const CleanoutRecommendationsContainer = () => {
 
     return (
         <div className="flex flex-col mt-1 h-[85%]">
-            <div className="text-xs text-center bg-white rounded-md p-2">
+            <div className="text-xs text-center bg-white rounded-md p-2 md:text-base">
                 <p className="mb-2">
                     Did you know the world produces an estimated
                     <span className="font-bold"> 92 million tons </span>
@@ -34,14 +34,14 @@ const CleanoutRecommendationsContainer = () => {
             {showAddRecModal && (
                 <Modal setIsOpen={setShowAddRecModal}>
                     <CloseModalButton setIsOpen={setShowAddRecModal} />
-                    <div className="mt-12 text-center space-y-4">
+                    <div className="mt-12 text-center space-y-4 md:space-y-8 md:text-2xl">
                         <p>
                             Know of another great company or organization?
                         </p>
 
                         <p>
                             Email us at
-                            <span className="font-bold text-theme-mid-green"> leanne@consciouscloset.co</span>
+                            <span className="font-bold text-theme-green"> leanne@consciouscloset.co</span>
                             !
                         </p>
                     </div>

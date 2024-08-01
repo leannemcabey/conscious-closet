@@ -4,22 +4,13 @@ import CleanoutRecommendationsContainer from "@/app/components/cleanoutBag/Clean
 import Image from "next/image";
 import * as React from "react";
 import BackButton from "@/app/components/navigation/BackButton";
+import PageHeader from "@/app/components/PageHeader";
 
 export default async function CleanoutBag() {
     return (
         <Layout>
             <BackButton />
-            <div className="mt-4 flex justify-center w-full">
-                <h1 className="text-lg mb-4 mr-2">recycling | donating | thrifting</h1>
-                <div>
-                    <Image
-                        src={"/earth.svg"}
-                        alt={"earth icon"}
-                        width="25"
-                        height="25"
-                    />
-                </div>
-            </div>
+            <PageHeader title="recycling | donating | thrifting" iconPath="/earth.svg" iconAlt="earth icon" />
             <CleanoutRecommendationsContainer/>
         </Layout>
     )
