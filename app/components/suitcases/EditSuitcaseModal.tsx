@@ -29,22 +29,24 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
 
     return (
         <Modal setIsOpen={setIsOpen}>
-            <CloseModalButton setIsOpen={setIsOpen} />
-            <form className="flex flex-col pt-20">
-                <input
-                    value={newSuitcaseName}
-                    type="text"
-                    onChange={(e) => setNewSuitcaseName(e.target.value)}
-                    className="border border-theme-green bg-theme-gray rounded-md p-2 focus:outline-none"
-                />
-                <button onClick={() => handleSubmit()}
-                        className="bg-theme-mid-green text-white rounded-md drop-shadow w-max py-2 px-4 mt-4 self-end"
-                >
-                    Update
-                </button>
-            </form>
+            <div className="md:w-[400px]">
+                <CloseModalButton setIsOpen={setIsOpen}/>
+                <form className="flex flex-col pt-20">
+                    <input
+                        value={newSuitcaseName}
+                        type="text"
+                        onChange={(e) => setNewSuitcaseName(e.target.value)}
+                        className="border border-theme-green bg-theme-gray rounded-md p-2 focus:outline-none md:text-xl"
+                    />
+                    <button onClick={() => handleSubmit()}
+                            className="bg-theme-green text-white rounded-md drop-shadow w-max py-2 px-4 mt-4 self-end md:text-lg"
+                    >
+                        Update
+                    </button>
+                </form>
+            </div>
         </Modal>
-    )
+)
 }
 
 export default EditSuitcaseModal;

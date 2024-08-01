@@ -58,7 +58,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
                     className={isSelected(category) ? "" : "hidden"}
                 />
             </div>
-            <span className="text-md md:text-lg">{categorySlugToTitleMap[category]}</span>
+            <span className="text-md md:text-xl">{categorySlugToTitleMap[category]}</span>
         </div>
     )
 
@@ -67,19 +67,19 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
             <div className="md:w-[300px]">
                 <div className="flex flex-start place-content-between">
                     <button
-                        className="border border-theme-blue text-sm text-theme-blue py-1 mx-1 rounded-md drop-shadow w-28 md:text-lg"
+                        className="border border-theme-blue text-sm text-theme-blue py-1 mx-1 rounded-md drop-shadow w-28 md:w-32 md:text-xl"
                         onClick={() => selectOrDeselectAll()}
                     >
                         {allAreSelected ? "deselect all" : "select all"}
                     </button>
                     <button onClick={() => saveSelections()}
-                            className="bg-theme-blue text-sm text-white py-1 mx-1 rounded-md drop-shadow w-28 md:text-lg"
+                            className="bg-theme-blue text-sm text-white py-1 mx-1 rounded-md drop-shadow w-28 md:w-32 md:text-xl"
                     >
                         save
                     </button>
                 </div>
                 <div className="h-full mt-10">
-                    <div className="flex flex-col space-y-2">
+                    <div className="flex flex-col space-y-2 md:space-y-2.5">
                         {Object.keys(ArticleCategoryEnum)
                             .map((category) => menuElement(ArticleCategoryEnum[category]))
                         }

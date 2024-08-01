@@ -26,7 +26,7 @@ const DeleteSuitcaseConfirmationModal = ({setIsOpen, suitcaseId}: DeleteSuitcase
 
     return (
         <ConfirmationModal setIsOpen={setIsOpen} confirmAction={handleSubmit}>
-            <p className="w-4/5 text-xl self-center text-center my-10">
+            <p className="w-4/5 text-xl self-center text-center my-10 md:text-2xl">
                 Are you sure you want to delete this suitcase?
             </p>
         </ConfirmationModal>
