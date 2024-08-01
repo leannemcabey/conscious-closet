@@ -31,10 +31,10 @@ const SuitcaseList = () => {
             <NewButton handleClick={() => setCreatingSuitcase(true)} />
 
             {suitcases && suitcases?.length > 0 && (
-                <div className="h-4/6 overflow-scroll pb-8">
+                <div className="h-[80%] overflow-scroll pb-4">
                     {suitcases.map((suitcase) =>
                         <Link href={`/suitcases/${suitcase.id}`} key={suitcase.id}>
-                            <div className="w-full text-lg truncate py-4 border border-dotted border-neutral-300 border-b-2 border-t-0 border-l-0 border-r-0">
+                            <div className="w-full text-center text-lg text-text-green py-4 my-4 border border-theme-mid-green truncate bg-white rounded-lg md:text-2xl">
                                 {suitcase.name}
                             </div>
                         </Link>
