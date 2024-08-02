@@ -76,7 +76,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
                 {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[80%] md:h-[79%] pb-4">
+                    <div className="h-[80%] md:h-[78%] pb-4">
                         <ArticlesContainer articles={filteredArticles} />
                     </div>
                 )}

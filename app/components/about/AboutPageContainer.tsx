@@ -6,7 +6,7 @@ const AboutPageContainer = () => {
     return (
         <div className="h-[87%] mb-8">
             <div className="flex justify-center">
-                <p className="text-base mb-6 max-w-[450px] md:text-lg md:max-w-[500px]">
+                <p className="text-base mb-6 max-w-[450px] md:text-xl md:max-w-[550px]">
                     Conscious Closet is a female-founded and owned wardrobe sustainability tool with three
                     primary philosophies.
                 </p>

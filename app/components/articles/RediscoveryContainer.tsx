@@ -33,11 +33,11 @@ const RediscoveryContainer = ({ articles }: RediscoveryContainerProps) => {
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="h-[90%] md:h-[97%] flex flex-col">
+            <div className="h-[90%] md:h-[87%] flex flex-col">
                 <ArticleFilters filterTypes={filterTypes} />
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[76%] pb-4">
+                    <div className="h-[82%] pb-4">
                         <ArticlesContainer articles={filteredArticles} />
                     </div>
                 )}

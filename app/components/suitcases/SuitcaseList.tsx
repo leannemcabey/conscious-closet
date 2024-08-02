@@ -28,8 +28,6 @@ const SuitcaseList = () => {
 
     return (
         <>
-            <NewButton handleClick={() => setCreatingSuitcase(true)} />
-
             {suitcases && suitcases?.length > 0 && (
                 <div className="h-[80%] overflow-scroll pb-4">
                     {suitcases.map((suitcase) =>
@@ -53,7 +51,10 @@ const SuitcaseList = () => {
                     isOpen={setCreatingSuitcase}
                     suitcases={suitcases || []}
                     setSuitcases={setSuitcases}
-                />}
+                />
+            }
+
+            <NewButton handleClick={() => setCreatingSuitcase(true)} />
         </>
     )
 }

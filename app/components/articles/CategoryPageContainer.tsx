@@ -42,7 +42,7 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
                 <ArticleFilters filterTypes={filterTypes}/>
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[85%] pb-4">
+                    <div className="h-[87%] md:h-[84%] pb-4">
                         <ArticlesContainer articles={filteredArticles}/>
                     </div>
                 )}

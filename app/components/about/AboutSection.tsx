@@ -31,11 +31,11 @@ const AboutSection = ({ sectionName, children }: AboutSectionProps) => {
                         />
                     </div>
                 </div>
-                <h2 className="text-center md:text-lg">{sectionName}</h2>
+                <h2 className="text-center md:text-xl">{sectionName}</h2>
             </div>
 
             {isOpen &&
-                <div className="mx-2 p-2 border border-white border-4 rounded-md space-y-4 md:space-y-6 md:text-lg">
+                <div className="mx-2 p-2 border border-white border-4 rounded-md space-y-4 md:space-y-6 md:text-xl">
                     {children}
                 </div>}
         </div>
