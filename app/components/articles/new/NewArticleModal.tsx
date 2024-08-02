@@ -105,8 +105,10 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
             )}
 
             {submitted &&
-                <div className="flex justify-center mt-6">
-                    {successGif}
+                <div className="flex justify-center mt-6 md:w-[400px] md:h-[400px]">
+                    <div className="md:mt-14">
+                        {successGif}
+                    </div>
                 </div>
             }
         </Modal>
