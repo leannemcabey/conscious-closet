@@ -22,15 +22,15 @@ const ErrorModal = ({ setIsOpen, errorMessage }: ErrorModalProps) => {
                         height="100"
                     />
                 </div>
-                <p className="text-2xl mb-2">Oops!</p>
-                <p className="text-lg">
+                <p className="text-2xl md:text-3xl mb-2 md:mb-4">Oops!</p>
+                <p className="text-base md:text-xl">
                     {errorMessage}
                 </p>
-                <p className="text-xs text-neutral-400 my-2">
+                <p className="text-xs md:text-base text-neutral-400 my-2 md:my-4">
                     If the error persists, please contact us at leanne@consciouscloset.co.
                 </p>
                 <button
-                    className="mt-4 px-4 py-2 bg-theme-gray rounded-md drop-shadow"
+                    className="mt-4 md:mt-8 px-4 py-2 bg-theme-gray rounded-md drop-shadow md:text-lg"
                     onClick={() => setIsOpen(false)}
                 >
                     OK

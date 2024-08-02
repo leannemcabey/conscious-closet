@@ -61,14 +61,22 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
 
             {image && !submitted && (
                 <div className="mt-4 flex flex-col place-content-center">
-                    <div className="flex flex-col border border-theme-red border-2 border-dotted rounded-md p-2 text-xs text-center items-center mb-2">
-                        <div className="flex space-x-1 mb-2.5">
-                            <Image src="/warning-icon.svg" height="20" width="20" alt="warning"/>
-                            <p>
+                    <div className="flex flex-col border border-theme-red border-2 border-dotted rounded-md p-2 text-center items-center mb-4 md:mb-8">
+                        <div className="flex items-center space-x-1 mb-2.5">
+                            <div className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]">
+                                <Image
+                                    src="/warning-icon.svg"
+                                    height="18"
+                                    width="18"
+                                    alt="warning"
+                                    className="w-full self-center"
+                                />
+                            </div>
+                            <p className="self-center text-base md:text-2xl">
                                 IMPORTANT:
                             </p>
                         </div>
-                        <p>
+                        <p className="text-sm md:text-xl">
                             Do not delete this photo from your Google Photos account.
                             If you do, you will no longer be able to access it in Conscious Closet.
                         </p>
@@ -82,9 +90,15 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
                     {image &&
                         <button disabled={buttonDisabled}
                                 onClick={() => handleSubmit()}
-                                className="self-end rounded-full mt-6 -mr-4"
+                                className="self-end rounded-full mt-6 -mr-4 w-[40px] h-[40px] md:w-[60px] md:h-[60px]"
                         >
-                            <Image src={buttonImage} height="40" width="40" alt="check mark icon"/>
+                            <Image
+                                src={buttonImage}
+                                height="40"
+                                width="40"
+                                alt="check mark icon"
+                                className="w-full"
+                            />
                         </button>
                     }
                 </div>
