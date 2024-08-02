@@ -34,7 +34,7 @@ const SuitcaseList = () => {
                 <div className="h-[80%] overflow-scroll pb-4">
                     {suitcases.map((suitcase) =>
                         <Link href={`/suitcases/${suitcase.id}`} key={suitcase.id}>
-                            <div className="w-full text-center text-lg text-text-green py-4 my-4 border border-theme-mid-green truncate bg-white rounded-lg md:text-2xl">
+                            <div className="w-full text-center text-lg text-text-green py-4 my-4 border border-theme-mid-green truncate bg-white rounded-lg drop-shadow md:text-2xl">
                                 {suitcase.name}
                             </div>
                         </Link>
