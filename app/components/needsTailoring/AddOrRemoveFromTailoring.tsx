@@ -34,9 +34,9 @@ const AddOrRemoveFromTailoring = ({ article }: AddOrRemoveFromTailoringProps) =>
 
             {showConfirmation &&
                 <Modal setIsOpen={setShowConfirmation}>
-                    <div className="flex flex-col items-center text-center">
+                    <div className="flex flex-col items-center text-center md:w-[400px] md:h-[400px] md:mt-12">
                         <Image unoptimized={true} src="/checkmark.gif" alt="success" height="200" width="200"/>
-                        <p className="text-xl mt-4">
+                        <p className="text-xl md:text-2xl mt-4">
                             {inTailoring ? "Added to tailoring" : "Removed from tailoring"}
                         </p>
                     </div>
