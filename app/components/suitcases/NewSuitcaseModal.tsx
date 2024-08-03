@@ -7,12 +7,12 @@ import { Suitcase } from "@/types/suitcase";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface NewSuitcaseModalProps {
-    isOpen:  Dispatch<SetStateAction<boolean>>;
+    setIsOpen:  Dispatch<SetStateAction<boolean>>;
     suitcases: Suitcase[];
     setSuitcases: Dispatch<SetStateAction<Suitcase[] | undefined>>
 }
 
-const NewSuitcaseModal = ({ isOpen, suitcases, setSuitcases }: NewSuitcaseModalProps) => {
+const NewSuitcaseModal = ({ setIsOpen, suitcases, setSuitcases }: NewSuitcaseModalProps) => {
     const [suitcaseName, setSuitcaseName] = useState<string>();
     const [error, setError] = useState<boolean>();
 
@@ -28,7 +28,7 @@ const NewSuitcaseModal = ({ isOpen, suitcases, setSuitcases }: NewSuitcaseModalP
                     copy.unshift(newSuitcase)
                     setSuitcases(copy)
                 })
-                .then(() => isOpen(false))
+                .then(() => setIsOpen(false))
                 .catch(() => setError(true))
         }
     }
@@ -36,9 +36,9 @@ const NewSuitcaseModal = ({ isOpen, suitcases, setSuitcases }: NewSuitcaseModalP
     if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
     return (
-        <Modal setIsOpen={isOpen}>
+        <Modal setIsOpen={setIsOpen}>
             <div className="md:w-[400px]">
-                <CloseModalButton setIsOpen={isOpen} />
+                <CloseModalButton setIsOpen={setIsOpen} />
                 <form className="flex flex-col pt-20">
                     <input
                         placeholder="New suitcase name"

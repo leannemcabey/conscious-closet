@@ -17,8 +17,11 @@ export async function deleteArticle(article: Article) {
         throw error
     }
 
-    revalidatePath(`articles/${id}`);
+    revalidatePath(`/articles/${id}`);
     revalidatePath(`/articles/category/${articleCategory}`);
     revalidatePath(`/articles/weather/${article.weatherCategory}`);
     revalidatePath(`/cleanout-bag`);
+    revalidatePath(`/rediscovery`);
+    revalidatePath(`/needs-tailoring`);
+    revalidatePath(`/capsule-creator`);
 }
