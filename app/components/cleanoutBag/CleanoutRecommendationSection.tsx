@@ -11,7 +11,7 @@ interface CleanoutRecommendationSectionProps {
 }
 
 const CleanoutRecommendationSection = ({ sectionName, sectionRecs }: CleanoutRecommendationSectionProps) => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(true);
 
     const arrow = isOpen ? "arrow-down-white" : "arrow-up-white";
     const alt = isOpen ? "collapse" : "expand";

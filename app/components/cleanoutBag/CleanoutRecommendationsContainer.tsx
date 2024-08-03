@@ -11,7 +11,7 @@ const CleanoutRecommendationsContainer = () => {
     const [showAddRecModal, setShowAddRecModal] = useState<boolean>();
 
     return (
-        <div className="flex flex-col mt-1 h-[85%]">
+        <div className="flex flex-col mt-1 h-[90%]">
             <div className="text-xs text-center bg-white rounded-md p-2 md:text-base">
                 <p className="mb-2">
                     Did you know the world produces an estimated

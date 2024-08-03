@@ -8,7 +8,7 @@ interface CleanoutRecommendationItemProps {
 }
 
 const CleanoutRecommendationItem = ({ recommendation }: CleanoutRecommendationItemProps) => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(true);
 
     const arrow = isOpen ? "arrow-down" : "arrow-up";
     const alt = isOpen ? "collapse" : "expand";
