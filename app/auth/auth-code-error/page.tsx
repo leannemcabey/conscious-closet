@@ -1,3 +1,5 @@
+import * as React from "react";
+
 export default async function AuthCodeError(req: Request) {
     return (
         <div className="h-screen flex flex-col place-content-center">
@@ -7,7 +9,11 @@ export default async function AuthCodeError(req: Request) {
                     <p>Something went wrong.</p>
                     <p>Try closing the app and logging in again.</p>
                 </div>
-                <p className="text-sm">If the problem persists, please contact leanne@consciouscloset.co.</p>
+                <p className="text-sm">If the problem persists, please contact us at
+                    <a
+                        className="text-theme-blue"
+                        href="mailto:leanne@consciouscloset.co"> leanne@consciouscloset.co</a>
+                </p>.
             </div>
         </div>
     )

@@ -25,7 +25,11 @@ const ErrorPageContainer = ({ errorMessage }: ErrorPageContainerProps) => {
                     </p>
                 </div>
                 <p className="text-xs text-neutral-400">
-                    If the error persists, please contact us at leanne@consciouscloset.co.
+                    If the error persists, please contact us at
+                    <a
+                        className="text-theme-blue"
+                        href="mailto:leanne@consciouscloset.co"> leanne@consciouscloset.co
+                    </a>.
                 </p>
             </div>
         </div>

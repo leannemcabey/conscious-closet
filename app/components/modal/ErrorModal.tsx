@@ -27,7 +27,11 @@ const ErrorModal = ({ setIsOpen, errorMessage }: ErrorModalProps) => {
                     {errorMessage}
                 </p>
                 <p className="text-xs md:text-base text-neutral-400 my-2 md:my-4">
-                    If the error persists, please contact us at leanne@consciouscloset.co.
+                    If the error persists, please contact us at
+                    <a
+                        className="text-theme-blue"
+                        href="mailto:leanne@consciouscloset.co"> leanne@consciouscloset.co
+                    </a>.
                 </p>
                 <button
                     className="mt-4 md:mt-8 px-4 py-2 bg-theme-gray rounded-md drop-shadow md:text-lg"

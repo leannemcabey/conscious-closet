@@ -41,7 +41,10 @@ const CleanoutRecommendationsContainer = () => {
 
                         <p>
                             Email us at
-                            <span className="font-bold text-theme-green"> leanne@consciouscloset.co</span>
+                            <a
+                                className="text-theme-blue"
+                                href="mailto:leanne@consciouscloset.co"> leanne@consciouscloset.co
+                            </a>
                             !
                         </p>
                     </div>
