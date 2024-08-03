@@ -48,7 +48,7 @@ const SuitcaseList = () => {
 
             {creatingSuitcase &&
                 <NewSuitcaseModal
-                    isOpen={setCreatingSuitcase}
+                    setIsOpen={setCreatingSuitcase}
                     suitcases={suitcases || []}
                     setSuitcases={setSuitcases}
                 />

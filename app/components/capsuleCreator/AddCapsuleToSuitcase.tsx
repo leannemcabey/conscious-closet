@@ -78,7 +78,7 @@ const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps)
 
             {creatingSuitcase &&
                 <NewSuitcaseModal
-                    isOpen={setCreatingSuitcase}
+                    setIsOpen={setCreatingSuitcase}
                     suitcases={suitcases || []}
                     setSuitcases={setSuitcases}
                 />

@@ -83,7 +83,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
 
             {creatingSuitcase &&
                 <NewSuitcaseModal
-                    isOpen={setCreatingSuitcase}
+                    setIsOpen={setCreatingSuitcase}
                     suitcases={suitcases || []}
                     setSuitcases={setSuitcases}
                 />
