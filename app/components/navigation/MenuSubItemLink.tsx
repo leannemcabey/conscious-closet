@@ -9,7 +9,7 @@ export interface MenuSubItem {
 const MenuSubItemLink = ({ label, linkTo }: MenuSubItem) => {
     return (
         <Link href={linkTo} key={label}>
-            <h3 className="w-max p-1 text-sm truncate md:text-lg">{label}</h3>
+            <h3 className="w-max p-1 text-base truncate md:text-xl">{label}</h3>
         </Link>
     )
 }
