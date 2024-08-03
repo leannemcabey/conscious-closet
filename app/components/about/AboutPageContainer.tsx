@@ -1,10 +1,11 @@
 import * as React from "react";
 import AboutSection from "@/app/components/about/AboutSection";
 import Link from "next/link";
+import Image from "next/image";
 
 const AboutPageContainer = () => {
     return (
-        <div className="h-[87%] mb-8">
+        <div className="h-full overflow-scroll">
             <div className="flex justify-center">
                 <p className="text-base mb-6 max-w-[450px] md:text-xl md:max-w-[550px]">
                     Conscious Closet is a female-founded and owned wardrobe sustainability tool with three
@@ -12,18 +13,20 @@ const AboutPageContainer = () => {
                 </p>
             </div>
 
-            <div className="h-[87%] md:h-[90%] overflow-scroll pb-4">
-                <AboutSection sectionName="Shop your own closet">
+            <div className="flex justify-center space-x-2">
+                <AboutSection sectionName="shop your own closet" iconPath="/circle-1.svg" iconAlt="1">
                     <p>
                         How many times have you rediscovered an item of clothing that you completely forgot you had?
                         And in the time you forgot, you went and bought three more things of the same style.
+                    </p>
+                    <p>
                         Digitally cataloguing your wardrobe can help you maintain an understanding of what you own,
                         and makes it easier for you to give each piece its day in the sun. It also makes packing a
                         heck of a lot easier!
                     </p>
                 </AboutSection>
 
-                <AboutSection sectionName="Less is more">
+                <AboutSection sectionName="less is more" iconPath="/circle-2.svg" iconAlt="2">
                     <p>
                         On average, an item of clothing is worn just 7 times before it's thrown out. 7 times!
                         We only have so many days in the year to actually wear our clothes, and even less if you only
@@ -41,7 +44,7 @@ const AboutPageContainer = () => {
                     </p>
                 </AboutSection>
 
-                <AboutSection sectionName="Clothes aren't trash">
+                <AboutSection sectionName="clothes aren't trash" iconPath="/circle-3.svg" iconAlt="3">
                     <p>
                         Don't throw those items you never wear in the trash! The world produces an estimated 92 million
                         tons of textile waste each year. You can avoid contributing to that by finding an alternative
@@ -59,6 +62,31 @@ const AboutPageContainer = () => {
                         page for some suggestions on where to do this!
                     </p>
                 </AboutSection>
+            </div>
+
+            <h3 className="mt-8 pt-8 mb-4 border border-dotted border-theme-green border-t-2 border-b-0 border-r-0 border-l-0 tracking-widest text-base md:text-2xl text-text-green">meet the founder</h3>
+            <div className="text-left">
+                <div className="w-[180px] float-left mr-4">
+                    <Image
+                        src="/founder.jpg"
+                        alt="woman standing in front of a pink door wearing a houndstooth coat and high heeled boots"
+                        width="180"
+                        height="250"
+                        className="w-full"
+                    />
+                </div>
+                    <p className="mb-4">Hi, I'm Leanne -- founder and engineer behind Conscious Closet!</p>
+                    <p className="mb-4">
+                        I built Conscious Closet because I wanted a tool that would help me and others on the journey to
+                        a more sustainable wardrobe. That journey is, of course, much bigger than any one app could ever hope to
+                        address, but I knew I could influence some tangible, everyday changes in perspective and action.
+                    </p>
+                    <p>
+                        It's impossible to be perfectly sustainable -- everything has its trade offs. But the most
+                        sustainable wardrobe you can have is the one that's already in your closet. My hope is that
+                        Conscious Closet inspires you to rediscover what you already own, be thoughtful about purchasing
+                        new things, and clean out your closet in a way that doesn't negatively impact our planet. ♡
+                    </p>
             </div>
         </div>
     )
