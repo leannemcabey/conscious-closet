@@ -8,7 +8,7 @@ import PageHeader from "@/app/components/PageHeader";
 export default async function About() {
     return (
         <Layout>
-            <div className="h-full text-center mt-2.5">
+            <div className="h-full mt-2.5">
                 <BackButton/>
 
                 <div className="h-[93%] flex flex-col">

@@ -5,9 +5,9 @@ import Image from "next/image";
 
 const AboutPageContainer = () => {
     return (
-        <div className="h-full overflow-scroll">
+        <div className="flex flex-col place-content-between h-full overflow-scroll">
             <div className="flex justify-center">
-                <p className="text-base mb-6 max-w-[450px] md:text-xl md:max-w-[550px]">
+                <p className="text-center text-base mb-6 max-w-[450px] md:text-xl md:max-w-[550px]">
                     Conscious Closet is a female-founded and owned wardrobe sustainability tool with three
                     primary philosophies.
                 </p>
@@ -64,9 +64,11 @@ const AboutPageContainer = () => {
                 </AboutSection>
             </div>
 
-            <h3 className="mt-8 pt-8 mb-4 border border-dotted border-theme-green border-t-2 border-b-0 border-r-0 border-l-0 tracking-widest text-base md:text-2xl text-text-green">meet the founder</h3>
-            <div className="text-left">
-                <div className="w-[180px] float-left mr-4">
+            <h3 className="mt-8 pt-8 mb-4 text-center border border-dotted border-theme-green border-t-2 border-b-0 border-r-0 border-l-0 tracking-widest text-base md:text-2xl text-text-green">
+                meet the founder
+            </h3>
+            <div className="md:text-xl mb-12">
+                <div className="w-[180px] md:w-[300px] float-left mr-4 md:mr-6">
                     <Image
                         src="/founder.jpg"
                         alt="woman standing in front of a pink door wearing a houndstooth coat and high heeled boots"
@@ -87,6 +89,24 @@ const AboutPageContainer = () => {
                         Conscious Closet inspires you to rediscover what you already own, be thoughtful about purchasing
                         new things, and clean out your closet in a way that doesn't negatively impact our planet. ♡
                     </p>
+            </div>
+
+            <div className="flex justify-center items-center bg-white rounded-md p-2 space-x-4 place-content-center">
+                <div className="w-[40px]">
+                    <Image
+                        src="/mail.svg"
+                        alt="mail icon"
+                        width="40"
+                        height="40"
+                        className="w-full"
+                    />
+                </div>
+                <p className="w-[200px] md:w-max md:text-xl">
+                    Have feedback? Email us at
+                    <a
+                        className="text-theme-blue"
+                        href="mailto:leanne@consciouscloset.co"> leanne@consciouscloset.co</a>!
+                </p>
             </div>
         </div>
     )

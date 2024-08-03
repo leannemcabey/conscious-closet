@@ -21,7 +21,7 @@ const AboutSection = ({ sectionName, iconPath, iconAlt, children }: AboutSection
     return (
         <>
             <div
-                className="flex flex-col items-center w-[96px] h-[130px] bg-white border border-theme-green text-text-green rounded-md p-2 mb-2 drop-shadow"
+                className="flex flex-col items-center w-[96px] md:w-[200px] h-[130px] bg-white border border-theme-green text-text-green rounded-md p-2 mb-2 drop-shadow"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <div className="w-[35px] h-[35px]">
@@ -40,7 +40,7 @@ const AboutSection = ({ sectionName, iconPath, iconAlt, children }: AboutSection
                 <Modal setIsOpen={setIsOpen}>
                     <CloseModalButton setIsOpen={setIsOpen}/>
                     <h2 className="bg-theme-mid-green text-white p-1 rounded-md text-center tracking-widest mt-2 md:text-xl">{sectionName}</h2>
-                    <div className="text-center text-text-green space-y-4 py-4 h-max max-h-[500px] overflow-scroll">
+                    <div className="text-center text-text-green space-y-4 py-4 h-max max-h-[500px] overflow-scroll md:text-xl md:max-h-[600px]">
                         {children}
                     </div>
                 </Modal>}
