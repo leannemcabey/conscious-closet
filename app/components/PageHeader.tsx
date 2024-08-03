@@ -10,7 +10,7 @@ interface PageHeaderProps {
 const PageHeader = ({ title, iconPath, iconAlt }: PageHeaderProps) => {
     return (
         <div className="flex justify-center items-center mb-4">
-            <h1 className={`text-lg md:text-3xl ${iconPath && "mr-1 md:mr-2.5"}`}>{title}</h1>
+            <h1 className={`text-lg tracking-widest md:text-3xl ${iconPath && "mr-1 md:mr-2.5"}`}>{title}</h1>
             {iconPath && iconAlt && (
                 <div className="w-[25px] md:w-[40px]">
                     <Image

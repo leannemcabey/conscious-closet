@@ -22,7 +22,7 @@ export default async function About() {
                                 className="w-full"
                             />
                         </div>
-                        <h1 className="text-lg md:text-3xl">about us</h1>
+                        <h1 className="text-lg tracking-widest md:text-3xl">about us</h1>
                     </div>
                     <AboutPageContainer />
                 </div>
