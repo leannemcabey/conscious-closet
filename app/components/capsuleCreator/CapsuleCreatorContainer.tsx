@@ -6,7 +6,7 @@ import {ArticleCategoryEnum} from "@/types/enums/articleCategoryEnum";
 import {Article} from "@/types/article";
 import {ArticleFilterContext, FilterSettings} from "@/app/context/ArticleFilterContext";
 import {WeatherCategoryEnum} from "@/types/enums/weatherCategoryEnum";
-import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
+import ArticleFilters, {FilterType} from "@/app/components/filter/ArticleFilters";
 import {applyArticleFilters} from "@/utils/applyArticleFilters";
 import AddCapsuleToSuitcase from "@/app/components/capsuleCreator/AddCapsuleToSuitcase";
 import ErrorModal from "@/app/components/modal/ErrorModal";

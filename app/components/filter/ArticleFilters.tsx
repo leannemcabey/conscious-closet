@@ -1,10 +1,10 @@
 'use client'
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { Article } from "@/types/article";
-import WeatherFilter from "@/app/components/articles/filter/WeatherFilter";
-import CleanoutBagFilter from "@/app/components/articles/filter/CleanoutBagFilter";
+import WeatherFilter from "@/app/components/filter/WeatherFilter";
+import CleanoutBagFilter from "@/app/components/filter/CleanoutBagFilter";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
-import CategoryFilter from "@/app/components/articles/filter/CategoryFilter";
+import CategoryFilter from "@/app/components/filter/CategoryFilter";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { ArticleFilterContext } from "@/app/context/ArticleFilterContext";
 

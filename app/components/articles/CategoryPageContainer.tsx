@@ -3,7 +3,7 @@ import { Article } from "@/types/article";
 import { useEffect, useState } from "react";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import NewArticleModal from "@/app/components/articles/new/NewArticleModal";
-import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
+import ArticleFilters, {FilterType} from "@/app/components/filter/ArticleFilters";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import * as React from "react";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";

@@ -1,8 +1,9 @@
 'use client'
 import { Dispatch, SetStateAction, useState } from "react";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
-import CategoryFilterModal from "@/app/components/articles/filter/CategoryFilterModal";
+import CategoryFilterModal from "@/app/components/filter/CategoryFilterModal";
 import Image from "next/image";
+import FilterButton from "@/app/components/buttons/FilterButton";
 
 interface CategoryFilterProps {
     selectedArticleCategories: ArticleCategoryEnum[];
@@ -14,17 +15,12 @@ const CategoryFilter = ({ selectedArticleCategories, setSelectedArticleCategorie
 
     return (
         <>
-            <div
-                onClick={() => setSelectingCategories(!selectingCategories)}
-                className={`flex justify-center p-2 rounded-full border border-theme-blue rounded-full bg-white drop-shadow w-[40px] md:w-[50px]`}
-            >
-                <Image
-                    src="/hanger.svg"
-                    height={40}
-                    width={40}
-                    alt="hanger icon"
-                    className="w-full"/>
-            </div>
+            <FilterButton
+                handleClick={() => setSelectingCategories(!selectingCategories)}
+                isActive={true}
+                iconPath="/hanger.svg"
+                iconAlt="hanger icon"
+            />
 
             {selectingCategories &&
                 <CategoryFilterModal

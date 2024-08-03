@@ -6,7 +6,7 @@ import { Article } from "@/types/article";
 import { deleteAllFromCleanoutBag } from "@/app/server-actions/cleanout-bag/deleteAllFromCleanoutBag";
 import DeleteAllFromCleanoutConfirmationModal
     from "@/app/components/cleanoutBag/DeleteAllFromCleanoutConfirmationModal";
-import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
+import ArticleFilters, {FilterType} from "@/app/components/filter/ArticleFilters";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
