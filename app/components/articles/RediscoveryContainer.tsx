@@ -15,16 +15,17 @@ interface RediscoveryContainerProps {
 
 const RediscoveryContainer = ({ articles }: RediscoveryContainerProps) => {
     const defaultFilterContext: FilterSettings = {
-        showCleanoutBagItems: true,
+        showCleanoutBagItems: false,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM],
         selectedArticleCategories: Object.keys(ArticleCategoryEnum).map((category) => ArticleCategoryEnum[category])
     };
 
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
     const [unfilteredArticles, setUnfilteredArticles] = useState<Article[]>(articles);
-    const [filteredArticles, setFilteredArticles] = useState<Article[]>(unfilteredArticles);
+    const articlesNotInCleanoutBag = unfilteredArticles.filter((article) => !article.inCleanoutBag);
+    const [filteredArticles, setFilteredArticles] = useState<Article[]>(articlesNotInCleanoutBag);
 
-    const filterTypes = [FilterType.weather, FilterType.category];
+    const filterTypes = [FilterType.cleanout, FilterType.weather, FilterType.category];
 
     useEffect(() => {
         const tempFilteredArticles = applyArticleFilters(articles, filterTypes, filterSettings);

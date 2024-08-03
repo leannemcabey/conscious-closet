@@ -1,5 +1,6 @@
 'use client'
 import { Dispatch, SetStateAction } from "react";
+import Image from "next/image";
 
 interface CleanoutBagFilterProps {
     showCleanoutBagItems: boolean;
@@ -7,15 +8,18 @@ interface CleanoutBagFilterProps {
 }
 
 const CleanoutBagFilter = ({ showCleanoutBagItems, setShowCleanoutBagItems }: CleanoutBagFilterProps) => {
-    const styling = (active: boolean) => active ? "bg-white" : ""
-
     return (
-        <button
+        <div
             onClick={() => setShowCleanoutBagItems(!showCleanoutBagItems)}
-            className={`${styling(showCleanoutBagItems)} px-2 mr-1 h-8 rounded-full text-sm border border-theme-blue text-theme-blue truncate md:text-2xl md:px-4 md:h-12`}
+            className={`flex justify-center p-2 rounded-full border border-theme-blue rounded-full ${showCleanoutBagItems && "bg-white"} drop-shadow w-[40px] md:w-[50px]`}
         >
-            show stuff in cleanout bag
-        </button>
+            <Image
+                src="/broom.svg"
+                height={40}
+                width={40}
+                alt="broom icon"
+                className="w-full"/>
+        </div>
     )
 }
 

@@ -1,7 +1,6 @@
 'use client'
 import { Article } from "@/types/article";
 import { useEffect, useState } from "react";
-import NewArticleButton from "@/app/components/articles/new/NewArticleButton";
 import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import NewArticleModal from "@/app/components/articles/new/NewArticleModal";
 import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";

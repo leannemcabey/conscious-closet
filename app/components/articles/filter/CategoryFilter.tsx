@@ -2,6 +2,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import CategoryFilterModal from "@/app/components/articles/filter/CategoryFilterModal";
+import Image from "next/image";
 
 interface CategoryFilterProps {
     selectedArticleCategories: ArticleCategoryEnum[];
@@ -13,12 +14,17 @@ const CategoryFilter = ({ selectedArticleCategories, setSelectedArticleCategorie
 
     return (
         <>
-            <button
-                className="px-2 h-8 rounded-full text-sm border border-theme-blue bg-white text-theme-blue md:text-2xl md:px-4 md:h-12"
+            <div
                 onClick={() => setSelectingCategories(!selectingCategories)}
+                className={`flex justify-center p-2 rounded-full border border-theme-blue rounded-full bg-white drop-shadow w-[40px] md:w-[50px]`}
             >
-                categories
-            </button>
+                <Image
+                    src="/hanger.svg"
+                    height={40}
+                    width={40}
+                    alt="hanger icon"
+                    className="w-full"/>
+            </div>
 
             {selectingCategories &&
                 <CategoryFilterModal

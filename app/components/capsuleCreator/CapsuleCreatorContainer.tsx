@@ -1,14 +1,13 @@
 'use client'
-import Image from "next/image";
 import * as React from "react";
+import {useEffect, useState} from "react";
 import CapsuleElement from "@/app/components/capsuleCreator/CapsuleElement";
-import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
-import { Article } from "@/types/article";
-import { useEffect, useState } from "react";
-import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
-import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
-import ArticleFilters, { FilterType } from "@/app/components/articles/filter/ArticleFilters";
-import { applyArticleFilters } from "@/utils/applyArticleFilters";
+import {ArticleCategoryEnum} from "@/types/enums/articleCategoryEnum";
+import {Article} from "@/types/article";
+import {ArticleFilterContext, FilterSettings} from "@/app/context/ArticleFilterContext";
+import {WeatherCategoryEnum} from "@/types/enums/weatherCategoryEnum";
+import ArticleFilters, {FilterType} from "@/app/components/articles/filter/ArticleFilters";
+import {applyArticleFilters} from "@/utils/applyArticleFilters";
 import AddCapsuleToSuitcase from "@/app/components/capsuleCreator/AddCapsuleToSuitcase";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 
@@ -21,6 +20,16 @@ interface CapsuleCreatorContainerProps {
 }
 
 const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) => {
+    const filterCleanout = (): CategoryArticlesMap => {
+        const articlesNotInCleanoutMap = {};
+
+        Object.keys(unfilteredArticlesMap).forEach((category) => {
+            articlesNotInCleanoutMap[category] = unfilteredArticlesMap[category].filter((article) => !article.inCleanoutBag)
+        })
+
+        return articlesNotInCleanoutMap as CategoryArticlesMap;
+    }
+
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: false,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM]
@@ -29,7 +38,9 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
     const [selectedArticleIds, setSelectedArticleIds] = useState<(string | undefined)[]>([]);
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
     const [unfilteredArticlesMap, setUnfilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap)
-    const [filteredArticlesMap, setFilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap);
+    const articlesNotInCleanoutMap = filterCleanout();
+    console.log(JSON.stringify(articlesNotInCleanoutMap))
+    const [filteredArticlesMap, setFilteredArticlesMap] = useState<CategoryArticlesMap>(articlesNotInCleanoutMap);
     const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
