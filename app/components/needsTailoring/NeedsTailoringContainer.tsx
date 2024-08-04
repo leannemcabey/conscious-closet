@@ -34,7 +34,7 @@ const NeedsTailoringContainer = ({ articles }: NeedsTailoringContainerProps) => 
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex flex-col h-[87%] md:h-[90%]">
+            <div className="flex flex-col h-[90%] md:h-[87%] pb-4">
                 <ArticleFilters filterTypes={filterTypes} />
 
                 {filteredArticles.length > 0 && (

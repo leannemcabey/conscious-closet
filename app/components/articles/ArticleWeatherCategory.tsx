@@ -39,14 +39,26 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategoryProps) => {
                         {Object.keys(WeatherCategoryEnum).map((category) => {
                             if (category.toLowerCase() !== weatherCategory) {
                                 return (
-                                    <IconButton key={category} handleClick={() => handleClick(WeatherCategoryEnum[category])} isActive={false} iconPath={`/weather-icon-${category}.svg`} iconAlt={`${category}  weather icon}`} />
+                                    <IconButton
+                                        key={category}
+                                        handleClick={() => handleClick(WeatherCategoryEnum[category])}
+                                        isActive={false} iconPath={`/weather-icon-${category}.svg`}
+                                        iconAlt={`${category}  weather icon}`}
+                                        sizeOverride="w-[60px] md:w-[80px]"
+                                    />
                                 )
                             }
                         })}
                     </div>
                 )}
 
-                <IconButton handleClick={() => setIsOpen(!isOpen)} isActive={true} iconPath={`/weather-icon-${weatherCategory}.svg`} iconAlt={`${weatherCategory}  weather icon}`} />
+                <IconButton
+                    handleClick={() => setIsOpen(!isOpen)}
+                    isActive={true}
+                    iconPath={`/weather-icon-${weatherCategory}.svg`}
+                    iconAlt={`${weatherCategory}  weather icon}`}
+                    sizeOverride="w-[60px] md:w-[80px]"
+                />
             </div>
 
             {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}

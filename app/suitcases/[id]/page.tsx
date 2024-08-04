@@ -28,7 +28,7 @@ export default async function Suitcase({ params }: { id: string }) {
                 <>
                     <div className="flex place-content-between">
                         <BackButton />
-                        <div className="h-max flex space-x-2">
+                        <div className="h-max flex space-x-2 md:mt-4">
                             <EditSuitcaseButton suitcase={suitcase}/>
                             <DeleteSuitcaseButton suitcaseId={params.id}/>
                         </div>

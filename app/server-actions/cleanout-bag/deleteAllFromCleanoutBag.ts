@@ -2,6 +2,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import {ArticleCategoryEnum} from "@/types/enums/articleCategoryEnum";
+import {redirect} from "next/navigation";
 
 export async function deleteAllFromCleanoutBag() {
     const supabase = createClient();
@@ -18,4 +19,5 @@ export async function deleteAllFromCleanoutBag() {
 
     revalidatePath('/cleanout')
     Object.values(ArticleCategoryEnum).forEach((category) => revalidatePath(`articles/${category}`))
+    redirect('/home')
 }

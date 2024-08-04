@@ -23,7 +23,7 @@ export default async function NeedsTailoring() {
                     <div className="flex flex-col items-center">
                         <PageHeader title="needs tailoring" iconPath="/sewing-machine.svg" iconAlt="needle icon" />
 
-                        <p className="mt-1 mb-4 text-center max-w-[300px] text-neutral-400 text-sm md:text-lg md:max-w-[400px]">
+                        <p className="mb-1 text-center max-w-[300px] text-neutral-400 text-sm md:text-lg md:max-w-[400px]">
                             Tailoring is a great way to give new life to an item and avoid creating waste.
                         </p>
                     </div>

@@ -36,7 +36,7 @@ const SuitcaseContainer = ({ articles }: SuitcaseContainerProps) => {
                 <ArticleFilters filterTypes={filterTypes} />
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[90%] pb-4">
+                    <div className="h-[90%] md:h-[82%] pb-4">
                         <ArticlesContainer articles={filteredArticles} />
                     </div>
                 )}

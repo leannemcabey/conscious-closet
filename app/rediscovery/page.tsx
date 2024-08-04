@@ -23,7 +23,7 @@ export default async function Rediscovery() {
                     <PageHeader title="rediscovery" iconPath="/lightbulb.svg" iconAlt="light bulb icon" />
 
                     <div className="flex justify-center">
-                        <p className="mt-1 mb-4 text-center text-sm text-neutral-400 max-w-[500px] md:text-lg">
+                        <p className="mb-1 text-center text-sm text-neutral-400 max-w-[500px] md:text-lg">
                             We noticed you haven't worn these items in the last 6 months.
                             By rediscovering what you already own, you'll feel less compelled to purchase more.
                         </p>

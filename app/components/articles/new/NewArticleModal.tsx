@@ -62,7 +62,7 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
 
             {image && !submitted && (
                 <div className="mt-4 flex flex-col place-content-center">
-                    <div className="flex flex-col border border-theme-red border-2 border-dotted rounded-lg p-2 text-center items-center mb-4 md:mb-8">
+                    <div className="flex flex-col bg-neutral-200 rounded-lg p-2 text-center items-center mb-4 md:mb-8">
                         <div className="flex items-center space-x-1 mb-2.5">
                             <div className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]">
                                 <Image
