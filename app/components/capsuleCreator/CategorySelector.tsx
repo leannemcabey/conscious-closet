@@ -5,9 +5,10 @@ import { ArticleCategoryEnum, ArticleCategoryTitle, categorySlugToTitleMap } fro
 import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
+import IconButton from "@/app/components/buttons/IconButton";
 
 interface CategorySelectorProps {
-    selectedCategory: ArticleCategoryEnum;
+    selectedCategory: ArticleCategoryEnum | undefined;
     setSelectedCategory: Dispatch<SetStateAction<ArticleCategoryEnum>>
 }
 
@@ -21,14 +22,12 @@ const CategorySelector = ({ selectedCategory, setSelectedCategory }: CategorySel
 
     return (
         <div className="flex flex-col w-full self-center items-center">
-            <button onClick={() => setIsOpen(!isOpen)}
-                    className="flex w-[75%] space-x-2 bg-background-green border border-neutral-400 rounded-full px-2 mb-1 justify-center drop-shadow md:py-1 md:mb-2.5"
-            >
-                <div className="w-[10%] self-center">
-                    <Image src={`/pen.svg`} width="12" height="12" alt="down arrow" className="w-full"/>
-                </div>
-                <p className="truncate text-neutral-500 md:text-2xl">{categorySlugToTitleMap[selectedCategory]}</p>
-            </button>
+            <IconButton
+                handleClick={() => setIsOpen(!isOpen)}
+                isActive={true}
+                iconPath="/hanger.svg"
+                iconAlt="hanger icon"
+            />
 
             {isOpen && (
                 <Modal setIsOpen={setIsOpen}>

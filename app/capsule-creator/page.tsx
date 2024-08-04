@@ -33,8 +33,6 @@ export default async function CapsuleCreator() {
 
     return (
         <Layout>
-            <BackButton/>
-            <PageHeader title="capsule creator" iconPath="/lightbulb.svg" iconAlt="light bulb icon" />
             <CapsuleCreatorContainer articlesMap={articlesMap}/>
         </Layout>
     )

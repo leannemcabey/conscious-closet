@@ -9,12 +9,14 @@ import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
 import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
+import IconButton from "@/app/components/buttons/IconButton";
+import {CapsuleElementType} from "@/app/components/capsuleCreator/CapsuleCreatorContainer";
 
 interface AddCapsuleToSuitcaseProps {
-    selectedArticleIds: (string | undefined)[]
+    capsuleElements: CapsuleElementType[] | undefined;
 }
 
-const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps) => {
+const AddCapsuleToSuitcase = ({ capsuleElements }: AddCapsuleToSuitcaseProps) => {
     const [selectingSuitcase, setSelectingSuitcase] = useState<boolean>(false)
     const [creatingSuitcase, setCreatingSuitcase] = useState<boolean>(false);
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
@@ -40,8 +42,10 @@ const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps)
     }
 
     const saveSelections = () => {
+        const articleIds = capsuleElements.map((element) => element.article?.id);
+
         if (unsavedSuitcaseSelections) {
-            addArticlesToSuitcases(selectedArticleIds, unsavedSuitcaseSelections)
+            addArticlesToSuitcases(articleIds, unsavedSuitcaseSelections)
                 .then(() => {
                     setUnsavedSuitcaseSelections([])
                     setSelectingSuitcase(false)
@@ -57,9 +61,12 @@ const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps)
     return (
         <>
             <div className="self-center mb-2 mt-1">
-                <TextButtonFilled handleClick={() => openSuitcaseSelectionModal()} disabled={false}>
-                    + add capsule to suitcase(s)
-                </TextButtonFilled>
+                <IconButton
+                    handleClick={() => openSuitcaseSelectionModal()}
+                    isActive={true}
+                    iconPath="/suitcase.svg"
+                    iconAlt="suitcase icon"
+                />
             </div>
 
             {selectingSuitcase && fetchError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={fetchErrorMessage} />}
