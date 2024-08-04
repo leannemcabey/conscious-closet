@@ -5,6 +5,8 @@ import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
 import { Dispatch, SetStateAction, useState } from "react";
 import TextButton from "@/app/components/buttons/TextButton";
+import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
+import CloseModalButton from "@/app/components/modal/CloseModalButton";
 
 interface CategoryFilterModalProps {
     selectedArticleCategories: ArticleCategoryEnum[];
@@ -65,21 +67,23 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
 
     return (
         <Modal setIsOpen={setSelectingCategories}>
-            <div className="md:w-[300px]">
-                <div className="flex flex-start place-content-between">
-                    <TextButton disabled={false} handleClick={() => selectOrDeselectAll()} widthStyling="w-28">
-                        {allAreSelected ? "deselect all" : "select all"}
-                    </TextButton>
-                    <TextButton disabled={false} handleClick={() => saveSelections()} widthStyling="w-28">
-                        save
-                    </TextButton>
-                </div>
-                <div className="h-full mt-10">
+            <CloseModalButton setIsOpen={setSelectingCategories} />
+            <TextButton disabled={false} handleClick={() => selectOrDeselectAll()} widthStyling="w-28" colorOverride="border-theme-blue text-theme-blue">
+                {allAreSelected ? "deselect all" : "select all"}
+            </TextButton>
+            <div className="mt-4 md:w-[300px]">
+                <div className="h-full">
                     <div className="flex flex-col space-y-2 md:space-y-2.5">
                         {Object.keys(ArticleCategoryEnum)
                             .map((category) => menuElement(ArticleCategoryEnum[category]))
                         }
                     </div>
+                </div>
+
+                <div className="flex justify-end mt-10">
+                    <TextButtonFilled disabled={false} handleClick={() => saveSelections()}>
+                        save
+                    </TextButtonFilled>
                 </div>
             </div>
         </Modal>
