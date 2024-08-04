@@ -15,10 +15,10 @@ export default async function About() {
                     <div className="flex flex-col space-y-1 justify-center items-center mb-4">
                         <div className="w-[40px] h-[40px] md:w-[60px] md:h-[60px]">
                             <Image
-                                src={`/cc_icon_final_simple.svg`}
+                                src={`/conscious-closet-logo.svg`}
                                 height="40"
                                 width="40"
-                                alt="conscious closet icon"
+                                alt="conscious closet logo"
                                 className="w-full"
                             />
                         </div>
