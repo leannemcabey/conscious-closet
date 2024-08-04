@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
 import { Suitcase } from "@/types/suitcase";
-import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import Link from "next/link";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
@@ -36,7 +35,7 @@ const SuitcaseList = () => {
                 <div className="h-[80%] overflow-scroll pb-4">
                     {suitcases.map((suitcase) =>
                         <Link href={`/suitcases/${suitcase.id}`} key={suitcase.id}>
-                            <div className="w-full text-center text-lg text-text-green py-4 my-4 truncate bg-theme-light-green rounded-lg drop-shadow md:text-2xl">
+                            <div className="text-center tracking-widest text-neutral-800 w-full text-lg py-4 my-4 truncate bg-white rounded-lg drop-shadow md:text-2xl">
                                 {suitcase.name}
                             </div>
                         </Link>
