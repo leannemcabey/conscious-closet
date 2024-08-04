@@ -1,7 +1,6 @@
 'use server'
 import Layout from "@/app/components/Layout";
-import Image from "next/image";
-import BackButton from "@/app/components/navigation/BackButton";
+import BackButton from "@/app/components/buttons/BackButton";
 import { getSuitcaseArticles } from "@/app/server-actions/suitcase/getSuitcaseArticles";
 import EditSuitcaseButton from "@/app/components/suitcases/EditSuitcaseButton";
 import DeleteSuitcaseButton from "@/app/components/suitcases/DeleteSuitcaseButton";

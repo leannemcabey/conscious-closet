@@ -32,7 +32,7 @@ const LastWorn = ({ article }: LastWornProps) => {
                 </div>
 
                 <DatePicker
-                    className="text-lg tracking-widest md:text-2xl text-center py-1 w-full rounded-md drop-shadow focus:outline-none"
+                    className="text-lg tracking-widest md:text-2xl text-center py-1 w-full rounded-lg drop-shadow focus:outline-none"
                     wrapperClassName="mt-2 w-[50%] h-1/2"
                     popperPlacement="top"
                     dateFormat="M/d/YYYY"

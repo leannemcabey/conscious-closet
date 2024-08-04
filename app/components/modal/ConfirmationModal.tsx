@@ -2,6 +2,7 @@
 import { Dispatch, SetStateAction } from "react";
 import Modal from "@/app/components/modal/Modal";
 import * as React from "react";
+import TextButton from "@/app/components/buttons/TextButton";
 
 interface ConfirmationModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>
@@ -15,19 +16,13 @@ const ConfirmationModal = ({ setIsOpen, confirmAction, children }: ConfirmationM
                 {children}
 
                 <div className="flex justify-center space-x-4 mb-2">
-                    <button
-                        className="w-20 p-2 rounded-md border border-theme-green drop-shadow md:w-24 md:text-lg"
-                        onClick={() => confirmAction()}
-                    >
-                        Confirm
-                    </button>
+                    <TextButton disabled={false} handleClick={() => confirmAction()} widthStyling="w-20">
+                        confirm
+                    </TextButton>
 
-                    <button
-                        className="w-20 p-2 rounded-md border border-theme-red drop-shadow md:w-24 md:text-lg"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Cancel
-                    </button>
+                    <TextButton disabled={false} handleClick={() => setIsOpen(false)} widthStyling="w-20" colorOverride="border-theme-red text-theme-red">
+                        cancel
+                    </TextButton>
                 </div>
             </div>
         </Modal>

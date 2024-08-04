@@ -1,5 +1,5 @@
 import Layout from "@/app/components/Layout";
-import BackButton from "@/app/components/navigation/BackButton";
+import BackButton from "@/app/components/buttons/BackButton";
 import * as React from "react";
 import AboutPageContainer from "@/app/components/about/AboutPageContainer";
 import Image from "next/image";

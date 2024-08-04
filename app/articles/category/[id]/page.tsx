@@ -1,7 +1,7 @@
 'use server'
 import Layout from "@/app/components/Layout";
 import { ArticleCategoryEnum, categorySlugToTitleMap}  from "@/types/enums/articleCategoryEnum";
-import BackButton from "@/app/components/navigation/BackButton";
+import BackButton from "@/app/components/buttons/BackButton";
 import CategoryPageContainer from "@/app/components/articles/CategoryPageContainer";
 import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesByCategory";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";

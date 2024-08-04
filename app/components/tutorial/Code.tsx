@@ -45,10 +45,10 @@ export default function Code({ code }: { code: string }) {
   };
 
   return (
-    <pre className=" rounded-md p-8 my-8 relative">
+    <pre className=" rounded-lg p-8 my-8 relative">
       <button
         onClick={copy}
-        className="absolute top-4 right-4  p-2 rounded-md"
+        className="absolute top-4 right-4  p-2 rounded-lg"
       >
         {icon}
       </button>

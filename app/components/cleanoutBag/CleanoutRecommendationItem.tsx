@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { CleanoutRecommendation } from "@/types/cleanoutRecommendation";
+import TextButton from "@/app/components/buttons/TextButton";
 
 interface CleanoutRecommendationItemProps {
     recommendation: CleanoutRecommendation
@@ -23,13 +24,13 @@ const CleanoutRecommendationItem = ({ recommendation }: CleanoutRecommendationIt
             </div>
 
             {isOpen && (
-                <div className="mt-2 mx-4 bg-white rounded-md p-2">
+                <div className="mt-2 mx-4 bg-white rounded-lg p-2">
                     {recommendation.url && (
                             <a href={recommendation.url} target="_blank">
-                                <button className="flex items-center border border-theme-blue rounded-full px-2 w-max" >
+                                <TextButton disabled={false} handleClick={() => {}} >
                                     <Image src={`/external-link-icon.svg`} height="10" width="10" alt={arrow} className="mr-2"/>
                                     <p>{recommendation.name}</p>
-                                </button>
+                                </TextButton>
                             </a>
                     )}
                     <p className="mt-2">{recommendation.description}</p>

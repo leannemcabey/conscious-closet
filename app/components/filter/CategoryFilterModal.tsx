@@ -4,6 +4,7 @@ import { ArticleCategoryEnum, categorySlugToTitleMap } from "@/types/enums/artic
 import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
 import { Dispatch, SetStateAction, useState } from "react";
+import TextButton from "@/app/components/buttons/TextButton";
 
 interface CategoryFilterModalProps {
     selectedArticleCategories: ArticleCategoryEnum[];
@@ -66,17 +67,12 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
         <Modal setIsOpen={setSelectingCategories}>
             <div className="md:w-[300px]">
                 <div className="flex flex-start place-content-between">
-                    <button
-                        className="border border-theme-blue text-sm text-theme-blue py-1 mx-1 rounded-md drop-shadow w-28 md:w-32 md:text-xl"
-                        onClick={() => selectOrDeselectAll()}
-                    >
+                    <TextButton disabled={false} handleClick={() => selectOrDeselectAll()} widthStyling="w-28">
                         {allAreSelected ? "deselect all" : "select all"}
-                    </button>
-                    <button onClick={() => saveSelections()}
-                            className="bg-theme-blue text-sm text-white py-1 mx-1 rounded-md drop-shadow w-28 md:w-32 md:text-xl"
-                    >
+                    </TextButton>
+                    <TextButton disabled={false} handleClick={() => saveSelections()} widthStyling="w-28">
                         save
-                    </button>
+                    </TextButton>
                 </div>
                 <div className="h-full mt-10">
                     <div className="flex flex-col space-y-2 md:space-y-2.5">

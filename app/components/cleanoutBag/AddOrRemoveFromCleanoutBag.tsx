@@ -31,7 +31,7 @@ const AddOrRemoveFromCleanoutBag = ({ article }: AddOrRemoveFromCleanoutBagProps
 
     return (
         <>
-            <ArticleActionToggle iconFile="/broom-white.svg" iconAlt="broom icon" isActive={inCleanoutBag} clickHandler={changeCleanoutBagStatus} />
+            <ArticleActionToggle iconFile="/broom.svg" iconAlt="broom icon" isActive={inCleanoutBag} clickHandler={changeCleanoutBagStatus} />
 
             {showConfirmation &&
                 <Modal setIsOpen={setShowConfirmation}>

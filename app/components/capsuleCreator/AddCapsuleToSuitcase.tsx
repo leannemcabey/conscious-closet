@@ -8,6 +8,7 @@ import AddArticleToSuitcaseModal from "@/app/components/suitcases/AddArticleToSu
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
+import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
 
 interface AddCapsuleToSuitcaseProps {
     selectedArticleIds: (string | undefined)[]
@@ -55,12 +56,11 @@ const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps)
 
     return (
         <>
-            <button
-                className="self-center rounded-md bg-theme-green w-full py-1 mb-2 mt-1 drop-shadow text-white md:py-2 md:px-4 md:w-max md:text-2xl"
-                onClick={() => openSuitcaseSelectionModal()}
-            >
-                + add capsule to a suitcase
-            </button>
+            <div className="self-center mb-2 mt-1">
+                <TextButtonFilled handleClick={() => openSuitcaseSelectionModal()} disabled={false}>
+                    + add capsule to suitcase(s)
+                </TextButtonFilled>
+            </div>
 
             {selectingSuitcase && fetchError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={fetchErrorMessage} />}
             {selectingSuitcase && updateError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={updateErrorMessage} />}

@@ -1,17 +1,17 @@
 import Image from "next/image";
 
-interface FilterButtonProps {
+interface IconButtonProps {
     handleClick: () => void;
     isActive: boolean;
     iconPath: string;
     iconAlt: string;
 }
 
-const FilterButton = ({handleClick, isActive, iconPath, iconAlt}: FilterButtonProps) => {
+const IconButton = ({handleClick, isActive, iconPath, iconAlt}: IconButtonProps) => {
     return (
         <div
             onClick={() => handleClick()}
-            className={`flex justify-center p-2 rounded-full border border-theme-blue rounded-full ${isActive && "bg-white"} drop-shadow w-[40px] md:w-[50px]`}
+            className={`flex justify-center p-2 rounded-full border border-theme-green rounded-lg ${isActive ? "bg-white" : "bg-background-green"} drop-shadow w-[40px] md:w-[60px]`}
         >
             <Image
                 src={iconPath}
@@ -24,4 +24,4 @@ const FilterButton = ({handleClick, isActive, iconPath, iconAlt}: FilterButtonPr
     )
 }
 
-export default FilterButton;
+export default IconButton;

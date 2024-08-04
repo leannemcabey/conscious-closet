@@ -4,6 +4,7 @@ import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
 import * as React from "react";
 import { Dispatch, SetStateAction } from "react";
+import TextButton from "@/app/components/buttons/TextButton";
 
 interface ErrorModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -33,12 +34,12 @@ const ErrorModal = ({ setIsOpen, errorMessage }: ErrorModalProps) => {
                         href="mailto:leanne@consciouscloset.co"> leanne@consciouscloset.co
                     </a>.
                 </p>
-                <button
-                    className="mt-4 md:mt-8 px-4 py-2 bg-theme-gray rounded-md drop-shadow md:text-lg"
-                    onClick={() => setIsOpen(false)}
-                >
-                    OK
-                </button>
+
+                <div className="mt-4 md:mt-8">
+                    <TextButton disabled={false} handleClick={() => setIsOpen(false)} widthStyling="w-16">
+                        OK
+                    </TextButton>
+                </div>
             </div>
         </Modal>
     )

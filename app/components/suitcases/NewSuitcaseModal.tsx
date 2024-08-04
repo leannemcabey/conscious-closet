@@ -5,6 +5,7 @@ import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import { Suitcase } from "@/types/suitcase";
 import ErrorModal from "@/app/components/modal/ErrorModal";
+import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
 
 interface NewSuitcaseModalProps {
     setIsOpen:  Dispatch<SetStateAction<boolean>>;
@@ -44,14 +45,13 @@ const NewSuitcaseModal = ({ setIsOpen, suitcases, setSuitcases }: NewSuitcaseMod
                         placeholder="New suitcase name"
                         type="text"
                         onChange={(e) => setSuitcaseName(e.target.value)}
-                        className="border border-theme-green bg-theme-gray rounded-md p-2 focus:outline-none md:text-xl"
+                        className="border border-theme-green bg-theme-gray rounded-lg p-2 focus:outline-none md:text-xl"
                     />
-                    <button onClick={() => handleSubmit()}
-                            disabled={buttonDisabled}
-                            className={`${buttonDisabled ? "bg-theme-gray text-neutral-300" : "bg-theme-green text-white"} rounded-md drop-shadow w-max py-2 px-4 mt-4 self-end md:text-lg`}
-                    >
-                        Add
-                    </button>
+                    <div className="self-end mt-4">
+                        <TextButtonFilled handleClick={() => handleSubmit()} disabled={buttonDisabled}>
+                            save
+                        </TextButtonFilled>
+                    </div>
                 </form>
             </div>
         </Modal>

@@ -23,7 +23,7 @@ const SuitcaseContainer = ({ articles }: SuitcaseContainerProps) => {
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(articles);
 
-    const filterTypes = [FilterType.weather, FilterType.category];
+    const filterTypes = [FilterType.cleanout, FilterType.weather, FilterType.category];
 
     useEffect(() => {
         const tempFilteredArticles = applyArticleFilters(articles, filterTypes, filterSettings);

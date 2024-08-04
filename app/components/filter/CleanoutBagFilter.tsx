@@ -1,6 +1,6 @@
 'use client'
 import { Dispatch, SetStateAction } from "react";
-import FilterButton from "@/app/components/buttons/FilterButton";
+import IconButton from "@/app/components/buttons/IconButton";
 
 interface CleanoutBagFilterProps {
     showCleanoutBagItems: boolean;
@@ -9,7 +9,7 @@ interface CleanoutBagFilterProps {
 
 const CleanoutBagFilter = ({ showCleanoutBagItems, setShowCleanoutBagItems }: CleanoutBagFilterProps) => {
     return (
-        <FilterButton
+        <IconButton
             handleClick={() => setShowCleanoutBagItems(!showCleanoutBagItems)}
             isActive={showCleanoutBagItems}
             iconPath="/broom.svg"

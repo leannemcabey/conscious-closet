@@ -7,7 +7,7 @@ import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import Link from "next/link";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import * as React from "react";
-import NewButton from "@/app/components/NewButton";
+import NewButton from "@/app/components/buttons/NewButton";
 
 const SuitcaseList = () => {
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
@@ -28,11 +28,15 @@ const SuitcaseList = () => {
 
     return (
         <>
+            <div className="fixed top-20 right-[18px] md:top-24 md:right-8">
+                <NewButton handleClick={() => setCreatingSuitcase(true)} />
+            </div>
+
             {suitcases && suitcases?.length > 0 && (
                 <div className="h-[80%] overflow-scroll pb-4">
                     {suitcases.map((suitcase) =>
                         <Link href={`/suitcases/${suitcase.id}`} key={suitcase.id}>
-                            <div className="w-full text-center text-lg text-text-green py-4 my-4 border border-theme-mid-green truncate bg-white rounded-lg drop-shadow md:text-2xl">
+                            <div className="w-full text-center text-lg text-text-green py-4 my-4 truncate bg-theme-light-green rounded-lg drop-shadow md:text-2xl">
                                 {suitcase.name}
                             </div>
                         </Link>
@@ -53,8 +57,6 @@ const SuitcaseList = () => {
                     setSuitcases={setSuitcases}
                 />
             }
-
-            <NewButton handleClick={() => setCreatingSuitcase(true)} />
         </>
     )
 }

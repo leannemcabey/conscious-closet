@@ -19,7 +19,7 @@ const GoogleSignIn = () => {
 
     return (
         <button
-            className="h-fit w-100 flex flex-row py-2 px-4 bg-white rounded-md drop-shadow w-max focus:outline-none focus:ring focus:ring-violet-300"
+            className="h-fit w-100 flex flex-row py-2 px-4 bg-white rounded-lg drop-shadow w-max focus:outline-none focus:ring focus:ring-violet-300"
             onClick={() => googleSignIn()}
         >
             <Image src="/google-photos-icon.png" height="40" width="40" alt="Google Photos icon"/>

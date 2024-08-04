@@ -13,6 +13,7 @@ import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import Link from "next/link";
 import ErrorModal from "@/app/components/modal/ErrorModal";
+import TextButton from "@/app/components/buttons/TextButton";
 
 interface CleanoutBagContainerProps {
     articles: Article[]
@@ -56,18 +57,14 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
             <div className="flex flex-col h-[97%] md:mt-8">
                 <div className="flex place-content-between mb-4">
                     <Link href="/cleanout/recommendations">
-                        <button className="w-max bg-theme-green text-white text-sm p-2 rounded-lg drop-shadow md:text-xl">
+                        <TextButton disabled={false} handleClick={() => {}}>
                             recycling | donating | thrifting
-                        </button>
+                        </TextButton>
                     </Link>
 
-                    <button
-                        disabled={deleteDisabled}
-                        onClick={() => setIsDeleting(true)}
-                        className="rounded-lg bg-theme-green text-white text-sm drop-shadow p-2 md:text-xl"
-                    >
+                    <TextButton disabled={deleteDisabled} handleClick={() => setIsDeleting(true)}>
                         delete all
-                    </button>
+                    </TextButton>
                 </div>
 
                 <ArticleFilters filterTypes={filterTypes} />

@@ -3,7 +3,7 @@ import Layout from "@/app/components/Layout";
 import CleanoutBagContainer from "@/app/components/cleanoutBag/CleanoutBagContainer";
 import { getArticlesInCleanoutBag } from "@/app/server-actions/cleanout-bag/getArticlesInCleanoutBag";
 import Image from "next/image";
-import BackButton from "@/app/components/navigation/BackButton";
+import BackButton from "@/app/components/buttons/BackButton";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import PageHeader from "@/app/components/PageHeader";
 

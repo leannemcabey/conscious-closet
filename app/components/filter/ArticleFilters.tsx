@@ -1,6 +1,5 @@
 'use client'
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
-import { Article } from "@/types/article";
+import { useContext, useEffect, useState } from "react";
 import WeatherFilter from "@/app/components/filter/WeatherFilter";
 import CleanoutBagFilter from "@/app/components/filter/CleanoutBagFilter";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
@@ -33,7 +32,7 @@ const ArticleFilters = ({ filterTypes }: ArticleFiltersProps) => {
     }, [showCleanoutBagItems, selectedWeatherCategories, selectedArticleCategories]);
 
     return (
-        <div className="mb-4 px-1 py-2 flex place-content-between items-center border border-theme-blue border-dotted rounded-md drop-shadow">
+        <div className="mb-4 px-1 py-2 flex place-content-between items-center border border-neutral-500 border-dotted rounded-lg drop-shadow">
             {filterTypes.includes(FilterType.cleanout) &&
                 <CleanoutBagFilter showCleanoutBagItems={showCleanoutBagItems} setShowCleanoutBagItems={setShowCleanoutBagItems} />
             }

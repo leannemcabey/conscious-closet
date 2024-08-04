@@ -4,6 +4,8 @@ import SuitcaseOptions from "@/app/components/suitcases/SuitcaseOptions";
 import { Dispatch, SetStateAction } from "react";
 import { Suitcase } from "@/types/suitcase";
 import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
+import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
+import CloseModalButton from "@/app/components/modal/CloseModalButton";
 
 interface AddArticleToSuitcaseModalProps {
     setIsSelectingSuitcase: Dispatch<SetStateAction<boolean>>;
@@ -33,14 +35,8 @@ const AddArticleToSuitcaseModal = ({
 
     return (
         <Modal setIsOpen={setIsSelectingSuitcase}>
-            <div className="md:h-[500px] md:w-[350px]">
-                <button
-                    onClick={() => handleSubmit()}
-                    className="fixed top-4 right-4 bg-theme-light-green text-text-green self-end px-2 py-1 rounded-md drop-shadow md:text-xl"
-                >
-                    Save
-                </button>
-
+            <CloseModalButton setIsOpen={setIsSelectingSuitcase} />
+            <div className="flex flex-col md:h-[500px] md:w-[350px]">
                 <p className="text-xl mt-4 mb-4 md:text-2xl">Select suitcase(s):</p>
 
                 <NewSuitcaseButton handleClick={() => openNewSuitcaseModal()}/>
@@ -50,6 +46,12 @@ const AddArticleToSuitcaseModal = ({
                     selectedSuitcases={unsavedSuitcaseSelections || []}
                     setSelectedSuitcases={setUnsavedSuitcaseSelections}
                 />
+
+                <div className="self-end mt-4">
+                    <TextButtonFilled handleClick={() => handleSubmit()} disabled={false}>
+                        Save
+                    </TextButtonFilled>
+                </div>
             </div>
         </Modal>
     )

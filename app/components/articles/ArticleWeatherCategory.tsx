@@ -7,6 +7,7 @@ import { updateArticleWeatherCategory } from "@/app/server-actions/article/updat
 import ErrorModal from "@/app/components/modal/ErrorModal";
 import { ArticleCategoryEnum, ArticleCategoryTitle } from "@/types/enums/articleCategoryEnum";
 import * as React from "react";
+import IconButton from "@/app/components/buttons/IconButton";
 
 interface ArticleWeatherCategoryProps {
     article: Article;
@@ -32,37 +33,20 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategoryProps) => {
 
     return (
         <>
-            <div className="flex w-full justify-end">
+            <div className="flex w-full justify-end space-x-2">
                 {isOpen && (
-                    <div className="flex">
+                    <div className="flex space-x-2">
                         {Object.keys(WeatherCategoryEnum).map((category) => {
                             if (category.toLowerCase() !== weatherCategory) {
                                 return (
-                                    <div
-                                        key={category}
-                                        onClick={() => handleClick(WeatherCategoryEnum[category])}
-                                    >
-                                        <Weather
-                                            weatherCategory={WeatherCategoryEnum[category]}
-                                            isSelected={false}
-                                            iconPath={`/weather-icon-${category}.svg`}
-                                            size="large"
-                                        />
-                                    </div>
+                                    <IconButton key={category} handleClick={() => handleClick(WeatherCategoryEnum[category])} isActive={false} iconPath={`/weather-icon-${category}.svg`} iconAlt={`${category}  weather icon}`} />
                                 )
                             }
                         })}
                     </div>
                 )}
 
-                <div onClick={() => setIsOpen(!isOpen)}>
-                    <Weather
-                        weatherCategory={weatherCategory}
-                        isSelected={true}
-                        iconPath={`/weather-icon-${weatherCategory}.svg`}
-                        size="large"
-                    />
-                </div>
+                <IconButton handleClick={() => setIsOpen(!isOpen)} isActive={true} iconPath={`/weather-icon-${weatherCategory}.svg`} iconAlt={`${weatherCategory}  weather icon}`} />
             </div>
 
             {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}

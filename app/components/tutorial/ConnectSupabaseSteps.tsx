@@ -21,7 +21,7 @@ export default function ConnectSupabaseSteps() {
       <Step title="Declare environment variables">
         <p>
           Rename the{" "}
-          <span className="px-2 py-1 rounded-md">
+          <span className="px-2 py-1 rounded-lg">
             .env.example
           </span>{" "}
           file in your Next.js app to{" "}

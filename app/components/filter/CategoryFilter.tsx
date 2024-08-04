@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import CategoryFilterModal from "@/app/components/filter/CategoryFilterModal";
 import Image from "next/image";
-import FilterButton from "@/app/components/buttons/FilterButton";
+import IconButton from "@/app/components/buttons/IconButton";
 
 interface CategoryFilterProps {
     selectedArticleCategories: ArticleCategoryEnum[];
@@ -15,7 +15,7 @@ const CategoryFilter = ({ selectedArticleCategories, setSelectedArticleCategorie
 
     return (
         <>
-            <FilterButton
+            <IconButton
                 handleClick={() => setSelectingCategories(!selectingCategories)}
                 isActive={true}
                 iconPath="/hanger.svg"

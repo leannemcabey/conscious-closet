@@ -19,7 +19,7 @@ const CleanoutRecommendationSection = ({ sectionName, sectionRecs }: CleanoutRec
     return (
         <div className="flex flex-col mb-4 space-y-2">
             <div
-                className="flex sticky top-0 w-full bg-theme-blue text-white rounded-md p-2 drop-shadow"
+                className="flex sticky top-0 w-full bg-theme-blue text-white rounded-lg p-2 drop-shadow"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <div className="flex border border-white rounded-full items-center p-1 mr-2 w-[20px] h-[20px] md:p-2 md:w-[35px] md:h-[35px]">

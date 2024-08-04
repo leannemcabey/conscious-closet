@@ -5,6 +5,8 @@ import {Dispatch, SetStateAction, useState} from "react";
 import {updateSuitcase} from "@/app/server-actions/suitcase/updateSuitcase";
 import {Suitcase} from "@/types/suitcase";
 import ErrorModal from "@/app/components/modal/ErrorModal";
+import TextButton from "@/app/components/buttons/TextButton";
+import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
 
 interface EditSuitcaseModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>
@@ -36,13 +38,14 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
                         value={newSuitcaseName}
                         type="text"
                         onChange={(e) => setNewSuitcaseName(e.target.value)}
-                        className="border border-theme-green bg-theme-gray rounded-md p-2 focus:outline-none md:text-xl"
+                        className="border border-theme-green bg-theme-gray rounded-lg p-2 focus:outline-none md:text-xl"
                     />
-                    <button onClick={() => handleSubmit()}
-                            className="bg-theme-green text-white rounded-md drop-shadow w-max py-2 px-4 mt-4 self-end md:text-lg"
-                    >
-                        Update
-                    </button>
+
+                    <div className="self-end mt-4">
+                        <TextButtonFilled disabled={suitcase.name === newSuitcaseName} handleClick={() => handleSubmit()}>
+                            Update
+                        </TextButtonFilled>
+                    </div>
                 </form>
             </div>
         </Modal>

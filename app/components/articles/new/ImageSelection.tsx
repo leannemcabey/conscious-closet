@@ -5,6 +5,7 @@ import GalleryImage from "@/app/components/articles/new/GalleryImage";
 import Image from "next/image";
 import { getPaginatedMediaItems } from "@/app/googleService/client/getPaginatedMediaItems";
 import ErrorModal from "@/app/components/modal/ErrorModal";
+import TextButton from "@/app/components/buttons/TextButton";
 
 interface ImageSelectionProps {
     setImage: Dispatch<SetStateAction<GooglePhotoMetadata>>;
@@ -54,18 +55,21 @@ export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
                         </div>
 
                         <div className="flex content-end place-content-between mt-8">
-                            <button
-                                className={`${page === 0 && "invisible"} border border-theme-green bg-white text-theme-green rounded-md p-1 w-20 drop-shadow md:text-lg`}
-                                onClick={() => setPage(page - 1)}
+                            <TextButton
+                                widthStyling="w-20"
+                                disabled={page === 0}
+                                handleClick={() => setPage(page - 1)}
                             >
                                 previous
-                            </button>
-                            <button
-                                className={`${pageTokens[pageTokens.length -1] === undefined && "invisible"} border border-theme-green bg-white text-theme-green rounded-md p-1 w-20 drop-shadow md:text-lg`}
-                                onClick={() => setPage(page + 1)}
+                            </TextButton>
+
+                            <TextButton
+                                widthStyling="w-20"
+                                disabled={pageTokens[pageTokens.length -1] === undefined}
+                                handleClick={() => setPage(page + 1)}
                             >
                                 next
-                            </button>
+                            </TextButton>
                         </div>
                     </div>
                 )}

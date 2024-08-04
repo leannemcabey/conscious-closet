@@ -1,10 +1,10 @@
+import TextButton from "@/app/components/buttons/TextButton";
+
 export const LogoutButton = () => (
     <form action="/auth/logout" method="post">
-        <button
-            className="py-1 px-2 rounded-md no-underline text-sm md:text-lg text-text-green border border-theme-green drop-shadow"
-        >
+        <TextButton disabled={false} handleClick={() => {}}>
             sign out
-        </button>
+        </TextButton>
     </form>
 )
 

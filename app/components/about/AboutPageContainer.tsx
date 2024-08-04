@@ -81,7 +81,7 @@ const AboutPageContainer = () => {
                     <p className="mb-4">
                         I built Conscious Closet because I wanted a tool that would help me and others on the journey to
                         a more sustainable wardrobe. That journey is, of course, much bigger than any one app could ever hope to
-                        address, but I knew I could influence some tangible, everyday changes in perspective and action.
+                        address. But I knew I could influence some tangible, everyday changes in perspective and action.
                     </p>
                     <p>
                         It's impossible to be perfectly sustainable -- everything has its trade offs. But the most
@@ -91,7 +91,7 @@ const AboutPageContainer = () => {
                     </p>
             </div>
 
-            <div className="flex justify-center items-center bg-white rounded-md p-2 space-x-4 place-content-center">
+            <div className="flex justify-center items-center bg-white rounded-lg p-2 space-x-4 place-content-center">
                 <div className="w-[40px]">
                     <Image
                         src="/mail.svg"

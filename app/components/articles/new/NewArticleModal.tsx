@@ -12,6 +12,7 @@ import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ImageSelection } from "@/app/components/articles/new/ImageSelection";
 import { createArticle } from "@/app/server-actions/article/createArticle";
+import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
 
 interface NewArticleModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -61,7 +62,7 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
 
             {image && !submitted && (
                 <div className="mt-4 flex flex-col place-content-center">
-                    <div className="flex flex-col border border-theme-red border-2 border-dotted rounded-md p-2 text-center items-center mb-4 md:mb-8">
+                    <div className="flex flex-col border border-theme-red border-2 border-dotted rounded-lg p-2 text-center items-center mb-4 md:mb-8">
                         <div className="flex items-center space-x-1 mb-2.5">
                             <div className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]">
                                 <Image
@@ -88,18 +89,11 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
                     </div>
 
                     {image &&
-                        <button disabled={buttonDisabled}
-                                onClick={() => handleSubmit()}
-                                className="self-end rounded-full mt-6 -mr-4 w-[40px] h-[40px] md:w-[60px] md:h-[60px]"
-                        >
-                            <Image
-                                src={buttonImage}
-                                height="40"
-                                width="40"
-                                alt="check mark icon"
-                                className="w-full"
-                            />
-                        </button>
+                        <div className="self-end mt-6 -mr-2 md:mt-10">
+                            <TextButtonFilled handleClick={() => handleSubmit()} disabled={buttonDisabled}>
+                                save
+                            </TextButtonFilled>
+                        </div>
                     }
                 </div>
             )}

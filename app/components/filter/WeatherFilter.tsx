@@ -1,7 +1,7 @@
 'use client'
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { Dispatch, SetStateAction } from "react";
-import FilterButton from "@/app/components/buttons/FilterButton";
+import IconButton from "@/app/components/buttons/IconButton";
 
 interface WeatherFilterProps {
     selectedWeatherCategories: WeatherCategoryEnum[];
@@ -26,21 +26,21 @@ const WeatherFilter = ({ selectedWeatherCategories, setSelectedWeatherCategories
 
     return (
         <div className="flex place-content-between space-x-1">
-            <FilterButton
+            <IconButton
                 handleClick={() => updateWeatherCategories(WeatherCategoryEnum.WARM)}
                 isActive={weatherCategoryIsSelected(WeatherCategoryEnum.WARM)}
                 iconPath="/weather-icon-warm.svg"
                 iconAlt="warm weather icon"
             />
 
-            <FilterButton
+            <IconButton
                 handleClick={() => updateWeatherCategories(WeatherCategoryEnum.MIXED)}
                 isActive={weatherCategoryIsSelected(WeatherCategoryEnum.MIXED)}
                 iconPath="/weather-icon-mixed.svg"
                 iconAlt="mixed weather icon"
             />
 
-            <FilterButton
+            <IconButton
                 handleClick={() => updateWeatherCategories(WeatherCategoryEnum.COLD)}
                 isActive={weatherCategoryIsSelected(WeatherCategoryEnum.COLD)}
                 iconPath="/weather-icon-cold.svg"
