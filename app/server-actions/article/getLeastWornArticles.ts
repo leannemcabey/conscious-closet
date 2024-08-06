@@ -17,6 +17,7 @@ export async function getLeastWornArticles() {
         .from("articles")
         .select()
         .or(`last_worn.lte.${sixMonthsAgo},last_worn.is.null`)
+        .eq('image_deleted_from_google_photos', false);
 
     return {
         articles: data?.map((article) => toArticle(article)),

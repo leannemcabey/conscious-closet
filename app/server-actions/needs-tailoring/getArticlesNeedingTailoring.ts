@@ -9,6 +9,7 @@ export async function getArticlesNeedingTailoring() {
         .from("articles")
         .select()
         .eq('needs_tailoring', true)
+        .eq('image_deleted_from_google_photos', false);
 
     return {
         articles: data?.map((article) => toArticle(article)),

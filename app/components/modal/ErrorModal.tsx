@@ -17,6 +17,7 @@ const ErrorModal = ({ setIsOpen, errorMessage }: ErrorModalProps) => {
             <div className="flex flex-col items-center text-center">
                 <div>
                     <Image
+                        unoptimized
                         src={"/warning-gold.gif"}
                         alt={"warning"}
                         width="100"

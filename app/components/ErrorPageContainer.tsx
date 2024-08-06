@@ -12,6 +12,7 @@ const ErrorPageContainer = ({ errorMessage }: ErrorPageContainerProps) => {
             <div className="w-3/4 flex flex-col items-center text-center space-y-8">
                 <div>
                     <Image
+                        unoptimized
                         src={"/warning-gold.gif"}
                         alt={"warning"}
                         width="100"

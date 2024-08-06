@@ -19,6 +19,7 @@ export const batchUpdateGoogleUrls = async (articles: Article[]): Promise<Articl
 
         try {
             result = await getBatchMediaItems(batch)
+            console.log(`batch media items: ${result.length}`)
         } catch(error) {
             throw error
         }
@@ -47,7 +48,10 @@ const getBatchMediaItems = (articles: Article[]): Promise<GooglePhotoMetadata[]>
                 }
             })
                 .then((response) => {
-                    return response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
+                    const mappedResults = response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
+                    console.log(`mappedResults: ${mappedResults.length}`)
+                    console.log(`filtered undefined out: ${mappedResults.filter((result) => result !== undefined).length}`)
+                    return mappedResults.filter((result) => result !== undefined)
                 })
                 .catch((error) => {
                     if (attemptCounter > 2) throw error;

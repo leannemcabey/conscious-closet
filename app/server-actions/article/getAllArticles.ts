@@ -8,6 +8,7 @@ export async function getAllArticles() {
     const { data, error } = await supabase
         .from("articles")
         .select()
+        .eq('image_deleted_from_google_photos', false);
 
     if (error) {
         console.log(error)

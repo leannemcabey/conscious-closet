@@ -6,6 +6,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 import { defaultCapsuleElements } from "@/app/components/capsuleCreator/utils/defaultCapsuleElements";
 import { CapsuleElementType } from "@/types/CapsuleElementType";
+import AllElementsView from "@/app/components/capsuleCreator/AllElementsView";
 
 interface CapsuleArticlesContainerProps {
     filteredArticlesMap: CategoryArticlesMap;
@@ -18,13 +19,15 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
 
     const [expandedElement, setExpandedElement] = useState<CapsuleElementType>(defaultCapsuleElements[0]);
     const [doTransition, setDoTransition] = useState<boolean>(true);
+    const [showAllElementsView, setShowAllElementsView] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred while creating your capsule. Please try again."
 
     const updateExpandedElement = (element: CapsuleElementType) => {
-        setDoTransition(true);
+        setShowAllElementsView(false)
         setExpandedElement(element);
+        setDoTransition(true);
     }
 
     const updateCapsuleElements = (element: CapsuleElementType) => {
@@ -44,6 +47,8 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
 
     if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
+    if (showAllElementsView) return <AllElementsView capsuleElements={capsuleElements} updateExpandedElement={updateExpandedElement}/>
+
     return (
         <div className="flex flex-col place-content-between h-[78%]">
             <CapsuleArticleSelector
@@ -52,6 +57,7 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
                 initialElement={expandedElement}
                 doTransition={doTransition}
                 setDoTransition={setDoTransition}
+                setShowAllElementsView={setShowAllElementsView}
             />
 
             <div className="flex pb-4 w-full justify-center space-x-2">

@@ -63,8 +63,9 @@ const AddCapsuleToSuitcase = ({ capsuleElements }: AddCapsuleToSuitcaseProps) =>
                 <IconButton
                     handleClick={() => openSuitcaseSelectionModal()}
                     isActive={true}
-                    iconPath="/suitcase.svg"
+                    iconPath="/suitcase-white.svg"
                     iconAlt="suitcase icon"
+                    colorOverride={{active: "bg-theme-green", inactive:"bg-theme-green"}}
                 />
             </div>
 

@@ -18,7 +18,7 @@ const CapsuleElement = ({ element, updateExpandedElement }: CapsuleElementProps)
 
             {element.article && <Polaroid imageUrl={element.article?.image.baseUrl || ""} size="small"/>}
 
-            <div className="relative bottom-10 left-[30px]">
+            <div className="relative bottom-8 left-[30px]">
                 <IconButton
                     handleClick={() => updateExpandedElement(element)}
                     isActive={true}
