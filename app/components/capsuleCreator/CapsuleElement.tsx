@@ -4,21 +4,27 @@ import UndevelopedPolaroid from "@/app/components/articles/UndevelopedPolaroid";
 import * as React from "react";
 import IconButton from "@/app/components/buttons/IconButton";
 import { Dispatch, SetStateAction } from "react";
-import { CapsuleElementType } from "@/types/CapsuleElementType";
+import {CapsuleElementsMapType, CapsuleElementType} from "@/types/CapsuleElementsMapType";
 
 interface CapsuleElementProps {
     element: CapsuleElementType;
     updateExpandedElement: (element: CapsuleElementType) => void;
+    sizeStyling: { width: string, height: string }
+    iconPositioning: string;
 }
 
-const CapsuleElement = ({ element, updateExpandedElement }: CapsuleElementProps) => {
+const CapsuleElement = ({ element, updateExpandedElement, sizeStyling, iconPositioning }: CapsuleElementProps) => {
     return (
-        <div className="h-[105px]">
-            {!element.article && <UndevelopedPolaroid size="small"/>}
+        <div>
+            {!element.article && <UndevelopedPolaroid sizeStyling={sizeStyling}/>}
 
-            {element.article && <Polaroid imageUrl={element.article?.image.baseUrl || ""} size="small"/>}
+            {element.article &&
+                <Polaroid
+                    imageUrl={element.article?.image.baseUrl || ""}
+                    sizeStyling={sizeStyling}
+                />}
 
-            <div className="relative bottom-8 left-[30px]">
+            <div className={`relative ${iconPositioning}`}>
                 <IconButton
                     handleClick={() => updateExpandedElement(element)}
                     isActive={true}

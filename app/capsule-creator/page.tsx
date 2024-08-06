@@ -24,8 +24,6 @@ export default async function CapsuleCreator() {
     for (const category of Object.keys(ArticleCategoryEnum)) {
         const { articles, error } = await getArticlesByCategory(ArticleCategoryEnum[category])
 
-        if (category === "TOPS") console.log(`page level: ${JSON.stringify(articles?.length)}`)
-
         if (error) {
             return errorState;
         }

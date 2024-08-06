@@ -12,7 +12,7 @@ import BackButton from "@/app/components/buttons/BackButton";
 import PageHeader from "@/app/components/PageHeader";
 import CapsuleElementsContainer from "@/app/components/capsuleCreator/CapsuleElementsContainer";
 import { defaultCapsuleElements } from "@/app/components/capsuleCreator/utils/defaultCapsuleElements";
-import { CapsuleElementType } from "@/types/CapsuleElementType";
+import { CapsuleElementsMapType } from "@/types/CapsuleElementsMapType";
 
 export interface CategoryArticlesMap {
     string: Article[];
@@ -23,7 +23,6 @@ interface CapsuleCreatorContainerProps {
 }
 
 const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) => {
-    // console.log(`CapsuleCreatorContainer articlesMap: ${JSON.stringify(articlesMap)}`)
     const filterCleanout = (): CategoryArticlesMap => {
         const articlesNotInCleanoutMap = {};
 
@@ -43,7 +42,7 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
     const [unfilteredArticlesMap, setUnfilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap)
     const articlesNotInCleanoutMap = filterCleanout();
     const [filteredArticlesMap, setFilteredArticlesMap] = useState<CategoryArticlesMap>(articlesNotInCleanoutMap);
-    const [capsuleElements, setCapsuleElements] = useState<CapsuleElementType[]>(defaultCapsuleElements);
+    const [capsuleElements, setCapsuleElements] = useState<CapsuleElementsMapType>(defaultCapsuleElements);
     const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."

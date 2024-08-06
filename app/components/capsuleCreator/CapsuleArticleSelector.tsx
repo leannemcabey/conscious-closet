@@ -8,7 +8,7 @@ import { batchUpdateGoogleUrls } from "@/app/googleService/client/batchUpdateGoo
 import Polaroid from "@/app/components/articles/Polaroid";
 import CategorySelector from "@/app/components/capsuleCreator/CategorySelector";
 import UndevelopedPolaroid from "@/app/components/articles/UndevelopedPolaroid";
-import { CapsuleElementType } from "@/types/CapsuleElementType";
+import {CapsuleElementsMapType, CapsuleElementType} from "@/types/CapsuleElementsMapType";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 import IconButton from "@/app/components/buttons/IconButton";
 
@@ -22,7 +22,7 @@ interface CapsuleArticleSelectorProps {
 }
 
 const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, articlesMap, doTransition, setDoTransition, setShowAllElementsView }: CapsuleArticleSelectorProps) => {
-    // console.log(`doTransition: ${doTransition}`)
+    console.log(`initialElement: ${JSON.stringify(initialElement)}`)
     const getInitialIndex = (): number => {
         let tempIndex;
 
@@ -49,10 +49,12 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
     }, [initialElement]);
 
     useEffect(() => {
+        console.log(`element change, category: ${initialElement.article?.articleCategory}`)
         setSelectedCategory(initialElement.article?.articleCategory)
     }, [initialElement]);
 
     useEffect(() => {
+        console.log(`big use effect running`)
         // This makes it so that the animation runs with UndevelopedPolaroid, rather than the previous element,
         // and also handles the scenario where there is no article selected
         setRefreshedArticlesOfSelectedCategory([])
@@ -65,7 +67,6 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
         if (articles && articles.length) {
             batchUpdateGoogleUrls(articles)
                 .then((articles) => {
-                    console.log(`batch update: ${articles.length}`)
                     setRefreshedArticlesOfSelectedCategory(articles);
 
                     if (initialElement.article?.articleCategory !== selectedCategory) {
@@ -120,7 +121,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
         <div className="flex flex-col justify-center items-center m-1 md:mt-8">
             <div className="flex w-full place-content-between">
                 <CategorySelector
-                    openAutomatically={!selectedCategory}
+                    initialElement={initialElement}
                     selectedCategory={selectedCategory}
                     setSelectedCategory={setSelectedCategory}
                 />
@@ -144,7 +145,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
                 {!noArticlesInCategory && (!currentElement || !currentElement.article) &&
                     <>
-                        <UndevelopedPolaroid size="large"/>
+                        <UndevelopedPolaroid sizeStyling={{ width: "w-[250px]", height: ""}}/>
                     </>
                 }
 
@@ -161,7 +162,10 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                             />
                         </div>
 
-                        <Polaroid imageUrl={currentElement.article.image.baseUrl || ""} size="large"/>
+                        <Polaroid
+                            imageUrl={currentElement.article.image.baseUrl || ""}
+                            sizeStyling={{ width: "w-[250px] md:w-[445px]", height: ""}}
+                        />
 
                         <div className="w-[10%]">
                             <Image

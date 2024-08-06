@@ -6,19 +6,22 @@ import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import IconButton from "@/app/components/buttons/IconButton";
+import {CapsuleElementsMapType, CapsuleElementType} from "@/types/CapsuleElementsMapType";
 
 interface CategorySelectorProps {
-    openAutomatically: boolean;
+    initialElement: CapsuleElementType;
     selectedCategory: ArticleCategoryEnum | undefined;
     setSelectedCategory: Dispatch<SetStateAction<ArticleCategoryEnum>>
 }
 
-const CategorySelector = ({ openAutomatically, selectedCategory, setSelectedCategory }: CategorySelectorProps) => {
+const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategory }: CategorySelectorProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     useEffect(() => {
-        if (!selectedCategory) setIsOpen(true)
-    }, [selectedCategory]);
+        // We're using initialElement here instead of selectedCategory because there are times
+        // when the selectedCategory has not yet been set by the time this component renders.
+        setTimeout(() => !initialElement.article && setIsOpen(true), 500)
+    }, [initialElement]);
 
     const handleClick = (category) => {
         setSelectedCategory(ArticleCategoryEnum[category])

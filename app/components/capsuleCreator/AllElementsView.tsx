@@ -1,24 +1,26 @@
 'use client'
 
-import {CapsuleElementType} from "@/types/CapsuleElementType";
+import {CapsuleElementsMapType, CapsuleElementType} from "@/types/CapsuleElementsMapType";
 import CapsuleElement from "@/app/components/capsuleCreator/CapsuleElement";
 import * as React from "react";
 
 interface AllElementsViewProps {
-    capsuleElements: CapsuleElementType[];
+    capsuleElements: CapsuleElementsMapType;
     updateExpandedElement: (element: CapsuleElementType) => void;
 }
 
 const AllElementsView = ({ capsuleElements, updateExpandedElement }: AllElementsViewProps) => {
     return (
-        <div className="grid grid-cols-2">
-            {capsuleElements?.map((element) => {
+        <div className="h-[77%] grid grid-cols-2 grid-rows-3 justify-items-center">
+            {Array.from(capsuleElements.values()).map((element) => {
                 return (
-                    <CapsuleElement
-                        key={element.slot}
-                        element={element}
-                        updateExpandedElement={updateExpandedElement}
-                    />
+                        <CapsuleElement
+                            key={element.slot}
+                            element={element}
+                            updateExpandedElement={updateExpandedElement}
+                            sizeStyling={{ width: "w-[125px]", height: "" }}
+                            iconPositioning="bottom-[18%] left-[72%]"
+                        />
                 )
             })}
         </div>

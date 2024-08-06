@@ -9,10 +9,10 @@ import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
 import IconButton from "@/app/components/buttons/IconButton";
-import { CapsuleElementType } from "@/types/CapsuleElementType";
+import { CapsuleElementsMapType } from "@/types/CapsuleElementsMapType";
 
 interface AddCapsuleToSuitcaseProps {
-    capsuleElements: CapsuleElementType[] | undefined;
+    capsuleElements: CapsuleElementsMapType;
 }
 
 const AddCapsuleToSuitcase = ({ capsuleElements }: AddCapsuleToSuitcaseProps) => {
@@ -41,7 +41,7 @@ const AddCapsuleToSuitcase = ({ capsuleElements }: AddCapsuleToSuitcaseProps) =>
     }
 
     const saveSelections = () => {
-        const articleIds = capsuleElements?.map((element) => element.article?.id);
+        const articleIds = Array.from(capsuleElements.values()).map((element) => element.article?.id);
 
         if (unsavedSuitcaseSelections && articleIds) {
             addArticlesToSuitcases(articleIds, unsavedSuitcaseSelections)
