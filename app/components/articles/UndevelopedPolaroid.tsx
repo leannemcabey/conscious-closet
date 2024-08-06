@@ -21,7 +21,7 @@ const UndevelopedPolaroid = ({ size }: UndevelopedPolaroidProps) => {
         }
     }
 
-    const sizeStyling = size === "large" ? "w-[297px]" : "w-[70px]"
+    const sizeStyling = size === "large" ? "w-[250px]" : "w-[63.5px]"
 
     return (
         <div className={`flex flex-col items-center items-center bg-white drop-shadow-lg ${sizeStyling}`}>

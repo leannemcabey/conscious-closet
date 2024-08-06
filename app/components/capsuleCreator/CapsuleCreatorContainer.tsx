@@ -1,7 +1,6 @@
 'use client'
 import * as React from "react";
 import { useEffect, useState } from "react";
-import CapsuleElementSelector from "@/app/components/capsuleCreator/CapsuleElementSelector";
 import { Article } from "@/types/article";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
@@ -11,14 +10,11 @@ import AddCapsuleToSuitcase from "@/app/components/capsuleCreator/AddCapsuleToSu
 import ErrorModal from "@/app/components/modal/ErrorModal";
 import BackButton from "@/app/components/buttons/BackButton";
 import PageHeader from "@/app/components/PageHeader";
-import CapsuleElement from "@/app/components/capsuleCreator/CapsuleElement";
+import CapsuleElementsContainer from "@/app/components/capsuleCreator/CapsuleElementsContainer";
+import { defaultCapsuleElements } from "@/app/components/capsuleCreator/utils/defaultCapsuleElements";
+import { CapsuleElementType } from "@/types/CapsuleElementType";
 
-export interface CapsuleElementType {
-    slot: number;
-    article: Article | undefined;
-}
-
-interface CategoryArticlesMap {
+export interface CategoryArticlesMap {
     string: Article[];
 }
 
@@ -27,6 +23,7 @@ interface CapsuleCreatorContainerProps {
 }
 
 const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) => {
+    // console.log(`CapsuleCreatorContainer articlesMap: ${JSON.stringify(articlesMap)}`)
     const filterCleanout = (): CategoryArticlesMap => {
         const articlesNotInCleanoutMap = {};
 
@@ -37,15 +34,6 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
         return articlesNotInCleanoutMap as CategoryArticlesMap;
     }
 
-    const defaultCapsuleElements: CapsuleElementType[] = [
-        { slot: 0, article: undefined },
-        { slot: 1, article: undefined },
-        { slot: 2, article: undefined },
-        { slot: 3, article: undefined },
-        { slot: 4, article: undefined },
-        { slot: 5, article: undefined }
-    ]
-
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: false,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM]
@@ -55,8 +43,7 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
     const [unfilteredArticlesMap, setUnfilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap)
     const articlesNotInCleanoutMap = filterCleanout();
     const [filteredArticlesMap, setFilteredArticlesMap] = useState<CategoryArticlesMap>(articlesNotInCleanoutMap);
-    const [capsuleElements, setCapsuleElements] = useState<CapsuleElementType[]>(defaultCapsuleElements)
-    const [expandedElement, setExpandedElement] = useState<CapsuleElementType>(defaultCapsuleElements[0]);
+    const [capsuleElements, setCapsuleElements] = useState<CapsuleElementType[]>(defaultCapsuleElements);
     const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
@@ -64,22 +51,12 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
     useEffect(() => {
         let tempFilteredArticlesMap: CategoryArticlesMap = { ...unfilteredArticlesMap };
-
         Object.keys(tempFilteredArticlesMap).forEach((category) => {
             tempFilteredArticlesMap[category] = applyArticleFilters(unfilteredArticlesMap[category], filterTypes, filterSettings);
         })
 
         setFilteredArticlesMap(tempFilteredArticlesMap)
     }, [unfilteredArticlesMap, filterSettings]);
-
-    const updateCapsuleElements = (element: CapsuleElementType) => {
-        const tempCapsuleElements = [ ...capsuleElements ];
-        const matchingSlot = tempCapsuleElements.find((e) => e.slot === element.slot)
-        const indexToUpdate = tempCapsuleElements.indexOf(matchingSlot)
-        tempCapsuleElements[indexToUpdate] = element
-
-        setCapsuleElements(tempCapsuleElements);
-    }
 
     if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
@@ -90,26 +67,9 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
                 <AddCapsuleToSuitcase capsuleElements={capsuleElements}/>
             </div>
             <PageHeader title="capsule creator" iconPath="/lightbulb.svg" iconAlt="light bulb icon"/>
-            <div className="h-[89%] flex flex-col">
-                <ArticleFilters filterTypes={filterTypes}/>
+            <ArticleFilters filterTypes={filterTypes}/>
 
-                <div className="flex flex-col place-content-between h-full">
-                    <CapsuleElementSelector
-                        articlesMap={filteredArticlesMap}
-                        updateCapsuleElements={updateCapsuleElements}
-                        element={expandedElement}
-                        setError={setError}
-                    />
-
-                    <div className="flex pb-4 w-full space-x-2">
-                        {capsuleElements?.map((element) => {
-                            if (element.slot !== expandedElement?.slot) {
-                                return <CapsuleElement element={element} setExpandedElement={setExpandedElement}/>
-                            }
-                        })}
-                    </div>
-                </div>
-            </div>
+            <CapsuleElementsContainer filteredArticlesMap={filteredArticlesMap} capsuleElements={capsuleElements} setCapsuleElements={setCapsuleElements} />
         </ArticleFilterContext.Provider>
     )
 }

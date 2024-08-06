@@ -23,8 +23,10 @@ const Polaroid = ({ imageUrl, size, children }: PolaroidProps) => {
         }
     }
 
+    const sizeStyling = size === "large" ? "w-[250px] md:w-[445px]" : "w-[63.5px]"
+
     return (
-        <div className={`flex flex-col items-center bg-white drop-shadow-lg ${size === "large" && "md:w-[445px]"}`}>
+        <div className={`flex flex-col items-center bg-white drop-shadow-lg ${sizeStyling}`}>
             <div className={`mt-[5%] mx-[5%] ${children ? "mb-[5%]" : "mb-[25%]"} bg-white ${size === "large" && "md:w-[400px]"}`}>
                 <Image
                     loader={googlePhotosPathLoader}

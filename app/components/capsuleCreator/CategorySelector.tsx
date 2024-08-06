@@ -8,11 +8,12 @@ import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import IconButton from "@/app/components/buttons/IconButton";
 
 interface CategorySelectorProps {
+    isActive: boolean;
     selectedCategory: ArticleCategoryEnum | undefined;
     setSelectedCategory: Dispatch<SetStateAction<ArticleCategoryEnum>>
 }
 
-const CategorySelector = ({ selectedCategory, setSelectedCategory }: CategorySelectorProps) => {
+const CategorySelector = ({ isActive, selectedCategory, setSelectedCategory }: CategorySelectorProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const handleClick = (category) => {
@@ -24,7 +25,7 @@ const CategorySelector = ({ selectedCategory, setSelectedCategory }: CategorySel
         <div className="flex flex-col w-full self-center items-center">
             <IconButton
                 handleClick={() => setIsOpen(!isOpen)}
-                isActive={true}
+                isActive={isActive}
                 iconPath="/hanger.svg"
                 iconAlt="hanger icon"
             />
