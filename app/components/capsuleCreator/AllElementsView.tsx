@@ -1,5 +1,4 @@
 'use client'
-
 import {CapsuleElementsMapType, CapsuleElementType} from "@/types/CapsuleElementsMapType";
 import CapsuleElement from "@/app/components/capsuleCreator/CapsuleElement";
 import * as React from "react";
