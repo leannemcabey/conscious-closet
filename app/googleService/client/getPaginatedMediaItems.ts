@@ -3,9 +3,9 @@ import axios from "axios";
 import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 import { PaginatedMediaItems } from "@/types/googlePhotoMetadata";
 
-export async function getPaginatedMediaItemsWithRetry(pageToken: string) {
+export const getPaginatedMediaItemsWithRetry = async (pageToken: string) => {
     let attemptCounter = 0;
-    return getPaginatedMediaItems(pageToken, attemptCounter);
+    return await getPaginatedMediaItems(pageToken, attemptCounter);
 }
 
 const getPaginatedMediaItems = (pageToken: string, attemptCounter: number): Promise<PaginatedMediaItems> => {

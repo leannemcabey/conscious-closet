@@ -6,7 +6,7 @@ import { mediaItemToGooglePhotoMetadata } from "@/utils/typeConversions/mediaIte
 
 export async function updateGoogleUrlWithRetry(article: Article) {
     let attemptCounter = 0;
-    return updateGoogleUrl(article, attemptCounter);
+    return await updateGoogleUrl(article, attemptCounter);
 }
 
 const updateGoogleUrl = (article: Article, attemptCounter: number): Promise<Article> => {
