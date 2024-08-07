@@ -22,7 +22,6 @@ interface CapsuleArticleSelectorProps {
 }
 
 const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, articlesMap, doTransition, setDoTransition, setShowAllElementsView }: CapsuleArticleSelectorProps) => {
-    console.log(`initialElement: ${JSON.stringify(initialElement)}`)
     const getInitialIndex = (): number => {
         let tempIndex;
 
@@ -35,6 +34,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
         return tempIndex ? tempIndex : 0;
     }
 
+    const [currentSlot, setCurrentSlot] = useState<number>();
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum | undefined>();
     const [currentIndex, setCurrentIndex] = useState<number>();
     const [currentElement, setCurrentElement] = useState<CapsuleElementType>(null);
@@ -49,12 +49,11 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
     }, [initialElement]);
 
     useEffect(() => {
-        console.log(`element change, category: ${initialElement.article?.articleCategory}`)
+        setCurrentSlot(initialElement.slot)
         setSelectedCategory(initialElement.article?.articleCategory)
     }, [initialElement]);
 
     useEffect(() => {
-        console.log(`big use effect running`)
         // This makes it so that the animation runs with UndevelopedPolaroid, rather than the previous element,
         // and also handles the scenario where there is no article selected
         setRefreshedArticlesOfSelectedCategory([])
@@ -69,12 +68,15 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                 .then((articles) => {
                     setRefreshedArticlesOfSelectedCategory(articles);
 
+                    // Handles change of selected category
                     if (initialElement.article?.articleCategory !== selectedCategory) {
                         setCurrentIndex(0);
                         const newElement = { slot: initialElement.slot, article: articles[0] };
                         setCurrentElement(newElement)
                         updateCapsuleElements(newElement)
-                    } else {
+                    }
+                    // Handles initial load of new slot
+                    else {
                         setCurrentIndex(getInitialIndex())
                         setCurrentElement(initialElement)
                         updateCapsuleElements(initialElement)
@@ -86,7 +88,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                     setError(true)
                 })
         }
-    }, [articlesMap, selectedCategory]);
+    }, [articlesMap, currentSlot, selectedCategory]);
 
     const handleArrowClick = (arrow: "left" | "right") => {
         if (refreshedArticlesOfSelectedCategory) {
