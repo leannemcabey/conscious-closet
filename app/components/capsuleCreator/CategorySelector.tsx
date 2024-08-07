@@ -1,12 +1,11 @@
 'use client'
 import * as React from "react";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import { ArticleCategoryEnum, ArticleCategoryTitle, categorySlugToTitleMap } from "@/types/enums/articleCategoryEnum";
-import Image from "next/image";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { ArticleCategoryEnum, ArticleCategoryTitle } from "@/types/enums/articleCategoryEnum";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import IconButton from "@/app/components/buttons/IconButton";
-import {CapsuleElementsMapType, CapsuleElementType} from "@/types/CapsuleElementsMapType";
+import { CapsuleElementType } from "@/types/CapsuleElementsMapType";
 
 interface CategorySelectorProps {
     initialElement: CapsuleElementType;
@@ -20,6 +19,8 @@ const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategor
     useEffect(() => {
         // We're using initialElement here instead of selectedCategory because there are times
         // when the selectedCategory has not yet been set by the time this component renders.
+        // The setTimeout is used so that the capsule element animation can finish before the modal
+        // animation happens.
         setTimeout(() => !initialElement.article && setIsOpen(true), 500)
     }, [initialElement]);
 
