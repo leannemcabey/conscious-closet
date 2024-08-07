@@ -10,11 +10,7 @@ export async function createSuitcase(name: string) {
 
     const { data, error } = await supabase
         .from('suitcases')
-        .insert([
-            {
-                name: name
-            }
-        ])
+        .insert([{name: name}])
         .select()
 
     if (error) {

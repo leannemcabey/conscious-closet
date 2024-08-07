@@ -40,7 +40,7 @@ const NewSuitcaseModal = ({ setIsOpen, suitcases, setSuitcases }: NewSuitcaseMod
         <Modal setIsOpen={setIsOpen}>
             <div className="md:w-[400px]">
                 <CloseModalButton setIsOpen={setIsOpen} />
-                <form className="flex flex-col pt-20">
+                <div className="flex flex-col pt-20">
                     <input
                         placeholder="New suitcase name"
                         type="text"
@@ -52,7 +52,7 @@ const NewSuitcaseModal = ({ setIsOpen, suitcases, setSuitcases }: NewSuitcaseMod
                             save
                         </TextButtonFilled>
                     </div>
-                </form>
+                </div>
             </div>
         </Modal>
     )

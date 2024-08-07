@@ -1,11 +1,11 @@
 'use server'
 import Layout from "@/app/components/Layout";
 import SuitcaseList from "@/app/components/suitcases/SuitcaseList";
-import Image from "next/image";
 import BackButton from "@/app/components/buttons/BackButton";
 import PageHeader from "@/app/components/PageHeader";
 
 export default async function Suitcases() {
+    console.log(`rerendering suitcases page`)
     return (
         <Layout>
             <BackButton />
