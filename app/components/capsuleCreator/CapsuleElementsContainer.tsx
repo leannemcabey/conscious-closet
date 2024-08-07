@@ -39,7 +39,7 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
     if (showAllElementsView) return <AllElementsView capsuleElements={capsuleElements} updateExpandedElement={updateExpandedElement}/>
 
     return (
-        <div className="flex flex-col place-content-between h-[77%]">
+        <div className="flex flex-col space-y-[12%] h-[77%] md:h-[73%] md:space-y-[3%]">
             <CapsuleArticleSelector
                 articlesMap={filteredArticlesMap}
                 updateCapsuleElements={updateCapsuleElements}
@@ -49,7 +49,7 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
                 setShowAllElementsView={setShowAllElementsView}
             />
 
-            <div className="flex mb-4 w-full h-[100px] justify-center space-x-2">
+            <div className="flex mb-4 w-full h-[100px] justify-center space-x-2 md:space-x-6">
                 {Array.from(capsuleElements.values()).map((element) => {
                     if (element.slot !== expandedElement.slot) {
                         return (
@@ -57,8 +57,8 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
                                 key={element.slot}
                                 element={element}
                                 updateExpandedElement={updateExpandedElement}
-                                sizeStyling="w-[63.5px]"
-                                iconPositioning="bottom-[30%] left-[45%]"
+                                sizeStyling="w-[63.5px] md:w-[100px]"
+                                iconPositioning="bottom-[30%] left-[45%] md:bottom-[55%]"
                             />
                         )
                     }

@@ -158,12 +158,12 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                         </p>}
 
                     {!noArticlesInCategory && (!currentElement || !currentElement.article) &&
-                        <UndevelopedPolaroid sizeStyling="w-[250px]"/>
+                        <UndevelopedPolaroid sizeStyling="w-[250px] md:w-[275px]"/>
                     }
 
                     {!noArticlesInCategory && currentElement && currentElement.article &&
                         <>
-                            <div className="w-[10%]">
+                            <div className="w-[10%] md:w-[8%] md:pr-4">
                                 <Image
                                     src={"/left-arrow.svg"}
                                     alt={"left arrow"}
@@ -176,10 +176,10 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
                             <Polaroid
                                 imageUrl={currentElement.article.image.baseUrl || ""}
-                                sizeStyling="w-[250px] md:w-[445px]"
+                                sizeStyling="w-[250px] md:w-[275px]"
                             />
 
-                            <div className="w-[10%]">
+                            <div className="w-[10%] md:w-[8%] md:pl-4">
                                 <Image
                                     src={"/left-arrow.svg"}
                                     alt={"right arrow"}

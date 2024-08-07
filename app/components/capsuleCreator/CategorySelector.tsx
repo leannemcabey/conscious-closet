@@ -41,11 +41,11 @@ const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategor
 
             {isOpen && (
                 <Modal setIsOpen={setIsOpen}>
-                    <div className="md:w-[300px]">
+                    <div className="md:w-[400px]">
                         <CloseModalButton setIsOpen={setIsOpen} />
-                        <h3 className="text-xl text-center md:text-3xl">Select a category for this capsule element:</h3>
+                        <h3 className="text-xl text-center md:text-3xl md:mt-6">Select a category for this capsule element:</h3>
 
-                        <div className="flex flex-col justify-center text-center mt-2">
+                        <div className="flex flex-col justify-center text-center mt-2 md:mt-6">
                             {Object.keys(ArticleCategoryEnum).map((category) => {
                                 const selected = ArticleCategoryEnum[category] === selectedCategory
                                 return (
