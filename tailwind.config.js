@@ -44,12 +44,23 @@ module.exports = {
           to: {
             left: '100%'
           }
+        },
+        'grow': {
+          from: {
+            width: '0px',
+            height: '0px'
+          },
+          to: {
+            width: '250px',
+            height: '373px'
+          }
         }
       },
       animation: {
         'enter-from-bottom': 'enter-from-bottom .3s forwards',
         'enter-from-right': 'enter-from-right .5s forwards',
-        'exit-to-right': 'exit-to-right .5s forwards'
+        'exit-to-right': 'exit-to-right .5s forwards',
+        'grow': 'grow .5s forwards'
       },
     }
   },

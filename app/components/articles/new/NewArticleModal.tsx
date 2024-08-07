@@ -28,7 +28,6 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
     const [submitted, setSubmitted] = useState<boolean>();
 
     const buttonDisabled: boolean = weatherCategory === undefined
-    const buttonImage = buttonDisabled ? "/disabled-check-mark-button.svg" : "/check-mark-button.svg"
 
     const successGif = <Image unoptimized={true} src="/fireworks.gif" alt="success" height="200" width="200"/>
     const errorMessage = "An error occurred when trying to add this article. It may be that you already have it in your closet."
@@ -84,7 +83,10 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
                     </div>
 
                     <div className="flex self-center space-x-2.5">
-                        <Polaroid imageUrl={image.baseUrl} size="medium" />
+                        <Polaroid
+                            imageUrl={image.baseUrl}
+                            sizeStyling="w-[175px]"
+                        />
                         <WeatherPicker weatherCategory={weatherCategory} setWeatherCategory={setWeatherCategory}/>
                     </div>
 

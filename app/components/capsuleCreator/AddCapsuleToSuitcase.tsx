@@ -8,13 +8,14 @@ import AddArticleToSuitcaseModal from "@/app/components/suitcases/AddArticleToSu
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
 import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
-import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
+import IconButton from "@/app/components/buttons/IconButton";
+import { CapsuleElementsMapType } from "@/types/CapsuleElementsMapType";
 
 interface AddCapsuleToSuitcaseProps {
-    selectedArticleIds: (string | undefined)[]
+    capsuleElements: CapsuleElementsMapType;
 }
 
-const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps) => {
+const AddCapsuleToSuitcase = ({ capsuleElements }: AddCapsuleToSuitcaseProps) => {
     const [selectingSuitcase, setSelectingSuitcase] = useState<boolean>(false)
     const [creatingSuitcase, setCreatingSuitcase] = useState<boolean>(false);
     const [suitcases, setSuitcases] = useState<Suitcase[]>()
@@ -40,8 +41,10 @@ const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps)
     }
 
     const saveSelections = () => {
-        if (unsavedSuitcaseSelections) {
-            addArticlesToSuitcases(selectedArticleIds, unsavedSuitcaseSelections)
+        const articleIds = Array.from(capsuleElements.values()).map((element) => element.article?.id);
+
+        if (unsavedSuitcaseSelections && articleIds) {
+            addArticlesToSuitcases(articleIds, unsavedSuitcaseSelections)
                 .then(() => {
                     setUnsavedSuitcaseSelections([])
                     setSelectingSuitcase(false)
@@ -57,9 +60,13 @@ const AddCapsuleToSuitcase = ({ selectedArticleIds }: AddCapsuleToSuitcaseProps)
     return (
         <>
             <div className="self-center mb-2 mt-1">
-                <TextButtonFilled handleClick={() => openSuitcaseSelectionModal()} disabled={false}>
-                    + add capsule to suitcase(s)
-                </TextButtonFilled>
+                <IconButton
+                    handleClick={() => openSuitcaseSelectionModal()}
+                    isActive={true}
+                    iconPath="/suitcase-white.svg"
+                    iconAlt="suitcase icon"
+                    colorOverride={{active: "bg-theme-green", inactive:"bg-theme-green"}}
+                />
             </div>
 
             {selectingSuitcase && fetchError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={fetchErrorMessage} />}

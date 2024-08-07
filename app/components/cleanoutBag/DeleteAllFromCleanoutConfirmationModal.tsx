@@ -13,6 +13,7 @@ const DeleteAllFromCleanoutConfirmationModal = ({ setIsDeleting, handleSubmit }:
     return (
         <ConfirmationModal setIsOpen={setIsDeleting} confirmAction={handleSubmit}>
             <Image
+                unoptimized
                 src={"/warning-gold.gif"}
                 alt={"warning"}
                 width="125"

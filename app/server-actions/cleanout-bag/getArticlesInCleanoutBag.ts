@@ -9,6 +9,7 @@ export async function getArticlesInCleanoutBag() {
         .from("articles")
         .select()
         .eq('in_cleanout_bag', true)
+        .eq('image_deleted_from_google_photos', false);
 
     return {
         articles: data?.map((article) => toArticle(article)) ?? [],

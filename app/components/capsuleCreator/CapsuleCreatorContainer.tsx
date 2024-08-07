@@ -1,22 +1,25 @@
 'use client'
 import * as React from "react";
-import {useEffect, useState} from "react";
-import CapsuleElement from "@/app/components/capsuleCreator/CapsuleElement";
-import {ArticleCategoryEnum} from "@/types/enums/articleCategoryEnum";
-import {Article} from "@/types/article";
-import {ArticleFilterContext, FilterSettings} from "@/app/context/ArticleFilterContext";
-import {WeatherCategoryEnum} from "@/types/enums/weatherCategoryEnum";
-import ArticleFilters, {FilterType} from "@/app/components/filter/ArticleFilters";
-import {applyArticleFilters} from "@/utils/applyArticleFilters";
+import { useEffect, useState } from "react";
+import { Article } from "@/types/article";
+import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
+import ArticleFilters, { FilterType } from "@/app/components/filter/ArticleFilters";
+import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import AddCapsuleToSuitcase from "@/app/components/capsuleCreator/AddCapsuleToSuitcase";
 import ErrorModal from "@/app/components/modal/ErrorModal";
+import BackButton from "@/app/components/buttons/BackButton";
+import PageHeader from "@/app/components/PageHeader";
+import CapsuleElementsContainer from "@/app/components/capsuleCreator/CapsuleElementsContainer";
+import { defaultCapsuleElements } from "@/app/components/capsuleCreator/utils/defaultCapsuleElements";
+import { CapsuleElementsMapType } from "@/types/CapsuleElementsMapType";
 
-interface CategoryArticlesMap {
-    string: Article[]
+export interface CategoryArticlesMap {
+    string: Article[];
 }
 
 interface CapsuleCreatorContainerProps {
-    articlesMap: CategoryArticlesMap
+    articlesMap: CategoryArticlesMap;
 }
 
 const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) => {
@@ -35,21 +38,18 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM]
     };
 
-    const [selectedArticleIds, setSelectedArticleIds] = useState<(string | undefined)[]>([]);
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
     const [unfilteredArticlesMap, setUnfilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap)
     const articlesNotInCleanoutMap = filterCleanout();
-    console.log(JSON.stringify(articlesNotInCleanoutMap))
     const [filteredArticlesMap, setFilteredArticlesMap] = useState<CategoryArticlesMap>(articlesNotInCleanoutMap);
+    const [capsuleElements, setCapsuleElements] = useState<CapsuleElementsMapType>(defaultCapsuleElements);
     const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
-
     const filterTypes= [FilterType.cleanout, FilterType.weather];
 
     useEffect(() => {
         let tempFilteredArticlesMap: CategoryArticlesMap = { ...unfilteredArticlesMap };
-
         Object.keys(tempFilteredArticlesMap).forEach((category) => {
             tempFilteredArticlesMap[category] = applyArticleFilters(unfilteredArticlesMap[category], filterTypes, filterSettings);
         })
@@ -57,30 +57,18 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
         setFilteredArticlesMap(tempFilteredArticlesMap)
     }, [unfilteredArticlesMap, filterSettings]);
 
-    const updateSelectedArticles = (articleId: string | undefined, slot: number) => {
-        const tempSelectedArticleIds = [ ...selectedArticleIds ];
-        tempSelectedArticleIds[slot] = articleId;
-        setSelectedArticleIds(tempSelectedArticleIds)
-    }
-
     if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="h-[89%] flex flex-col">
-                <ArticleFilters filterTypes={filterTypes} />
-
-                <AddCapsuleToSuitcase selectedArticleIds={selectedArticleIds}/>
-
-                <div className="h-[85%] md:h-[83%] grid grid-cols-2 md:grid-cols-3 pb-4">
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={0} setError={setError} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={1} setError={setError} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={2} setError={setError} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.TOPS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={3} setError={setError} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.PANTS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={4} setError={setError} />
-                    <CapsuleElement defaultArticleType={ArticleCategoryEnum.SKIRTS} articlesMap={filteredArticlesMap} updateSelectedArticles={updateSelectedArticles} slot={5} setError={setError} />
-                </div>
+            <div className="flex place-content-between">
+                <BackButton/>
+                <AddCapsuleToSuitcase capsuleElements={capsuleElements}/>
             </div>
+            <PageHeader title="capsule creator" iconPath="/lightbulb.svg" iconAlt="light bulb icon"/>
+            <ArticleFilters filterTypes={filterTypes}/>
+
+            <CapsuleElementsContainer filteredArticlesMap={filteredArticlesMap} capsuleElements={capsuleElements} setCapsuleElements={setCapsuleElements} />
         </ArticleFilterContext.Provider>
     )
 }
