@@ -1,11 +1,13 @@
 'use client'
-import { refreshGoogleProviderToken } from "@/app/googleService/server/refreshGoogleProviderToken";
+import { refreshGoogleProviderTokenWithRetry } from "@/app/googleService/server/refreshGoogleProviderToken";
 import { createClient } from "@/utils/supabase/client";
-import { redirect } from "next/navigation";
 
-let attemptCounter = 0;
+export const refreshGoogleProviderTokenIfNeededWithRetry = async () => {
+    let attemptCounter = 0;
+    return await refreshGoogleProviderTokenIfNeeded(attemptCounter);
+}
 
-export const refreshGoogleProviderTokenIfNeeded = async () => {
+const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number) => {
     attemptCounter++
 
     const supabase = createClient();
@@ -16,23 +18,23 @@ export const refreshGoogleProviderTokenIfNeeded = async () => {
     const now = Math.round(Date.now() / 1000);
     const isExpired = now > providerTokenExpires;
 
+
     if (isExpired) {
         console.log("refreshing google token")
         const refreshToken =  window.localStorage.getItem('oauth_provider_refresh_token');
 
-        refreshGoogleProviderToken(refreshToken)
+        refreshGoogleProviderTokenWithRetry(refreshToken)
             .then(({ token, expiresIn }) => {
                 window.localStorage.setItem('oauth_provider_token', token);
                 window.localStorage.setItem('expires_at', (now + expiresIn).toString())
                 return token;
             })
             .catch(() => {
-                if (attemptCounter > 1) {
+                if (attemptCounter > 2) {
                     console.log('max attempts for refreshing token reached. should redirect to login')
                     return supabase.auth.signOut()
-                        .then(() => redirect("/"))
                 } else {
-                    refreshGoogleProviderTokenIfNeeded()
+                    refreshGoogleProviderTokenIfNeeded(attemptCounter)
                 }
             })
     }

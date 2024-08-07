@@ -5,7 +5,7 @@ import LastWorn from "@/app/components/articles/LastWorn";
 import ArticleWeatherCategory from "@/app/components/articles/ArticleWeatherCategory";
 import { Article } from "@/types/article";
 import Image from "next/image";
-import { updateGoogleUrl } from "@/app/googleService/client/updateGoogleUrl";
+import { updateGoogleUrlWithRetry } from "@/app/googleService/client/updateGoogleUrl";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface ArticleImageProps {
@@ -21,7 +21,7 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
     const errorMessage = "An error occurred when retrieving your article. Please go back and try again."
 
     useEffect(() => {
-        updateGoogleUrl(article)
+        updateGoogleUrlWithRetry(article)
             .then((response) => {
                 setRefreshedArticle(response)
                 setError(false)

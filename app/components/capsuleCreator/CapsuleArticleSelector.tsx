@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Image from "next/image";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { Article } from "@/types/article";
-import { batchUpdateGoogleUrls } from "@/app/googleService/client/batchUpdateGoogleUrls";
+import { batchUpdateGoogleUrlsWithRetry } from "@/app/googleService/client/batchUpdateGoogleUrlsWithRetry";
 import Polaroid from "@/app/components/articles/Polaroid";
 import CategorySelector from "@/app/components/capsuleCreator/CategorySelector";
 import UndevelopedPolaroid from "@/app/components/articles/UndevelopedPolaroid";
@@ -70,7 +70,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
         const articles = articlesMap[selectedCategory];
 
         if (articles && articles.length) {
-            batchUpdateGoogleUrls(articles)
+            batchUpdateGoogleUrlsWithRetry(articles)
                 .then((articles) => {
                     setRefreshedArticlesOfSelectedCategory(articles);
 

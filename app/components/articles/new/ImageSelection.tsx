@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import GalleryImage from "@/app/components/articles/new/GalleryImage";
 import Image from "next/image";
-import { getPaginatedMediaItems } from "@/app/googleService/client/getPaginatedMediaItems";
+import { getPaginatedMediaItemsWithRetry } from "@/app/googleService/client/getPaginatedMediaItems";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 import TextButton from "@/app/components/buttons/TextButton";
 
@@ -20,7 +20,7 @@ export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
     const errorMessage = "An error occurred while retrieving your Google Photos. Please try again."
 
     useEffect(() => {
-        getPaginatedMediaItems(pageTokens[page - 1])
+        getPaginatedMediaItemsWithRetry(pageTokens[page - 1])
             .then(({ data, nextPageToken }) => {
                 setGooglePhotos(data)
                 setPageTokens([ ...pageTokens, nextPageToken])

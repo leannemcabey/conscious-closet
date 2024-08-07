@@ -1,14 +1,17 @@
 'use client'
 import axios from "axios";
-import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProviderTokenIfNeeded";
+import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 import { PaginatedMediaItems } from "@/types/googlePhotoMetadata";
 
-let attemptCounter = 0;
+export async function getPaginatedMediaItemsWithRetry(pageToken: string) {
+    let attemptCounter = 0;
+    return getPaginatedMediaItems(pageToken, attemptCounter);
+}
 
-export const getPaginatedMediaItems = (pageToken: string): Promise<PaginatedMediaItems> => {
+const getPaginatedMediaItems = (pageToken: string, attemptCounter: number): Promise<PaginatedMediaItems> => {
     attemptCounter++
 
-    return refreshGoogleProviderTokenIfNeeded()
+    return refreshGoogleProviderTokenIfNeededWithRetry()
         .then((providerToken) => {
             if (providerToken) {
                 return axios.get("https://photoslibrary.googleapis.com/v1/mediaItems", {
@@ -36,7 +39,7 @@ export const getPaginatedMediaItems = (pageToken: string): Promise<PaginatedMedi
                     })
                     .catch((error) => {
                         if (attemptCounter > 1) throw error
-                        getPaginatedMediaItems(pageToken)
+                        getPaginatedMediaItems(pageToken, attemptCounter)
                     })
             }
         })
