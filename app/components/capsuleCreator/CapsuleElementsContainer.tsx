@@ -23,7 +23,6 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
     const errorMessage = "An error occurred while creating your capsule. Please try again."
 
     const updateExpandedElement = (element: CapsuleElementType) => {
-        console.log(`new expanded element: ${JSON.stringify(element)}`)
         setShowAllElementsView(false)
         setExpandedElement(element);
         setDoTransition(true);
