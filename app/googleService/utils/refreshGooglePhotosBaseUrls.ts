@@ -1,6 +1,6 @@
 import { Article } from "@/types/article";
 import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
-import {markDeletedFromGPhotos} from "@/app/server-actions/article/markDeletedFromGPhotos";
+import { markDeletedFromGPhotos } from "@/app/server-actions/article/markDeletedFromGPhotos";
 
 export const refreshGooglePhotosBaseUrls = (
     articles: Article[],
@@ -14,7 +14,6 @@ export const refreshGooglePhotosBaseUrls = (
         }
 
         // This happens when the image has been deleted from the user's Google Photos account.
-        // A placeholder image will be used in the Polaroid component.
         if (!match) {
             markDeletedFromGPhotos(article.id)
             return undefined
