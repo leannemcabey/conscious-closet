@@ -5,7 +5,6 @@ import BackButton from "@/app/components/buttons/BackButton";
 import PageHeader from "@/app/components/PageHeader";
 
 export default async function Suitcases() {
-    console.log(`rerendering suitcases page`)
     return (
         <Layout>
             <BackButton />

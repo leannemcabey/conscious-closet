@@ -7,18 +7,19 @@ import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import { splitArticlesIntoBatches } from "@/app/googleService/utils/splitArticlesIntoBatches";
 import { refreshGooglePhotosBaseUrls } from "@/app/googleService/utils/refreshGooglePhotosBaseUrls";
 import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
-import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProviderTokenIfNeeded";
+import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 
-export const batchUpdateGoogleUrls = async (articles: Article[]): Promise<Article[]> => {
+export const batchUpdateGoogleUrlsWithRetry = async (articles: Article[]): Promise<Article[]> => {
     const articleBatches = splitArticlesIntoBatches(articles);
 
     let refreshedArticles: Article[] = [];
 
     for (const batch of articleBatches) {
+        let attemptCounter = 0;
         let result;
 
         try {
-            result = await getBatchMediaItems(batch)
+            result = await getBatchMediaItems(batch, attemptCounter)
         } catch(error) {
             throw error
         }
@@ -29,13 +30,10 @@ export const batchUpdateGoogleUrls = async (articles: Article[]): Promise<Articl
     return orderByNewestCreated(refreshedArticles);
 }
 
-
-let attemptCounter = 0;
-
-const getBatchMediaItems = (articles: Article[]): Promise<GooglePhotoMetadata[]> => {
+const getBatchMediaItems = (articles: Article[], attemptCounter: number): Promise<GooglePhotoMetadata[]> => {
     attemptCounter++
 
-    return refreshGoogleProviderTokenIfNeeded()
+    return refreshGoogleProviderTokenIfNeededWithRetry()
         .then((providerToken) => {
             const params = buildParams(articles);
 
@@ -51,8 +49,8 @@ const getBatchMediaItems = (articles: Article[]): Promise<GooglePhotoMetadata[]>
                     return mappedResults.filter((result) => result !== undefined)
                 })
                 .catch((error) => {
-                    if (attemptCounter > 2) throw error;
-                    getBatchMediaItems(articles)
+                    if (attemptCounter > 1) throw error;
+                    getBatchMediaItems(articles, attemptCounter);
                 })
         })
 }

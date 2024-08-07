@@ -1,8 +1,11 @@
 'use server'
 
-let attemptCounter = 0;
+export async function refreshGoogleProviderTokenWithRetry(refreshToken: string) {
+    let attemptCounter = 0;
+    return await refreshGoogleProviderToken(refreshToken, attemptCounter);
+}
 
-export async function refreshGoogleProviderToken(refreshToken: string) {
+async function refreshGoogleProviderToken(refreshToken: string, attemptCounter: number) {
     attemptCounter++
 
     const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
@@ -27,7 +30,7 @@ export async function refreshGoogleProviderToken(refreshToken: string) {
         });
     } catch(error) {
         if (attemptCounter > 1) throw error
-        refreshGoogleProviderToken(refreshToken)
+        refreshGoogleProviderToken(refreshToken, attemptCounter)
     }
 
     const data = await response.json();

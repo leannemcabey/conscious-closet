@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Polaroid from "@/app/components/articles/Polaroid";
 import Link from "next/link";
 import Image from "next/image";
-import { batchUpdateGoogleUrls } from "@/app/googleService/client/batchUpdateGoogleUrls";
+import { batchUpdateGoogleUrlsWithRetry } from "@/app/googleService/client/batchUpdateGoogleUrlsWithRetry";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 
 interface ArticlesContainerProps {
@@ -21,7 +21,7 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
 
     useEffect(() => {
         if (articles.length > 0) {
-            batchUpdateGoogleUrls(articles)
+            batchUpdateGoogleUrlsWithRetry(articles)
                 .then((articles) => {
                     setRefreshedArticles(articles)
                     setError(false)

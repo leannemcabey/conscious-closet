@@ -1,15 +1,18 @@
 'use client'
-import { refreshGoogleProviderTokenIfNeeded } from "@/utils/refreshGoogleProviderTokenIfNeeded";
+import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 import axios from "axios";
 import { Article } from "@/types/article";
 import { mediaItemToGooglePhotoMetadata } from "@/utils/typeConversions/mediaItemToGooglePhotoMetadata";
 
-let attemptCounter = 0;
+export async function updateGoogleUrlWithRetry(article: Article) {
+    let attemptCounter = 0;
+    return await updateGoogleUrl(article, attemptCounter);
+}
 
-export const updateGoogleUrl = (article: Article): Promise<Article> => {
+const updateGoogleUrl = (article: Article, attemptCounter: number): Promise<Article> => {
     attemptCounter++
 
-    return refreshGoogleProviderTokenIfNeeded()
+    return refreshGoogleProviderTokenIfNeededWithRetry()
         .then((providerToken) => {
             if (providerToken) {
                 return axios.get(`https://photoslibrary.googleapis.com/v1/mediaItems/${article.image.imageId}`, {
@@ -24,7 +27,7 @@ export const updateGoogleUrl = (article: Article): Promise<Article> => {
                     })
                     .catch((error) => {
                         if (attemptCounter > 1) throw error;
-                        updateGoogleUrl(article)
+                        updateGoogleUrl(article, attemptCounter)
                     })
             }
         })
