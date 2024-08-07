@@ -20,7 +20,6 @@ export async function batchUpdateGoogleUrlsWithRetry(articles: Article[]): Promi
 
         try {
             result = await getBatchMediaItems(batch, attemptCounter)
-            console.log(`result: ${result}`)
         } catch(error) {
             throw error
         }
