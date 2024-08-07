@@ -15,8 +15,8 @@ export const batchUpdateGoogleUrlsWithRetry = async (articles: Article[]): Promi
     let refreshedArticles: Article[] = [];
 
     for (const batch of articleBatches) {
-        let result;
         let attemptCounter = 0;
+        let result;
 
         try {
             result = await getBatchMediaItems(batch, attemptCounter)
