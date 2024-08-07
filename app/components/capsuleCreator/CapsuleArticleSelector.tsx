@@ -27,7 +27,9 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
         if (initialElement.article) {
             const articles = articlesMap[initialElement.article.articleCategory];
-            const currentArticle = articles.find((article) => article.id === initialElement.article?.id)
+            const currentArticle = articles.find((article) => article.id === initialElement.article?.id);
+            // If it can't find the article, it's because filters have been applied that filtered it out
+            if (!currentArticle) throw new Error();
             tempIndex = articles.indexOf(currentArticle);
         }
 
@@ -39,9 +41,13 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
     const [currentIndex, setCurrentIndex] = useState<number>();
     const [currentElement, setCurrentElement] = useState<CapsuleElementType>(null);
     const [refreshedArticlesOfSelectedCategory, setRefreshedArticlesOfSelectedCategory] = useState<Article[]>();
-    const [error, setError] = useState<boolean>(false);
+    const [refreshUrlsError, setRefreshUrlsError] = useState<boolean>(false);
+    const [filterError, setFilterError] = useState<boolean>(false);
 
-    const errorMessage = "An error occurred while creating your capsule. Please try again."
+
+    let refreshUrlsErrorMessage = "An error occurred while retrieving your articles. Please go back and try again."
+    let filerErrorMessage = "Looks like you might have filtered out the article for this capsule element. Remove your filters and try again."
+
     const noArticlesInCategory = selectedCategory && articlesMap[selectedCategory].length === 0;
 
     useEffect(() => {
@@ -77,15 +83,24 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                     }
                     // Handles initial load of new slot
                     else {
-                        setCurrentIndex(getInitialIndex())
-                        setCurrentElement(initialElement)
+                        // Start by saving the initial element to the capsule elements
                         updateCapsuleElements(initialElement)
+
+                        try {
+                            // If it can't find the index, it's because filters have been applied that filtered out the selected article
+                            setCurrentIndex(getInitialIndex())
+                            setCurrentElement(initialElement)
+                            setRefreshUrlsError(false)
+                            setFilterError(false)
+                        } catch {
+                            console.log('reached catch block')
+                            setFilterError(true)
+                        }
                     }
 
-                    setError(false)
                 }).catch((error) => {
                     console.log(error)
-                    setError(true)
+                    setRefreshUrlsError(true)
                 })
         }
     }, [articlesMap, currentSlot, selectedCategory]);
@@ -117,68 +132,71 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
         }
     }
 
-    if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
-
     return (
-        <div className="flex flex-col justify-center items-center m-1 md:mt-8">
-            <div className="flex w-full place-content-between">
-                <CategorySelector
-                    initialElement={initialElement}
-                    selectedCategory={selectedCategory}
-                    setSelectedCategory={setSelectedCategory}
-                />
+        <>
+            <div className="flex flex-col justify-center items-center m-1 md:mt-8">
+                <div className="flex w-full place-content-between">
+                    <CategorySelector
+                        initialElement={initialElement}
+                        selectedCategory={selectedCategory}
+                        setSelectedCategory={setSelectedCategory}
+                    />
 
-                <IconButton
-                    handleClick={() => setShowAllElementsView(true)}
-                    isActive={true}
-                    iconPath="/collapse.svg"
-                    iconAlt="collapse"
-                    colorOverride={{active: "bg-theme-green", inactive:"bg-theme-green"}}
-                />
+                    <IconButton
+                        handleClick={() => setShowAllElementsView(true)}
+                        isActive={true}
+                        iconPath="/collapse.svg"
+                        iconAlt="collapse"
+                        colorOverride={{active: "bg-theme-green", inactive:"bg-theme-green"}}
+                    />
+                </div>
+
+                <div className={`flex space-x-1 items-center justify-center mt-4 ${doTransition ? "animate-grow" : ""}`}>
+                    {noArticlesInCategory &&
+                        <p className="text-sm w-3/4 mt-8 text-center self-center text-neutral-400 md:text-2xl">
+                            There are no articles in this category
+                        </p>}
+
+                    {!noArticlesInCategory && (!currentElement || !currentElement.article) &&
+                        <UndevelopedPolaroid sizeStyling="w-[250px]"/>
+                    }
+
+                    {!noArticlesInCategory && currentElement && currentElement.article &&
+                        <>
+                            <div className="w-[10%]">
+                                <Image
+                                    src={"/left-arrow.svg"}
+                                    alt={"left arrow"}
+                                    width="15"
+                                    height="15"
+                                    onClick={() => handleArrowClick("left")}
+                                    className="h-max rounded-full bg-theme-background-green w-full"
+                                />
+                            </div>
+
+                            <Polaroid
+                                imageUrl={currentElement.article.image.baseUrl || ""}
+                                sizeStyling="w-[250px] md:w-[445px]"
+                            />
+
+                            <div className="w-[10%]">
+                                <Image
+                                    src={"/left-arrow.svg"}
+                                    alt={"right arrow"}
+                                    width="15"
+                                    height="15"
+                                    onClick={() => handleArrowClick("right")}
+                                    className="rotate-180 h-max rounded-full bg-theme-background-green w-full"
+                                />
+                            </div>
+                        </>
+                    }
+                </div>
             </div>
 
-            <div className={`flex space-x-1 items-center justify-center mt-4 ${doTransition ? "animate-grow" : ""}`}>
-                {noArticlesInCategory &&
-                    <p className="text-sm w-3/4 mt-8 text-center self-center text-neutral-400 md:text-2xl">
-                        There are no articles in this category
-                    </p>}
-
-                {!noArticlesInCategory && (!currentElement || !currentElement.article) &&
-                    <UndevelopedPolaroid sizeStyling="w-[250px]"/>
-                }
-
-                {!noArticlesInCategory && currentElement && currentElement.article &&
-                    <>
-                        <div className="w-[10%]">
-                            <Image
-                                src={"/left-arrow.svg"}
-                                alt={"left arrow"}
-                                width="15"
-                                height="15"
-                                onClick={() => handleArrowClick("left")}
-                                className="h-max rounded-full bg-theme-background-green w-full"
-                            />
-                        </div>
-
-                        <Polaroid
-                            imageUrl={currentElement.article.image.baseUrl || ""}
-                            sizeStyling="w-[250px] md:w-[445px]"
-                        />
-
-                        <div className="w-[10%]">
-                            <Image
-                                src={"/left-arrow.svg"}
-                                alt={"right arrow"}
-                                width="15"
-                                height="15"
-                                onClick={() => handleArrowClick("right")}
-                                className="rotate-180 h-max rounded-full bg-theme-background-green w-full"
-                            />
-                        </div>
-                    </>
-                }
-            </div>
-        </div>
+            {refreshUrlsError && <ErrorModal setIsOpen={setRefreshUrlsError} errorMessage={refreshUrlsErrorMessage} />}
+            {filterError && <ErrorModal setIsOpen={setFilterError} errorMessage={filerErrorMessage} />}
+        </>
     )
 }
 
