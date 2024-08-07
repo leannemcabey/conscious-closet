@@ -8,7 +8,7 @@ import { batchUpdateGoogleUrls } from "@/app/googleService/client/batchUpdateGoo
 import Polaroid from "@/app/components/articles/Polaroid";
 import CategorySelector from "@/app/components/capsuleCreator/CategorySelector";
 import UndevelopedPolaroid from "@/app/components/articles/UndevelopedPolaroid";
-import {CapsuleElementsMapType, CapsuleElementType} from "@/types/CapsuleElementsMapType";
+import { CapsuleElementType } from "@/types/CapsuleElementsMapType";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 import IconButton from "@/app/components/buttons/IconButton";
 
@@ -26,7 +26,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
         let tempIndex;
 
         if (initialElement.article) {
-            const articles = articlesMap[initialElement.article?.articleCategory];
+            const articles = articlesMap[initialElement.article.articleCategory];
             const currentArticle = articles.find((article) => article.id === initialElement.article?.id)
             tempIndex = articles.indexOf(currentArticle);
         }
@@ -128,15 +128,13 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                     setSelectedCategory={setSelectedCategory}
                 />
 
-                <div className="">
-                    <IconButton
-                        handleClick={() => setShowAllElementsView(true)}
-                        isActive={true}
-                        iconPath="/collapse.svg"
-                        iconAlt="collapse"
-                        colorOverride={{active: "bg-theme-green", inactive:"bg-theme-green"}}
-                    />
-                </div>
+                <IconButton
+                    handleClick={() => setShowAllElementsView(true)}
+                    isActive={true}
+                    iconPath="/collapse.svg"
+                    iconAlt="collapse"
+                    colorOverride={{active: "bg-theme-green", inactive:"bg-theme-green"}}
+                />
             </div>
 
             <div className={`flex space-x-1 items-center justify-center mt-4 ${doTransition ? "animate-grow" : ""}`}>
@@ -146,9 +144,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                     </p>}
 
                 {!noArticlesInCategory && (!currentElement || !currentElement.article) &&
-                    <>
-                        <UndevelopedPolaroid sizeStyling="w-[250px]"/>
-                    </>
+                    <UndevelopedPolaroid sizeStyling="w-[250px]"/>
                 }
 
                 {!noArticlesInCategory && currentElement && currentElement.article &&
