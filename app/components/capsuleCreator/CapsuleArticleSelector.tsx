@@ -93,7 +93,6 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                             setRefreshUrlsError(false)
                             setFilterError(false)
                         } catch {
-                            console.log('reached catch block')
                             setFilterError(true)
                         }
                     }
