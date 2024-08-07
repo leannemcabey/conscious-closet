@@ -18,7 +18,6 @@ const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number) => {
     const now = Math.round(Date.now() / 1000);
     const isExpired = now > providerTokenExpires;
 
-
     if (isExpired) {
         console.log("refreshing google token")
         const refreshToken =  window.localStorage.getItem('oauth_provider_refresh_token');
