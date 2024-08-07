@@ -9,7 +9,7 @@ import { refreshGooglePhotosBaseUrls } from "@/app/googleService/utils/refreshGo
 import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
 import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 
-export async function batchUpdateGoogleUrlsWithRetry(articles: Article[]): Promise<Article[]> {
+export const batchUpdateGoogleUrlsWithRetry = async (articles: Article[]): Promise<Article[]> => {
     const articleBatches = splitArticlesIntoBatches(articles);
 
     let refreshedArticles: Article[] = [];
