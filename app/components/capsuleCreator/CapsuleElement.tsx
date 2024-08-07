@@ -19,7 +19,7 @@ const CapsuleElement = ({ element, updateExpandedElement, sizeStyling, iconPosit
 
             {element.article &&
                 <Polaroid
-                    imageUrl={element.article?.image.baseUrl || ""}
+                    imageUrl={element.article.image.baseUrl}
                     sizeStyling={sizeStyling}
                 />}
 
