@@ -58,7 +58,7 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
                                 key={element.slot}
                                 element={element}
                                 updateExpandedElement={updateExpandedElement}
-                                sizeStyling={{ width: "w-[63.5px]", height: "" }}
+                                sizeStyling="w-[63.5px]"
                                 iconPositioning="bottom-[30%] left-[45%]"
                             />
                         )

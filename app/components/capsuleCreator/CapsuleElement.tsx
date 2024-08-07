@@ -3,13 +3,12 @@ import Polaroid from "@/app/components/articles/Polaroid";
 import UndevelopedPolaroid from "@/app/components/articles/UndevelopedPolaroid";
 import * as React from "react";
 import IconButton from "@/app/components/buttons/IconButton";
-import { Dispatch, SetStateAction } from "react";
-import {CapsuleElementsMapType, CapsuleElementType} from "@/types/CapsuleElementsMapType";
+import { CapsuleElementType } from "@/types/CapsuleElementsMapType";
 
 interface CapsuleElementProps {
     element: CapsuleElementType;
     updateExpandedElement: (element: CapsuleElementType) => void;
-    sizeStyling: { width: string, height: string }
+    sizeStyling: string;
     iconPositioning: string;
 }
 
