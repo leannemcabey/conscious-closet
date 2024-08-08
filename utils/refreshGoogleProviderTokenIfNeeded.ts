@@ -21,8 +21,9 @@ const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number) => {
     if (isExpired) {
         console.log("refreshing google token")
         const refreshToken =  window.localStorage.getItem('oauth_provider_refresh_token');
+        console.log(`refreshToken: ${refreshToken}`)
 
-        refreshGoogleProviderTokenWithRetry(refreshToken)
+        return refreshGoogleProviderTokenWithRetry(refreshToken)
             .then(({ token, expiresIn }) => {
                 console.log(`refreshed google token: ${token}`)
                 console.log(`expires at: ${now + expiresIn}`)
@@ -39,7 +40,8 @@ const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number) => {
                     refreshGoogleProviderTokenIfNeeded(attemptCounter)
                 }
             })
+    } else {
+        console.log(`returning old token: ${window.localStorage.getItem('oauth_provider_token')}`)
+        return window.localStorage.getItem('oauth_provider_token');
     }
-
-    return window.localStorage.getItem('oauth_provider_token');
 }

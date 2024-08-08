@@ -35,6 +35,7 @@ const getBatchMediaItems = (articles: Article[], attemptCounter: number): Promis
 
     return refreshGoogleProviderTokenIfNeededWithRetry()
         .then((providerToken) => {
+            console.log(`making batch call with token: ${providerToken}`)
             const params = buildParams(articles);
 
             return axios.get(`https://photoslibrary.googleapis.com/v1/mediaItems:batchGet`, {
