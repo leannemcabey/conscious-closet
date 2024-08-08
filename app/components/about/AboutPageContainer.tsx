@@ -78,8 +78,8 @@ const AboutPageContainer = () => {
                     />
                 </div>
                 <p className="mb-4">Hi, I'm Leanne -- founder and engineer behind Conscious Closet!</p>
-                <p>
-                    I've always loved the art of fashion -- it's such a unique form of creativity and self-expression.
+                <p className="mb-4">
+                    I've always loved the art of fashion. It's such a unique form of creativity and self-expression.
                     An outfit can truly make or break my day. Over the last few years, though, I've learned that
                     the fashion industry is not nearly as glamorous as it seems. Everything from our purchasing habits
                     to our laundry habits have the potential to make a hugely negative impact on our earth.
