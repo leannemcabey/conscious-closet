@@ -77,7 +77,7 @@ const AboutPageContainer = () => {
                         className="w-full"
                     />
                 </div>
-                <p className="mb-4">Hi, I'm Leanne -- founder and engineer behind Conscious Closet!</p>
+                <p className="mb-4">I'm Leanne -- founder and engineer behind Conscious Closet!</p>
                 <p className="mb-4">
                     I've always loved the art of fashion. It's such a unique form of creativity and self-expression.
                     An outfit can truly make or break my day. Over the last few years, though, I've learned that
@@ -93,7 +93,7 @@ const AboutPageContainer = () => {
                     It's impossible to be perfectly sustainable -- everything has its trade offs. But the most
                     sustainable wardrobe you can have is the one that's already in your closet. My hope is that
                     Conscious Closet inspires you to rediscover what you already own, be thoughtful about purchasing
-                    new things, and clean out your closet in a way that doesn't negatively impact our planet. ♡
+                    new things, and clean out your closet in a way that doesn't hurt the earth. ♡
                 </p>
             </div>
 

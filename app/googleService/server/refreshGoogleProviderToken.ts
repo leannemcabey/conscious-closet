@@ -21,6 +21,7 @@ async function refreshGoogleProviderToken(refreshToken: string, attemptCounter: 
     let response;
 
     try {
+        console.log('attempting to refresh token')
         response = await fetch('https://oauth2.googleapis.com/token', {
             method: 'POST',
             headers: {
@@ -29,11 +30,17 @@ async function refreshGoogleProviderToken(refreshToken: string, attemptCounter: 
             body: params.toString(),
         });
     } catch(error) {
-        if (attemptCounter > 1) throw error
-        refreshGoogleProviderToken(refreshToken, attemptCounter)
+        console.log(`error refreshing token: ${error}`)
+        if (attemptCounter > 2) {
+            console.log(`max attempts for refreshing token reached. throwing error`)
+            throw error
+        } else {
+            refreshGoogleProviderToken(refreshToken, attemptCounter)
+        }
     }
 
     const data = await response.json();
+    console.log(`awaited data: ${JSON.stringify(data)}`)
     return {
         token: data.access_token,
         expiresIn: data.expires_in

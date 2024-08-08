@@ -24,11 +24,14 @@ const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number) => {
 
         refreshGoogleProviderTokenWithRetry(refreshToken)
             .then(({ token, expiresIn }) => {
+                console.log(`refreshed google token: ${token}`)
+                console.log(`expires at: ${now + expiresIn}`)
                 window.localStorage.setItem('oauth_provider_token', token);
                 window.localStorage.setItem('expires_at', (now + expiresIn).toString())
                 return token;
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(`error refreshing token (ifNeeded func): ${error}`)
                 if (attemptCounter > 2) {
                     console.log('max attempts for refreshing token reached. should redirect to login')
                     return supabase.auth.signOut()
