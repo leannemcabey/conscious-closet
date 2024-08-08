@@ -21,7 +21,7 @@ async function refreshGoogleProviderToken(refreshToken: string, attemptCounter: 
     let response;
 
     try {
-        console.log('attempting to refresh token')
+        console.log('calling google token endpoint')
         response = await fetch('https://oauth2.googleapis.com/token', {
             method: 'POST',
             headers: {
@@ -30,7 +30,7 @@ async function refreshGoogleProviderToken(refreshToken: string, attemptCounter: 
             body: params.toString(),
         });
     } catch(error) {
-        console.log(`error refreshing token: ${error}`)
+        console.log(`token endpoint threw error: ${error}`)
         if (attemptCounter > 2) {
             console.log(`max attempts for refreshing token reached. throwing error`)
             throw error
