@@ -21,15 +21,14 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
 
     useEffect(() => {
         if (articles.length > 0) {
-            batchUpdateGoogleUrlsWithRetry(articles)
-                .then((articles) => {
-                    setRefreshedArticles(articles)
-                    setError(false)
-                })
-                .catch(() => {
-                    setStopSpinner(true)
-                    setError(true)
-                })
+            try {
+                const response = batchUpdateGoogleUrlsWithRetry(articles);
+                setRefreshedArticles(response)
+                setError(false)
+            } catch {
+                setStopSpinner(true)
+                setError(true)
+            }
         }
     }, [articles]);
 

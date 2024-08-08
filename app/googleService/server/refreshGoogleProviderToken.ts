@@ -2,7 +2,7 @@
 
 export async function refreshGoogleProviderTokenWithRetry(refreshToken: string) {
     let attemptCounter = 0;
-    return await refreshGoogleProviderToken(refreshToken, attemptCounter);
+    return refreshGoogleProviderToken(refreshToken, attemptCounter);
 }
 
 async function refreshGoogleProviderToken(refreshToken: string, attemptCounter: number) {

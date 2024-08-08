@@ -2,12 +2,12 @@
 import { refreshGoogleProviderTokenWithRetry } from "@/app/googleService/server/refreshGoogleProviderToken";
 import { createClient } from "@/utils/supabase/client";
 
-export const refreshGoogleProviderTokenIfNeededWithRetry = async () => {
+export const refreshGoogleProviderTokenIfNeededWithRetry = () => {
     let attemptCounter = 0;
-    return await refreshGoogleProviderTokenIfNeeded(attemptCounter);
+    return refreshGoogleProviderTokenIfNeeded(attemptCounter);
 }
 
-const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number) => {
+const refreshGoogleProviderTokenIfNeeded = (attemptCounter: number): string => {
     attemptCounter++
 
     const supabase = createClient();
@@ -39,7 +39,8 @@ const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number) => {
                     refreshGoogleProviderTokenIfNeeded(attemptCounter)
                 }
             })
+    } else {
+        console.log(`returning old token: ${window.localStorage.getItem('oauth_provider_token')}`)
+        return window.localStorage.getItem('oauth_provider_token');
     }
-
-    return window.localStorage.getItem('oauth_provider_token');
 }
