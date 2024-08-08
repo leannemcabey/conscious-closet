@@ -39,7 +39,7 @@ const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number) => {
                 }
             })
     } else {
-        console.log(`returning old token: ${window.localStorage.getItem('oauth_provider_token')}`)
+        console.log(`returning original unexpired token`)
         return window.localStorage.getItem('oauth_provider_token');
     }
 }
