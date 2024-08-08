@@ -77,18 +77,24 @@ const AboutPageContainer = () => {
                         className="w-full"
                     />
                 </div>
-                    <p className="mb-4">Hi, I'm Leanne -- founder and engineer behind Conscious Closet!</p>
-                    <p className="mb-4">
-                        I built Conscious Closet because I wanted a tool that would help me and others on the journey to
-                        a more sustainable wardrobe. That journey is, of course, much bigger than any one app could ever hope to
-                        address. But I knew I could influence some tangible, everyday changes in perspective and action.
-                    </p>
-                    <p>
-                        It's impossible to be perfectly sustainable -- everything has its trade offs. But the most
-                        sustainable wardrobe you can have is the one that's already in your closet. My hope is that
-                        Conscious Closet inspires you to rediscover what you already own, be thoughtful about purchasing
-                        new things, and clean out your closet in a way that doesn't negatively impact our planet. ♡
-                    </p>
+                <p className="mb-4">Hi, I'm Leanne -- founder and engineer behind Conscious Closet!</p>
+                <p>
+                    I've always loved the art of fashion -- it's such a unique form of creativity and self-expression.
+                    An outfit can truly make or break my day. Over the last few years, though, I've learned that
+                    the fashion industry is not nearly as glamorous as it seems. Everything from our purchasing habits
+                    to our laundry habits have the potential to make a hugely negative impact on our earth.
+                </p>
+                <p className="mb-4">
+                    So I built Conscious Closet because I wanted a tool that would help me and others on the journey to
+                    a more sustainable wardrobe. That journey is, of course, much bigger than any one app could ever hope to
+                    address. But I knew I could influence some tangible, everyday changes in perspective and action.
+                </p>
+                <p>
+                    It's impossible to be perfectly sustainable -- everything has its trade offs. But the most
+                    sustainable wardrobe you can have is the one that's already in your closet. My hope is that
+                    Conscious Closet inspires you to rediscover what you already own, be thoughtful about purchasing
+                    new things, and clean out your closet in a way that doesn't negatively impact our planet. ♡
+                </p>
             </div>
 
             <div className="flex justify-center items-center bg-white rounded-lg p-2 space-x-4 place-content-center">
