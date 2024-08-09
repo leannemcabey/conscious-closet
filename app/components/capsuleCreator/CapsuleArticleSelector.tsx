@@ -15,7 +15,7 @@ import IconButton from "@/app/components/buttons/IconButton";
 interface CapsuleArticleSelectorProps {
     initialElement: CapsuleElementType;
     updateCapsuleElements: (element: CapsuleElementType) => void;
-    articlesMap: { string: Article[] };
+    articlesMap: Map<string, Article[]>;
     doTransition: boolean;
     setDoTransition: Dispatch<SetStateAction<boolean>>;
     setShowAllElementsView: Dispatch<SetStateAction<boolean>>;
@@ -26,7 +26,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
         let tempIndex;
 
         if (initialElement.article) {
-            const articles = articlesMap[initialElement.article.articleCategory];
+            const articles: Article[] = articlesMap.get(initialElement.article.articleCategory) || [];
             const currentArticle = articles.find((article) => article.id === initialElement.article?.id);
             // If it can't find the article, it's because filters have been applied that filtered it out
             if (!currentArticle) throw new Error();
@@ -38,8 +38,8 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
     const [currentSlot, setCurrentSlot] = useState<number>();
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum | undefined>();
-    const [currentIndex, setCurrentIndex] = useState<number>();
-    const [currentElement, setCurrentElement] = useState<CapsuleElementType>(null);
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [currentElement, setCurrentElement] = useState<CapsuleElementType>();
     const [refreshedArticlesOfSelectedCategory, setRefreshedArticlesOfSelectedCategory] = useState<Article[]>();
     const [refreshUrlsError, setRefreshUrlsError] = useState<boolean>(false);
     const [filterError, setFilterError] = useState<boolean>(false);
@@ -48,7 +48,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
     let refreshUrlsErrorMessage = "An error occurred while retrieving your articles. Please go back and try again."
     let filerErrorMessage = "Looks like you might have filtered out the article for this capsule element. Remove your filters and try again."
 
-    const noArticlesInCategory = selectedCategory && articlesMap[selectedCategory].length === 0;
+    const noArticlesInCategory = selectedCategory && (articlesMap.get(selectedCategory)?.length || []) === 0;
 
     useEffect(() => {
         setTimeout(() => setDoTransition(false), 400)
@@ -64,43 +64,46 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
         // and also handles the scenario where there is no article selected
         setRefreshedArticlesOfSelectedCategory([])
         setCurrentIndex(0)
-        setCurrentElement(null)
+        setCurrentElement(undefined)
         updateCapsuleElements({ slot: initialElement.slot, article: undefined })
 
-        const articles = articlesMap[selectedCategory];
 
-        if (articles && articles.length) {
-            batchUpdateGoogleUrlsWithRetry(articles)
-                .then((articles) => {
-                    setRefreshedArticlesOfSelectedCategory(articles);
+        if (selectedCategory) {
+            const articles = articlesMap.get(selectedCategory);
 
-                    // Handles change of selected category
-                    if (initialElement.article?.articleCategory !== selectedCategory) {
-                        setCurrentIndex(0);
-                        const newElement = { slot: initialElement.slot, article: articles[0] };
-                        setCurrentElement(newElement)
-                        updateCapsuleElements(newElement)
-                    }
-                    // Handles initial load of new slot
-                    else {
-                        // Start by saving the initial element to the capsule elements
-                        updateCapsuleElements(initialElement)
+            if (articles && articles.length) {
+                batchUpdateGoogleUrlsWithRetry(articles)
+                    .then((articles) => {
+                        setRefreshedArticlesOfSelectedCategory(articles);
 
-                        try {
-                            // If it can't find the index, it's because filters have been applied that filtered out the selected article
-                            setCurrentIndex(getInitialIndex())
-                            setCurrentElement(initialElement)
-                            setRefreshUrlsError(false)
-                            setFilterError(false)
-                        } catch {
-                            setFilterError(true)
+                        // Handles change of selected category
+                        if (initialElement.article?.articleCategory !== selectedCategory) {
+                            setCurrentIndex(0);
+                            const newElement = { slot: initialElement.slot, article: articles[0] };
+                            setCurrentElement(newElement)
+                            updateCapsuleElements(newElement)
                         }
-                    }
+                        // Handles initial load of new slot
+                        else {
+                            // Start by saving the initial element to the capsule elements
+                            updateCapsuleElements(initialElement)
 
-                }).catch((error) => {
-                    console.log(error)
-                    setRefreshUrlsError(true)
-                })
+                            try {
+                                // If it can't find the index, it's because filters have been applied that filtered out the selected article
+                                setCurrentIndex(getInitialIndex())
+                                setCurrentElement(initialElement)
+                                setRefreshUrlsError(false)
+                                setFilterError(false)
+                            } catch {
+                                setFilterError(true)
+                            }
+                        }
+
+                    }).catch((error) => {
+                        console.log(error)
+                        setRefreshUrlsError(true)
+                    })
+            }
         }
     }, [articlesMap, currentSlot, selectedCategory]);
 
@@ -124,8 +127,8 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                 }
             }
 
-            setCurrentIndex(newIndex);
-            const newElement = { slot: initialElement.slot, article: refreshedArticlesOfSelectedCategory[newIndex] };
+            setCurrentIndex(newIndex!!);
+            const newElement = { slot: initialElement.slot, article: refreshedArticlesOfSelectedCategory[newIndex!!] };
             setCurrentElement(newElement);
             updateCapsuleElements(newElement);
         }

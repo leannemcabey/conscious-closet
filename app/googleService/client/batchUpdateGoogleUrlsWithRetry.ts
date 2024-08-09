@@ -31,6 +31,7 @@ export const batchUpdateGoogleUrlsWithRetry = async (articles: Article[]): Promi
 }
 
 const getBatchMediaItems = (articles: Article[], attemptCounter: number): Promise<GooglePhotoMetadata[]> => {
+    console.log(`getBatchMediaItems: ${attemptCounter}`)
     attemptCounter++
 
     return refreshGoogleProviderTokenIfNeededWithRetry()

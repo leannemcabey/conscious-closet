@@ -8,14 +8,14 @@ import ErrorModal from "@/app/components/modal/ErrorModal";
 import TextButton from "@/app/components/buttons/TextButton";
 
 interface ImageSelectionProps {
-    setImage: Dispatch<SetStateAction<GooglePhotoMetadata>>;
+    setImage: Dispatch<SetStateAction<GooglePhotoMetadata | undefined>>;
 }
 
 export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
     const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>()
-    const [pageTokens, setPageTokens] = useState<string|undefined[]>([]);
+    const [pageTokens, setPageTokens] = useState<(string|undefined)[]>([]);
     const [page, setPage] = useState<number>(0);
-    const [error, setError] = useState<boolean>();
+    const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred while retrieving your Google Photos. Please try again."
 

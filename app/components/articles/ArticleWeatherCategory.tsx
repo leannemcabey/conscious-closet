@@ -16,7 +16,7 @@ interface ArticleWeatherCategoryProps {
 const ArticleWeatherCategory = ({ article }: ArticleWeatherCategoryProps) => {
     const [weatherCategory, setWeatherCategory] = useState<WeatherCategoryEnum>(article.weatherCategory);
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [error, setError] = useState<boolean>();
+    const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred while changing the weather category for this article. Please try again."
 
@@ -41,7 +41,7 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategoryProps) => {
                                 return (
                                     <IconButton
                                         key={category}
-                                        handleClick={() => handleClick(WeatherCategoryEnum[category])}
+                                        handleClick={() => handleClick(WeatherCategoryEnum[category as keyof typeof WeatherCategoryEnum])}
                                         isActive={false} iconPath={`/weather-icon-${category}.svg`}
                                         iconAlt={`${category}  weather icon}`}
                                         sizeOverride="w-[60px] md:w-[80px]"

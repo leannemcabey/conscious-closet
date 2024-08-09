@@ -3,12 +3,12 @@ import axios from "axios";
 import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 import { PaginatedMediaItems } from "@/types/googlePhotoMetadata";
 
-export const getPaginatedMediaItemsWithRetry = async (pageToken: string) => {
+export const getPaginatedMediaItemsWithRetry = async (pageToken?: string) => {
     let attemptCounter = 0;
-    return await getPaginatedMediaItems(pageToken, attemptCounter);
+    return await getPaginatedMediaItems(attemptCounter, pageToken);
 }
 
-const getPaginatedMediaItems = (pageToken: string, attemptCounter: number): Promise<PaginatedMediaItems> => {
+const getPaginatedMediaItems = (attemptCounter: number, pageToken?: string,): Promise<PaginatedMediaItems> => {
     attemptCounter++
 
     return refreshGoogleProviderTokenIfNeededWithRetry()
@@ -39,7 +39,7 @@ const getPaginatedMediaItems = (pageToken: string, attemptCounter: number): Prom
                     })
                     .catch((error) => {
                         if (attemptCounter > 1) throw error
-                        getPaginatedMediaItems(pageToken, attemptCounter)
+                        getPaginatedMediaItems(attemptCounter, pageToken)
                     })
             }
         })

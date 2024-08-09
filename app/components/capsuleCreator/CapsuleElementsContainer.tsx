@@ -1,15 +1,15 @@
 import CapsuleArticleSelector from "@/app/components/capsuleCreator/CapsuleArticleSelector";
 import CapsuleElement from "@/app/components/capsuleCreator/CapsuleElement";
 import * as React from "react";
-import { CategoryArticlesMap } from "@/app/components/capsuleCreator/CapsuleCreatorContainer";
 import { Dispatch, SetStateAction, useState } from "react";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 import { CapsuleElementsMapType, CapsuleElementType } from "@/types/CapsuleElementsMapType";
 import AllElementsView from "@/app/components/capsuleCreator/AllElementsView";
 import { defaultCapsuleElements } from "@/app/components/capsuleCreator/utils/defaultCapsuleElements";
+import { Article } from "@/types/article";
 
 interface CapsuleArticlesContainerProps {
-    filteredArticlesMap: CategoryArticlesMap;
+    filteredArticlesMap: Map<string, Article[]>;
     capsuleElements: CapsuleElementsMapType;
     setCapsuleElements: Dispatch<SetStateAction<CapsuleElementsMapType>>;
 }

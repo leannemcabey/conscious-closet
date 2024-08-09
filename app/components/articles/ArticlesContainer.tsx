@@ -13,7 +13,7 @@ interface ArticlesContainerProps {
 
 const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
     const [refreshedArticles, setRefreshedArticles] = useState<Article[]>();
-    const [error, setError] = useState<boolean>();
+    const [error, setError] = useState<boolean>(false);
     // The `stopSpinner` state value is used so that when the error modal is closed, the loading spinner stops showing as well
     const [stopSpinner, setStopSpinner] = useState<boolean>();
 

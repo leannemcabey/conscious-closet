@@ -1,6 +1,6 @@
-// Values reflect the database enum. Also used for URL slugs.
-import {MenuSubItem} from "@/app/components/navigation/MenuSubItemLink";
+import { MenuSubItem } from "@/app/components/navigation/MenuSubItemLink";
 
+// Values reflect the database enum. Also used for URL slugs.
 export enum ArticleCategoryEnum {
     TOPS = "tops",
     PANTS = "pants",

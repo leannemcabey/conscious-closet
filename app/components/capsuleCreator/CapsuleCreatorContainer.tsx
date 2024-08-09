@@ -14,23 +14,22 @@ import CapsuleElementsContainer from "@/app/components/capsuleCreator/CapsuleEle
 import { defaultCapsuleElements } from "@/app/components/capsuleCreator/utils/defaultCapsuleElements";
 import { CapsuleElementsMapType } from "@/types/CapsuleElementsMapType";
 
-export interface CategoryArticlesMap {
-    string: Article[];
-}
-
 interface CapsuleCreatorContainerProps {
-    articlesMap: CategoryArticlesMap;
+    articlesMap: Map<string, Article[]>;
 }
 
 const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) => {
-    const filterCleanout = (): CategoryArticlesMap => {
-        const articlesNotInCleanoutMap = {};
+    console.log(`articlesMap: ${JSON.stringify(articlesMap)}`)
+    const filterCleanout = (): Map<string, Article[]> => {
+        const articlesNotInCleanoutMap = new Map<string, Article[]>;
 
         Object.keys(unfilteredArticlesMap).forEach((category) => {
-            articlesNotInCleanoutMap[category] = unfilteredArticlesMap[category].filter((article) => !article.inCleanoutBag)
+            const articles = unfilteredArticlesMap.get(category)
+            if (articles) articlesNotInCleanoutMap.set(category, articles.filter((article) => !article.inCleanoutBag))
+            if (!articles) articlesNotInCleanoutMap.set(category, [])
         })
 
-        return articlesNotInCleanoutMap as CategoryArticlesMap;
+        return articlesNotInCleanoutMap;
     }
 
     const defaultFilterContext: FilterSettings = {
@@ -39,9 +38,9 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
     };
 
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
-    const [unfilteredArticlesMap, setUnfilteredArticlesMap] = useState<CategoryArticlesMap>(articlesMap)
+    const [unfilteredArticlesMap, setUnfilteredArticlesMap] = useState<Map<string, Article[]>>(articlesMap)
     const articlesNotInCleanoutMap = filterCleanout();
-    const [filteredArticlesMap, setFilteredArticlesMap] = useState<CategoryArticlesMap>(articlesNotInCleanoutMap);
+    const [filteredArticlesMap, setFilteredArticlesMap] = useState<Map<string, Article[]>>(articlesNotInCleanoutMap);
     const [capsuleElements, setCapsuleElements] = useState<CapsuleElementsMapType>(defaultCapsuleElements);
     const [error, setError] = useState<boolean>(false);
 
@@ -49,9 +48,9 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
     const filterTypes= [FilterType.cleanout, FilterType.weather];
 
     useEffect(() => {
-        let tempFilteredArticlesMap: CategoryArticlesMap = { ...unfilteredArticlesMap };
+        let tempFilteredArticlesMap: Map<string, Article[]> = { ...unfilteredArticlesMap };
         Object.keys(tempFilteredArticlesMap).forEach((category) => {
-            tempFilteredArticlesMap[category] = applyArticleFilters(unfilteredArticlesMap[category], filterTypes, filterSettings);
+            tempFilteredArticlesMap.set(category, applyArticleFilters(unfilteredArticlesMap.get(category) || [], filterTypes, filterSettings))
         })
 
         setFilteredArticlesMap(tempFilteredArticlesMap)

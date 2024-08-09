@@ -1,5 +1,5 @@
 'use client'
-import { Dispatch, SetStateAction } from "react";
+import {Dispatch, ReactElement, SetStateAction} from "react";
 import Modal from "@/app/components/modal/Modal";
 import * as React from "react";
 import TextButton from "@/app/components/buttons/TextButton";
@@ -7,6 +7,7 @@ import TextButton from "@/app/components/buttons/TextButton";
 interface ConfirmationModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>
     confirmAction: () => void;
+    children?: ReactElement;
 }
 
 const ConfirmationModal = ({ setIsOpen, confirmAction, children }: ConfirmationModalProps) => {

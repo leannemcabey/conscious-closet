@@ -6,9 +6,7 @@ import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesByCategory";
 import CapsuleCreatorContainer from "@/app/components/capsuleCreator/CapsuleCreatorContainer";
 import { Article } from "@/types/article";
-import Image from "next/image";
 import * as React from "react";
-import PageHeader from "@/app/components/PageHeader";
 
 export default async function CapsuleCreator() {
     const errorState = (
@@ -18,18 +16,47 @@ export default async function CapsuleCreator() {
         </Layout>
     )
 
-    let articlesMap: { string: Article[] } = {};
+    const buildCategoryArticlesMap = async (): Promise<Map<string, Article[]>> => {
+        let articlesMap = new Map<string, Article[]>();
 
+        for (const category of Object.keys(ArticleCategoryEnum)) {
+            const { articles, error } = await getArticlesByCategory(ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
 
-    for (const category of Object.keys(ArticleCategoryEnum)) {
-        const { articles, error } = await getArticlesByCategory(ArticleCategoryEnum[category])
+            console.log(`articles: ${JSON.stringify(articles)}`)
 
-        if (error) {
-            return errorState;
+            if (error) {
+                throw error;
+            }
+
+            articlesMap.set(ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum], articles || [])
+            console.log(`inside block: ${JSON.stringify(articlesMap)}`)
         }
 
-        articlesMap[ArticleCategoryEnum[category]] = articles || [];
+        console.log(`about to return articlesMap: ${JSON.stringify(articlesMap)}`)
+        return articlesMap;
     }
+
+    let articlesMap;
+    try {
+        articlesMap = await buildCategoryArticlesMap().then((response) => response);
+    } catch {
+        return errorState;
+    }
+
+    // let articlesMap = new Map<string, Article[]>();
+    // for (const category of Object.keys(ArticleCategoryEnum)) {
+    //     const { articles, error } = await getArticlesByCategory(ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
+    //
+    //     console.log(`articles: ${JSON.stringify(articles)}`)
+    //
+    //     if (error) {
+    //         return errorState;
+    //     }
+    //
+    //     articlesMap.set(ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum], articles || [])
+    //     console.log(`inside block: ${JSON.stringify(articlesMap)}`)
+    // }
+
 
     return (
         <Layout>
