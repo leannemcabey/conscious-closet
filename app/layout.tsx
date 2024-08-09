@@ -1,13 +1,17 @@
 import "./globals.css";
+import { Metadata } from "next";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
   title: "Conscious Closet",
-  description: "",
+  description: "A tool for sustainably managing your wardrobe",
+  category: "website",
+  generator: "Next.js",
+  manifest: "/manifest.json"
 };
 
 export default function RootLayout({
