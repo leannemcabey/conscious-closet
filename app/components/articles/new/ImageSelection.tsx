@@ -13,7 +13,7 @@ interface ImageSelectionProps {
 
 export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
     const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>()
-    const [pageTokens, setPageTokens] = useState<(string|undefined[])>([]);
+    const [pageTokens, setPageTokens] = useState<(string|undefined)[]>([]);
     const [page, setPage] = useState<number>(0);
     const [error, setError] = useState<boolean>(false);
 
