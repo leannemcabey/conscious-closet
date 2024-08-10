@@ -4,8 +4,8 @@ import Image from 'next/image'
 import GoogleSignIn from "@/app/components/auth/GoogleSignIn";
 import * as React from "react";
 
-const defaultUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
+const defaultUrl = process.env.NODE_ENV === "production"
+    ? `https://consciouscloset.co`
     : "http://localhost:3000";
 
 export default async function Index() {
