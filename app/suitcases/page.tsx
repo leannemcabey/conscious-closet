@@ -7,11 +7,13 @@ import PageHeader from "@/app/components/PageHeader";
 export default async function Suitcases() {
     return (
         <Layout>
-            <BackButton />
-            <div className="h-screen mt-8 mx-2 flex flex-col">
-                <PageHeader title="suitcases" iconPath="/suitcase.svg" iconAlt="suitcase icon" />
-                <SuitcaseList />
-            </div>
+            <>
+                <BackButton />
+                <div className="h-screen mt-8 mx-2 flex flex-col">
+                    <PageHeader title="suitcases" iconPath="/suitcase.svg" iconAlt="suitcase icon" />
+                    <SuitcaseList />
+                </div>
+            </>
         </Layout>
     )
 };

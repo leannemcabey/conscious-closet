@@ -5,7 +5,7 @@ import IconButton from "@/app/components/buttons/IconButton";
 
 interface WeatherFilterProps {
     selectedWeatherCategories: WeatherCategoryEnum[];
-    setSelectedWeatherCategories: Dispatch<SetStateAction<WeatherCategoryEnum[]>>;
+    setSelectedWeatherCategories: Dispatch<SetStateAction<WeatherCategoryEnum[] |undefined>>;
 }
 
 const WeatherFilter = ({ selectedWeatherCategories, setSelectedWeatherCategories }: WeatherFilterProps) => {
@@ -22,7 +22,7 @@ const WeatherFilter = ({ selectedWeatherCategories, setSelectedWeatherCategories
 
     }
 
-    const weatherCategoryIsSelected = (category) => selectedWeatherCategories.includes(category)
+    const weatherCategoryIsSelected = (category: WeatherCategoryEnum) => selectedWeatherCategories.includes(category)
 
     return (
         <div className="flex place-content-between space-x-1">

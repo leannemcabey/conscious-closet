@@ -11,7 +11,7 @@ const Modal = ({ setIsOpen, children }: ModalProps) => {
     const modalRef = useRef(null);
 
     // Closes the modal if the user clicks outside of it
-    const outsideClickHandler = (event) => {
+    const outsideClickHandler = (event: Event) => {
         const includesModalElement = event.composedPath().includes(modalRef.current!!);
 
         if (modalRef.current && !includesModalElement) {
@@ -43,7 +43,7 @@ const Modal = ({ setIsOpen, children }: ModalProps) => {
                         </div>
                     </div>
                 </div>,
-                document.body.firstElementChild
+                document.body.firstElementChild || document.body
             )}
         </>
     )

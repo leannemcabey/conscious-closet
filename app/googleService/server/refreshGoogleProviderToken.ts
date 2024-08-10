@@ -40,7 +40,6 @@ async function refreshGoogleProviderToken(refreshToken: string, attemptCounter: 
     }
 
     const data = await response.json();
-    console.log(`awaited data: ${JSON.stringify(data)}`)
     return {
         token: data.access_token,
         expiresIn: data.expires_in

@@ -14,24 +14,26 @@ export default async function Rediscovery() {
 
     return (
         <Layout>
-            <BackButton />
+            <>
+                <BackButton />
 
-            {error && <ErrorPageContainer errorMessage={errorMessage} />}
+                {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
-            {articles && (
-                <div className="flex flex-col mt-2.5 h-[95%]">
-                    <PageHeader title="rediscovery" iconPath="/lightbulb.svg" iconAlt="light bulb icon" />
+                {articles && (
+                    <div className="flex flex-col mt-2.5 h-[95%]">
+                        <PageHeader title="rediscovery" iconPath="/lightbulb.svg" iconAlt="light bulb icon" />
 
-                    <div className="flex justify-center">
-                        <p className="mb-1 text-center text-sm text-neutral-400 max-w-[500px] md:text-lg">
-                            We noticed you haven't worn these items in the last 6 months.
-                            By rediscovering what you already own, you'll feel less compelled to purchase more.
-                        </p>
+                        <div className="flex justify-center">
+                            <p className="mb-1 text-center text-sm text-neutral-400 max-w-[500px] md:text-lg">
+                                We noticed you haven't worn these items in the last 6 months.
+                                By rediscovering what you already own, you'll feel less compelled to purchase more.
+                            </p>
+                        </div>
+
+                        <RediscoveryContainer articles={articles}/>
                     </div>
-
-                    <RediscoveryContainer articles={articles}/>
-                </div>
-            )}
+                )}
+            </>
         </Layout>
     )
 };

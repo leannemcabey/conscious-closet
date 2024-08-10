@@ -7,11 +7,11 @@ import IconButton from "@/app/components/buttons/IconButton";
 
 interface CategoryFilterProps {
     selectedArticleCategories: ArticleCategoryEnum[];
-    setSelectedArticleCategories: Dispatch<SetStateAction<ArticleCategoryEnum[]>>;
+    setSelectedArticleCategories: Dispatch<SetStateAction<ArticleCategoryEnum[] | undefined>>;
 }
 
 const CategoryFilter = ({ selectedArticleCategories, setSelectedArticleCategories }: CategoryFilterProps) => {
-    const [selectingCategories, setSelectingCategories] = useState<boolean>();
+    const [selectingCategories, setSelectingCategories] = useState<boolean>(false);
 
     return (
         <>

@@ -15,7 +15,7 @@ interface AddOrRemoveFromCleanoutBagProps {
 const AddOrRemoveFromCleanoutBag = ({ article }: AddOrRemoveFromCleanoutBagProps) => {
     const [inCleanoutBag, setInCleanoutBag] = useState<boolean>(article.inCleanoutBag);
     const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
-    const [error, setError] = useState<boolean>();
+    const [error, setError] = useState<boolean>(false);
 
     const errorVerb = inCleanoutBag ? "removing" : "adding";
     const errorPreposition = inCleanoutBag ? "from" : "to";

@@ -20,22 +20,24 @@ export default async function CleanoutBag() {
 
     return (
         <Layout>
-            <div className="flex place-content-between">
-                <BackButton/>
-                <div className="h-max flex space-x-2 md:mt-4">
-                    <CleanoutRecsButton />
-                    <DeleteAllFromCleanoutButton disabled={articles.length <= 0}/>
+            <>
+                <div className="flex place-content-between">
+                    <BackButton/>
+                    <div className="h-max flex space-x-2 md:mt-4">
+                        <CleanoutRecsButton />
+                        <DeleteAllFromCleanoutButton disabled={articles.length <= 0}/>
+                    </div>
                 </div>
-            </div>
 
-            {error && <ErrorPageContainer errorMessage={errorMessage}/>}
+                {error && <ErrorPageContainer errorMessage={errorMessage}/>}
 
-            {articles && (
-                <div className="h-[95%] mt-2.5">
-                    <PageHeader title="cleanout bag" iconPath="/broom.svg" iconAlt="broom icon"/>
-                    <CleanoutBagContainer articles={articles}/>
-                </div>
-            )}
+                {articles && (
+                    <div className="h-[95%] mt-2.5">
+                        <PageHeader title="cleanout bag" iconPath="/broom.svg" iconAlt="broom icon"/>
+                        <CleanoutBagContainer articles={articles}/>
+                    </div>
+                )}
+            </>
         </Layout>
     )
 };

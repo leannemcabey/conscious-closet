@@ -13,7 +13,7 @@ interface DeleteAllFromCleanoutButtonProps {
 
 const DeleteAllFromCleanoutButton = ({ disabled }: DeleteAllFromCleanoutButtonProps) => {
     const [isDeleting, setIsDeleting] = useState<boolean>(false);
-    const [error, setError] = useState<boolean>();
+    const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred when deleting these articles. Please try again."
 

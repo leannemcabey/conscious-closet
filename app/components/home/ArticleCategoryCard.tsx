@@ -6,7 +6,7 @@ interface ArticleCategoryCardProps {
     title: ArticleCategoryTitle
 }
 
-export default function ArticleCategoryCard({ title }) {
+export default function ArticleCategoryCard({ title }: ArticleCategoryCardProps) {
     const pathSlug: ArticleCategoryEnum = categoryTitleToPathSlug(title);
 
     return (

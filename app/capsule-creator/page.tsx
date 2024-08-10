@@ -5,16 +5,15 @@ import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesByCategory";
 import CapsuleCreatorContainer, {CategoryArticlesMap} from "@/app/components/capsuleCreator/CapsuleCreatorContainer";
-import { Article } from "@/types/article";
-import Image from "next/image";
 import * as React from "react";
-import PageHeader from "@/app/components/PageHeader";
 
 export default async function CapsuleCreator() {
     const errorState = (
         <Layout>
-            <BackButton />
-            <ErrorPageContainer errorMessage="An error occurred while retreiving your articles." />
+            <>
+                <BackButton />
+                <ErrorPageContainer errorMessage="An error occurred while retreiving your articles." />
+            </>
         </Layout>
     )
 

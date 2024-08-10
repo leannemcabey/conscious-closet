@@ -7,8 +7,10 @@ import LaundrySymbolsContainer from "@/app/components/laundry/LaundrySymbolsCont
 export default async function CleanoutBag() {
     return (
         <Layout>
-            <BackButton />
-            <LaundrySymbolsContainer />
+            <>
+                <BackButton />
+                <LaundrySymbolsContainer />
+            </>
         </Layout>
     )
 }

@@ -10,7 +10,7 @@ import CloseModalButton from "@/app/components/modal/CloseModalButton";
 
 interface CategoryFilterModalProps {
     selectedArticleCategories: ArticleCategoryEnum[];
-    setSelectedArticleCategories: Dispatch<SetStateAction<ArticleCategoryEnum[]>>;
+    setSelectedArticleCategories: Dispatch<SetStateAction<ArticleCategoryEnum[] | undefined>>;
     setSelectingCategories: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -18,7 +18,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
     // Start with the saved ones before changes begin being made
     const [unsavedSelections, setUnsavedSelections] = useState<ArticleCategoryEnum[]>(selectedArticleCategories);
 
-    const isSelected = (category) => unsavedSelections.includes(category);
+    const isSelected = (category: ArticleCategoryEnum) => unsavedSelections.includes(category);
 
     const updateSelections = (category: ArticleCategoryEnum) => {
         // Deselect
@@ -45,7 +45,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
         }
 
         if (!allAreSelected) {
-            const all: ArticleCategoryEnum[] = Object.keys(ArticleCategoryEnum).map((category) => ArticleCategoryEnum[category])
+            const all: ArticleCategoryEnum[] = Object.keys(ArticleCategoryEnum).map((category) => ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
             setUnsavedSelections(all)
         }
     }
@@ -76,7 +76,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
                     <div className="h-full">
                         <div className="flex flex-col space-y-2 md:space-y-2.5">
                             {Object.keys(ArticleCategoryEnum)
-                                .map((category) => menuElement(ArticleCategoryEnum[category]))
+                                .map((category) => menuElement(ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum]))
                             }
                         </div>
                     </div>

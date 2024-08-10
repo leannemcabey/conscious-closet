@@ -13,4 +13,4 @@ interface FilterContext {
     setFilterSettings: Dispatch<SetStateAction<FilterSettings>>;
 }
 
-export const ArticleFilterContext = createContext<FilterContext | null>(null);
+export const ArticleFilterContext = createContext<FilterContext | undefined>(undefined);
