@@ -1,6 +1,8 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import Head from "next/head";
+import * as React from "react";
 
 const APP_NAME = "Conscious Closet";
 const APP_DEFAULT_TITLE = "Conscious Closet";
@@ -49,21 +51,16 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
       <html lang="en" dir="ltr">
-      <head><
-        title>Conscious Closet</title>
-      </head>
-      <body>
-        {children}
-      </body>
+        <Head>
+          <title>Conscious Closet</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com"/>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
+          <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;1,300&display=swap"
+                rel="stylesheet"/>
+        </Head>
+        <body>
+          {children}
+        </body>
       </html>
   );
 }
-
-// export const metadata: Metadata = {
-//   metadataBase: new URL(defaultUrl),
-//   title: "Conscious Closet",
-//   description: "A tool for sustainably managing your wardrobe",
-//   category: "website",
-//   generator: "Next.js",
-//   manifest: "/manifest.json"
-// };
