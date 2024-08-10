@@ -10,7 +10,7 @@ import * as React from "react";
 import PageHeader from "@/app/components/PageHeader";
 
 export default async function ArticleCategoryPage({ params }: { params: { id: string } }) {
-    const { articles, error} = await getArticlesByCategory(params.id);
+    const { articles, error} = await getArticlesByCategory(params.id  as ArticleCategoryEnum);
 
     const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
 
@@ -23,7 +23,7 @@ export default async function ArticleCategoryPage({ params }: { params: { id: st
 
                 {articles && (
                     <>
-                        <PageHeader title={categorySlugToTitleMap[params.id]} iconPath={"/hanger.svg"} iconAlt={"hanger icon"} />
+                        <PageHeader title={categorySlugToTitleMap[params.id as ArticleCategoryEnum]} iconPath={"/hanger.svg"} iconAlt={"hanger icon"} />
                         <CategoryPageContainer articles={articles} category={params.id as ArticleCategoryEnum}/>
                     </>
                 )}
