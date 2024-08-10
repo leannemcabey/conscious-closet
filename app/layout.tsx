@@ -1,9 +1,11 @@
 import "./globals.css";
 import { Metadata } from "next";
 
-const defaultUrl = process.env.NODE_ENV === "production"
-    ? `https://consciouscloset.co`
-    : "http://localhost:3000";
+// const defaultUrl = process.env.NODE_ENV === "production"
+//     ? `https://consciouscloset.co`
+//     : "http://localhost:3000";
+
+const defaultUrl = "https://consciouscloset.co";
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
