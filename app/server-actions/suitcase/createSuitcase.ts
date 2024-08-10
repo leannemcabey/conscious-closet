@@ -14,14 +14,12 @@ export async function createSuitcase(name: string): Promise<Suitcase> {
         .insert([{name: name}])
         .select()
 
-    if (error) {
-        console.log(error)
-        throw error
-    }
-
     revalidatePath(`/suitcases`)
 
     if (data) {
         return toSuitcase(data[0]);
+    } else {
+        console.log(error)
+        throw error
     }
 }

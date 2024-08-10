@@ -12,7 +12,7 @@ const getPaginatedMediaItems = (attemptCounter: number, pageToken?: string): Pro
     attemptCounter++
 
     return refreshGoogleProviderTokenIfNeededWithRetry()
-        .then((providerToken: string) => {
+        .then((providerToken: string | undefined) => {
             if (providerToken) {
                 return axios.get("https://photoslibrary.googleapis.com/v1/mediaItems", {
                     headers: {
@@ -39,7 +39,7 @@ const getPaginatedMediaItems = (attemptCounter: number, pageToken?: string): Pro
                     })
                     .catch((error) => {
                         if (attemptCounter > 1) throw error
-                        getPaginatedMediaItems(attemptCounter, pageToken)
+                        return getPaginatedMediaItems(attemptCounter, pageToken)
                     })
             } else {
                 console.log(`couldn't get provider token`)
