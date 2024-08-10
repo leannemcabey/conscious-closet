@@ -10,7 +10,7 @@ import CloseModalButton from "@/app/components/modal/CloseModalButton";
 
 interface CategoryFilterModalProps {
     selectedArticleCategories: ArticleCategoryEnum[];
-    setSelectedArticleCategories: Dispatch<SetStateAction<ArticleCategoryEnum[]>>;
+    setSelectedArticleCategories: Dispatch<SetStateAction<ArticleCategoryEnum[] | undefined>>;
     setSelectingCategories: Dispatch<SetStateAction<boolean>>;
 }
 

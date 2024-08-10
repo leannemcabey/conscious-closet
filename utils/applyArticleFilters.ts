@@ -9,8 +9,10 @@ export const applyArticleFilters = (
 ) => {
     let filteredArticles = articles;
 
-    if (filterSettings.showCleanoutBagItems) filteredArticles = articles;
-    if (!filterSettings.showCleanoutBagItems) filteredArticles = filteredArticles.filter((article) => !article.inCleanoutBag)
+    if (appliedFilters.includes(FilterType.cleanout)) {
+        if (filterSettings.showCleanoutBagItems) filteredArticles = articles;
+        if (!filterSettings.showCleanoutBagItems) filteredArticles = filteredArticles.filter((article) => !article.inCleanoutBag)
+    }
 
     if (appliedFilters.includes(FilterType.weather)) {
         const weatherCategoryIsSelected = (category) => filterSettings.selectedWeatherCategories?.includes(category);
