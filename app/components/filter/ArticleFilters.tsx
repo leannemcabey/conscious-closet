@@ -18,10 +18,10 @@ interface ArticleFiltersProps {
 }
 
 const ArticleFilters = ({ filterTypes }: ArticleFiltersProps) => {
-    const { filterSettings, setFilterSettings } = useContext(ArticleFilterContext);
+    const { filterSettings, setFilterSettings } = useContext(ArticleFilterContext)!!;
     const [showCleanoutBagItems, setShowCleanoutBagItems] = useState<boolean>(filterSettings.showCleanoutBagItems);
-    const [selectedWeatherCategories, setSelectedWeatherCategories] = useState<WeatherCategoryEnum[]>(filterSettings.selectedWeatherCategories);
-    const [selectedArticleCategories, setSelectedArticleCategories] = useState<ArticleCategoryEnum[]>(filterSettings.selectedArticleCategories);
+    const [selectedWeatherCategories, setSelectedWeatherCategories] = useState<WeatherCategoryEnum[]>(filterSettings.selectedWeatherCategories!!);
+    const [selectedArticleCategories, setSelectedArticleCategories] = useState<ArticleCategoryEnum[]>(filterSettings.selectedArticleCategories!!);
 
     useEffect(() => {
         setFilterSettings({

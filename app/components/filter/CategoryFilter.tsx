@@ -11,7 +11,7 @@ interface CategoryFilterProps {
 }
 
 const CategoryFilter = ({ selectedArticleCategories, setSelectedArticleCategories }: CategoryFilterProps) => {
-    const [selectingCategories, setSelectingCategories] = useState<boolean>();
+    const [selectingCategories, setSelectingCategories] = useState<boolean>(false);
 
     return (
         <>

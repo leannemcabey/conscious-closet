@@ -1,4 +1,5 @@
 'use client'
+import { ReactElement } from "react";
 
 interface TextButtonProps {
     widthStyling?: string;
@@ -6,7 +7,7 @@ interface TextButtonProps {
     handleClick: () => void;
     colorOverride?: string;
     removeDropShadow?: boolean;
-    children: string;
+    children: string | ReactElement;
 }
 
 const TextButton = ({ widthStyling, disabled, handleClick, colorOverride, removeDropShadow, children }: TextButtonProps) => {

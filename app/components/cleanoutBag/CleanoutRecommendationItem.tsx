@@ -28,8 +28,10 @@ const CleanoutRecommendationItem = ({ recommendation }: CleanoutRecommendationIt
                     {recommendation.url && (
                             <a href={recommendation.url} target="_blank">
                                 <TextButton disabled={false} handleClick={() => {}} removeDropShadow={true} >
-                                    <Image src={`/external-link-icon.svg`} height="10" width="10" alt={arrow} className="mr-2"/>
-                                    <p>{recommendation.name}</p>
+                                    <>
+                                        <Image src={`/external-link-icon.svg`} height="10" width="10" alt={arrow} className="mr-2"/>
+                                        <p>{recommendation.name}</p>
+                                    </>
                                 </TextButton>
                             </a>
                     )}

@@ -8,7 +8,7 @@ import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import NewButton from "@/app/components/buttons/NewButton";
 
 const CleanoutRecommendationsContainer = () => {
-    const [showAddRecModal, setShowAddRecModal] = useState<boolean>();
+    const [showAddRecModal, setShowAddRecModal] = useState<boolean>(false);
 
     return (
         <div className="flex flex-col mt-1 h-[90%]">

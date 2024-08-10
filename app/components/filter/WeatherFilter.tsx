@@ -22,7 +22,7 @@ const WeatherFilter = ({ selectedWeatherCategories, setSelectedWeatherCategories
 
     }
 
-    const weatherCategoryIsSelected = (category) => selectedWeatherCategories.includes(category)
+    const weatherCategoryIsSelected = (category: WeatherCategoryEnum) => selectedWeatherCategories.includes(category)
 
     return (
         <div className="flex place-content-between space-x-1">
