@@ -22,7 +22,9 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
     const handleSubmit = () => {
         if (newSuitcaseName) {
             updateSuitcase(suitcase.id, newSuitcaseName)
-                .then(() => setIsOpen(false))
+                .then(() => {
+                    setIsOpen(false)
+                })
                 .catch(() => setError(true))
         }
     }
@@ -33,7 +35,7 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
         <Modal setIsOpen={setIsOpen}>
             <div className="md:w-[400px]">
                 <CloseModalButton setIsOpen={setIsOpen}/>
-                <form className="flex flex-col pt-20">
+                <div className="flex flex-col pt-20">
                     <input
                         value={newSuitcaseName}
                         type="text"
@@ -46,7 +48,7 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
                             Update
                         </TextButtonFilled>
                     </div>
-                </form>
+                </div>
             </div>
         </Modal>
 )
