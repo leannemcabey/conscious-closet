@@ -1,7 +1,7 @@
 'use client'
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
-import { PaginatedMediaItems } from "@/types/googlePhotoMetadata";
+import { GooglePhotoMetadata, PaginatedMediaItems } from "@/types/googlePhotoMetadata";
 
 export const getPaginatedMediaItemsWithRetry = async (pageToken?: string) => {
     let attemptCounter = 0;
@@ -12,7 +12,7 @@ const getPaginatedMediaItems = (attemptCounter: number, pageToken?: string): Pro
     attemptCounter++
 
     return refreshGoogleProviderTokenIfNeededWithRetry()
-        .then((providerToken) => {
+        .then((providerToken: string) => {
             if (providerToken) {
                 return axios.get("https://photoslibrary.googleapis.com/v1/mediaItems", {
                     headers: {
@@ -24,8 +24,8 @@ const getPaginatedMediaItems = (attemptCounter: number, pageToken?: string): Pro
                         pageToken: pageToken
                     }
                 })
-                    .then((response) => {
-                        const data = response.data.mediaItems.map((item: any) => {
+                    .then((response: AxiosResponse<any>) => {
+                        const data: GooglePhotoMetadata[] = response.data.mediaItems.map((item: any) => {
                             return {
                                 baseUrl: item.baseUrl,
                                 imageId: item.id
@@ -35,12 +35,15 @@ const getPaginatedMediaItems = (attemptCounter: number, pageToken?: string): Pro
                         return {
                             data: data,
                             nextPageToken: response.data.nextPageToken
-                        }
+                        } as PaginatedMediaItems
                     })
                     .catch((error) => {
                         if (attemptCounter > 1) throw error
                         getPaginatedMediaItems(attemptCounter, pageToken)
                     })
+            } else {
+                console.log(`couldn't get provider token`)
+                throw new Error;
             }
         })
 }

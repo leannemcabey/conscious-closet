@@ -3,7 +3,7 @@ import axios from "axios";
 import { buildParams } from "@/app/googleService/utils/buildParams";
 import { mediaItemToGooglePhotoMetadata } from "@/utils/typeConversions/mediaItemToGooglePhotoMetadata";
 import { Article } from "@/types/article";
-import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
+import {GooglePhotoMetadata, MediaItemResult} from "@/types/googlePhotoMetadata";
 import { splitArticlesIntoBatches } from "@/app/googleService/utils/splitArticlesIntoBatches";
 import { refreshGooglePhotosBaseUrls } from "@/app/googleService/utils/refreshGooglePhotosBaseUrls";
 import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
@@ -45,8 +45,8 @@ const getBatchMediaItems = (articles: Article[], attemptCounter: number): Promis
                 }
             })
                 .then((response) => {
-                    const mappedResults = response.data.mediaItemResults.map((result) => mediaItemToGooglePhotoMetadata(result))
-                    return mappedResults.filter((result) => result !== undefined)
+                    const mappedResults = response.data.mediaItemResults.map((result: MediaItemResult) => mediaItemToGooglePhotoMetadata(result))
+                    return mappedResults.filter((result: GooglePhotoMetadata | undefined) => result !== undefined)
                 })
                 .catch((error) => {
                     if (attemptCounter > 1) throw error;

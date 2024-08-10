@@ -12,7 +12,7 @@ interface DeleteSuitcaseConfirmationModalProps {
 
 const DeleteSuitcaseConfirmationModal = ({setIsOpen, suitcaseId}: DeleteSuitcaseConfirmationModalProps) => {
     const router = useRouter();
-    const [error, setError] = useState<boolean>();
+    const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred while trying to delete your suitcase. Please try again."
 
