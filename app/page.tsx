@@ -12,7 +12,7 @@ export default async function Index() {
         <div>
             <Head>
                 <title>Conscious Closet</title>
-                <link rel="manifest" href="/manifest.json"/>
+                <link rel="manifest" href="/manifest.json" crossorigin="use-credentials"/>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
                 <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;1,300&display=swap"
