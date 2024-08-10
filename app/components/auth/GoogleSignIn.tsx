@@ -1,9 +1,12 @@
 'use client'
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
-import { defaultUrl } from "@/app/layout";
 
-const GoogleSignIn = () => {
+interface GoogleSignInProps {
+    defaultUrl: string;
+}
+
+const GoogleSignIn = ({ defaultUrl }: GoogleSignInProps) => {
     const supabase = createClient();
 
     const googleSignIn = () => supabase.auth.signInWithOAuth({

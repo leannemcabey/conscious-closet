@@ -1,7 +1,12 @@
+'use server'
 import Head from 'next/head'
 import Image from 'next/image'
 import GoogleSignIn from "@/app/components/auth/GoogleSignIn";
 import * as React from "react";
+
+const defaultUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
 
 export default async function Index() {
     return (
@@ -19,7 +24,7 @@ export default async function Index() {
                        alt="Photo of clothing on hangers by Liza Summer from Pexels"/>
                 <div className="flex flex-col items-center self-center absolute space-y-8 pb-36">
                     <Image src="/cc_full.svg" width="350" height="200" alt="Conscious Closet"/>
-                    <GoogleSignIn />
+                    <GoogleSignIn defaultUrl={defaultUrl}/>
                 </div>
             </div>
         </div>
