@@ -1,6 +1,7 @@
 'use client'
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
+import { defaultUrl } from "@/app/layout";
 
 const GoogleSignIn = () => {
     const supabase = createClient();
@@ -13,7 +14,7 @@ const GoogleSignIn = () => {
                 access_type: 'offline',
                 prompt: 'consent',
             },
-            redirectTo: 'http://localhost:3000/auth/callback' // TODO: make variable
+            redirectTo: `${defaultUrl}/auth/callback`
         },
     })
 
