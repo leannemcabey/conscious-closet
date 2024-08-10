@@ -28,7 +28,7 @@ export const SlideOutMenu = ({ menuVisible, setMenuVisible }: SlideOutMenuProps)
     const [animationClassName, setAnimationClassName] = useState<string>("animate-enter-from-right");
 
     // Closes the menu if the user clicks outside of it
-    const outsideClickHandler = (event) => {
+    const outsideClickHandler = (event: Event) => {
         const includesMenuElement = event.composedPath().includes(menuRef.current!!);
         if (menuRef.current && !includesMenuElement) {
             event.preventDefault()

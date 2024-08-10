@@ -5,7 +5,7 @@ interface BergerMenuButtonProps {
     transitionMenu: () => void
 }
 
-export const BurgerMenuButton = ({ transitionMenu }) => {
+export const BurgerMenuButton = ({ transitionMenu }: BergerMenuButtonProps) => {
     return (
         <div className="w-[24px] h-[24px] md:w-[30px] h-[30px]">
             <Image

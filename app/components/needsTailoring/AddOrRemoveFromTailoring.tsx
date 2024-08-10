@@ -14,7 +14,7 @@ interface AddOrRemoveFromTailoringProps {
 const AddOrRemoveFromTailoring = ({ article }: AddOrRemoveFromTailoringProps) => {
     const [inTailoring, setInTailoring] = useState<boolean>(article.needsTailoring);
     const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
-    const [error, setError] = useState<boolean>();
+    const [error, setError] = useState<boolean>(false);
 
     const errorVerb = inTailoring ? "removing" : "adding";
     const errorPreposition = inTailoring ? "from" : "to"

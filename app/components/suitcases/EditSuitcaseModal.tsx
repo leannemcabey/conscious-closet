@@ -15,7 +15,7 @@ interface EditSuitcaseModalProps {
 
 const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
     const [newSuitcaseName, setNewSuitcaseName] = useState<string>(suitcase.name);
-    const [error, setError] = useState<boolean>();
+    const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred while updating your suitcase name. Please try again."
 

@@ -15,7 +15,7 @@ interface NewSuitcaseModalProps {
 
 const NewSuitcaseModal = ({ setIsOpen, suitcases, setSuitcases }: NewSuitcaseModalProps) => {
     const [suitcaseName, setSuitcaseName] = useState<string>();
-    const [error, setError] = useState<boolean>();
+    const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred while creating your new suitcase. Please try again."
 
