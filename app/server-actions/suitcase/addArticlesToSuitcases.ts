@@ -37,4 +37,8 @@ export async function addArticlesToSuitcases(articleIds: (string | undefined)[],
             addArticleToSuitcases(articleId, unsavedSuitcaseIds)
         }
     })
+
+    unsavedSuitcaseIds.forEach((suitcaseId) => {
+        revalidatePath(`/suitcases/${suitcaseId}`)
+    })
 }

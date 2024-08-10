@@ -14,9 +14,7 @@ import CapsuleElementsContainer from "@/app/components/capsuleCreator/CapsuleEle
 import { defaultCapsuleElements } from "@/app/components/capsuleCreator/utils/defaultCapsuleElements";
 import { CapsuleElementsMapType } from "@/types/CapsuleElementsMapType";
 
-export interface CategoryArticlesMap {
-    string: Article[];
-}
+export type CategoryArticlesMap = Record<string, Article[]>
 
 interface CapsuleCreatorContainerProps {
     articlesMap: CategoryArticlesMap;

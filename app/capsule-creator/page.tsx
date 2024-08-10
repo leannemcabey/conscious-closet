@@ -4,7 +4,7 @@ import BackButton from "@/app/components/buttons/BackButton";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesByCategory";
-import CapsuleCreatorContainer from "@/app/components/capsuleCreator/CapsuleCreatorContainer";
+import CapsuleCreatorContainer, {CategoryArticlesMap} from "@/app/components/capsuleCreator/CapsuleCreatorContainer";
 import { Article } from "@/types/article";
 import Image from "next/image";
 import * as React from "react";
@@ -18,17 +18,16 @@ export default async function CapsuleCreator() {
         </Layout>
     )
 
-    let articlesMap: { string: Article[] } = {};
-
+    let articlesMap: CategoryArticlesMap = {};
 
     for (const category of Object.keys(ArticleCategoryEnum)) {
-        const { articles, error } = await getArticlesByCategory(ArticleCategoryEnum[category])
+        const { articles, error } = await getArticlesByCategory(ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
 
         if (error) {
             return errorState;
         }
 
-        articlesMap[ArticleCategoryEnum[category]] = articles || [];
+        articlesMap[ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum] as string] = articles || [];
     }
 
     return (
