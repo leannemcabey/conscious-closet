@@ -1,8 +1,8 @@
 import { Article } from "@/types/article";
 import { FilterType } from "@/app/components/filter/ArticleFilters";
 import { FilterSettings } from "@/app/context/ArticleFilterContext";
-import {WeatherCategoryEnum} from "@/types/enums/weatherCategoryEnum";
-import {ArticleCategoryEnum} from "@/types/enums/articleCategoryEnum";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
+import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 
 export const applyArticleFilters = (
     articles: Article[],
