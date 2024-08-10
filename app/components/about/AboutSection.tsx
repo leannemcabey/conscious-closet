@@ -1,7 +1,6 @@
 'use client'
-import { useState } from "react";
+import {ReactElement, useState} from "react";
 import Image from "next/image";
-import CleanoutRecommendationItem from "@/app/components/cleanoutBag/CleanoutRecommendationItem";
 import * as React from "react";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
@@ -10,6 +9,7 @@ interface AboutSectionProps {
     sectionName: string;
     iconPath: string;
     iconAlt: string;
+    children: ReactElement;
 }
 
 const AboutSection = ({ sectionName, iconPath, iconAlt, children }: AboutSectionProps) => {
