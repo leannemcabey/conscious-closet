@@ -1,5 +1,5 @@
 'use client'
-import {ReactElement, useState} from "react";
+import { ReactElement, useState } from "react";
 import Image from "next/image";
 import * as React from "react";
 import Modal from "@/app/components/modal/Modal";
