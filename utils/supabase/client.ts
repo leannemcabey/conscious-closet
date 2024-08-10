@@ -1,5 +1,4 @@
 import { createBrowserClient } from "@supabase/ssr";
-import {Session} from "@supabase/gotrue-js";
 
 export const createClient = () =>
   createBrowserClient(
