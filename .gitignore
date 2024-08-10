@@ -38,3 +38,7 @@ next-env.d.ts
 # editor
 .idea/
 *.DS_Store
+
+# Serwist
+public/sw*
+public/swe-worker*
