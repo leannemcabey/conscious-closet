@@ -22,7 +22,7 @@ interface CapsuleCreatorContainerProps {
 
 const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) => {
     const filterCleanout = (): CategoryArticlesMap => {
-        const articlesNotInCleanoutMap = {};
+        const articlesNotInCleanoutMap: CategoryArticlesMap = {};
 
         Object.keys(unfilteredArticlesMap).forEach((category) => {
             articlesNotInCleanoutMap[category] = unfilteredArticlesMap[category].filter((article) => !article.inCleanoutBag)

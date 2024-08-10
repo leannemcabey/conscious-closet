@@ -10,7 +10,7 @@ import { CapsuleElementType } from "@/types/CapsuleElementsMapType";
 interface CategorySelectorProps {
     initialElement: CapsuleElementType;
     selectedCategory: ArticleCategoryEnum | undefined;
-    setSelectedCategory: Dispatch<SetStateAction<ArticleCategoryEnum>>
+    setSelectedCategory: Dispatch<SetStateAction<ArticleCategoryEnum | undefined>>
 }
 
 const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategory }: CategorySelectorProps) => {
@@ -24,8 +24,8 @@ const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategor
         setTimeout(() => !initialElement.article && setIsOpen(true), 500)
     }, [initialElement]);
 
-    const handleClick = (category) => {
-        setSelectedCategory(ArticleCategoryEnum[category])
+    const handleClick = (category: string) => {
+        setSelectedCategory(ArticleCategoryEnum[category  as keyof typeof ArticleCategoryEnum])
         setIsOpen(false)
     }
 
@@ -47,14 +47,14 @@ const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategor
 
                         <div className="flex flex-col justify-center text-center mt-2 md:mt-6">
                             {Object.keys(ArticleCategoryEnum).map((category) => {
-                                const selected = ArticleCategoryEnum[category] === selectedCategory
+                                const selected = ArticleCategoryEnum[category  as keyof typeof ArticleCategoryEnum] === selectedCategory
                                 return (
                                     <p
                                         key={category}
                                         className={`truncate my-1 p-1 border border-theme-green rounded-lg ${selected ? "bg-theme-light-green text-text-green" : ""} md:text-2xl md:p-2`}
                                         onClick={() => handleClick(category)}
                                     >
-                                        {ArticleCategoryTitle[category]}
+                                        {ArticleCategoryTitle[category as keyof typeof ArticleCategoryTitle]}
                                     </p>
                                 )
                             })}
