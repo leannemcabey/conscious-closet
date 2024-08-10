@@ -6,6 +6,7 @@ interface TextButtonProps {
     handleClick: () => void;
     colorOverride?: string;
     removeDropShadow?: boolean;
+    children: string;
 }
 
 const TextButton = ({ widthStyling, disabled, handleClick, colorOverride, removeDropShadow, children }: TextButtonProps) => {
