@@ -2,9 +2,6 @@ import { NextResponse, type NextRequest } from 'next/server'
 import { createClient } from "@/utils/supabase/server";
 
 export async function updateSession(req: NextRequest) {
-  console.log('middleware running')
-  console.log(`vercel_env: ${process.env.VERCEL_URL}`)
-
   let res = NextResponse.next({request: req,})
 
   const supabase = createClient()

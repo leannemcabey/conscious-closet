@@ -3,14 +3,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import GoogleSignIn from "@/app/components/auth/GoogleSignIn";
 import * as React from "react";
-
-// const defaultUrl = process.env.NODE_ENV === "production"
-//     ? `https://consciouscloset.co`
-//     : "http://localhost:3000";
-
-const defaultUrl = "https://consciouscloset.co";
+import { defaultUrl } from "@/constants/defaultUrl";
 
 export default async function Index() {
+    console.log(`defaultUrl: ${defaultUrl}`)
+
     return (
         <div>
             <Head>
