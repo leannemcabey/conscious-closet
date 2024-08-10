@@ -3,6 +3,7 @@
 interface TextButtonFilledProps {
     handleClick: () => void;
     disabled: boolean;
+    children: string;
 }
 
 const TextButtonFilled = ({ handleClick, disabled, children }: TextButtonFilledProps) => {
