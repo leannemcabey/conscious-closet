@@ -33,21 +33,23 @@ const CleanoutRecommendationsContainer = () => {
 
             {showAddRecModal && (
                 <Modal setIsOpen={setShowAddRecModal}>
-                    <CloseModalButton setIsOpen={setShowAddRecModal} />
-                    <div className="mt-12 text-center space-y-4 md:space-y-8 md:text-2xl">
-                        <p>
-                            Know of another great company or organization?
-                        </p>
+                    <>
+                        <CloseModalButton setIsOpen={setShowAddRecModal} />
+                        <div className="mt-12 text-center space-y-4 md:space-y-8 md:text-2xl">
+                            <p>
+                                Know of another great company or organization?
+                            </p>
 
-                        <p>
-                            Email us at
-                            <a
-                                className="text-theme-blue"
-                                href="mailto:leanne@consciouscloset.co"> leanne@consciouscloset.co
-                            </a>
-                            !
-                        </p>
-                    </div>
+                            <p>
+                                Email us at
+                                <a
+                                    className="text-theme-blue"
+                                    href="mailto:leanne@consciouscloset.co"> leanne@consciouscloset.co
+                                </a>
+                                !
+                            </p>
+                        </div>
+                    </>
                 </Modal>
             )}
         </div>

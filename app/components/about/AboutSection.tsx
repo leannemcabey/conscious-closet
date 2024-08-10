@@ -38,11 +38,13 @@ const AboutSection = ({ sectionName, iconPath, iconAlt, children }: AboutSection
 
             {isOpen &&
                 <Modal setIsOpen={setIsOpen}>
-                    <CloseModalButton setIsOpen={setIsOpen}/>
-                    <h2 className="bg-theme-blue text-white p-1 rounded-lg text-center tracking-widest mt-2 md:text-xl">{sectionName}</h2>
-                    <div className="text-center space-y-4 py-4 h-max max-h-[500px] overflow-scroll md:text-xl md:max-h-[600px]">
-                        {children}
-                    </div>
+                    <>
+                        <CloseModalButton setIsOpen={setIsOpen}/>
+                        <h2 className="bg-theme-blue text-white p-1 rounded-lg text-center tracking-widest mt-2 md:text-xl">{sectionName}</h2>
+                        <div className="text-center space-y-4 py-4 h-max max-h-[500px] overflow-scroll md:text-xl md:max-h-[600px]">
+                            {children}
+                        </div>
+                    </>
                 </Modal>}
         </>
     )

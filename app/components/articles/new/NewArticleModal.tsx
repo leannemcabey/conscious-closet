@@ -55,58 +55,60 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
 
     return (
         <Modal setIsOpen={setIsOpen}>
-            <CloseModalButton setIsOpen={setIsOpen} />
+            <>
+                <CloseModalButton setIsOpen={setIsOpen} />
 
-            {!image && <ImageSelection setImage={setImage}/>}
+                {!image && <ImageSelection setImage={setImage}/>}
 
-            {image && !submitted && (
-                <div className="mt-4 flex flex-col place-content-center">
-                    <div className="flex flex-col bg-neutral-200 rounded-lg p-2 text-center items-center mb-4 md:mb-8">
-                        <div className="flex items-center space-x-1 mb-2.5">
-                            <div className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]">
-                                <Image
-                                    src="/warning-icon.svg"
-                                    height="18"
-                                    width="18"
-                                    alt="warning"
-                                    className="w-full self-center"
-                                />
+                {image && !submitted && (
+                    <div className="mt-4 flex flex-col place-content-center">
+                        <div className="flex flex-col bg-neutral-200 rounded-lg p-2 text-center items-center mb-4 md:mb-8">
+                            <div className="flex items-center space-x-1 mb-2.5">
+                                <div className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]">
+                                    <Image
+                                        src="/warning-icon.svg"
+                                        height="18"
+                                        width="18"
+                                        alt="warning"
+                                        className="w-full self-center"
+                                    />
+                                </div>
+                                <p className="self-center text-base md:text-2xl">
+                                    IMPORTANT:
+                                </p>
                             </div>
-                            <p className="self-center text-base md:text-2xl">
-                                IMPORTANT:
+                            <p className="text-sm md:text-xl">
+                                Do not delete this photo from your Google Photos account.
+                                If you do, you will no longer be able to access it in Conscious Closet.
                             </p>
                         </div>
-                        <p className="text-sm md:text-xl">
-                            Do not delete this photo from your Google Photos account.
-                            If you do, you will no longer be able to access it in Conscious Closet.
-                        </p>
-                    </div>
 
-                    <div className="flex self-center space-x-2.5">
-                        <Polaroid
-                            imageUrl={image.baseUrl}
-                            sizeStyling="w-[175px]"
-                        />
-                        <WeatherPicker weatherCategory={weatherCategory} setWeatherCategory={setWeatherCategory}/>
-                    </div>
-
-                    {image &&
-                        <div className="self-end mt-6 -mr-2 md:mt-10">
-                            <TextButtonFilled handleClick={() => handleSubmit()} disabled={buttonDisabled}>
-                                save
-                            </TextButtonFilled>
+                        <div className="flex self-center space-x-2.5">
+                            <Polaroid
+                                imageUrl={image.baseUrl}
+                                sizeStyling="w-[175px]"
+                            />
+                            <WeatherPicker weatherCategory={weatherCategory} setWeatherCategory={setWeatherCategory}/>
                         </div>
-                    }
-                </div>
-            )}
 
-            {submitted &&
-                <div className="flex justify-center mt-6 md:w-[400px] md:h-[400px]">
-                    <div className="md:mt-14">
-                        {successGif}
+                        {image &&
+                            <div className="self-end mt-6 -mr-2 md:mt-10">
+                                <TextButtonFilled handleClick={() => handleSubmit()} disabled={buttonDisabled}>
+                                    save
+                                </TextButtonFilled>
+                            </div>
+                        }
                     </div>
-                </div>
-            }
+                )}
+
+                {submitted &&
+                    <div className="flex justify-center mt-6 md:w-[400px] md:h-[400px]">
+                        <div className="md:mt-14">
+                            {successGif}
+                        </div>
+                    </div>
+                }
+            </>
         </Modal>
     )
 }

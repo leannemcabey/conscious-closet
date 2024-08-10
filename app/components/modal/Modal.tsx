@@ -1,9 +1,10 @@
 'use client'
 import { createPortal } from 'react-dom';
-import { Dispatch, SetStateAction, useEffect, useRef } from "react";
+import { Dispatch, ReactElement, SetStateAction, useEffect, useRef } from "react";
 
 interface ModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
+    children: ReactElement;
 }
 
 const Modal = ({ setIsOpen, children }: ModalProps) => {
