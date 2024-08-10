@@ -1,8 +1,9 @@
 'use client'
 import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import { Article } from "@/types/article";
 import { mediaItemToGooglePhotoMetadata } from "@/utils/typeConversions/mediaItemToGooglePhotoMetadata";
+import {GooglePhotoMetadata} from "@/types/googlePhotoMetadata";
 
 export async function updateGoogleUrlWithRetry(article: Article) {
     let attemptCounter = 0;
@@ -21,14 +22,17 @@ const updateGoogleUrl = (article: Article, attemptCounter: number): Promise<Arti
                         'Authorization': 'Bearer ' + providerToken
                     }
                 })
-                    .then((response) => {
-                        const googleMetaData = mediaItemToGooglePhotoMetadata({ mediaItem: response.data })
-                        return { ...article, image: { ...googleMetaData } }
+                    .then((response: AxiosResponse<any>) => {
+                        const googleMetaData: GooglePhotoMetadata | undefined = mediaItemToGooglePhotoMetadata({ mediaItem: response.data })
+                        return { ...article, image: { ...googleMetaData } } as Article;
                     })
                     .catch((error) => {
                         if (attemptCounter > 1) throw error;
-                        updateGoogleUrl(article, attemptCounter)
+                        return updateGoogleUrl(article, attemptCounter)
                     })
+            } else {
+                console.log(`couldn't get provider token`)
+                throw new Error;
             }
         })
 }

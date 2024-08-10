@@ -8,8 +8,8 @@ export async function refreshGoogleProviderTokenWithRetry(refreshToken: string) 
 async function refreshGoogleProviderToken(refreshToken: string, attemptCounter: number) {
     attemptCounter++
 
-    const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
-    const clientId = process.env.GOOGLE_CLIENT_ID;
+    const clientSecret: string = process.env.GOOGLE_CLIENT_SECRET as string;
+    const clientId: string = process.env.GOOGLE_CLIENT_ID as string;
 
     const params = new URLSearchParams();
     params.append('refresh_token', refreshToken);
@@ -35,7 +35,7 @@ async function refreshGoogleProviderToken(refreshToken: string, attemptCounter: 
             console.log(`max attempts for refreshing token reached. throwing error`)
             throw error
         } else {
-            refreshGoogleProviderToken(refreshToken, attemptCounter)
+            return refreshGoogleProviderToken(refreshToken, attemptCounter)
         }
     }
 

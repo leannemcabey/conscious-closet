@@ -19,15 +19,13 @@ export async function createArticle(newArticle: NewArticleInput): Promise<Articl
         ])
         .select()
 
-    if (error) {
-        console.log(error)
-        throw error
-    }
-
     revalidatePath(`/articles/category/${newArticle.articleCategory}`)
     revalidatePath(`/articles/weather/${newArticle.weatherCategory}`)
 
     if (data) {
         return toArticle(data[0]);
+    } else {
+        console.log(error)
+        throw error
     }
 }

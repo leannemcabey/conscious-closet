@@ -1,5 +1,5 @@
 'use client'
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import { buildParams } from "@/app/googleService/utils/buildParams";
 import { mediaItemToGooglePhotoMetadata } from "@/utils/typeConversions/mediaItemToGooglePhotoMetadata";
 import { Article } from "@/types/article";
@@ -35,22 +35,27 @@ const getBatchMediaItems = (articles: Article[], attemptCounter: number): Promis
 
     return refreshGoogleProviderTokenIfNeededWithRetry()
         .then((providerToken) => {
-            const params = buildParams(articles);
+            if (providerToken) {
+                const params = buildParams(articles);
 
-            return axios.get(`https://photoslibrary.googleapis.com/v1/mediaItems:batchGet`, {
-                params: params,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + providerToken
-                }
-            })
-                .then((response) => {
-                    const mappedResults = response.data.mediaItemResults.map((result: MediaItemResult) => mediaItemToGooglePhotoMetadata(result))
-                    return mappedResults.filter((result: GooglePhotoMetadata | undefined) => result !== undefined)
+                return axios.get(`https://photoslibrary.googleapis.com/v1/mediaItems:batchGet`, {
+                    params: params,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + providerToken
+                    }
                 })
-                .catch((error) => {
-                    if (attemptCounter > 1) throw error;
-                    getBatchMediaItems(articles, attemptCounter);
-                })
+                    .then((response: AxiosResponse<any>) => {
+                        const mappedResults: GooglePhotoMetadata[] = response.data.mediaItemResults.map((result: MediaItemResult) => mediaItemToGooglePhotoMetadata(result))
+                        return mappedResults.filter((result: GooglePhotoMetadata | undefined) => result !== undefined) as GooglePhotoMetadata[];
+                    })
+                    .catch((error) => {
+                        if (attemptCounter > 1) throw error;
+                        return getBatchMediaItems(articles, attemptCounter);
+                    })
+            } else {
+                console.log(`couldn't get provider token`)
+                throw new Error;
+            }
         })
 }
