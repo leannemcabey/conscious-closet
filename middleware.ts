@@ -19,6 +19,6 @@ export const config = {
      * - images - .svg, .png, .jpg, .jpeg, .gif, .webp
      * Feel free to modify this pattern to include more paths.
      */
-    "/((?!_next/static|sw.js|manifest.json|app-worker.ts|_next/image|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!_next/static|sw.js|manifest.json|app-worker.ts|_next/image|.*\\.(?:ico|svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };
