@@ -3,11 +3,9 @@ import Image from "next/image";
 
 interface NewButtonProps {
     handleClick: () => void;
-    // iconPath: string;
-    // iconAlt: string;
 }
 
-const NewButton = ({ handleClick, iconPath, iconAlt }: NewButtonProps) => {
+const NewButton = ({ handleClick }: NewButtonProps) => {
     return (
         <button
             onClick={() => handleClick()}
