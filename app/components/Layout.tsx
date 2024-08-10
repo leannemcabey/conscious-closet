@@ -1,6 +1,6 @@
 import * as React from "react";
 import TopNavigation from "./navigation/TopNavigation";
-import {ReactElement} from "react";
+import { ReactElement } from "react";
 
 interface LayoutProps {
     children: ReactElement;
