@@ -1,10 +1,12 @@
 'use client'
 import Image from "next/image";
 import { googlePhotosPathLoader } from "@/utils/googlePhotosPathLoader";
+import { ReactElement } from "react";
 
 interface PolaroidProps {
     imageUrl: string;
     sizeStyling: string;
+    children?: ReactElement;
 }
 
 const Polaroid = ({ imageUrl, sizeStyling, children }: PolaroidProps) => {
