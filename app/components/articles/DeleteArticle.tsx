@@ -14,8 +14,8 @@ interface DeleteArticleProps {
 
 const DeleteArticle = ({ article }: DeleteArticleProps) => {
     const router = useRouter();
-    const [isDeleting, setIsDeleting] = useState<boolean>();
-    const [deleteError, setDeleteError] = useState<boolean>();
+    const [isDeleting, setIsDeleting] = useState<boolean>(false);
+    const [deleteError, setDeleteError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred while trying to delete this article. Please try again."
 
