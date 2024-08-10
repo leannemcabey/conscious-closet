@@ -14,7 +14,7 @@ interface LastWornProps {
 const LastWorn = ({ article }: LastWornProps) => {
     const initialLastWornDateValue = article.lastWorn ? new Date(article.lastWorn) : null;
     const [date, setDate] = useState<Date | null>(initialLastWornDateValue);
-    const [error, setError] = useState<boolean>();
+    const [error, setError] = useState<boolean>(false);
 
     const errorMessage = "An error occurred when setting the last worn date for this article. Please try again."
 
