@@ -9,7 +9,6 @@ const defaultUrl = process.env.VERCEL_URL
     : "http://localhost:3000";
 
 export default async function Index() {
-    console.log(`vercel_env: ${process.env.VERCEL_URL}`)
     return (
         <div>
             <Head>
