@@ -3,8 +3,9 @@ import { NewArticleInput } from "@/types/newArticleInput";
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { toArticle } from "@/utils/typeConversions/toArticle";
+import { Article } from "@/types/article";
 
-export async function createArticle(newArticle: NewArticleInput) {
+export async function createArticle(newArticle: NewArticleInput): Promise<Article> {
     const supabase = createClient();
 
     const { data, error } = await supabase

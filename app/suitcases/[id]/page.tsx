@@ -9,7 +9,7 @@ import { getSuitcase } from "@/app/server-actions/suitcase/getSuitcase";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import PageHeader from "@/app/components/PageHeader";
 
-export default async function Suitcase({ params }: { id: string }) {
+export default async function Suitcase({ params }: { params: { id: string }}) {
     const { suitcase, error: suitcaseError } = await getSuitcase(params.id);
     const { articles, error: articlesError } = await getSuitcaseArticles(params.id)
 

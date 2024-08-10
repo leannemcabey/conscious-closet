@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { ArticleCategoryEnum, ArticleCategoryTitle, categoryTitleToPathSlug } from "@/types/enums/articleCategoryEnum";
+import { ArticleCategoryEnum, ArticleCategoryTitle } from "@/types/enums/articleCategoryEnum";
+import { categoryTitleToPathSlug } from "@/utils/categoryTitleToPathSlug";
 
 interface ArticleCategoryCardProps {
     title: ArticleCategoryTitle

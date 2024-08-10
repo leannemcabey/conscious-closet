@@ -2,11 +2,8 @@
 import { BurgerMenuButton } from "@/app/components/navigation/BurgerMenuButton";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { LogoutButton } from "@/app/components/auth/LogoutButton";
-import { createClient } from "@/utils/supabase/client";
 import MenuItem from "@/app/components/navigation/MenuItem";
-import { getSuitcases } from "@/app/server-actions/suitcase/getSuitcases";
-import { articleCategoryMenuSubItems } from "@/types/enums/articleCategoryEnum";
-import {MenuSubItem} from "@/app/components/navigation/MenuSubItemLink";
+import { articleCategoryMenuSubItems } from "@/utils/articleCategoryMenuSubItems";
 
 interface SlideOutMenuProps {
     menuVisible: boolean
