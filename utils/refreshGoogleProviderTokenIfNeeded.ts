@@ -1,7 +1,6 @@
 'use client'
 import { refreshGoogleProviderTokenWithRetry } from "@/app/googleService/server/refreshGoogleProviderToken";
 import { createClient } from "@/utils/supabase/client";
-import {AuthError} from "@supabase/auth-js";
 
 export const refreshGoogleProviderTokenIfNeededWithRetry = async () => {
     let attemptCounter = 0;

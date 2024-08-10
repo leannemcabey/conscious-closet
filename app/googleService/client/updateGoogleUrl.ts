@@ -1,9 +1,9 @@
 'use client'
 import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
-import axios, {AxiosResponse} from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Article } from "@/types/article";
 import { mediaItemToGooglePhotoMetadata } from "@/utils/typeConversions/mediaItemToGooglePhotoMetadata";
-import {GooglePhotoMetadata} from "@/types/googlePhotoMetadata";
+import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 
 export async function updateGoogleUrlWithRetry(article: Article) {
     let attemptCounter = 0;
