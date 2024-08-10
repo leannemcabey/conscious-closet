@@ -10,15 +10,6 @@ export default async function Index() {
 
     return (
         <div>
-            <Head>
-                <title>Conscious Closet</title>
-                <link rel="manifest" href="/manifest.json"/>
-                <link rel="preconnect" href="https://fonts.googleapis.com"/>
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
-                <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;1,300&display=swap"
-                      rel="stylesheet"/>
-            </Head>
-
             <div className="flex justify-center min-h-screen max-h-screen relative">
                 <Image priority src="/pexels-liza-summer-closet.jpg" fill style={{opacity: 0.2}}
                        alt="Photo of clothing on hangers by Liza Summer from Pexels"/>
