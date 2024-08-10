@@ -6,7 +6,7 @@ import IconButton from "@/app/components/buttons/IconButton";
 
 interface WeatherPickerProps {
     weatherCategory: WeatherCategoryEnum | undefined;
-    setWeatherCategory: Dispatch<SetStateAction<WeatherCategoryEnum>>
+    setWeatherCategory: Dispatch<SetStateAction<WeatherCategoryEnum | undefined>>
 }
 
 export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPickerProps) => {
