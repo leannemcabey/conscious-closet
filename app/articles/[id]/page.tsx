@@ -1,11 +1,6 @@
 'use server'
 import Layout from "@/app/components/Layout";
-import ArticleImage from "@/app/components/articles/ArticleImage";
-import DeleteArticle from "@/app/components/articles/DeleteArticle";
-import AddOrRemoveFromCleanoutBag from "@/app/components/cleanoutBag/AddOrRemoveFromCleanoutBag";
-import AddArticleToSuitcase from "@/app/components/suitcases/AddArticleToSuitcase";
 import BackButton from "@/app/components/buttons/BackButton";
-import AddOrRemoveFromTailoring from "@/app/components/needsTailoring/AddOrRemoveFromTailoring";
 import { getArticle } from "@/app/server-actions/article/getArticle";
 import ArticlePageContainer from "@/app/components/articles/ArticlePageContainer";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
@@ -17,9 +12,11 @@ export default async function ArticlePage({ params }: { params: { id: string }})
 
     return (
         <Layout>
-            <BackButton />
-            {error && <ErrorPageContainer errorMessage={errorMessage} />}
-            {article && <ArticlePageContainer article={article} />}
+            <>
+                <BackButton />
+                {error && <ErrorPageContainer errorMessage={errorMessage} />}
+                {article && <ArticlePageContainer article={article} />}
+            </>
         </Layout>
     )
 };

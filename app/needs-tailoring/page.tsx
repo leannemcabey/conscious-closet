@@ -14,23 +14,25 @@ export default async function NeedsTailoring() {
 
     return (
         <Layout>
-            <BackButton />
+            <>
+                <BackButton />
 
-            {error && <ErrorPageContainer errorMessage={errorMessage} />}
+                {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
-            {articles && (
-                <div className="mt-4 h-[93%]">
-                    <div className="flex flex-col items-center">
-                        <PageHeader title="needs tailoring" iconPath="/sewing-machine.svg" iconAlt="needle icon" />
+                {articles && (
+                    <div className="mt-4 h-[93%]">
+                        <div className="flex flex-col items-center">
+                            <PageHeader title="needs tailoring" iconPath="/sewing-machine.svg" iconAlt="needle icon" />
 
-                        <p className="mb-1 text-center max-w-[300px] text-neutral-400 text-sm md:text-lg md:max-w-[400px]">
-                            Tailoring is a great way to give new life to an item and avoid creating waste.
-                        </p>
+                            <p className="mb-1 text-center max-w-[300px] text-neutral-400 text-sm md:text-lg md:max-w-[400px]">
+                                Tailoring is a great way to give new life to an item and avoid creating waste.
+                            </p>
+                        </div>
+
+                        <NeedsTailoringContainer articles={articles}/>
                     </div>
-
-                    <NeedsTailoringContainer articles={articles}/>
-                </div>
-            )}
+                )}
+            </>
         </Layout>
     )
 };

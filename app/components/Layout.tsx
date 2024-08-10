@@ -1,7 +1,12 @@
 import * as React from "react";
 import TopNavigation from "./navigation/TopNavigation";
+import {ReactElement} from "react";
 
-export default function Layout({ children }) {
+interface LayoutProps {
+    children: ReactElement;
+}
+
+export default function Layout({ children }: LayoutProps) {
     return (
         <div data-testid="layout" className="relative">
             <TopNavigation />

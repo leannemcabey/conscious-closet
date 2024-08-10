@@ -17,28 +17,30 @@ export default async function Suitcase({ params }: { params: { id: string }}) {
 
     return (
         <Layout>
-            {suitcaseError || articlesError && (
-                <>
-                    <BackButton />
-                    <ErrorPageContainer errorMessage={errorMessage} />
-                </>
-            )}
-
-            {suitcase && articles && (
-                <>
-                    <div className="flex place-content-between">
+            <>
+                {suitcaseError || articlesError && (
+                    <>
                         <BackButton />
-                        <div className="h-max flex space-x-2 md:mt-4">
-                            <EditSuitcaseButton suitcase={suitcase}/>
-                            <DeleteSuitcaseButton suitcaseId={params.id}/>
+                        <ErrorPageContainer errorMessage={errorMessage} />
+                    </>
+                )}
+
+                {suitcase && articles && (
+                    <>
+                        <div className="flex place-content-between">
+                            <BackButton />
+                            <div className="h-max flex space-x-2 md:mt-4">
+                                <EditSuitcaseButton suitcase={suitcase}/>
+                                <DeleteSuitcaseButton suitcaseId={params.id}/>
+                            </div>
                         </div>
-                    </div>
-                    <div className="mt-4">
-                        <PageHeader title={suitcase.name} iconPath="/suitcase.svg" iconAlt="suitcase icon" />
-                    </div>
-                    <SuitcaseContainer articles={articles}/>
-                </>
-            )}
+                        <div className="mt-4">
+                            <PageHeader title={suitcase.name} iconPath="/suitcase.svg" iconAlt="suitcase icon" />
+                        </div>
+                        <SuitcaseContainer articles={articles}/>
+                    </>
+                )}
+            </>
         </Layout>
     )
 };
