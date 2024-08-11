@@ -6,6 +6,7 @@ import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesByCategory";
 import CapsuleCreatorContainer, {CategoryArticlesMap} from "@/app/components/capsuleCreator/CapsuleCreatorContainer";
 import * as React from "react";
+import { articleCategories } from "@/constants/articleCategories";
 
 export default async function CapsuleCreator() {
     const errorState = (
@@ -19,7 +20,7 @@ export default async function CapsuleCreator() {
 
     let articlesMap: CategoryArticlesMap = {};
 
-    for (const category of Object.keys(ArticleCategoryEnum)) {
+    for (const category of articleCategories) {
         const { articles, error } = await getArticlesByCategory(ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
 
         if (error) {

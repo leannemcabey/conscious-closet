@@ -7,6 +7,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import TextButton from "@/app/components/buttons/TextButton";
 import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
+import { articleCategories } from "@/constants/articleCategories";
 
 interface CategoryFilterModalProps {
     selectedArticleCategories: ArticleCategoryEnum[];
@@ -37,7 +38,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
         setSelectingCategories(false)
     }
 
-    const allAreSelected = unsavedSelections.length === Object.keys(ArticleCategoryEnum).length
+    const allAreSelected = unsavedSelections.length === articleCategories.length
 
     const selectOrDeselectAll = () => {
         if (allAreSelected) {
@@ -45,7 +46,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
         }
 
         if (!allAreSelected) {
-            const all: ArticleCategoryEnum[] = Object.keys(ArticleCategoryEnum).map((category) => ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
+            const all: ArticleCategoryEnum[] = articleCategories.map((category) => ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
             setUnsavedSelections(all)
         }
     }
@@ -75,7 +76,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
                 <div className="mt-4 md:w-[300px]">
                     <div className="h-full">
                         <div className="flex flex-col space-y-2 md:space-y-2.5">
-                            {Object.keys(ArticleCategoryEnum)
+                            {articleCategories
                                 .map((category) => menuElement(ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum]))
                             }
                         </div>
