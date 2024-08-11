@@ -42,7 +42,7 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategoryProps) => {
                                     <IconButton
                                         key={category}
                                         handleClick={() => handleClick(WeatherCategoryEnum[category as keyof typeof WeatherCategoryEnum])}
-                                        isActive={false} iconPath={`/weather-icon-${category}.svg`}
+                                        isActive={false} iconPath={`/weather-icon-${category.toLowerCase()}.svg`}
                                         iconAlt={`${category}  weather icon}`}
                                         sizeOverride="w-[60px] md:w-[80px]"
                                     />

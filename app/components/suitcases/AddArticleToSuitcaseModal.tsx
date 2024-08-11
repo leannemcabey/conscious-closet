@@ -49,7 +49,7 @@ const AddArticleToSuitcaseModal = ({
                     />
 
                     <div className="self-end mt-4">
-                        <TextButtonFilled handleClick={() => handleSubmit()} disabled={false}>
+                        <TextButtonFilled handleClick={() => handleSubmit()} disabled={!suitcases.length}>
                             save
                         </TextButtonFilled>
                     </div>
