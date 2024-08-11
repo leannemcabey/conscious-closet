@@ -2,7 +2,6 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import Head from "next/head";
-import Script from "next/script";
 import * as React from "react";
 
 const APP_NAME = "Conscious Closet";
