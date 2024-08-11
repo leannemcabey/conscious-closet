@@ -20,7 +20,7 @@ const serwist = new Serwist({
     navigationPreload: true,
     runtimeCaching: [
         {
-            matcher: ({ url }) => url.pathname.startsWith("/"),
+            matcher: ({ url }) => !url.pathname.startsWith("/offline"),
             handler: new NetworkOnly(),
         },
     ],
