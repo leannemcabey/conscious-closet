@@ -14,9 +14,11 @@ const LandingPageContainer = () => {
     const [isNotPWA, setIsNotPWA] = useState<boolean>()
 
     useEffect(() => {
+        // Have to do this because Typescript doesn't know about the `standalone` property being set by the PWA
+        const windowNavigator = window.navigator as any;
         const isInPWA = () => (
                 window.matchMedia('(display-mode: standalone)').matches)
-            || (window.navigator.standalone)
+            || (windowNavigator.standalone)
             || document.referrer.includes('android-app://');
 
         const result = isInPWA()
