@@ -15,9 +15,6 @@ interface AboutSectionProps {
 const AboutSection = ({ sectionName, iconPath, iconAlt, children }: AboutSectionProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    const arrow = isOpen ? "arrow-down-white" : "arrow-up-white";
-    const alt = isOpen ? "collapse" : "expand";
-
     return (
         <>
             <div

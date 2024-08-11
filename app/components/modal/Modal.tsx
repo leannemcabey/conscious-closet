@@ -43,7 +43,7 @@ const Modal = ({ setIsOpen, children }: ModalProps) => {
                         </div>
                     </div>
                 </div>,
-                document.body.firstElementChild || document.body
+                document.body
             )}
         </>
     )
