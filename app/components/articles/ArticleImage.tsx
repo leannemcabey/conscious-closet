@@ -45,7 +45,7 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
         <div className="space-y-4">
             <Polaroid
                 imageUrl={refreshedArticle.image.baseUrl}
-                sizeStyling="w-[330px] md:w-[400px]"
+                sizeStyling="w-[330px] max-h-[511px] md:w-[400px] md:max-h-[606px]"
             >
                 <LastWorn article={refreshedArticle}/>
             </Polaroid>

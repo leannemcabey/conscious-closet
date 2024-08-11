@@ -17,7 +17,7 @@ const AllElementsView = ({ capsuleElements, updateExpandedElement }: AllElements
                         key={element.slot}
                         element={element}
                         updateExpandedElement={updateExpandedElement}
-                        sizeStyling= "w-[125px] md:w-[200px]"
+                        sizeStyling= "w-[125px] max-h-[187px] md:w-[200px] md:max-h-[299px]"
                         iconPositioning="bottom-[18%] left-[72%] md:bottom-[55px]"
                     />
                 )
