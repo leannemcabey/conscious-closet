@@ -53,7 +53,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
       <html lang="en" dir="ltr">
         <Head>
-          <title>Conscious Closet2</title>
+          <title>Conscious Closet</title>
           <link rel="preconnect" href="https://fonts.googleapis.com"/>
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
           <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;1,300&display=swap"
