@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import Head from "next/head";
+import Script from "next/script";
 import * as React from "react";
 
 const APP_NAME = "Conscious Closet";
@@ -52,7 +53,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
       <html lang="en" dir="ltr">
         <Head>
-          <title>Conscious Closet</title>
+          <title>Conscious Closet2</title>
           <link rel="preconnect" href="https://fonts.googleapis.com"/>
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
           <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;1,300&display=swap"
