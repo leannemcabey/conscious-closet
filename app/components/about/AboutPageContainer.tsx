@@ -88,7 +88,7 @@ const AboutPageContainer = () => {
                     I've always loved the art of fashion. It's such a unique form of creativity and self-expression.
                     An outfit can truly make or break my day. Over the last few years, though, I've learned that
                     the fashion industry is not nearly as glamorous as it seems. Everything from our purchasing habits
-                    to our laundry habits have the potential to make a hugely negative impact on our earth.
+                    to how we launder our clothes have the potential to make a hugely negative impact on our earth.
                 </p>
                 <p className="mb-4">
                     So I built Conscious Closet because I wanted a tool that would help me and others on the journey to
