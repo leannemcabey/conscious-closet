@@ -11,8 +11,8 @@ interface PolaroidProps {
 
 const Polaroid = ({ imageUrl, sizeStyling, children }: PolaroidProps) => {
     return (
-        <div className={`flex flex-col items-center bg-white drop-shadow-lg ${sizeStyling}`}>
-            <div className={`mt-[5%] mx-[5%] ${children ? "mb-[5%]" : "mb-[25%]"} bg-white md:w-[90%]`}>
+        <div className={`flex flex-col items-center bg-white drop-shadow-lg ${sizeStyling} overflow-hidden`}>
+            <div className={`mt-[5%] mx-[5%] ${children ? "mb-[5%]" : "mb-[25%]"} bg-white md:w-[90%] overflow-hidden`}>
                 <Image
                     loader={googlePhotosPathLoader}
                     src={imageUrl}
