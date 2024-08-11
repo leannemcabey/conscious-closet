@@ -6,6 +6,7 @@ import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import IconButton from "@/app/components/buttons/IconButton";
 import { CapsuleElementType } from "@/types/CapsuleElementsMapType";
+import { articleCategories } from "@/constants/articleCategories";
 
 interface CategorySelectorProps {
     initialElement: CapsuleElementType;
@@ -46,7 +47,7 @@ const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategor
                         <h3 className="text-xl text-center md:text-3xl md:mt-6">Select a category for this capsule element:</h3>
 
                         <div className="flex flex-col justify-center text-center mt-2 md:mt-6">
-                            {Object.keys(ArticleCategoryEnum).map((category) => {
+                            {articleCategories.map((category) => {
                                 const selected = ArticleCategoryEnum[category  as keyof typeof ArticleCategoryEnum] === selectedCategory
                                 return (
                                     <p

@@ -8,6 +8,7 @@ import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilte
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
+import { articleCategories } from "@/constants/articleCategories";
 
 interface RediscoveryContainerProps {
     articles: Article[]
@@ -17,7 +18,7 @@ const RediscoveryContainer = ({ articles }: RediscoveryContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: false,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM],
-        selectedArticleCategories: Object.keys(ArticleCategoryEnum).map((category) => ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
+        selectedArticleCategories: articleCategories.map((category) => ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
     };
 
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);

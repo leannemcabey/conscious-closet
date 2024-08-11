@@ -3,18 +3,12 @@ import ArticlesContainer from "@/app/components/articles/ArticlesContainer";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { Article } from "@/types/article";
-import { deleteAllFromCleanoutBag } from "@/app/server-actions/cleanout-bag/deleteAllFromCleanoutBag";
-import DeleteAllFromCleanoutConfirmationModal
-    from "@/app/components/cleanoutBag/DeleteAllFromCleanoutConfirmationModal";
 import ArticleFilters, {FilterType} from "@/app/components/filter/ArticleFilters";
 import { ArticleFilterContext, FilterSettings } from "@/app/context/ArticleFilterContext";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
-import Link from "next/link";
-import ErrorModal from "@/app/components/modal/ErrorModal";
-import TextButton from "@/app/components/buttons/TextButton";
-import IconButton from "@/app/components/buttons/IconButton";
+import { articleCategories } from "@/constants/articleCategories";
 
 interface CleanoutBagContainerProps {
     articles: Article[]
@@ -24,7 +18,7 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: true,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM],
-        selectedArticleCategories: Object.keys(ArticleCategoryEnum).map((category) => ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
+        selectedArticleCategories: articleCategories.map((category) => ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
     };
 
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);

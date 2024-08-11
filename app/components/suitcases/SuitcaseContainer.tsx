@@ -7,7 +7,8 @@ import ArticleFilters, {FilterType} from "@/app/components/filter/ArticleFilters
 import {ArticleFilterContext, FilterSettings} from "@/app/context/ArticleFilterContext";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
-import {applyArticleFilters} from "@/utils/applyArticleFilters";
+import { applyArticleFilters } from "@/utils/applyArticleFilters";
+import { articleCategories } from "@/constants/articleCategories";
 
 interface SuitcaseContainerProps {
     articles: Article[]
@@ -17,7 +18,7 @@ const SuitcaseContainer = ({ articles }: SuitcaseContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: true,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM],
-        selectedArticleCategories: Object.keys(ArticleCategoryEnum).map((category) => ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
+        selectedArticleCategories: articleCategories.map((category) => ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])
     };
 
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
