@@ -1,12 +1,11 @@
 import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
 import { NetworkOnly, Serwist } from "serwist";
 
-// This declares the value of `injectionPoint` to TypeScript.
-// `injectionPoint` is the string that will be replaced by the
-// actual precache manifest. By default, this string is set to
-// `"self.__SW_MANIFEST"`.
 declare global {
     interface WorkerGlobalScope extends SerwistGlobalConfig {
+        // Change this attribute's name to your `injectionPoint`.
+        // `injectionPoint` is an InjectManifest option.
+        // See https://serwist.pages.dev/docs/build/configuring
         __SW_MANIFEST: (PrecacheEntry | string)[] | undefined;
     }
 }
@@ -20,20 +19,31 @@ const serwist = new Serwist({
     navigationPreload: true,
     runtimeCaching: [
         {
-            matcher: ({ url }) => !url.pathname.startsWith("/offline"),
+            matcher: ({ url }) => url.pathname.startsWith("/"),
             handler: new NetworkOnly(),
         },
     ],
     fallbacks: {
         entries: [
             {
-                url: '/offline', // the page that'll display if user goes offline
+                url: "/offline",
                 matcher({ request }) {
-                    return request.destination === 'document';
+                    return request.destination === "document";
                 },
             },
         ],
     },
 });
+
+// In order for these to cache successfully, they need the revision property, and it can't come from that const i made seemingly
+const revision = crypto.randomUUID();
+
+serwist.addToPrecacheList([
+    { url: "/offline" , revision: revision },
+    { url: "/pexels-liza-summer-closet.jpg" },
+    { url: "/cry.svg" },
+    { url: "/global.css", revision: revision },
+    { url: "/tailwind.config.js", revision: revision }
+])
 
 serwist.addEventListeners();
