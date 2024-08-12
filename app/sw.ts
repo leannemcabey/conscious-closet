@@ -7,6 +7,9 @@ import { NetworkOnly, Serwist } from "serwist";
 // `"self.__SW_MANIFEST"`.
 declare global {
     interface WorkerGlobalScope extends SerwistGlobalConfig {
+        // Change this attribute's name to your `injectionPoint`.
+        // `injectionPoint` is an InjectManifest option.
+        // See https://serwist.pages.dev/docs/build/configuring
         __SW_MANIFEST: (PrecacheEntry | string)[] | undefined;
     }
 }
@@ -27,13 +30,23 @@ const serwist = new Serwist({
     fallbacks: {
         entries: [
             {
-                url: '/offline', // the page that'll display if user goes offline
+                url: "/offline", // the page that'll display if user goes offline
                 matcher({ request }) {
-                    return request.destination === 'document';
+                    return request.destination === "document";
                 },
             },
         ],
     },
 });
+
+const revision = crypto.randomUUID();
+
+serwist.addToPrecacheList([
+    { url: "/offline" , revision: revision },
+    { url: "/pexels-liza-summer-closet.jpg" },
+    { url: "/cry.svg" },
+    { url: "/global.css", revision: revision },
+    { url: "/tailwind.config.js", revision: revision }
+])
 
 serwist.addEventListeners();

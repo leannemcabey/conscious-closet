@@ -4,6 +4,8 @@ import * as React from "react";
 import AboutPageContainer from "@/app/components/about/AboutPageContainer";
 import Image from "next/image";
 
+export const dynamic = 'force-dynamic';
+
 export default async function About() {
     return (
         <Layout>
