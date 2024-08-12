@@ -13,6 +13,13 @@ interface CategoryFilterProps {
 const CategoryFilter = ({ selectedArticleCategories, setSelectedArticleCategories }: CategoryFilterProps) => {
     const [selectingCategories, setSelectingCategories] = useState<boolean>(false);
 
+    const filterModal =
+        <CategoryFilterModal
+            selectedArticleCategories={selectedArticleCategories}
+            setSelectedArticleCategories={setSelectedArticleCategories}
+            setSelectingCategories={setSelectingCategories}
+        />
+
     return (
         <>
             <IconButton
@@ -22,13 +29,7 @@ const CategoryFilter = ({ selectedArticleCategories, setSelectedArticleCategorie
                 iconAlt="hanger icon"
             />
 
-            {selectingCategories &&
-                <CategoryFilterModal
-                    selectedArticleCategories={selectedArticleCategories}
-                    setSelectedArticleCategories={setSelectedArticleCategories}
-                    setSelectingCategories={setSelectingCategories}
-                />
-            }
+            {selectingCategories && filterModal}
         </>
     )
 }
