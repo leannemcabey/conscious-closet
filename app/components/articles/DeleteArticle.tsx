@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import ArticleActionButton from "@/app/components/articles/ArticleActionButton";
 import ErrorModal from "@/app/components/modal/ErrorModal";
+import IconButton from "@/app/components/buttons/IconButton";
 
 interface DeleteArticleProps {
     article: Article;
@@ -27,11 +28,7 @@ const DeleteArticle = ({ article }: DeleteArticleProps) => {
 
     return (
         <>
-            <ArticleActionButton
-                iconFile="/trash-icon.svg"
-                iconAlt="trash icon"
-                clickHandler={() => setIsDeleting(true)}
-            />
+            <IconButton handleClick={() => setIsDeleting(true)} isActive={true} iconPath="/trash-icon.svg" iconAlt="trash icon" />
 
             {isDeleting && <DeleteArticleModal setIsOpen={setIsDeleting} handleSubmit={handleDelete}/>}
 
