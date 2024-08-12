@@ -5,7 +5,7 @@ import * as React from "react";
 import BackButton from "@/app/components/buttons/BackButton";
 import PageHeader from "@/app/components/PageHeader";
 
-export default async function CleanoutBag() {
+export default async function CleanoutRecommendations() {
     return (
         <Layout>
             <>
