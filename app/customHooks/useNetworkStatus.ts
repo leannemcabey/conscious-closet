@@ -4,7 +4,9 @@ const useNetworkStatus = () => {
     const [isOnline, setOnline] = useState<boolean>(true);
 
     const updateNetworkStatus = () => {
-        setOnline(navigator.onLine);
+        if (window && window.navigator) {
+            setOnline(navigator.onLine);
+        }
     };
 
     useEffect(() => {
