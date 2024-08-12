@@ -1,18 +1,21 @@
-'use server'
 import Layout from "@/app/components/Layout";
 import SuitcaseList from "@/app/components/suitcases/SuitcaseList";
 import BackButton from "@/app/components/buttons/BackButton";
 import PageHeader from "@/app/components/PageHeader";
-import dynamic from 'next/dynamic'
 
-const DynamicSuitcasePageContainer = dynamic(() => import('../components/suitcases/SuitcasesPageContainer'), {
-    ssr: false,
-})
+export const dynamic = 'force-dynamic';
 
 export default async function Suitcases() {
+
     return (
         <Layout>
-            <DynamicSuitcasePageContainer />
+            <>
+                <BackButton />
+                <div className="h-screen mt-8 mx-2 flex flex-col">
+                    <PageHeader title="suitcases" iconPath="/suitcase.svg" iconAlt="suitcase icon" />
+                    <SuitcaseList />
+                </div>
+            </>
         </Layout>
     )
 };

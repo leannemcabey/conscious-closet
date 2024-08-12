@@ -1,8 +1,9 @@
-'use server'
 import Layout from "@/app/components/Layout";
 import WeatherCategories from "@/app/components/home/WeatherCategories";
 import ArticleCategoryCard from "@/app/components/home/ArticleCategoryCard";
 import { ArticleCategoryTitle } from "@/types/enums/articleCategoryEnum";
+
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
     return (
