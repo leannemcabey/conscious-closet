@@ -57,10 +57,10 @@ module.exports = {
         }
       },
       animation: {
-        'enter-from-bottom': 'enter-from-bottom .3s forwards',
-        'enter-from-right': 'enter-from-right .5s forwards',
-        'exit-to-right': 'exit-to-right .5s forwards',
-        'grow': 'grow .5s forwards'
+        'enter-from-bottom': 'enter-from-bottom .1s forwards',
+        'enter-from-right': 'enter-from-right .3s forwards',
+        'exit-to-right': 'exit-to-right .3s forwards',
+        'grow': 'grow .3s forwards'
       },
     }
   },
