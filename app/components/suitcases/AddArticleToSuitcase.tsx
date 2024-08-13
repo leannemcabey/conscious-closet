@@ -7,8 +7,8 @@ import { addOrRemoveArticleToSuitcases } from "@/app/server-actions/suitcase/add
 import { getArticleSuitcaseIds } from "@/app/server-actions/suitcase/getArticleSuitcaseIds";
 import AddArticleToSuitcaseModal from "@/app/components/suitcases/AddArticleToSuitcaseModal";
 import NewSuitcaseModal from "@/app/components/suitcases/NewSuitcaseModal";
-import ArticleActionButton from "@/app/components/articles/ArticleActionButton";
 import ErrorModal from "@/app/components/modal/ErrorModal";
+import IconButton from "@/app/components/buttons/IconButton";
 
 interface AddArticleToSuitcaseProps {
     article: Article;
@@ -61,11 +61,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
 
     return (
         <>
-            <ArticleActionButton
-                iconFile="/suitcase.svg"
-                iconAlt="suitcase icon"
-                clickHandler={() => setSelectingSuitcase(!selectingSuitcase)}
-            />
+            <IconButton handleClick={() => setSelectingSuitcase(!selectingSuitcase)} isActive={true} iconPath="/suitcase.svg" iconAlt="suitcase icon" />
 
             {selectingSuitcase && fetchError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={fetchErrorMessage} />}
             {selectingSuitcase && updateError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={updateErrorMessage} />}
