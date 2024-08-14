@@ -12,9 +12,14 @@ export async function updateSession(req: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser();
 
-  // If the user is not logged in, and they're trying to reach anything other than the auth callback
-  // or the login page, redirect them to the login page.
-  if (!user && !req.nextUrl.pathname.startsWith('/auth/callback') && req.nextUrl.pathname !== '/') {
+  // If the user is not logged in, and they're trying to reach anything other than the listed
+  // pages, redirect them to the login page.
+  if (!user &&
+      !req.nextUrl.pathname.startsWith('/auth/callback') &&
+      req.nextUrl.pathname !== '/' &&
+      req.nextUrl.pathname !== '/privacy-policy.html' &&
+      req.nextUrl.pathname !== '/about'
+  ) {
     const url = req.nextUrl.clone()
     url.pathname = '/'
     return NextResponse.redirect(url)
