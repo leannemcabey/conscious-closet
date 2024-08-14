@@ -10,19 +10,21 @@ interface InfoCardProps {
 
 const InfoCard = ({ iconPath, iconAlt, children }: InfoCardProps) => {
     return (
-        <div className="flex text-left space-x-2">
-            <div className="w-[30px] h-[30px] rounded-lg bg-theme-green p-1">
-                <Image
-                    src={iconPath}
-                    height="30"
-                    width="30"
-                    alt={iconAlt}
-                    className="w-full"
-                />
+        <div className="flex text-sm text-left text-neutral-700 space-x-2 md:space-x-4 md:text-xl">
+            <div className="h-max">
+                <div className="w-[25px] h-[25px] md:w-[40px] md:h-[40px]">
+                    <Image
+                        src={iconPath}
+                        height="25"
+                        width="25"
+                        alt={iconAlt}
+                        className="w-full h-full"
+                    />
+                </div>
             </div>
-            <p className="w-[120px] font-bold tracking-wide">
+            <div>
                 {children}
-            </p>
+            </div>
         </div>
     )
 }
