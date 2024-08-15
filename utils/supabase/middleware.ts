@@ -17,8 +17,7 @@ export async function updateSession(req: NextRequest) {
   if (!user &&
       !req.nextUrl.pathname.startsWith('/auth/callback') &&
       req.nextUrl.pathname !== '/' &&
-      req.nextUrl.pathname !== '/privacy-policy.html' &&
-      req.nextUrl.pathname !== '/about'
+      req.nextUrl.pathname !== '/privacy-policy.html'
   ) {
     const url = req.nextUrl.clone()
     url.pathname = '/'
