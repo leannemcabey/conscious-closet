@@ -106,7 +106,7 @@ const LandingPageContainer = () => {
             </div>
         )
     } else {
-        return <OfflineContainer/>
+        return <OfflineContainer />
     }
 }
 
