@@ -66,30 +66,36 @@ const LandingPageContainer = () => {
                                 </div>
                                 <div className="pr-2 flex flex-col justify-center w-[60%] max-w-[350px] md:w-[70%] md:max-w-[500px] space-y-4 md:space-y-6">
                                     <InfoCard iconPath="/hanger.svg" iconAlt="hanger icon">
-                                        <p className="tracking-wide text-theme-green font-bold">
-                                            Inventory your closet
-                                        </p>
-                                        <p>
-                                            Organize your clothing by category and weather.
-                                        </p>
+                                        <>
+                                            <p className="tracking-wide text-theme-green font-bold">
+                                                Inventory your closet
+                                            </p>
+                                            <p>
+                                                Organize your clothing by category and weather.
+                                            </p>
+                                        </>
                                     </InfoCard>
 
                                     <InfoCard iconPath="/suitcase.svg" iconAlt="suitcase icon">
-                                        <p className="tracking-wide text-theme-green font-bold">
-                                            Seamlessly pack for trips
-                                        </p>
-                                        <p>
-                                            Create suitcases for your upcoming trips and design capsule wardrobes.
-                                        </p>
+                                        <>
+                                            <p className="tracking-wide text-theme-green font-bold">
+                                                Seamlessly pack for trips
+                                            </p>
+                                            <p>
+                                                Create suitcases for your upcoming trips and design capsule wardrobes.
+                                            </p>
+                                        </>
                                     </InfoCard>
 
                                     <InfoCard iconPath="/lightbulb.svg" iconAlt="lightbulb icon">
-                                        <p className="tracking-wide text-theme-green font-bold">
-                                            Gain insight into what you're not wearing
-                                        </p>
-                                        <p>
-                                            Mark when you've worn something and easily view what you haven't worn in the last 6 months.
-                                        </p>
+                                        <>
+                                            <p className="tracking-wide text-theme-green font-bold">
+                                                Gain insight into what you're not wearing
+                                            </p>
+                                            <p>
+                                                Mark when you've worn something and easily view what you haven't worn in the last 6 months.
+                                            </p>
+                                        </>
                                     </InfoCard>
                                 </div>
                             </div>
