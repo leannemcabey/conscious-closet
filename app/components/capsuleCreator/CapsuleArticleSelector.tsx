@@ -165,32 +165,25 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
                     {!noArticlesInCategory && currentElement && currentElement.article &&
                         <>
-                            <div className="w-[10%] md:w-[8%] md:pr-4">
-                                <Image
-                                    src={"/left-arrow.svg"}
-                                    alt={"left arrow"}
-                                    width="15"
-                                    height="15"
-                                    onClick={() => handleArrowClick("left")}
-                                    className="h-max rounded-full bg-theme-background-green w-full"
-                                />
-                            </div>
+                            <IconButton
+                                handleClick={() => handleArrowClick("left")}
+                                isActive={true}
+                                iconPath="/left-arrow-green.svg"
+                                iconAlt="left arrow"
+                            />
 
                             <Polaroid
                                 imageUrl={currentElement.article.image.baseUrl || ""}
                                 sizeStyling="w-[230px] max-h-[373px] md:w-[275px] md:max-h-[410px]"
                             />
 
-                            <div className="w-[10%] md:w-[8%] md:pl-4">
-                                <Image
-                                    src={"/left-arrow.svg"}
-                                    alt={"right arrow"}
-                                    width="15"
-                                    height="15"
-                                    onClick={() => handleArrowClick("right")}
-                                    className="rotate-180 h-max rounded-full bg-theme-background-green w-full"
-                                />
-                            </div>
+                            <IconButton
+                                handleClick={() => handleArrowClick("right")}
+                                isActive={true}
+                                iconPath="/left-arrow-green.svg"
+                                iconAlt="left arrow"
+                                iconRotation="rotate-180"
+                            />
                         </>
                     }
                 </div>

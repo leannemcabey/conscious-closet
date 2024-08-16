@@ -8,11 +8,12 @@ interface IconButtonProps {
     iconAlt: string;
     sizeOverride?: string;
     colorOverride?: { active: string, inactive: string };
+    iconRotation?: string;
     disabled?: boolean
 }
 
-const IconButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, colorOverride, disabled}: IconButtonProps) => {
-    const sizeStyling = sizeOverride ? sizeOverride : "w-[40px] md:w-[60px] lg:w-[40px]";
+const IconButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, colorOverride, iconRotation, disabled}: IconButtonProps) => {
+    const sizeStyling = sizeOverride ? sizeOverride : "w-[40px] h-[40px]";
     const colorStyling = colorOverride ? `${isActive ? colorOverride.active : colorOverride.inactive}` : `${isActive ? "bg-white" : "bg-background-green"}`
 
     return (
@@ -26,7 +27,7 @@ const IconButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, col
                 height={40}
                 width={40}
                 alt={iconAlt}
-                className="w-full"
+                className={`w-full ${iconRotation}`}
             />
         </button>
     )

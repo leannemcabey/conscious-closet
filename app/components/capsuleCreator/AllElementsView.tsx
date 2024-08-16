@@ -18,7 +18,7 @@ const AllElementsView = ({ capsuleElements, updateExpandedElement }: AllElements
                         element={element}
                         updateExpandedElement={updateExpandedElement}
                         sizeStyling= "w-[110px] max-h-[187px] md:w-[200px] md:max-h-[299px]"
-                        iconPositioning="bottom-[18%] left-[72%] md:bottom-[55px] lg:bottom-[0] lg:left-[80%] lg:mt-2"
+                        iconPositioning="bottom-[18%] left-[72%] md:bottom-[9%] md:left-[85%] lg:bottom-[0] lg:left-[80%] lg:mt-2"
                     />
                 )
             })}

@@ -12,7 +12,7 @@ const ArticleActionToggle = ({ iconFile, iconAlt, isActive, clickHandler }: Arti
     if (isActive) {
         return (
             <div
-                className={`justify-end bg-theme-light-green flex max-w-[70px] rounded-lg mx-1 drop-shadow md:max-w-[100px] lg:max-w-[75px]`}>
+                className={`justify-end bg-theme-light-green flex max-w-[70px] rounded-lg mx-1 drop-shadow`}>
                 <div className="w-[60%]">
                     <IconButton handleClick={() => clickHandler()} isActive={true} iconPath={iconFile}
                                 iconAlt={iconAlt}/>
@@ -23,7 +23,7 @@ const ArticleActionToggle = ({ iconFile, iconAlt, isActive, clickHandler }: Arti
 
     if (!isActive) {
         return (
-            <div className={`bg-white flex max-w-[70px] rounded-lg mx-1 drop-shadow md:max-w-[100px] lg:max-w-[75px]`}>
+            <div className={`bg-white flex max-w-[70px] rounded-lg mx-1 drop-shadow`}>
                 <div className="w-[60%]">
                     <IconButton handleClick={() => clickHandler()} isActive={true} iconPath={iconFile} iconAlt={iconAlt}/>
                 </div>

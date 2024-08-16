@@ -101,8 +101,8 @@ const LandingPageContainer = () => {
                             </div>
                         </div>
 
-                        {isNotPWA && <DownloadTheApp />}
-                        {isPWA && <GoogleSignIn defaultUrl={defaultUrl}/>}
+                        {/*{isNotPWA && <DownloadTheApp />}*/}
+                        {<GoogleSignIn defaultUrl={defaultUrl}/>}
                     </div>
 
                     <a href="/privacy-policy.html">
