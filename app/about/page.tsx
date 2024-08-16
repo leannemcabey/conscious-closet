@@ -13,7 +13,7 @@ export default async function About() {
                 <div className="h-full mt-2.5">
                     <BackButton/>
 
-                    <div className="h-[93%] md:h-[90%] flex flex-col">
+                    <div className="h-[93%] md:h-[90%] flex flex-col pb-2">
                         <div className="flex flex-col space-y-1 justify-center items-center mb-4">
                             <div className="w-[40px] h-[40px] md:w-[60px] md:h-[60px]">
                                 <Image

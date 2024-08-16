@@ -37,7 +37,7 @@ const LandingPageContainer = () => {
                        alt="Photo of clothing on hangers by Liza Summer from Pexels"/>
 
                 <div className="h-screen w-screen flex flex-col place-content-between items-center self-center py-4 absolute">
-                    <div className="h-full w-full mb-10 flex flex-col items-center self-center place-content-between">
+                    <div className="h-[93%] w-full mb-10 flex flex-col items-center self-center place-content-between">
                         <div className="flex flex-col items-center">
                             <div className="w-[350px] md:w-[450px]">
                                 <Image
@@ -55,7 +55,7 @@ const LandingPageContainer = () => {
 
                         <div className="flex flex-col items-center self-center">
                             <div className="flex justify-center mt-4 mx-2 space-x-4 md:space-x-4 md:mt-10">
-                                <div className="self-center pl-2 w-[45%] md:w-[30%] max-w-[250px]">
+                                <div className="self-center pl-2 w-[40%] md:w-[30%] max-w-[250px]">
                                     <Image
                                         src="/cc-home.svg"
                                         height="350"
@@ -93,7 +93,7 @@ const LandingPageContainer = () => {
                                                 Gain insight into what you're not wearing
                                             </p>
                                             <p>
-                                                Mark when you've worn something and easily view what you haven't worn in the last 6 months.
+                                                Mark when you've worn something and easily view what you haven't worn in a while.
                                             </p>
                                         </>
                                     </InfoCard>

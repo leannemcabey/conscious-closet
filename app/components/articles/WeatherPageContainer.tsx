@@ -36,7 +36,7 @@ const WeatherPageContainer = ({ articles }: WeatherPageContainerProps) => {
                 <ArticleFilters filterTypes={filterTypes}/>
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[90%] md:h-[85%] pb-4">
+                    <div className="h-[89%] md:h-[85%] pb-4">
                         <ArticlesContainer articles={filteredArticles}/>
                     </div>
                 )}
