@@ -9,7 +9,7 @@ const NewButton = ({ handleClick }: NewButtonProps) => {
     return (
         <button
             onClick={() => handleClick()}
-            className="flex flex-col justify-center h-10 w-10 bg-theme-green rounded-lg drop-shadow md:h-16 md:w-16"
+            className="flex flex-col justify-center h-10 w-10 bg-theme-green rounded-lg drop-shadow md:h-16 md:w-16 lg:h-10 lg:w-10"
         >
             <Image
                 src="/plus.svg"

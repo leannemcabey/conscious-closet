@@ -44,7 +44,7 @@ const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategor
                 <Modal setIsOpen={setIsOpen}>
                     <div className="md:w-[400px]">
                         <CloseModalButton setIsOpen={setIsOpen} />
-                        <h3 className="text-xl text-center md:text-3xl md:mt-6">Select a category for this capsule element:</h3>
+                        <h3 className="text-xl text-center md:text-3xl md:mt-6 lg:text-lg">Select a category for this capsule element:</h3>
 
                         <div className="flex flex-col justify-center text-center mt-2 md:mt-6">
                             {articleCategories.map((category) => {
@@ -52,7 +52,7 @@ const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategor
                                 return (
                                     <p
                                         key={category}
-                                        className={`truncate my-1 p-1 border border-theme-green rounded-lg ${selected ? "bg-theme-light-green text-text-green" : ""} md:text-2xl md:p-2`}
+                                        className={`truncate my-1 p-1 border border-theme-green rounded-lg ${selected ? "bg-theme-light-green text-text-green" : ""} md:text-2xl md:p-2 lg:text-base`}
                                         onClick={() => handleClick(category)}
                                     >
                                         {ArticleCategoryTitle[category as keyof typeof ArticleCategoryTitle]}

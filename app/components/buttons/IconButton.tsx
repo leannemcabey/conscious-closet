@@ -12,7 +12,7 @@ interface IconButtonProps {
 }
 
 const IconButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, colorOverride, disabled}: IconButtonProps) => {
-    const sizeStyling = sizeOverride ? sizeOverride : "w-[40px] md:w-[60px]";
+    const sizeStyling = sizeOverride ? sizeOverride : "w-[40px] md:w-[60px] lg:w-[40px]";
     const colorStyling = colorOverride ? `${isActive ? colorOverride.active : colorOverride.inactive}` : `${isActive ? "bg-white" : "bg-background-green"}`
 
     return (

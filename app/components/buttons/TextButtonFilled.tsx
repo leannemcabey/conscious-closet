@@ -10,7 +10,7 @@ const TextButtonFilled = ({ handleClick, disabled, children }: TextButtonFilledP
     return (
         <button onClick={() => handleClick()}
                 disabled={disabled}
-                className={`${disabled ? "bg-theme-gray text-neutral-300" : "bg-theme-green text-white"} rounded-lg drop-shadow w-max py-2 px-4 md:text-2xl`}
+                className={`${disabled ? "bg-theme-gray text-neutral-300" : "bg-theme-green text-white"} rounded-lg drop-shadow w-max py-2 px-4 md:text-2xl lg:text-base`}
         >
             {children}
         </button>

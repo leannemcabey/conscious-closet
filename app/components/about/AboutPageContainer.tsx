@@ -5,9 +5,9 @@ import Image from "next/image";
 
 const AboutPageContainer = () => {
     return (
-        <div className="flex flex-col place-content-between h-full overflow-scroll">
+        <div className="flex flex-col place-content-between h-full overflow-scroll pb-4">
             <div className="flex justify-center">
-                <p className="text-center text-base mb-6 max-w-[450px] md:text-xl md:max-w-[550px]">
+                <p className="text-center text-base mb-6 max-w-[450px] md:text-xl md:max-w-[550px] lg:text-base">
                     Conscious Closet is a female-founded and owned wardrobe sustainability tool with three
                     primary philosophies.
                 </p>
@@ -70,16 +70,16 @@ const AboutPageContainer = () => {
                 </AboutSection>
             </div>
 
-            <h3 className="mt-8 pt-8 mb-4 text-center border border-dotted border-theme-green border-t-2 border-b-0 border-r-0 border-l-0 tracking-widest text-base md:text-2xl text-text-green">
+            <h3 className="mt-8 pt-8 mb-4 text-center border border-dotted border-theme-green border-t-2 border-b-0 border-r-0 border-l-0 tracking-widest text-base md:text-2xl lg:text-base lg:mb-8 text-text-green">
                 meet the founder
             </h3>
-            <div className="md:text-xl mb-12">
+            <div className="md:text-xl lg:text-base mb-12 lg:w-[70%] lg:self-center">
                 <div className="w-[180px] md:w-[300px] float-left mr-4 md:mr-6">
                     <Image
                         src="/founder.jpg"
                         alt="woman standing in front of a pink door wearing a houndstooth coat and high heeled boots"
-                        width="180"
-                        height="250"
+                        width="600"
+                        height="800"
                         className="w-full"
                     />
                 </div>

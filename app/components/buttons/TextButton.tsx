@@ -15,7 +15,7 @@ const TextButton = ({ widthStyling, disabled, handleClick, colorOverride, remove
 
     return (
         <button
-            className={`${disabled && "invisible"} border bg-white ${colorStyling} rounded-lg p-1 ${widthStyling} ${!removeDropShadow && "drop-shadow"} md:text-lg`}
+            className={`${disabled && "invisible"} border bg-white ${colorStyling} rounded-lg p-1 ${widthStyling} ${!removeDropShadow && "drop-shadow"} md:text-lg lg:text-base`}
             onClick={() => handleClick()}
         >
             <div className="flex justify-center">

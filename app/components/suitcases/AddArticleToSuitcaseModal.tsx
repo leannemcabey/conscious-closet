@@ -38,7 +38,7 @@ const AddArticleToSuitcaseModal = ({
             <>
                 <CloseModalButton setIsOpen={setIsSelectingSuitcase} />
                 <div className="flex flex-col md:h-[500px] md:w-[350px]">
-                    <p className="text-xl mt-4 mb-4 md:text-2xl">Select suitcase(s):</p>
+                    <p className="text-xl mt-4 mb-4 md:text-2xl lg:text-lg">Select suitcase(s):</p>
 
                     <NewSuitcaseButton handleClick={() => openNewSuitcaseModal()}/>
 
