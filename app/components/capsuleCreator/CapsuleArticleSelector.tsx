@@ -160,7 +160,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                         </p>}
 
                     {!noArticlesInCategory && (!currentElement || !currentElement.article) &&
-                        <UndevelopedPolaroid sizeStyling="w-[250px] md:w-[275px]"/>
+                        <UndevelopedPolaroid sizeStyling="w-[230px] md:w-[275px]"/>
                     }
 
                     {!noArticlesInCategory && currentElement && currentElement.article &&
@@ -178,7 +178,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
                             <Polaroid
                                 imageUrl={currentElement.article.image.baseUrl || ""}
-                                sizeStyling="w-[250px] max-h-[373px] md:w-[275px] md:max-h-[410px]"
+                                sizeStyling="w-[230px] max-h-[373px] md:w-[275px] md:max-h-[410px]"
                             />
 
                             <div className="w-[10%] md:w-[8%] md:pl-4">
