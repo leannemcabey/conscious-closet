@@ -6,7 +6,7 @@ const BackButton = () => {
     const router = useRouter();
 
     return (
-        <div className="mb-2.5 w-[25px] h-[25px] md:mb-8 md:mt-4 md:w-[30px] md:h-[30px]">
+        <div className="mb-2.5 w-[25px] h-[25px] md:mt-4 lg:mt-2">
             <Image
                 src={"/left-arrow.svg"}
                 alt={"Back arrow"}

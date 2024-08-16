@@ -57,8 +57,8 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
                                 key={element.slot}
                                 element={element}
                                 updateExpandedElement={updateExpandedElement}
-                                sizeStyling="w-[63.5px] max-h-[95px] md:w-[100px] md:max-h-[149px] lg:w-[150px] lg:max-h-[224px]"
-                                iconPositioning="bottom-[30%] left-[45%] md:bottom-[55%] lg:bottom-[30%] lg:left-[73%] lg:mt-1"
+                                sizeStyling="w-[63.5px] max-h-[95px] md:w-[100px] md:max-h-[149px]"
+                                iconPositioning="bottom-[30%] left-[45%] md:left-[65%] lg:left-[60%] lg:mt-1"
                             />
                         )
                     }
