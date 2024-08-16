@@ -3,8 +3,8 @@ import * as React from "react";
 
 const DownloadTheApp = () => {
     return (
-        <div className="mt-4 w-full bg-white py-8 flex flex-col justify-center items-center text-center bg-white lg:py-4">
-            <div className="w-[40px] h-[40px] md:w-[70px] md:h-[70px] lg:w-[50px] lg:h-[50px]">
+        <div className="mt-4 w-full bg-white py-8 flex flex-col justify-center items-center text-center bg-white md:py-4 lg:py-4">
+            <div className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] lg:w-[50px] lg:h-[50px]">
                 <Image
                     src={`/conscious-closet-logo.svg`}
                     height="40"
@@ -13,10 +13,10 @@ const DownloadTheApp = () => {
                     className="w-full"
                 />
             </div>
-            <p className="text-lg text-theme-green tracking-widest mt-1 mb-2 md:mb-4 md:text-2xl lg:text-lg">Download the app</p>
-            <div className="text-base space-y-2 md:text-xl lg:text-base">
+            <p className="text-lg text-theme-green tracking-widest mt-1 mb-2 md:mb-4">Download the app</p>
+            <div className="text-base space-y-2">
                 <div className="flex space-x-1 items-center">
-                    <div className="w-[40px] h-[40px] md:w-[60px] md:h-[60px] lg:w-[40px] lg:h-[40px]">
+                    <div className="w-[40px] h-[40px]">
                         <Image
                             src={`/add-to-homescreen.svg`}
                             height="20"

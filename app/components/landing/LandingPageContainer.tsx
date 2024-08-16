@@ -55,7 +55,7 @@ const LandingPageContainer = () => {
 
                         <div className="flex flex-col items-center self-center">
                             <div className="flex justify-center mt-4 mx-2 space-x-4 md:space-x-4 md:mt-10">
-                                <div className="self-center pl-2 w-[40%] md:w-[30%] max-w-[250px] lg:max-w-[150px]">
+                                <div className="self-center pl-2 w-[40%] md:w-[30%] max-w-[150px]">
                                     <Image
                                         src="/cc-home.svg"
                                         height="350"
@@ -105,7 +105,7 @@ const LandingPageContainer = () => {
                         {isPWA && <GoogleSignIn defaultUrl={defaultUrl}/>}
                     </div>
 
-                    <a href="/privacy-policy.html" className="md:text-xl lg:text-base">
+                    <a href="/privacy-policy.html">
                         Privacy Policy
                     </a>
                 </div>
