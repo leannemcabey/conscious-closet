@@ -39,7 +39,7 @@ const NeedsTailoringContainer = ({ articles }: NeedsTailoringContainerProps) => 
                 <ArticleFilters filterTypes={filterTypes} />
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[90%] md:h-[85%] pb-4">
+                    <div className="h-[90%] md:h-[85%] lg:h-[80%] pb-4">
                         <ArticlesContainer articles={filteredArticles} />
                     </div>
                 )}

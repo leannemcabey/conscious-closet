@@ -44,7 +44,7 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategoryProps) => {
                                         handleClick={() => handleClick(WeatherCategoryEnum[category as keyof typeof WeatherCategoryEnum])}
                                         isActive={false} iconPath={`/weather-icon-${category.toLowerCase()}.svg`}
                                         iconAlt={`${category}  weather icon}`}
-                                        sizeOverride="w-[60px] md:w-[80px]"
+                                        sizeOverride="w-[60px] md:w-[80px] lg:w-[50px]"
                                     />
                                 )
                             }
@@ -57,7 +57,7 @@ const ArticleWeatherCategory = ({ article }: ArticleWeatherCategoryProps) => {
                     isActive={true}
                     iconPath={`/weather-icon-${weatherCategory}.svg`}
                     iconAlt={`${weatherCategory}  weather icon}`}
-                    sizeOverride="w-[60px] md:w-[80px]"
+                    sizeOverride="w-[60px] md:w-[80px] lg:w-[50px]"
                 />
             </div>
 

@@ -10,7 +10,7 @@ interface InfoCardProps {
 
 const InfoCard = ({ iconPath, iconAlt, children }: InfoCardProps) => {
     return (
-        <div className="flex text-sm text-left text-neutral-700 space-x-2 md:space-x-4 md:text-xl">
+        <div className="flex text-sm text-left text-neutral-700 space-x-2 md:space-x-4 md:text-xl lg:text-base">
             <div className="h-max">
                 <div className="w-[25px] h-[25px] md:w-[40px] md:h-[40px]">
                     <Image

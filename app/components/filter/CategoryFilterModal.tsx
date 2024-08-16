@@ -62,7 +62,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
                     className={isSelected(category) ? "" : "hidden"}
                 />
             </div>
-            <span className="text-base md:text-xl">{categorySlugToTitleMap[category]}</span>
+            <span className="text-base md:text-xl lg:text-base">{categorySlugToTitleMap[category]}</span>
         </div>
     )
 

@@ -136,7 +136,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
     return (
         <>
-            <div className="flex flex-col justify-center items-center m-1 md:mt-8">
+            <div className="flex flex-col justify-center items-center m-1 md:mt-8 lg:mt-0 lg:w-[45%]">
                 <div className="flex w-full place-content-between">
                     <CategorySelector
                         initialElement={initialElement}
