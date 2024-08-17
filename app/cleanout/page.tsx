@@ -2,14 +2,8 @@ import * as React from "react";
 import Layout from "@/app/components/Layout";
 import CleanoutBagContainer from "@/app/components/cleanoutBag/CleanoutBagContainer";
 import { getArticlesInCleanoutBag } from "@/app/server-actions/cleanout-bag/getArticlesInCleanoutBag";
-import Image from "next/image";
-import BackButton from "@/app/components/buttons/BackButton";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import PageHeader from "@/app/components/PageHeader";
-import EditSuitcaseButton from "@/app/components/suitcases/EditSuitcaseButton";
-import DeleteSuitcaseButton from "@/app/components/suitcases/DeleteSuitcaseButton";
-import IconButton from "@/app/components/buttons/IconButton";
-import Link from "next/link";
 import DeleteAllFromCleanoutButton from "@/app/components/cleanoutBag/DeleteAllFromCleanoutButton";
 import CleanoutRecsButton from "@/app/components/cleanoutBag/CleanoutRecsButton";
 
