@@ -55,11 +55,7 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
                 {articles.length > 0 && refreshedArticles?.map((article) => {
                     return (
                         <Link href={`/articles/${article.id}`} key={article.id}>
-                            <Polaroid
-                                imageUrl={article.image.baseUrl}
-                                // sizeStyling="w-[100px] max-h-[149px] md:w-[130px] md:max-h-[194px]"
-                                // sizeStyling="w-1/3 md:w-1/5 lg:w-1/8"
-                            />
+                            <Polaroid imageUrl={article.image.baseUrl} />
                         </Link>
                     )
                 })}

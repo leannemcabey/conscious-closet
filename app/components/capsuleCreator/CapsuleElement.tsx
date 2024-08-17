@@ -8,7 +8,7 @@ import { CapsuleElementType } from "@/types/CapsuleElementsMapType";
 interface CapsuleElementProps {
     element: CapsuleElementType;
     updateExpandedElement: (element: CapsuleElementType) => void;
-    sizeStyling: string;
+    sizeStyling?: string;
     iconPositioning: string;
 }
 

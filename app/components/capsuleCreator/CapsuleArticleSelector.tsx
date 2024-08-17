@@ -161,7 +161,6 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
                     {!noArticlesInCategory && (!currentElement || !currentElement.article) &&
                         <UndevelopedPolaroid
-                            // sizeStyling="w-[230px] md:w-[275px]"
                             sizeStyling="w-[70%] md:w-[45%] lg:w-[65%]"
                         />
                     }
@@ -177,7 +176,6 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
                             <Polaroid
                                 imageUrl={currentElement.article.image.baseUrl || ""}
-                                // sizeStyling="w-[230px] max-h-[373px] md:w-[275px] md:max-h-[410px]"
                                 sizeStyling="w-[70%] md:w-[45%] lg:w-[65%]"
                             />
 

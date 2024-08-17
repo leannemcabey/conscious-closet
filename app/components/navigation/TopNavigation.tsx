@@ -1,9 +1,9 @@
 import * as React from "react";
 import Image from 'next/image'
 import Link from "next/link";
-import {useState} from "react";
-import {BurgerMenuButton} from "@/app/components/navigation/BurgerMenuButton";
-import {SlideOutMenu} from "@/app/components/navigation/SlideOutMenu";
+import { useState } from "react";
+import { BurgerMenuButton } from "@/app/components/navigation/BurgerMenuButton";
+import { SlideOutMenu } from "@/app/components/navigation/SlideOutMenu";
 
 export default function TopNavigation() {
     const [menuVisible, setMenuVisible] = useState(false)
