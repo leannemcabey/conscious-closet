@@ -9,7 +9,7 @@ export default function TopNavigation() {
     const [menuVisible, setMenuVisible] = useState(false)
 
     return (
-        <div data-testid="top-nav" className="fixed z-10 w-full h-8 md:h-10 flex place-content-between pt-1 px-2 bg-white drop-shadow-md">
+        <div data-testid="top-nav" className="fixed z-10 w-full h-10 flex place-content-between pt-1 px-2 bg-white drop-shadow-md">
             <div className="flex self-center">
                 <Link href="/home">
                     <div className="w-[100px] md:w-[150px]">

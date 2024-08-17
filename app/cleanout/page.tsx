@@ -15,7 +15,7 @@ export default async function CleanoutBag() {
     return (
         <Layout>
             <>
-                <div className="h-max flex justify-end space-x-2 mt-1 md:mt-2.5 mr-1">
+                <div className="h-max flex justify-end space-x-2 mt-2.5 mr-1">
                     <CleanoutRecsButton />
                     <DeleteAllFromCleanoutButton disabled={articles.length <= 0}/>
                 </div>
