@@ -37,11 +37,11 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex flex-col h-[90%] md:h-[95%]">
+            <div className="flex flex-col h-[97%]">
                 <ArticleFilters filterTypes={filterTypes}/>
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[87%] md:h-[80%] lg:h-[75%] pb-4">
+                    <div className="h-[90%] lg:h-[87%] pb-4">
                         <ArticlesContainer articles={filteredArticles}/>
                     </div>
                 )}
@@ -60,7 +60,7 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
                         setUnfilteredArticles={setUnfilteredArticles}
                     />}
 
-                <div className="fixed top-20 right-[18px] md:top-24 md:right-8">
+                <div className="fixed top-10 right-[9px] md:top-12">
                     <NewButton
                         handleClick={() => setAddingArticle(true)}
                     />

@@ -18,7 +18,7 @@ const AboutSection = ({ sectionName, iconPath, iconAlt, children }: AboutSection
     return (
         <>
             <div
-                className="flex flex-col items-center w-[96px] md:w-[200px] lg:w-[96px] h-[130px] bg-white border border-theme-green text-text-green rounded-lg p-2 mb-2 drop-shadow"
+                className="flex flex-col items-center w-[96px] md:w-[200px] h-[130px] bg-white border border-theme-green text-text-green rounded-lg p-2 mb-2 drop-shadow"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <div className="w-[35px] h-[35px]">
@@ -30,7 +30,7 @@ const AboutSection = ({ sectionName, iconPath, iconAlt, children }: AboutSection
                         className="w-full"
                     />
                 </div>
-                <h2 className="text-center tracking-widest mt-2 md:text-xl lg:text-base">{sectionName}</h2>
+                <h2 className="text-center tracking-widest mt-2">{sectionName}</h2>
             </div>
 
             {isOpen &&

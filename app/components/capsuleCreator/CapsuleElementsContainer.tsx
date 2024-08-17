@@ -39,7 +39,7 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
     if (showAllElementsView) return <AllElementsView capsuleElements={capsuleElements} updateExpandedElement={updateExpandedElement}/>
 
     return (
-        <div className="flex flex-col lg:flex-row space-y-[5%] h-[77%] md:h-[73%] md:space-y-[3%] lg:h-[70%]">
+        <div className="flex flex-col lg:flex-row space-y-[5%] md:space-y-[3%] h-[77%] md:h-[80%] lg:h-[80%]">
             <CapsuleArticleSelector
                 articlesMap={filteredArticlesMap}
                 updateCapsuleElements={updateCapsuleElements}
@@ -49,7 +49,7 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
                 setShowAllElementsView={setShowAllElementsView}
             />
 
-            <div className="flex mb-4 w-full h-[100px] justify-center space-x-2 md:space-x-6 lg:h-full lg:items-center">
+            <div className="grid grid-cols-5 mb-4 w-full justify-center lg:h-full lg:items-center">
                 {Array.from(capsuleElements.values()).map((element) => {
                     if (element.slot !== expandedElement.slot) {
                         return (
@@ -57,8 +57,7 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
                                 key={element.slot}
                                 element={element}
                                 updateExpandedElement={updateExpandedElement}
-                                sizeStyling="w-[63.5px] max-h-[95px] md:w-[100px] md:max-h-[149px]"
-                                iconPositioning="bottom-[30%] left-[45%] md:left-[65%] lg:left-[60%] lg:mt-1"
+                                iconPositioning="bottom-[23%] left-[48%] md:bottom-[13%] md:left-[76%] lg:left-[70%] lg:mt-1"
                             />
                         )
                     }

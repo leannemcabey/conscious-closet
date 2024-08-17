@@ -1,7 +1,5 @@
 import * as React from "react";
 import Layout from "@/app/components/Layout";
-import Image from "next/image";
-import BackButton from "@/app/components/buttons/BackButton";
 import { getLeastWornArticles } from "@/app/server-actions/article/getLeastWornArticles";
 import RediscoveryContainer from "@/app/components/articles/RediscoveryContainer";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
@@ -15,15 +13,13 @@ export default async function Rediscovery() {
     return (
         <Layout>
             <>
-                <BackButton />
-
                 {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
                 {articles && (
-                    <div className="flex flex-col mt-2.5 h-[95%]">
-                        <PageHeader title="rediscovery" iconPath="/lightbulb.svg" iconAlt="light bulb icon" />
+                    <>
+                        <div className="flex flex-col mt-2 items-center">
+                            <PageHeader title="rediscovery" iconPath="/lightbulb.svg" iconAlt="light bulb icon" />
 
-                        <div className="flex justify-center">
                             <p className="mb-1 text-center text-sm text-neutral-400 max-w-[500px] md:text-lg">
                                 We noticed you haven't worn these items in the last 6 months.
                                 By rediscovering what you already own, you'll feel less compelled to purchase more.
@@ -31,7 +27,7 @@ export default async function Rediscovery() {
                         </div>
 
                         <RediscoveryContainer articles={articles}/>
-                    </div>
+                    </>
                 )}
             </>
         </Layout>

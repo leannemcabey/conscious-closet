@@ -2,7 +2,6 @@
 import Layout from "@/app/components/Layout";
 import Image from "next/image";
 import WeatherPageContainer from "@/app/components/articles/WeatherPageContainer";
-import BackButton from "@/app/components/buttons/BackButton";
 import { getArticlesByWeatherCategory } from "@/app/server-actions/article/getArticlesByWeatherCategory";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 
@@ -14,18 +13,17 @@ export default async function WeatherPage({ params }: { params: { id: string } }
     return (
         <Layout>
             <>
-                <BackButton />
-
                 {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
                 {articles && (
-                    <div className="flex flex-col justify-center mt-4 text-2xl h-[93%]">
-                        <div className="self-center w-[60px] md:w-[80px]">
+                    <div className="h-full flex flex-col justify-center text-2xl -mt-2 md:mt-0 lg:mt-1">
+                        <div className="self-center w-[40px] md:w-[50px]">
                             <Image
                                 src={`/weather-icon-${params.id}.svg`}
-                                height="60" width="60"
+                                height="60"
+                                width="60"
                                 alt={`${params.id} weather icon`}
-                                className="self-center mb-4 w-full"
+                                className="self-center w-full mb-1"
                             />
                         </div>
 

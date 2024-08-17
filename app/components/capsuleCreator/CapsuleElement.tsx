@@ -8,13 +8,13 @@ import { CapsuleElementType } from "@/types/CapsuleElementsMapType";
 interface CapsuleElementProps {
     element: CapsuleElementType;
     updateExpandedElement: (element: CapsuleElementType) => void;
-    sizeStyling: string;
+    sizeStyling?: string;
     iconPositioning: string;
 }
 
 const CapsuleElement = ({ element, updateExpandedElement, sizeStyling, iconPositioning }: CapsuleElementProps) => {
     return (
-        <div>
+        <div className="my-1 mx-1 md:mx-2 w-[70%] md:w-[90%]">
             {!element.article && <UndevelopedPolaroid sizeStyling={sizeStyling}/>}
 
             {element.article &&

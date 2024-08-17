@@ -136,7 +136,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
     return (
         <>
-            <div className="flex flex-col justify-center items-center m-1 md:mt-8 lg:mt-0 lg:w-[45%]">
+            <div className="h-full flex flex-col justify-center items-center m-1 lg:w-[60%]">
                 <div className="flex w-full place-content-between">
                     <CategorySelector
                         initialElement={initialElement}
@@ -153,14 +153,16 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                     />
                 </div>
 
-                <div className={`flex space-x-1 items-center justify-center mt-4 ${doTransition ? "animate-grow" : ""}`}>
+                <div className={`h-[90%] w-full flex space-x-1 items-center justify-center mt-4 ${doTransition ? "animate-grow" : ""}`}>
                     {noArticlesInCategory &&
                         <p className="text-sm w-3/4 mt-8 text-center self-center text-neutral-400 md:text-2xl">
                             There are no articles in this category
                         </p>}
 
                     {!noArticlesInCategory && (!currentElement || !currentElement.article) &&
-                        <UndevelopedPolaroid sizeStyling="w-[230px] md:w-[275px]"/>
+                        <UndevelopedPolaroid
+                            sizeStyling="w-[70%] md:w-[45%] lg:w-[65%]"
+                        />
                     }
 
                     {!noArticlesInCategory && currentElement && currentElement.article &&
@@ -174,7 +176,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
                             <Polaroid
                                 imageUrl={currentElement.article.image.baseUrl || ""}
-                                sizeStyling="w-[230px] max-h-[373px] md:w-[275px] md:max-h-[410px]"
+                                sizeStyling="w-[70%] md:w-[45%] lg:w-[65%]"
                             />
 
                             <IconButton

@@ -8,7 +8,6 @@ import ArticleFilters, { FilterType } from "@/app/components/filter/ArticleFilte
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import AddCapsuleToSuitcase from "@/app/components/capsuleCreator/AddCapsuleToSuitcase";
 import ErrorModal from "@/app/components/modal/ErrorModal";
-import BackButton from "@/app/components/buttons/BackButton";
 import PageHeader from "@/app/components/PageHeader";
 import CapsuleElementsContainer from "@/app/components/capsuleCreator/CapsuleElementsContainer";
 import { defaultCapsuleElements } from "@/app/components/capsuleCreator/utils/defaultCapsuleElements";
@@ -59,8 +58,7 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex place-content-between">
-                <BackButton/>
+            <div className="flex justify-end md:mt-2">
                 <AddCapsuleToSuitcase capsuleElements={capsuleElements}/>
             </div>
             <PageHeader title="capsule creator" iconPath="/lightbulb.svg" iconAlt="light bulb icon"/>

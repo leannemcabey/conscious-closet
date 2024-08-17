@@ -1,6 +1,5 @@
 'use server'
 import Layout from "@/app/components/Layout";
-import BackButton from "@/app/components/buttons/BackButton";
 import { getSuitcaseArticles } from "@/app/server-actions/suitcase/getSuitcaseArticles";
 import EditSuitcaseButton from "@/app/components/suitcases/EditSuitcaseButton";
 import DeleteSuitcaseButton from "@/app/components/suitcases/DeleteSuitcaseButton";
@@ -20,7 +19,6 @@ export default async function Suitcase({ params }: { params: { id: string }}) {
             <>
                 {suitcaseError || articlesError && (
                     <>
-                        <BackButton />
                         <ErrorPageContainer errorMessage={errorMessage} />
                     </>
                 )}
@@ -28,7 +26,6 @@ export default async function Suitcase({ params }: { params: { id: string }}) {
                 {suitcase && articles && (
                     <>
                         <div className="flex place-content-between">
-                            <BackButton />
                             <div className="h-max flex space-x-2 md:mt-4">
                                 <EditSuitcaseButton suitcase={suitcase}/>
                                 <DeleteSuitcaseButton suitcaseId={params.id}/>

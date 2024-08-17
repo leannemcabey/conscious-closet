@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 interface UndevelopedPolaroidProps {
-    sizeStyling: string;
+    sizeStyling?: string;
 }
 
 const UndevelopedPolaroid = ({ sizeStyling }: UndevelopedPolaroidProps) => {

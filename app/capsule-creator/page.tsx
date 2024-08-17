@@ -1,6 +1,5 @@
 'use server'
 import Layout from "@/app/components/Layout";
-import BackButton from "@/app/components/buttons/BackButton";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { getArticlesByCategory } from "@/app/server-actions/article/getArticlesByCategory";
@@ -12,7 +11,6 @@ export default async function CapsuleCreator() {
     const errorState = (
         <Layout>
             <>
-                <BackButton />
                 <ErrorPageContainer errorMessage="An error occurred while retreiving your articles." />
             </>
         </Layout>

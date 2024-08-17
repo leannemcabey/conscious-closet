@@ -9,11 +9,10 @@ export const dynamic = 'force-dynamic';
 export default async function CleanoutRecommendations() {
     return (
         <Layout>
-            <>
-                <BackButton />
+            <div className="h-full mt-2">
                 <PageHeader title="recycling | donating | thrifting" iconPath="/earth.svg" iconAlt="earth icon" />
                 <CleanoutRecommendationsContainer/>
-            </>
+            </div>
         </Layout>
     )
 }
