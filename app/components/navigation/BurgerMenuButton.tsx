@@ -6,7 +6,7 @@ interface BergerMenuButtonProps {
 
 export const BurgerMenuButton = ({ transitionMenu }: BergerMenuButtonProps) => {
     return (
-        <div className="w-[20px] h-[20px] md:w-[30px] h-[30px] lg:w-[24px] lg:h-[24px]">
+        <div className="w-[25px] h-[25px]">
             <Image
                 onClick={() => transitionMenu()}
                 src="/burger-menu-icon.svg"

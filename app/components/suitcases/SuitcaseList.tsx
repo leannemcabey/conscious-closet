@@ -27,7 +27,7 @@ const SuitcaseList = () => {
 
     return (
         <>
-            <div className="fixed top-10 right-[9px] md:top-12">
+            <div className="fixed top-12 right-[9px] md:top-12">
                 <NewButton handleClick={() => setCreatingSuitcase(true)} />
             </div>
 
