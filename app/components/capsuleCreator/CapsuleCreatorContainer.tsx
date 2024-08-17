@@ -61,7 +61,9 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
             <div className="flex justify-end mt-2">
                 <AddCapsuleToSuitcase capsuleElements={capsuleElements}/>
             </div>
-            <PageHeader title="capsule creator" iconPath="/lightbulb.svg" iconAlt="light bulb icon"/>
+            <div className="-mt-14">
+                <PageHeader title="capsule creator" iconPath="/lightbulb.svg" iconAlt="light bulb icon"/>
+            </div>
             <ArticleFilters filterTypes={filterTypes}/>
 
             <CapsuleElementsContainer filteredArticlesMap={filteredArticlesMap} capsuleElements={capsuleElements} setCapsuleElements={setCapsuleElements} />
