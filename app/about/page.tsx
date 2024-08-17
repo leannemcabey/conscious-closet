@@ -11,11 +11,10 @@ export default async function About() {
         <Layout>
             <>
                 <div className="h-full mt-2.5 md:mt-4">
-                    {/*<BackButton/>*/}
 
                     <div className="h-[99%] md:h-[99%] flex flex-col pb-2">
                         <div className="flex flex-col space-y-1 justify-center items-center mb-4">
-                            <div className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] lg:w-[50px] lg:h-[50px]">
+                            <div className="w-[40px] h-[40px] md:w-[50px] md:h-[50px]">
                                 <Image
                                     src={`/conscious-closet-logo.svg`}
                                     height="40"
@@ -24,7 +23,7 @@ export default async function About() {
                                     className="w-full"
                                 />
                             </div>
-                            <h1 className="text-lg tracking-widest md:text-xl">about us</h1>
+                            <h1 className="tracking-widest text-lg md:text-xl">about us</h1>
                         </div>
                         <AboutPageContainer />
                     </div>
