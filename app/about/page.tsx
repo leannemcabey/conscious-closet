@@ -12,7 +12,7 @@ export default async function About() {
             <>
                 <div className="h-full mt-2.5 md:mt-4">
 
-                    <div className="h-[99%] md:h-[99%] flex flex-col pb-2">
+                    <div className="h-[99%] flex flex-col pb-2">
                         <div className="flex flex-col space-y-1 justify-center items-center mb-4">
                             <div className="w-[40px] h-[40px] md:w-[50px] md:h-[50px]">
                                 <Image
