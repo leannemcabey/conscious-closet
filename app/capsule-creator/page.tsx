@@ -12,7 +12,7 @@ export default async function CapsuleCreator() {
     const errorState = (
         <Layout>
             <>
-                <BackButton />
+                {/*<BackButton />*/}
                 <ErrorPageContainer errorMessage="An error occurred while retreiving your articles." />
             </>
         </Layout>

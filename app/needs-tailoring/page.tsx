@@ -15,13 +15,13 @@ export default async function NeedsTailoring() {
     return (
         <Layout>
             <>
-                <BackButton />
+                {/*<BackButton />*/}
 
                 {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
                 {articles && (
-                    <div className="mt-4 h-[93%]">
-                        <div className="flex flex-col items-center">
+                    <>
+                        <div className="flex flex-col mt-2 items-center">
                             <PageHeader title="needs tailoring" iconPath="/sewing-machine.svg" iconAlt="needle icon" />
 
                             <p className="mb-1 text-center max-w-[300px] text-neutral-400 text-sm md:text-lg md:max-w-[400px]">
@@ -30,7 +30,7 @@ export default async function NeedsTailoring() {
                         </div>
 
                         <NeedsTailoringContainer articles={articles}/>
-                    </div>
+                    </>
                 )}
             </>
         </Layout>

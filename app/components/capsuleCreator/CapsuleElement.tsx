@@ -14,7 +14,7 @@ interface CapsuleElementProps {
 
 const CapsuleElement = ({ element, updateExpandedElement, sizeStyling, iconPositioning }: CapsuleElementProps) => {
     return (
-        <div>
+        <div className="mx-1 md:mx-2">
             {!element.article && <UndevelopedPolaroid sizeStyling={sizeStyling}/>}
 
             {element.article &&

@@ -57,7 +57,8 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
                         <Link href={`/articles/${article.id}`} key={article.id}>
                             <Polaroid
                                 imageUrl={article.image.baseUrl}
-                                sizeStyling="w-[100px] max-h-[149px] md:w-[130px] md:max-h-[194px]"
+                                // sizeStyling="w-[100px] max-h-[149px] md:w-[130px] md:max-h-[194px]"
+                                // sizeStyling="w-1/3 md:w-1/5 lg:w-1/8"
                             />
                         </Link>
                     )

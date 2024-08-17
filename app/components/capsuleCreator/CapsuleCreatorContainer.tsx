@@ -59,8 +59,8 @@ const CapsuleCreatorContainer = ({ articlesMap }: CapsuleCreatorContainerProps) 
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex place-content-between">
-                <BackButton/>
+            <div className="flex justify-end md:mt-2">
+                {/*<BackButton/>*/}
                 <AddCapsuleToSuitcase capsuleElements={capsuleElements}/>
             </div>
             <PageHeader title="capsule creator" iconPath="/lightbulb.svg" iconAlt="light bulb icon"/>

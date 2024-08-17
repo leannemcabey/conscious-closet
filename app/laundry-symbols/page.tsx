@@ -9,7 +9,7 @@ export default async function CleanoutBag() {
     return (
         <Layout>
             <>
-                <BackButton />
+                {/*<BackButton />*/}
                 <LaundrySymbolsContainer />
             </>
         </Layout>

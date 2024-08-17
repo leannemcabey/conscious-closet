@@ -5,21 +5,21 @@ import { ReactElement } from "react";
 
 interface PolaroidProps {
     imageUrl: string;
-    sizeStyling: string;
+    sizeStyling?: string;
     children?: ReactElement;
 }
 
 const Polaroid = ({ imageUrl, sizeStyling, children }: PolaroidProps) => {
     return (
         <div className={`flex flex-col items-center bg-white drop-shadow-lg ${sizeStyling} overflow-hidden`}>
-            <div className={`mt-[5%] mx-[5%] ${children ? "mb-[5%]" : "mb-[25%]"} bg-white md:w-[90%] overflow-hidden`}>
+            <div className={`mt-[5%] ${children ? "mb-[5%]" : "mb-[25%]"} bg-white w-[90%] overflow-hidden`}>
                 <Image
                     loader={googlePhotosPathLoader}
                     src={imageUrl}
                     width={350}
                     height={465}
                     alt="article image"
-                    className="border border-neutral-200 md:w-full"
+                    className="border border-neutral-200 w-full"
                 />
             </div>
 

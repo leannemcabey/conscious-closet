@@ -17,7 +17,7 @@ export default async function ArticleCategoryPage({ params }: { params: { id: st
         <Layout>
             <>
                 <div className="h-full text-center justify-center mt-2.5 text-2xl">
-                    <BackButton />
+                    {/*<BackButton />*/}
 
                     {error && <ErrorPageContainer errorMessage={errorMessage} />}
 

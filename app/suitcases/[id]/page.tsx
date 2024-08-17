@@ -20,7 +20,7 @@ export default async function Suitcase({ params }: { params: { id: string }}) {
             <>
                 {suitcaseError || articlesError && (
                     <>
-                        <BackButton />
+                        {/*<BackButton />*/}
                         <ErrorPageContainer errorMessage={errorMessage} />
                     </>
                 )}
@@ -28,7 +28,7 @@ export default async function Suitcase({ params }: { params: { id: string }}) {
                 {suitcase && articles && (
                     <>
                         <div className="flex place-content-between">
-                            <BackButton />
+                            {/*<BackButton />*/}
                             <div className="h-max flex space-x-2 md:mt-4">
                                 <EditSuitcaseButton suitcase={suitcase}/>
                                 <DeleteSuitcaseButton suitcaseId={params.id}/>

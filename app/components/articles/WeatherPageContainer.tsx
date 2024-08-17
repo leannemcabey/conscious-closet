@@ -32,11 +32,11 @@ const WeatherPageContainer = ({ articles }: WeatherPageContainerProps) => {
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex flex-col h-[95%]">
+            <div className="h-[90%] flex flex-col">
                 <ArticleFilters filterTypes={filterTypes}/>
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[89%] md:h-[85%] lg:h-[80%] pb-4">
+                    <div className="h-[95%] md:h-[97%] lg:h-[80%] pb-4">
                         <ArticlesContainer articles={filteredArticles}/>
                     </div>
                 )}

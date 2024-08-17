@@ -76,13 +76,13 @@ export const SlideOutMenu = ({ menuVisible, setMenuVisible }: SlideOutMenuProps)
     if (menuVisible) {
         return (
             <div ref={menuRef} className={`${animationClassName} ${classNames.join(' ')}`}>
-                <div className="h-screen px-6 flex flex-col bg-white">
-                    <div className="flex place-content-between mt-6">
+                <div className="h-screen px-2 flex flex-col bg-white">
+                    <div className="flex place-content-between mt-1">
                         <LogoutButton/>
                         <BurgerMenuButton transitionMenu={() => exitWithAnimation()}/>
                     </div>
 
-                    <div className="mt-10 h-full overflow-scroll">
+                    <div className="mt-10 mx-2 h-full overflow-scroll">
                         <MenuItem linkTo="/home" imageSrc="/hanger.svg" imageAltText="hanger icon" label="closet"
                                   subItems={articleCategoryMenuSubItems()}/>
                         <MenuItem linkTo={"/capsule-creator"} imageSrc="/lightbulb.svg" imageAltText="lightbulb icon"

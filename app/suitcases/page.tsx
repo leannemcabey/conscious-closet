@@ -10,8 +10,8 @@ export default async function Suitcases() {
     return (
         <Layout>
             <>
-                <BackButton />
-                <div className="h-full mt-8 mx-2 flex flex-col">
+                {/*<BackButton />*/}
+                <div className="h-full mt-2 flex flex-col">
                     <PageHeader title="suitcases" iconPath="/suitcase.svg" iconAlt="suitcase icon" />
                     <SuitcaseList />
                 </div>

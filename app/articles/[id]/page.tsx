@@ -13,7 +13,7 @@ export default async function ArticlePage({ params }: { params: { id: string }})
     return (
         <Layout>
             <>
-                <BackButton />
+                {/*<BackButton />*/}
                 {error && <ErrorPageContainer errorMessage={errorMessage} />}
                 {article && <ArticlePageContainer article={article} />}
             </>

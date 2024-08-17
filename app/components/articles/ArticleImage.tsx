@@ -42,13 +42,16 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
     )
 
     if (refreshedArticle) return (
-        <div className="space-y-4">
-            <Polaroid
-                imageUrl={refreshedArticle.image.baseUrl}
-                sizeStyling="w-[330px] max-h-[511px]"
-            >
-                <LastWorn article={refreshedArticle}/>
-            </Polaroid>
+        <div className="w-[80%] md:w-[50%] lg:w-[30%] space-y-4">
+            <div className="grid grid-cols-1">
+                <Polaroid
+                    imageUrl={refreshedArticle.image.baseUrl}
+                    // sizeStyling="w-[330px] max-h-[511px]"
+                    sizeStyling=""
+                >
+                    <LastWorn article={refreshedArticle}/>
+                </Polaroid>
+            </div>
 
             <ArticleWeatherCategory article={refreshedArticle} />
         </div>

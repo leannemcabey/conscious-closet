@@ -35,7 +35,7 @@ const MenuItem = ({ linkTo, imageSrc, imageAltText, label, subItems }: MenuItemP
                 }
 
                 <Link href={linkTo}>
-                    <div className={`flex space-x-4 ${!subItems ? "ml-6 md:ml-9 lg:ml-7": ""}`}>
+                    <div className={`flex space-x-4 ${!subItems ? "ml-7 md:ml-9 lg:ml-7": ""}`}>
                         <div className="w-[23px] h-[23px] md:w-[30px] md:h-[30px] lg:w-[23px] lg:h-[23px]">
                             <Image
                                 src={imageSrc}
