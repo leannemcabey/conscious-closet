@@ -15,7 +15,7 @@ const ArticlePageContainer = ({ article }: ArticlePageContainerProps) => {
             <ArticleImage article={article}/>
 
             <div className="flex w-[97%] max-w-[350px] md:max-w-[400px] lg:max-w-[400px] justify-between">
-                <div className="basis-[15%]">
+                <div>
                     <AddArticleToSuitcase article={article}/>
                 </div>
 
@@ -27,7 +27,7 @@ const ArticlePageContainer = ({ article }: ArticlePageContainerProps) => {
                     <AddOrRemoveFromCleanoutBag article={article}/>
                 </div>
 
-                <div className="basis-[15%]">
+                <div>
                     <DeleteArticle article={article}/>
                 </div>
             </div>

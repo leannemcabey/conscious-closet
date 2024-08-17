@@ -10,7 +10,6 @@ export default async function CleanoutRecommendations() {
     return (
         <Layout>
             <div className="h-full mt-2">
-                {/*<BackButton />*/}
                 <PageHeader title="recycling | donating | thrifting" iconPath="/earth.svg" iconAlt="earth icon" />
                 <CleanoutRecommendationsContainer/>
             </div>

@@ -2,7 +2,6 @@
 import Layout from "@/app/components/Layout";
 import Image from "next/image";
 import WeatherPageContainer from "@/app/components/articles/WeatherPageContainer";
-import BackButton from "@/app/components/buttons/BackButton";
 import { getArticlesByWeatherCategory } from "@/app/server-actions/article/getArticlesByWeatherCategory";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 
@@ -14,8 +13,6 @@ export default async function WeatherPage({ params }: { params: { id: string } }
     return (
         <Layout>
             <>
-                {/*<BackButton />*/}
-
                 {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
                 {articles && (
