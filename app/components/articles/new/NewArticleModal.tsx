@@ -86,7 +86,7 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
                         <div className="flex self-center space-x-2.5">
                             <Polaroid
                                 imageUrl={image.baseUrl}
-                                sizeStyling="w-[175px] max-h-[260px]"
+                                // sizeStyling="w-[175px] max-h-[260px]"
                             />
                             <WeatherPicker weatherCategory={weatherCategory} setWeatherCategory={setWeatherCategory}/>
                         </div>

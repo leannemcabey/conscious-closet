@@ -11,7 +11,7 @@ interface ArticlePageContainerProps {
 
 const ArticlePageContainer = ({ article }: ArticlePageContainerProps) => {
     return (
-        <div className="h-[97%] flex flex-col items-center place-content-between space-y-4 mt-4 pb-4 md:pb-8">
+        <div className="h-[97%] overflow-scroll flex flex-col items-center place-content-between space-y-4 mt-4 pb-4 md:pb-8">
             <ArticleImage article={article}/>
 
             <div className="flex w-[97%] max-w-[350px] md:max-w-[400px] lg:max-w-[400px] justify-between">
