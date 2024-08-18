@@ -35,7 +35,7 @@ const Modal = ({ setIsOpen, children }: ModalProps) => {
                         <div
                             ref={modalRef}
                             data-testid="modal"
-                            className="flex flex-col bg-white px-4 py-4 rounded-lg border border-neutral-200 drop-shadow-2xl w-5/6 max-w-80 min-h-80 absolute animate-enter-from-bottom md:w-max md:max-w-[500px]"
+                            className="flex flex-col bg-white px-4 py-4 rounded-t-lg border border-neutral-200 drop-shadow-2xl w-full min-h-80 absolute animate-enter-from-bottom"
                         >
                             <div className="mt-6 mx-2">
                                 {children}

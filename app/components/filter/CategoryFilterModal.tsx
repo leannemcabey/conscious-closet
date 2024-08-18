@@ -73,7 +73,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
                 <TextButton disabled={false} handleClick={() => selectOrDeselectAll()} widthStyling="w-28" colorOverride="border-theme-blue text-theme-blue">
                     {allAreSelected ? "deselect all" : "select all"}
                 </TextButton>
-                <div className="mt-4 md:w-[300px]">
+                <div className="mt-8">
                     <div className="h-full">
                         <div className="flex flex-col space-y-2 md:space-y-2.5">
                             {articleCategories

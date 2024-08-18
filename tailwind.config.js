@@ -27,11 +27,11 @@ module.exports = {
       keyframes: {
         'enter-from-bottom': {
           from: {
-            top: '100%'
+            bottom: '-100%'
           },
           to: {
-            top: '15%'
-          },
+            bottom: '0%'
+          }
         },
         'enter-from-right': {
           from: {
