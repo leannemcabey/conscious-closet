@@ -39,7 +39,7 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
     if (showAllElementsView) return <AllElementsView capsuleElements={capsuleElements} updateExpandedElement={updateExpandedElement}/>
 
     return (
-        <div className="flex flex-col lg:flex-row space-y-[5%] md:space-y-[3%] h-[77%] md:h-[80%] lg:h-[80%]">
+        <div className="flex flex-col lg:flex-row space-y-[5%] md:space-y-[3%] h-[83%] md:h-[87%] lg:h-[80%] overflow-x-hidden overflow-y-scroll">
             <CapsuleArticleSelector
                 articlesMap={filteredArticlesMap}
                 updateCapsuleElements={updateCapsuleElements}
