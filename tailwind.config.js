@@ -26,12 +26,6 @@ module.exports = {
       },
       keyframes: {
         'enter-from-bottom': {
-          // from: {
-          //   top: '100%'
-          // },
-          // to: {
-          //   top: '15%'
-          // },
           from: {
             bottom: '-100%'
           },
