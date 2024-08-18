@@ -77,7 +77,7 @@ export const SlideOutMenu = ({ menuVisible, setMenuVisible }: SlideOutMenuProps)
         return (
             <div ref={menuRef} className={`${animationClassName} ${classNames.join(' ')}`}>
                 <div className="h-screen px-2 flex flex-col bg-white">
-                    <div className="flex place-content-between mt-1">
+                    <div className="flex place-content-between mt-2">
                         <LogoutButton/>
                         <BurgerMenuButton transitionMenu={() => exitWithAnimation()}/>
                     </div>
