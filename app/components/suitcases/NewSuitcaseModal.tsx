@@ -38,7 +38,7 @@ const NewSuitcaseModal = ({ setIsOpen, suitcases, setSuitcases }: NewSuitcaseMod
 
     return (
         <Modal setIsOpen={setIsOpen}>
-            <div className="md:w-[400px]">
+            <div>
                 <CloseModalButton setIsOpen={setIsOpen} />
                 <div className="flex flex-col pt-20">
                     <input

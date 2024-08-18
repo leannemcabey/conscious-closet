@@ -42,7 +42,7 @@ const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategor
 
             {isOpen && (
                 <Modal setIsOpen={setIsOpen}>
-                    <div className="md:w-[400px]">
+                    <div>
                         <CloseModalButton setIsOpen={setIsOpen} />
                         <h3 className="text-xl text-center md:text-3xl md:mt-6 lg:text-lg">Select a category for this capsule element:</h3>
 
