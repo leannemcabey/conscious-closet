@@ -41,14 +41,14 @@ const LandingPageContainer = () => {
                         <div className="flex flex-col items-center">
                             <div className="w-[350px] md:w-[450px]">
                                 <Image
-                                    src="/cc_full.svg"
+                                    src="/conscious-closet-full.svg"
                                     width="350"
                                     height="200"
                                     alt="Conscious Closet"
                                     className="w-full"
                                 />
                             </div>
-                            <p className="-mt-4 px-2 text-sm max-w-[330px] md:max-w-[450px] tracking-widest text-neutral-700 md:text-lg">
+                            <p className="mt-4 px-2 text-sm max-w-[330px] md:max-w-[450px] tracking-widest text-neutral-700 md:text-lg">
                                 The most sustainable wardrobe you can have is the one already in your closet.
                             </p>
                         </div>
