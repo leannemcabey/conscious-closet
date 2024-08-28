@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { LogoutButton } from "@/app/components/auth/LogoutButton";
 import MenuItem from "@/app/components/navigation/MenuItem";
 import { articleCategoryMenuSubItems } from "@/utils/articleCategoryMenuSubItems";
+import * as React from "react";
 
 interface SlideOutMenuProps {
     menuVisible: boolean
@@ -99,7 +100,12 @@ export const SlideOutMenu = ({ menuVisible, setMenuVisible }: SlideOutMenuProps)
                                   label="cleanout bag"
                                   subItems={[{label: "cleanout recs", linkTo: "/cleanout/recommendations"}]}/>
                         <MenuItem linkTo="/about" imageSrc="/info.svg" imageAltText="info icon" label="about"/>
+
                     </div>
+
+                    <a href="/privacy-policy.html" className="self-end mb-2 mr-2">
+                        Privacy Policy
+                    </a>
                 </div>
             </div>
         );
