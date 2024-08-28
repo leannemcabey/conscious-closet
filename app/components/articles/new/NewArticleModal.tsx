@@ -78,8 +78,8 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
                                 </p>
                             </div>
                             <p className="text-sm md:text-xl">
-                                Do not delete this photo from your Google Photos account.
-                                If you do, you will no longer be able to access it in Conscious Closet.
+                                We don't store your photos. If you delete this photo from your Google Photos account,
+                                you will no longer be able to access it in Conscious Closet.
                             </p>
                         </div>
 
