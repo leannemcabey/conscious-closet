@@ -13,8 +13,7 @@ export const refreshGooglePhotosBaseUrls = (
             return { ...article, image: { ...match } }
         } else {
             // This happens when the image has been deleted from the user's Google Photos account.
-            markDeletedFromGPhotos(article.id)
-            return undefined
+            return { ...article, image: { imageId: article.image.imageId, baseUrl: "/missing-article.png" } }
         }
     })
 
