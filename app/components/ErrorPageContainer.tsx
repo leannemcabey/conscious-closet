@@ -26,7 +26,7 @@ const ErrorPageContainer = ({ errorMessage }: ErrorPageContainerProps) => {
                     </p>
                 </div>
                 <p className="text-xs text-neutral-400">
-                    If the error persists, please contact us at
+                    If the error persists, try logging out and back in again. If that doesn't work, please contact us at
                     <a
                         className="text-theme-blue"
                         href="mailto:leanne@consciouscloset.co"> leanne@consciouscloset.co

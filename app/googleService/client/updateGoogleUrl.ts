@@ -27,7 +27,7 @@ const updateGoogleUrl = (article: Article, attemptCounter: number): Promise<Arti
                         return { ...article, image: { ...googleMetaData } } as Article;
                     })
                     .catch((error) => {
-                        if (attemptCounter > 1) throw error;
+                        if (attemptCounter > 1) return { ...article, image: { imageId: article.image.imageId, baseUrl: "/missing-article.png" } } as Article;
                         return updateGoogleUrl(article, attemptCounter)
                     })
             } else {
