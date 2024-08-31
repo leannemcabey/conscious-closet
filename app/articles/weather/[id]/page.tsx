@@ -16,7 +16,7 @@ export default async function WeatherPage({ params }: { params: { id: string } }
                 {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
                 {articles && (
-                    <div className="h-full flex flex-col justify-center text-2xl -mt-2 md:mt-0 lg:mt-1">
+                    <div className="h-full flex flex-col justify-center text-2xl -mt-1 md:mt-0 lg:mt-1">
                         <div className="self-center w-[40px] md:w-[50px]">
                             <Image
                                 src={`/weather-icon-${params.id}.svg`}
