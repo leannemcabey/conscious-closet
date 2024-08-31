@@ -6,12 +6,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { batchUpdateGoogleUrlsWithRetry } from "@/app/googleService/client/batchUpdateGoogleUrlsWithRetry";
 import ErrorModal from "@/app/components/modal/ErrorModal";
+import { useRouter } from "next/navigation";
 
 interface ArticlesContainerProps {
     articles: Article[];
 }
 
 const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
+    const router = useRouter();
     const [refreshedArticles, setRefreshedArticles] = useState<Article[]>();
     const [error, setError] = useState<boolean>(false);
     // The `stopSpinner` state value is used so that when the error modal is closed, the loading spinner stops showing as well
@@ -21,7 +23,7 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
 
     useEffect(() => {
         if (articles.length > 0) {
-            batchUpdateGoogleUrlsWithRetry(articles)
+            batchUpdateGoogleUrlsWithRetry(articles, router)
                 .then((articles) => {
                     setRefreshedArticles(articles)
                     setError(false)

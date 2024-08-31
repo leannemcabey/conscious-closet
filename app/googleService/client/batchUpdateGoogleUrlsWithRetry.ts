@@ -8,8 +8,10 @@ import { splitArticlesIntoBatches } from "@/app/googleService/utils/splitArticle
 import { refreshGooglePhotosBaseUrls } from "@/app/googleService/utils/refreshGooglePhotosBaseUrls";
 import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
 import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import {createClient} from "@/utils/supabase/client";
 
-export const batchUpdateGoogleUrlsWithRetry = async (articles: Article[]): Promise<Article[]> => {
+export const batchUpdateGoogleUrlsWithRetry = async (articles: Article[], router: AppRouterInstance): Promise<Article[]> => {
     const articleBatches = splitArticlesIntoBatches(articles);
 
     let refreshedArticles: Article[] = [];
@@ -19,21 +21,23 @@ export const batchUpdateGoogleUrlsWithRetry = async (articles: Article[]): Promi
         let result;
 
         try {
-            result = await getBatchMediaItems(batch, attemptCounter)
+            result = await getBatchMediaItems(batch, attemptCounter, router)
         } catch(error) {
             throw error
         }
 
-        refreshedArticles = [...refreshedArticles, ...refreshGooglePhotosBaseUrls(batch, result)];
+        if (result) refreshedArticles = [...refreshedArticles, ...refreshGooglePhotosBaseUrls(batch, result)];
     }
 
     return orderByNewestCreated(refreshedArticles);
 }
 
-const getBatchMediaItems = (articles: Article[], attemptCounter: number): Promise<GooglePhotoMetadata[]> => {
+const getBatchMediaItems = (articles: Article[], attemptCounter: number, router: AppRouterInstance): Promise<GooglePhotoMetadata[] | void> => {
+    const supabase = createClient();
+
     attemptCounter++
 
-    return refreshGoogleProviderTokenIfNeededWithRetry()
+    return refreshGoogleProviderTokenIfNeededWithRetry(router)
         .then((providerToken) => {
             if (providerToken) {
                 const params = buildParams(articles);
@@ -51,11 +55,12 @@ const getBatchMediaItems = (articles: Article[], attemptCounter: number): Promis
                     })
                     .catch((error) => {
                         if (attemptCounter > 1) throw error;
-                        return getBatchMediaItems(articles, attemptCounter);
+                        return getBatchMediaItems(articles, attemptCounter, router);
                     })
             } else {
                 console.log(`couldn't get provider token`)
-                throw new Error;
+                return supabase.auth.signOut()
+                    .then(() => router.push("/"))
             }
         })
 }

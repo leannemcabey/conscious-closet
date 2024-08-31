@@ -7,12 +7,14 @@ import { Article } from "@/types/article";
 import Image from "next/image";
 import { updateGoogleUrlWithRetry } from "@/app/googleService/client/updateGoogleUrl";
 import ErrorModal from "@/app/components/modal/ErrorModal";
+import {useRouter} from "next/navigation";
 
 interface ArticleImageProps {
     article: Article
 }
 
 const ArticleImage = ({ article }: ArticleImageProps) => {
+    const router = useRouter();
     const [refreshedArticle, setRefreshedArticle] = useState<Article>();
     const [error, setError] = useState<boolean>(false);
     // The `stopSpinner` state value is used so that when the error modal is closed, the loading spinner stops showing as well
@@ -21,10 +23,12 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
     const errorMessage = "An error occurred when retrieving your article. Please go back and try again."
 
     useEffect(() => {
-        updateGoogleUrlWithRetry(article)
+        updateGoogleUrlWithRetry(article, router)
             .then((response) => {
-                setRefreshedArticle(response)
-                setError(false)
+                if (response) {
+                    setRefreshedArticle(response)
+                    setError(false)
+                }
             })
             .catch((error) => {
                 console.log(error)

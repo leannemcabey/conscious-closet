@@ -2,17 +2,18 @@
 import axios, {AxiosResponse} from "axios";
 import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 import { GooglePhotoMetadata, PaginatedMediaItems } from "@/types/googlePhotoMetadata";
+import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-export const getPaginatedMediaItemsWithRetry = async (pageToken?: string) => {
+export const getPaginatedMediaItemsWithRetry = async (router: AppRouterInstance, pageToken?: string) => {
     let attemptCounter = 0;
-    return await getPaginatedMediaItems(attemptCounter, pageToken);
+    return await getPaginatedMediaItems(attemptCounter, router, pageToken);
 }
 
-const getPaginatedMediaItems = (attemptCounter: number, pageToken?: string): Promise<PaginatedMediaItems> => {
+const getPaginatedMediaItems = (attemptCounter: number, router: AppRouterInstance, pageToken?: string): Promise<PaginatedMediaItems> => {
     attemptCounter++
 
-    return refreshGoogleProviderTokenIfNeededWithRetry()
-        .then((providerToken: string | undefined) => {
+    return refreshGoogleProviderTokenIfNeededWithRetry(router)
+        .then((providerToken) => {
             if (providerToken) {
                 return axios.get("https://photoslibrary.googleapis.com/v1/mediaItems", {
                     headers: {
@@ -39,7 +40,7 @@ const getPaginatedMediaItems = (attemptCounter: number, pageToken?: string): Pro
                     })
                     .catch((error) => {
                         if (attemptCounter > 1) throw error
-                        return getPaginatedMediaItems(attemptCounter, pageToken)
+                        return getPaginatedMediaItems(attemptCounter, router, pageToken)
                     })
             } else {
                 console.log(`couldn't get provider token`)
