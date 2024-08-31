@@ -9,7 +9,7 @@ import { refreshGooglePhotosBaseUrls } from "@/app/googleService/utils/refreshGo
 import { orderByNewestCreated } from "@/utils/orderByNewestCreated";
 import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import {createClient} from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/client";
 
 export const batchUpdateGoogleUrlsWithRetry = async (articles: Article[], router: AppRouterInstance): Promise<Article[]> => {
     const articleBatches = splitArticlesIntoBatches(articles);

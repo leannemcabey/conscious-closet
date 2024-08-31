@@ -7,7 +7,7 @@ import { Article } from "@/types/article";
 import Image from "next/image";
 import { updateGoogleUrlWithRetry } from "@/app/googleService/client/updateGoogleUrl";
 import ErrorModal from "@/app/components/modal/ErrorModal";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface ArticleImageProps {
     article: Article

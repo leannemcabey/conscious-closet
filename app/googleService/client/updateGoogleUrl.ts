@@ -5,7 +5,7 @@ import { Article } from "@/types/article";
 import { mediaItemToGooglePhotoMetadata } from "@/utils/typeConversions/mediaItemToGooglePhotoMetadata";
 import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import {createClient} from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/client";
 
 export async function updateGoogleUrlWithRetry(article: Article, router: AppRouterInstance) {
     let attemptCounter = 0;

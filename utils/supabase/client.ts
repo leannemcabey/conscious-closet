@@ -7,8 +7,6 @@ export const createClient = () =>
   );
 
 createClient().auth.onAuthStateChange((event, session) => {
-    console.log(`event: ${JSON.stringify(event)}`)
-    console.log(`session: ${JSON.stringify(session)}`)
     if (session && session.provider_token) {
         window.localStorage.setItem('oauth_provider_token', session.provider_token)
     }

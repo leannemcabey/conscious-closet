@@ -2,7 +2,7 @@
 import axios, {AxiosResponse} from "axios";
 import { refreshGoogleProviderTokenIfNeededWithRetry } from "@/utils/refreshGoogleProviderTokenIfNeeded";
 import { GooglePhotoMetadata, PaginatedMediaItems } from "@/types/googlePhotoMetadata";
-import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 export const getPaginatedMediaItemsWithRetry = async (router: AppRouterInstance, pageToken?: string) => {
     let attemptCounter = 0;
