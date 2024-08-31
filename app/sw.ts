@@ -21,32 +21,32 @@ const serwist = new Serwist({
     skipWaiting: true,
     clientsClaim: true,
     navigationPreload: true,
-    // runtimeCaching: [
-    //     {
-    //         matcher: ({ url }) => !url.pathname.startsWith("/offline"),
-    //         handler: new NetworkOnly(),
-    //     },
-    // ],
-    // fallbacks: {
-    //     entries: [
-    //         {
-    //             url: "/offline", // the page that'll display if user goes offline
-    //             matcher({ request }) {
-    //                 return request.destination === "document";
-    //             },
-    //         },
-    //     ],
-    // },
+    runtimeCaching: [
+        {
+            matcher: ({ url }) => !url.pathname.startsWith("/offline"),
+            handler: new NetworkOnly(),
+        },
+    ],
+    fallbacks: {
+        entries: [
+            {
+                url: "/offline", // the page that'll display if user goes offline
+                matcher({ request }) {
+                    return request.destination === "document";
+                },
+            },
+        ],
+    },
 });
 
-// const revision = crypto.randomUUID();
-//
-// serwist.addToPrecacheList([
-//     { url: "/offline" , revision: revision },
-//     { url: "/pexels-liza-summer-closet.jpg" },
-//     { url: "/cry.svg" },
-//     { url: "/global.css", revision: revision },
-//     { url: "/tailwind.config.js", revision: revision }
-// ])
+const revision = crypto.randomUUID();
+
+serwist.addToPrecacheList([
+    { url: "/offline" , revision: revision },
+    { url: "/pexels-liza-summer-closet.jpg" },
+    { url: "/cry.svg" },
+    { url: "/global.css", revision: revision },
+    { url: "/tailwind.config.js", revision: revision }
+])
 
 serwist.addEventListeners();
