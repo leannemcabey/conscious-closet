@@ -26,7 +26,7 @@ export default async function Suitcase({ params }: { params: { id: string }}) {
                 {suitcase && articles && (
                     <>
                         <div className="flex justify-end">
-                            <div className="h-max flex space-x-2 md:mt-4">
+                            <div className="h-max flex space-x-2 mt-4">
                                 <EditSuitcaseButton suitcase={suitcase}/>
                                 <DeleteSuitcaseButton suitcaseId={params.id}/>
                             </div>

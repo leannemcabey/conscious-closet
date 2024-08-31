@@ -18,5 +18,6 @@ createClient().auth.onAuthStateChange((event, session) => {
     if (event === 'SIGNED_OUT') {
         window.localStorage.removeItem('oauth_provider_token')
         window.localStorage.removeItem('oauth_provider_refresh_token')
+        window.localStorage.removeItem('expires_at')
     }
 })

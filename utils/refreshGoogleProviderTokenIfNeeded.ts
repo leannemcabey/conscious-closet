@@ -1,13 +1,14 @@
 'use client'
 import { refreshGoogleProviderTokenWithRetry } from "@/app/googleService/server/refreshGoogleProviderToken";
 import { createClient } from "@/utils/supabase/client";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-export const refreshGoogleProviderTokenIfNeededWithRetry = async () => {
+export const refreshGoogleProviderTokenIfNeededWithRetry = async (router: AppRouterInstance) => {
     let attemptCounter = 0;
-    return await refreshGoogleProviderTokenIfNeeded(attemptCounter);
+    return await refreshGoogleProviderTokenIfNeeded(attemptCounter, router);
 }
 
-const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number): Promise<string | undefined> => {
+const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number, router: AppRouterInstance): Promise<string | undefined | void> => {
     attemptCounter++
 
     const supabase = createClient();
@@ -36,15 +37,15 @@ const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number): Promi
                     if (attemptCounter > 2) {
                         console.log('max attempts for refreshing token reached. should redirect to login')
                         return supabase.auth.signOut()
-                            .then(() => undefined)
+                            .then(() => router.push("/"))
                     } else {
-                        return refreshGoogleProviderTokenIfNeeded(attemptCounter)
+                        return refreshGoogleProviderTokenIfNeeded(attemptCounter, router)
                     }
                 })
         } else {
             console.log(`no refresh token present`)
             return supabase.auth.signOut()
-                .then(() => undefined)
+                .then(() => router.push("/"))
         }
     } else if (originalProviderToken) {
         console.log(`returning original unexpired token`)
@@ -52,6 +53,6 @@ const refreshGoogleProviderTokenIfNeeded = async (attemptCounter: number): Promi
     } else {
         console.log(`no tokens present`)
         return supabase.auth.signOut()
-            .then(() => undefined)
+            .then(() => router.push("/"))
     }
 }

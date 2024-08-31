@@ -1,7 +1,6 @@
 'use client'
 import * as React from "react";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import Image from "next/image";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { Article } from "@/types/article";
 import { batchUpdateGoogleUrlsWithRetry } from "@/app/googleService/client/batchUpdateGoogleUrlsWithRetry";
@@ -12,6 +11,7 @@ import { CapsuleElementType } from "@/types/CapsuleElementsMapType";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 import IconButton from "@/app/components/buttons/IconButton";
 import { CategoryArticlesMap } from "@/app/components/capsuleCreator/CapsuleCreatorContainer";
+import { useRouter } from "next/navigation";
 
 interface CapsuleArticleSelectorProps {
     initialElement: CapsuleElementType;
@@ -37,6 +37,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
         return tempIndex ? tempIndex : 0;
     }
 
+    const router = useRouter();
     const [currentSlot, setCurrentSlot] = useState<number>();
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum | undefined>();
     const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -71,7 +72,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
         if (selectedCategory) {
             const articles = articlesMap[selectedCategory];
             if (articles && articles.length) {
-                batchUpdateGoogleUrlsWithRetry(articles)
+                batchUpdateGoogleUrlsWithRetry(articles, router)
                     .then((articles) => {
                         setRefreshedArticlesOfSelectedCategory(articles);
 

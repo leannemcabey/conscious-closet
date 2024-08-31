@@ -11,7 +11,8 @@ interface WeatherPickerProps {
 
 export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPickerProps) => {
     const sizeStyling = "w-[60px] h-[60px] md:w-[80px] md:h-[80px]";
-    const colorStyling = {active: "bg-theme-light-green", inactive: "bg-white"}
+    const colorStyling = {active: "bg-white", inactive: "bg-white"}
+    const borderStyling = {active: "border border-theme-green", inactive: ""}
 
     return (
         <div className="flex flex-col justify-center items-center space-y-4">
@@ -21,6 +22,7 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
                 iconPath="/weather-icon-warm.svg" iconAlt="warm weather icon"
                 sizeOverride={sizeStyling}
                 colorOverride={colorStyling}
+                borderOverride={borderStyling}
             />
 
             <IconButton
@@ -29,6 +31,7 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
                 iconPath="/weather-icon-mixed.svg" iconAlt="mixed weather icon"
                 sizeOverride={sizeStyling}
                 colorOverride={colorStyling}
+                borderOverride={borderStyling}
             />
 
             <IconButton
@@ -37,6 +40,7 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
                 iconPath="/weather-icon-cold.svg" iconAlt="cold weather icon"
                 sizeOverride={sizeStyling}
                 colorOverride={colorStyling}
+                borderOverride={borderStyling}
             />
         </div>
     )
