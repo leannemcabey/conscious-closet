@@ -35,13 +35,15 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
         setFilteredArticles(tempFilteredArticles)
     }, [unfilteredArticles, filterSettings]);
 
+    console.log(`screen width: ${window.screen.width}`);
+
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
             <div className="flex flex-col h-[97%]">
                 <ArticleFilters filterTypes={filterTypes}/>
 
                 {filteredArticles.length > 0 && (
-                    <div className="h-[90%] lg:h-[87%] pb-4">
+                    <div className="h-[86%] lg:h-[87%] pb-4 md:pb-10">
                         <ArticlesContainer articles={filteredArticles}/>
                     </div>
                 )}
