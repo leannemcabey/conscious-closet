@@ -4,6 +4,7 @@ import { getLeastWornArticles } from "@/app/server-actions/article/getLeastWornA
 import RediscoveryContainer from "@/app/components/articles/RediscoveryContainer";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import PageHeader from "@/app/components/PageHeader";
+import PageHeaderWithSubHeader from "@/app/components/PageHeaderWithSubHeader";
 
 export default async function Rediscovery() {
     const {articles, error } = await getLeastWornArticles();
@@ -12,24 +13,21 @@ export default async function Rediscovery() {
 
     return (
         <Layout>
-            <>
-                {error && <ErrorPageContainer errorMessage={errorMessage} />}
+            <div className="page-container">
+                {error && <ErrorPageContainer errorMessage={errorMessage}/>}
 
                 {articles && (
                     <>
-                        <div className="flex flex-col mt-2 items-center">
-                            <PageHeader title="rediscovery" iconPath="/lightbulb.svg" iconAlt="light bulb icon" />
-
-                            <p className="mb-1 text-center text-sm text-neutral-400 max-w-[500px] md:text-lg">
-                                We noticed you haven't worn these items in the last 6 months.
-                                By rediscovering what you already own, you'll feel less compelled to purchase more.
-                            </p>
-                        </div>
+                        <PageHeaderWithSubHeader title="rediscovery" iconPath="/lightbulb.svg" iconAlt="light bulb icon">
+                            <>
+                                Rediscover what you haven't worn in the last 6 months.
+                            </>
+                        </PageHeaderWithSubHeader>
 
                         <RediscoveryContainer articles={articles}/>
                     </>
                 )}
-            </>
+            </div>
         </Layout>
     )
 };

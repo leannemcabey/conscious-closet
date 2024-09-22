@@ -26,16 +26,17 @@ const SuitcaseList = () => {
     if (error) return <ErrorPageContainer errorMessage={errorMessage} />
 
     return (
-        <>
+        <div className="h-[97%] flex flex-col">
             <div className="fixed top-12 right-[9px] md:top-12">
-                <NewButton handleClick={() => setCreatingSuitcase(true)} />
+                <NewButton handleClick={() => setCreatingSuitcase(true)}/>
             </div>
 
             {suitcases && suitcases?.length > 0 && (
-                <div className="h-[95%] overflow-scroll pb-4">
+                <div className="overflow-scroll pb-10 mx-2">
                     {suitcases.map((suitcase) =>
                         <Link href={`/suitcases/${suitcase.id}`} key={suitcase.id}>
-                            <div className="text-center tracking-widest text-neutral-800 w-full text-lg py-4 my-4 truncate bg-white rounded-lg drop-shadow md:text-2xl lg:text-lg">
+                            <div
+                                className="text-center tracking-widest text-neutral-800 w-full text-lg py-4 my-4 truncate bg-white rounded-lg drop-shadow md:text-2xl lg:text-lg">
                                 {suitcase.name}
                             </div>
                         </Link>
@@ -56,7 +57,7 @@ const SuitcaseList = () => {
                     setSuitcases={setSuitcases}
                 />
             }
-        </>
+        </div>
     )
 }
 

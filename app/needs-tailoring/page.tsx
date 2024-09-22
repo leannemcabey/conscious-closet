@@ -4,6 +4,9 @@ import { getArticlesNeedingTailoring } from "@/app/server-actions/needs-tailorin
 import NeedsTailoringContainer from "@/app/components/needsTailoring/NeedsTailoringContainer";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import PageHeader from "@/app/components/PageHeader";
+import { categorySlugToTitleMap } from "@/types/enums/articleCategoryEnum";
+import CategoryPageContainer from "@/app/components/articles/CategoryPageContainer";
+import PageHeaderWithSubHeader from "@/app/components/PageHeaderWithSubHeader";
 
 export default async function NeedsTailoring() {
     const { articles, error } = await getArticlesNeedingTailoring();
@@ -12,23 +15,19 @@ export default async function NeedsTailoring() {
 
     return (
         <Layout>
-            <>
-                {error && <ErrorPageContainer errorMessage={errorMessage} />}
+            <div className="page-container">
+                {error && <ErrorPageContainer errorMessage={errorMessage}/>}
 
                 {articles && (
                     <>
-                        <div className="flex flex-col mt-2 items-center">
-                            <PageHeader title="needs tailoring" iconPath="/sewing-machine.svg" iconAlt="needle icon" />
-
-                            <p className="mb-1 text-center max-w-[300px] text-neutral-400 text-sm md:text-lg md:max-w-[400px]">
-                                Tailoring is a great way to give new life to an item and avoid creating waste.
-                            </p>
-                        </div>
+                        <PageHeaderWithSubHeader title="needs tailoring" iconPath="/sewing-machine.svg" iconAlt="needle icon">
+                            <>Tailoring is a great way to give new life to an item and avoid creating waste.</>
+                        </PageHeaderWithSubHeader>
 
                         <NeedsTailoringContainer articles={articles}/>
                     </>
                 )}
-            </>
+            </div>
         </Layout>
     )
 };

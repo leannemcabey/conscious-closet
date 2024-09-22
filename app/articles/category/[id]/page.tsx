@@ -14,18 +14,16 @@ export default async function ArticleCategoryPage({ params }: { params: { id: st
 
     return (
         <Layout>
-            <>
-                <div className="h-full text-center justify-center mt-2.5 text-2xl">
-                    {error && <ErrorPageContainer errorMessage={errorMessage} />}
+            <div className="page-container">
+                {error && <ErrorPageContainer errorMessage={errorMessage} />}
 
-                    {articles && (
-                        <>
-                            <PageHeader title={categorySlugToTitleMap[params.id as ArticleCategoryEnum]} iconPath={"/hanger.svg"} iconAlt={"hanger icon"} />
-                            <CategoryPageContainer articles={articles} category={params.id as ArticleCategoryEnum}/>
-                        </>
-                    )}
-                </div>
-            </>
+                {articles && (
+                    <>
+                        <PageHeader title={categorySlugToTitleMap[params.id as ArticleCategoryEnum]} iconPath={"/hanger.svg"} iconAlt={"hanger icon"} />
+                        <CategoryPageContainer articles={articles} category={params.id as ArticleCategoryEnum}/>
+                    </>
+                )}
+            </div>
         </Layout>
     )
 };

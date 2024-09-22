@@ -14,30 +14,36 @@ interface AboutSectionProps {
 
 const AboutSection = ({ sectionName, iconPath, iconAlt, children }: AboutSectionProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [wasOpened, setWasOpened] = useState<boolean>(false);
+
+    const handleClick = () => {
+        setWasOpened(true);
+        setIsOpen(true);
+    }
 
     return (
         <>
             <div
-                className="flex flex-col items-center w-[96px] md:w-[200px] h-[130px] bg-white border border-theme-green text-text-green rounded-lg p-2 mb-2 drop-shadow"
-                onClick={() => setIsOpen(!isOpen)}
+                className={`${!wasOpened ? "animate-pulse" : ""} flex flex-col items-center w-[96px] md:w-[200px] h-[115px] bg-theme-green rounded-lg p-2 mb-2 drop-shadow`}
+                onClick={() => handleClick()}
             >
-                <div className="w-[35px] h-[35px]">
+                <div className="w-[25px] h-[25px]">
                     <Image
                         src={iconPath}
                         alt={iconAlt}
-                        width="35"
-                        height="35"
+                        width="25"
+                        height="25"
                         className="w-full"
                     />
                 </div>
-                <h2 className="text-center tracking-widest mt-2">{sectionName}</h2>
+                <h2 className="text-white text-sm text-center tracking-widest mt-2">{sectionName}</h2>
             </div>
 
             {isOpen &&
                 <Modal setIsOpen={setIsOpen}>
                     <>
                         <CloseModalButton setIsOpen={setIsOpen}/>
-                        <h2 className="bg-theme-blue text-white p-1 rounded-lg text-center tracking-widest mt-2 md:text-xl">{sectionName}</h2>
+                        <h2 className="text-theme-green text-center tracking-widest text-lg mt-2 md:text-xl">{sectionName}</h2>
                         <div className="text-center space-y-4 py-4 h-max max-h-[500px] overflow-scroll md:text-xl md:max-h-[600px]">
                             {children}
                         </div>

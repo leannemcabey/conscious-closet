@@ -14,21 +14,21 @@ export default async function CleanoutBag() {
 
     return (
         <Layout>
-            <>
+            <div className="page-container">
+                {error && <ErrorPageContainer errorMessage={errorMessage}/>}
+
                 <div className="h-max flex justify-end space-x-2 mt-2.5 mr-1">
-                    <CleanoutRecsButton />
+                    <CleanoutRecsButton/>
                     <DeleteAllFromCleanoutButton disabled={articles.length <= 0}/>
                 </div>
 
-                {error && <ErrorPageContainer errorMessage={errorMessage}/>}
-
                 {articles && (
-                    <div className="h-[95%] mt-2">
+                    <>
                         <PageHeader title="cleanout bag" iconPath="/broom.svg" iconAlt="broom icon"/>
                         <CleanoutBagContainer articles={articles}/>
-                    </div>
+                    </>
                 )}
-            </>
+            </div>
         </Layout>
     )
 };

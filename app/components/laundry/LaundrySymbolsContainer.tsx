@@ -6,7 +6,7 @@ const LaundrySymbolsContainer = () => {
     const symbolContainerStyling = "w-full grid grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-4";
 
     return (
-        <div className="h-[98%] lg:h-[98%] w-full overflow-scroll mt-2 flex flex-col items-center text-center space-y-4 md:space-y-10">
+        <div className="h-[98%] w-full flex flex-col overflow-scroll mt-4 pb-4 items-center text-center space-y-4 md:space-y-10">
             <div className="w-full">
                 <h2 className={headerStyling}>the basics</h2>
                 <div className={symbolContainerStyling}>

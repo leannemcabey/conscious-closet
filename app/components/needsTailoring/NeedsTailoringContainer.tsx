@@ -9,6 +9,7 @@ import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import { articleCategories } from "@/constants/articleCategories";
+import NoArticlesMessage from "@/app/components/articles/NoArticlesMessage";
 
 interface NeedsTailoringContainerProps {
     articles: Article[]
@@ -35,20 +36,11 @@ const NeedsTailoringContainer = ({ articles }: NeedsTailoringContainerProps) => 
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex flex-col h-[93%] md:h-[95%]">
+            <div className="h-[90%] flex flex-col">
                 <ArticleFilters filterTypes={filterTypes} />
 
-                {filteredArticles.length > 0 && (
-                    <div className="h-[89%] md:h-[87%] lg:h-[80%] pb-4">
-                        <ArticlesContainer articles={filteredArticles} />
-                    </div>
-                )}
-
-                {filteredArticles.length === 0 &&
-                    <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">
-                        There are no articles needing tailoring that match the applied filters.
-                    </p>
-                }
+                {filteredArticles.length === 0 && <NoArticlesMessage />}
+                {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles} />}
             </div>
         </ArticleFilterContext.Provider>
     )

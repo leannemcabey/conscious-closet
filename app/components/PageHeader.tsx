@@ -1,13 +1,15 @@
 import Image from "next/image";
 import * as React from "react";
+import { ReactElement } from "react";
 
 interface PageHeaderProps {
     title: string;
     iconPath?: string;
     iconAlt?: string;
+    children?: ReactElement;
 }
 
-const PageHeader = ({ title, iconPath, iconAlt }: PageHeaderProps) => {
+const PageHeader = ({ title, iconPath, iconAlt, children }: PageHeaderProps) => {
     return (
         <div className="flex justify-center items-center h-[60px] -mt-2">
             <h1 className={`text-lg tracking-widest md:text-xl lg:text-xl ${iconPath && "mr-1 md:mr-2.5"}`}>{title}</h1>
