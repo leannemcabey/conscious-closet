@@ -20,3 +20,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@layer components {
+  .page-container {
+    margin-top: 0.625rem;
+    height: 100%;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    text-align: center;
+  }
+}

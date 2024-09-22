@@ -9,6 +9,7 @@ import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import { articleCategories } from "@/constants/articleCategories";
+import NoArticlesMessage from "@/app/components/articles/NoArticlesMessage";
 
 interface CleanoutBagContainerProps {
     articles: Article[]
@@ -36,20 +37,11 @@ const CleanoutBagContainer = ({ articles }: CleanoutBagContainerProps) => {
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
-            <div className="flex flex-col h-[97%] md:mt-8">
-                <ArticleFilters filterTypes={filterTypes} />
+            <div className="h-[97%] flex flex-col">
+                <ArticleFilters filterTypes={filterTypes}/>
 
-                {filteredArticles.length > 0 && (
-                    <div className="h-[88%] lg:h-[80%] pb-4">
-                        <ArticlesContainer articles={filteredArticles} />
-                    </div>
-                )}
-
-                {filteredArticles.length === 0 &&
-                    <p className="w-3/4 mt-20 text-center self-center text-xl text-neutral-400">
-                        There are no articles in your cleanout bag that match the applied filters.
-                    </p>
-                }
+                {filteredArticles.length === 0 && <NoArticlesMessage />}
+                {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles}/>}
             </div>
         </ArticleFilterContext.Provider>
     )
