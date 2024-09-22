@@ -1,7 +1,6 @@
 import { Article } from "@/types/article";
 
 export const splitArticlesIntoBatches = (articles: Article[]): Article[][] => {
-    console.log(`splitting articles`)
     // The maximum number of media items that can be retrieved in one call is 50.
     if (articles.length <= 50) return [articles];
 
