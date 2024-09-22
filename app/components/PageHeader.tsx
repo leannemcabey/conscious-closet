@@ -1,6 +1,6 @@
 import Image from "next/image";
 import * as React from "react";
-import {ReactElement} from "react";
+import { ReactElement } from "react";
 
 interface PageHeaderProps {
     title: string;

@@ -45,7 +45,7 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
     )
 
     if (refreshedArticles) return (
-        <div className={`pb-10 overflow-scroll`}>
+        <div className="pb-10 overflow-scroll">
             <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-2 p-2 justify-items-center">
                 {/*
                     Checking articles.length is a workaround to handle when all articles in the cleanout bag have been
