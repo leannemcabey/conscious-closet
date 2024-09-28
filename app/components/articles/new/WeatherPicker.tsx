@@ -12,7 +12,7 @@ interface WeatherPickerProps {
 export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPickerProps) => {
     const sizeStyling = "w-[60px] h-[60px] md:w-[80px] md:h-[80px]";
     const colorStyling = {active: "bg-white", inactive: "bg-white"}
-    const borderStyling = {active: "border border-theme-green", inactive: ""}
+    const borderStyling = {active: "border border-neutral-300 border-2", inactive: ""}
 
     return (
         <div className="flex flex-col justify-center items-center space-y-4">

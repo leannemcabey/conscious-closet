@@ -1,5 +1,5 @@
 'use client'
-import { Dispatch, SetStateAction, useState } from "react";
+import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
@@ -13,16 +13,20 @@ import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { ImageSelection } from "@/app/components/articles/new/ImageSelection";
 import { createArticle } from "@/app/server-actions/article/createArticle";
 import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
+import IconButton from "@/app/components/buttons/IconButton";
+import {undefined} from "zod";
 
 interface NewArticleModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
-    category: ArticleCategoryEnum;
+    category?: ArticleCategoryEnum;
     unfilteredArticles: Article[];
     setUnfilteredArticles: Dispatch<SetStateAction<Article[]>>;
 }
 
 const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfilteredArticles }: NewArticleModalProps) => {
+    const [selectingImage, setSelectingImage] = useState<boolean>();
     const [image, setImage] = useState<GooglePhotoMetadata | undefined>(undefined);
+    const [articleCategory, setArticleCategory] = useState<ArticleCategoryEnum | null>(null);
     const [weatherCategory, setWeatherCategory] = useState<WeatherCategoryEnum | undefined>(undefined);
     const [creationError, setCreationError] = useState<boolean>();
     const [submitted, setSubmitted] = useState<boolean>();
@@ -32,10 +36,14 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
     const successGif = <Image unoptimized={true} src="/fireworks.gif" alt="success" height="200" width="200"/>
     const errorMessage = "An error occurred when trying to add this article. It may be that you already have it in your closet."
 
+    useEffect(() => {
+        setSelectingImage(!!image)
+    }, [image]);
+
     const handleSubmit = () => {
         createArticle({
             image: image!,
-            articleCategory: category!,
+            articleCategory: articleCategory!,
             weatherCategory: weatherCategory!
         })
             .then((newArticle) => {
@@ -53,15 +61,26 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
 
     if (creationError) return <ErrorModal setIsOpen={setIsOpen} errorMessage={errorMessage} />
 
+    if (selectingImage) return <ImageSelection setImage={setImage}/>;
+
     return (
         <Modal setIsOpen={setIsOpen}>
             <>
                 <CloseModalButton setIsOpen={setIsOpen} />
 
-                {!image && <ImageSelection setImage={setImage}/>}
+                {/*{!image && <ImageSelection setImage={setImage}/>}*/}
 
                 {image && !submitted && (
                     <div className="mt-4 flex flex-col place-content-center">
+                        <Image
+                            src={"/left-arrow.svg"}
+                            alt={"Back arrow"}
+                            width={25}
+                            height={25}
+                            onClick={() => setImage(undefined)}
+                            // className="w-full"
+                        />
+
                         <div className="flex flex-col bg-neutral-200 rounded-lg p-2 text-center items-center mb-4 md:mb-8">
                             <div className="flex items-center space-x-1 mb-2.5">
                                 <div className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]">
@@ -87,7 +106,17 @@ const NewArticleModal = ({ setIsOpen, category, unfilteredArticles, setUnfiltere
                             <Polaroid
                                 imageUrl={image.baseUrl}
                             />
-                            <WeatherPicker weatherCategory={weatherCategory} setWeatherCategory={setWeatherCategory}/>
+                            <div className="flex">
+                                <WeatherPicker weatherCategory={weatherCategory} setWeatherCategory={setWeatherCategory}/>
+                                <IconButton
+                                    handleClick={() => (console.log("blah"))}
+                                    isActive={true}
+                                    iconPath="/hanger.svg" iconAlt="select article category"
+                                    sizeOverride="w-[60px] h-[60px] md:w-[80px] md:h-[80px]"
+                                    // colorOverride={colorStyling}
+                                    // borderOverride={borderStyling}
+                                />
+                            </div>
                         </div>
 
                         {image &&
