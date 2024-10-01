@@ -14,7 +14,6 @@ import { ImageSelection } from "@/app/components/articles/new/ImageSelection";
 import { createArticle } from "@/app/server-actions/article/createArticle";
 import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
 import IconButton from "@/app/components/buttons/IconButton";
-import {undefined} from "zod";
 
 interface NewArticleModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>;

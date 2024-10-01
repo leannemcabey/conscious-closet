@@ -19,6 +19,7 @@ module.exports = {
         'theme-light-blue': '#a6a7ac',
         'theme-sage': '#727467',
         'theme-gold': '#97682b',
+        'theme-light-gold': 'rgba(151,104,43,0.15)',
         'theme-brown': '#552d16',
         'theme-gray': '#f4f3f3',
         'theme-red': '#f55959',

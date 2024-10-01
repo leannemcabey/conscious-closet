@@ -1,15 +1,17 @@
 'use server'
 import Layout from "@/app/components/Layout";
-import Image from "next/image";
 import WeatherPageContainer from "@/app/components/articles/WeatherPageContainer";
 import { getArticlesByWeatherCategory } from "@/app/server-actions/article/getArticlesByWeatherCategory";
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import WeatherPageHeader from "@/app/components/WeatherPageHeader";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 
 export default async function WeatherPage({ params }: { params: { id: string } }) {
     const { articles, error } = await getArticlesByWeatherCategory(params.id);
 
     const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
+
+    console.log(`params.id: ${params.id}`)
 
     return (
         <Layout>
@@ -23,7 +25,7 @@ export default async function WeatherPage({ params }: { params: { id: string } }
                             alt={`${params.id} weather icon`}
                         />
 
-                        <WeatherPageContainer articles={articles}/>
+                        <WeatherPageContainer articles={articles} weatherCategory={params.id as WeatherCategoryEnum} />
                     </>
                 )}
             </div>
