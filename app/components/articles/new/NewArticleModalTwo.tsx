@@ -30,33 +30,31 @@ const NewArticleModalTwo = ({ setIsOpen, unfilteredArticles, setUnfilteredArticl
 
     const errorMessage = "An error occurred when trying to add this article. It may be that you already have it in your closet."
 
+    // When adding articles from a category page, `unfilteredArticles` and  `setUnfilteredArticles`
+    // will be passed to the component. If the newly added article is of the same category as the page
+    // the user is on, the new one needs to be added to the `unfilteredArticles` so it shows on the page
+    const showNewArticleOnPageIfApplicable = (newArticle) => {
+        if (category === selectedCategory && unfilteredArticles && setUnfilteredArticles) {
+            const copy = [...unfilteredArticles]
+            copy.unshift(newArticle)
+            setUnfilteredArticles(copy)
+        }
+    }
+
     const handleSubmit = () => {
         createArticle({
             image: image!,
             articleCategory: selectedCategory!,
             weatherCategory: selectedWeatherCategory!
         })
-            .then((newArticle) => {
-                // When adding articles from a category page, these will be passed to the component
-                // and require updating so the new article is reflected
-                if (unfilteredArticles && setUnfilteredArticles) {
-                    const copy = [...unfilteredArticles]
-                    copy.unshift(newArticle)
-                    setUnfilteredArticles(copy)
-                }
-            })
+            .then((newArticle) => showNewArticleOnPageIfApplicable(newArticle))
             .then(() => setStep(3))
             // The setTimeout is to give the success gif time to display before automatically closing the modal
             .then(() => setTimeout(() => setIsOpen(false), 2000))
-            .catch(() => {
-                setCreationError(true)
-            })
+            .catch(() => setCreationError(true))
     }
 
     if (creationError) return <ErrorModal setIsOpen={setIsOpen} errorMessage={errorMessage} />
-
-    console.log(`weather: ${weatherCategory}`)
-    console.log(`selected weather: ${selectedWeatherCategory}`)
 
     return (
         <Modal setIsOpen={setIsOpen}>

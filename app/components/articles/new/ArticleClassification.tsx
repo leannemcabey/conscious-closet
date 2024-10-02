@@ -19,7 +19,7 @@ interface StepTwoProps {
 
 const ArticleClassification = ({ image, setStep, selectedCategory, setSelectedCategory, selectedWeatherCategory, setSelectedWeatherCategory, handleSubmit }: StepTwoProps) => {
     return (
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-2">
             <Image
                 src={"/left-arrow.svg"}
                 alt={"Back arrow"}
@@ -34,9 +34,10 @@ const ArticleClassification = ({ image, setStep, selectedCategory, setSelectedCa
 
             <WeatherPicker weatherCategory={selectedWeatherCategory} setWeatherCategory={setSelectedWeatherCategory}/>
 
-            <div className="grid grid-cols-2 gap-1">
+            <div className="grid grid-cols-2 gap-1 max-w-[400px] self-center">
                 {Object.keys(ArticleCategoryTitle).map((category) =>
                     <button
+                        key={category}
                         onClick={() => setSelectedCategory(ArticleCategoryEnum[category])}
                         className={`rounded-full text-center truncate py-1 px-2 ${ArticleCategoryEnum[category] === selectedCategory ? "bg-theme-green text-white" : " border border-theme-green text-theme-green"}`}
                     >
@@ -45,7 +46,7 @@ const ArticleClassification = ({ image, setStep, selectedCategory, setSelectedCa
                 )}
             </div>
 
-            <Warning />
+            {selectedCategory && selectedWeatherCategory && <Warning />}
 
             <button
                 className="pt-8 self-end"

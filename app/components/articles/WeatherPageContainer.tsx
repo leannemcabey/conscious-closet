@@ -48,7 +48,7 @@ const WeatherPageContainer = ({ articles, weatherCategory }: WeatherPageContaine
                 {addingArticle &&
                     <NewArticleModalTwo
                         setIsOpen={setAddingArticle}
-                        selectedWeatherCategory={weatherCategory}
+                        weatherCategory={weatherCategory}
                         unfilteredArticles={unfilteredArticles}
                         setUnfilteredArticles={setUnfilteredArticles}
                     />

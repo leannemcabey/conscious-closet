@@ -10,7 +10,7 @@ interface WeatherPickerProps {
 }
 
 export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPickerProps) => {
-    const sizeStyling = "w-[60px] h-[60px] md:w-[80px] md:h-[80px]";
+    const sizeStyling = "w-[50px] h-[50px]";
     const colorStyling = {active: "bg-theme-green", inactive: "bg-white"}
     const borderStyling = {active: "", inactive: "border border-theme-green"}
 

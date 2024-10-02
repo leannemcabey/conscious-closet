@@ -11,8 +11,6 @@ export default async function WeatherPage({ params }: { params: { id: string } }
 
     const errorMessage = "An error occurred when retrieving your articles. Please go back and try again."
 
-    console.log(`params.id: ${params.id}`)
-
     return (
         <Layout>
             <div className="page-container">
