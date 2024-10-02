@@ -37,16 +37,3 @@ export const categorySlugToTitleMap  = {
     outerwear: "outerwear",
     accessories: "accessories"
 }
-
-export const categorySlugToSingularTitleMap = {
-    tops: "top",
-    pants: "pants",
-    shorts: "shorts",
-    skirts: "skirt",
-    dresses: "dress",
-    jumpsuits_rompers: "jumpsuit & romper",
-    activewear: "activewear",
-    shoes: "shoes",
-    outerwear: "outerwear",
-    accessories: "accessory"
-}

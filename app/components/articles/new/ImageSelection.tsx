@@ -10,9 +10,10 @@ import { useRouter } from "next/navigation";
 
 interface ImageSelectionProps {
     setImage: Dispatch<SetStateAction<GooglePhotoMetadata | undefined>>;
+    setStep: Dispatch<SetStateAction<number>>;
 }
 
-export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
+export const ImageSelection = ({ setImage, setStep }: ImageSelectionProps) => {
     const router = useRouter();
     const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>()
     const [pageTokens, setPageTokens] = useState<(string|undefined)[]>([]);
@@ -32,14 +33,15 @@ export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
 
     const handleClick = async (image: GooglePhotoMetadata) => {
         setImage(image)
+        setStep(2);
     }
 
     if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
     if (!error) return (
-        <div className="flex flex-col items-center space-y-4 md:space-y-8">
+        <div className="flex flex-col items-center space-y-2 md:space-y-8">
             <div className="flex items-center text-lg md:text-2xl space-x-1 mb-2">
-                <Image src="/google-photos-icon.png" height="40" width="40" alt="Google Photos icon" />
+                <Image src="/google-photos-icon.png" height="35" width="35" alt="Google Photos icon" />
                 <h2>Select from your <span className="text-nowrap">Google Photos</span></h2>
             </div>
 
@@ -61,7 +63,7 @@ export const ImageSelection = ({ setImage }: ImageSelectionProps) => {
 
                         <p className="mt-2 text-center text-xs md:text-base text-neutral-400">Google Photos™ photo storage and organizing platform is a trademark of Google LLC.</p>
 
-                        <div className="flex content-end place-content-between mt-8">
+                        <div className="flex content-end place-content-between mt-4">
                             <TextButton
                                 widthStyling="w-20"
                                 disabled={page === 0}

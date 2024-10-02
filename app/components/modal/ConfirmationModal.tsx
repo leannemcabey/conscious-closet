@@ -17,12 +17,12 @@ const ConfirmationModal = ({ setIsOpen, confirmAction, children }: ConfirmationM
                 {children}
 
                 <div className="flex justify-center space-x-4 mb-2">
-                    <TextButton disabled={false} handleClick={() => confirmAction()} widthStyling="w-20">
-                        confirm
-                    </TextButton>
-
                     <TextButton disabled={false} handleClick={() => setIsOpen(false)} widthStyling="w-20" colorOverride="border-theme-red text-theme-red">
                         cancel
+                    </TextButton>
+
+                    <TextButton disabled={false} handleClick={() => confirmAction()} widthStyling="w-20">
+                        confirm
                     </TextButton>
                 </div>
             </div>

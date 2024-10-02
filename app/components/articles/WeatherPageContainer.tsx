@@ -9,27 +9,33 @@ import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import { articleCategories } from "@/constants/articleCategories";
 import NoArticlesMessage from "@/app/components/articles/NoArticlesMessage";
+import NewButton from "@/app/components/buttons/NewButton";
+import NewArticleModal from "@/app/components/articles/new/NewArticleModal";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 
 interface WeatherPageContainerProps {
     articles: Article[];
+    weatherCategory: WeatherCategoryEnum;
 }
 
-const WeatherPageContainer = ({ articles }: WeatherPageContainerProps) => {
+const WeatherPageContainer = ({ articles, weatherCategory }: WeatherPageContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: false,
         selectedArticleCategories: articleCategories.map((category) => ArticleCategoryEnum[category  as keyof typeof ArticleCategoryEnum])
     };
 
     const [filterSettings, setFilterSettings] = useState<FilterSettings>(defaultFilterContext);
-    const articlesNotInCleanoutBag = articles.filter((article) => !article.inCleanoutBag)
+    const [unfilteredArticles, setUnfilteredArticles] = useState<Article[]>(articles)
+    const articlesNotInCleanoutBag = unfilteredArticles.filter((article) => !article.inCleanoutBag)
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(articlesNotInCleanoutBag);
+    const [addingArticle, setAddingArticle] = useState<boolean>(false);
 
     const filterTypes = [FilterType.cleanout, FilterType.category];
 
     useEffect(() => {
-        const tempFilteredArticles = applyArticleFilters(articles, filterTypes, filterSettings);
+        const tempFilteredArticles = applyArticleFilters(unfilteredArticles, filterTypes, filterSettings);
         setFilteredArticles(tempFilteredArticles)
-    }, [filterSettings]);
+    }, [unfilteredArticles, filterSettings]);
 
     return (
         <ArticleFilterContext.Provider value={{filterSettings, setFilterSettings}}>
@@ -38,6 +44,21 @@ const WeatherPageContainer = ({ articles }: WeatherPageContainerProps) => {
 
                 {filteredArticles.length === 0 && <NoArticlesMessage />}
                 {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles}/>}
+
+                {addingArticle &&
+                    <NewArticleModal
+                        setIsOpen={setAddingArticle}
+                        weatherCategory={weatherCategory}
+                        unfilteredArticles={unfilteredArticles}
+                        setUnfilteredArticles={setUnfilteredArticles}
+                    />
+                }
+
+                <div className="fixed top-12 right-[9px]">
+                    <NewButton
+                        handleClick={() => setAddingArticle(true)}
+                    />
+                </div>
             </div>
         </ArticleFilterContext.Provider>
     )

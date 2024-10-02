@@ -50,7 +50,8 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
                         category={category}
                         unfilteredArticles={unfilteredArticles}
                         setUnfilteredArticles={setUnfilteredArticles}
-                    />}
+                    />
+                }
 
                 <div className="fixed top-12 right-[9px]">
                     <NewButton

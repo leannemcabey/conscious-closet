@@ -19,12 +19,21 @@ module.exports = {
         'theme-light-blue': '#a6a7ac',
         'theme-sage': '#727467',
         'theme-gold': '#97682b',
+        'theme-light-gold': 'rgba(151,104,43,0.15)',
         'theme-brown': '#552d16',
         'theme-gray': '#f4f3f3',
         'theme-red': '#f55959',
         'transparent-bg': 'rgba(64, 64, 64, 0.5)'
       },
       keyframes: {
+        'enter-from-left': {
+          from: {
+            left: '-100%'
+          },
+          to: {
+            left: '0%'
+          }
+        },
         'enter-from-bottom': {
           from: {
             bottom: '-100%'
@@ -63,6 +72,7 @@ module.exports = {
       animation: {
         'enter-from-bottom': 'enter-from-bottom .3s forwards',
         'enter-from-right': 'enter-from-right .3s forwards',
+        'enter-from-left': 'enter-from-left .3s forwards',
         'exit-to-right': 'exit-to-right .3s forwards',
         'grow': 'grow .3s forwards'
       },

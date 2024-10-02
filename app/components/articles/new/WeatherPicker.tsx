@@ -10,16 +10,17 @@ interface WeatherPickerProps {
 }
 
 export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPickerProps) => {
-    const sizeStyling = "w-[60px] h-[60px] md:w-[80px] md:h-[80px]";
-    const colorStyling = {active: "bg-white", inactive: "bg-white"}
-    const borderStyling = {active: "border border-theme-green", inactive: ""}
+    const sizeStyling = "w-[50px] h-[50px]";
+    const colorStyling = {active: "bg-theme-green", inactive: "bg-white"}
+    const borderStyling = {active: "", inactive: "border border-theme-green"}
 
     return (
-        <div className="flex flex-col justify-center items-center space-y-4">
+        <div className="flex justify-center items-center space-x-4">
             <IconButton
                 handleClick={() => setWeatherCategory(WeatherCategoryEnum.WARM)}
                 isActive={weatherCategory === WeatherCategoryEnum.WARM}
-                iconPath="/weather-icon-warm.svg" iconAlt="warm weather icon"
+                iconPath={weatherCategory === WeatherCategoryEnum.WARM ? "/weather-icon-warm-white.svg" : "/weather-icon-warm.svg"}
+                iconAlt="warm weather icon"
                 sizeOverride={sizeStyling}
                 colorOverride={colorStyling}
                 borderOverride={borderStyling}
@@ -28,7 +29,8 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
             <IconButton
                 handleClick={() => setWeatherCategory(WeatherCategoryEnum.MIXED)}
                 isActive={weatherCategory === WeatherCategoryEnum.MIXED}
-                iconPath="/weather-icon-mixed.svg" iconAlt="mixed weather icon"
+                iconPath={weatherCategory === WeatherCategoryEnum.MIXED ? "/weather-icon-mixed-white.svg" : "/weather-icon-mixed.svg"}
+                iconAlt="mixed weather icon"
                 sizeOverride={sizeStyling}
                 colorOverride={colorStyling}
                 borderOverride={borderStyling}
@@ -37,7 +39,8 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
             <IconButton
                 handleClick={() => setWeatherCategory(WeatherCategoryEnum.COLD)}
                 isActive={weatherCategory === WeatherCategoryEnum.COLD}
-                iconPath="/weather-icon-cold.svg" iconAlt="cold weather icon"
+                iconPath={weatherCategory === WeatherCategoryEnum.COLD ? "/weather-icon-cold-white.svg" : "/weather-icon-cold.svg"}
+                iconAlt="cold weather icon"
                 sizeOverride={sizeStyling}
                 colorOverride={colorStyling}
                 borderOverride={borderStyling}
