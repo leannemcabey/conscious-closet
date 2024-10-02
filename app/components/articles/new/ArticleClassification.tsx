@@ -7,7 +7,7 @@ import { WeatherPicker } from "@/app/components/articles/new/WeatherPicker";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import Warning from "@/app/components/articles/new/Warning";
 
-interface StepTwoProps {
+interface ArticleClassificationProps {
     setStep: Dispatch<SetStateAction<number>>;
     image: GooglePhotoMetadata;
     selectedCategory: ArticleCategoryEnum | undefined;
@@ -17,7 +17,7 @@ interface StepTwoProps {
     handleSubmit: () => void;
 }
 
-const ArticleClassification = ({ image, setStep, selectedCategory, setSelectedCategory, selectedWeatherCategory, setSelectedWeatherCategory, handleSubmit }: StepTwoProps) => {
+const ArticleClassification = ({ image, setStep, selectedCategory, setSelectedCategory, selectedWeatherCategory, setSelectedWeatherCategory, handleSubmit }: ArticleClassificationProps) => {
     return (
         <div className="flex flex-col space-y-2">
             <Image

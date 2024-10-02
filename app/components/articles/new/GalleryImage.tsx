@@ -12,17 +12,14 @@ const GalleryImage = ({ photoData, handleSelection }: GalleryImageProps) => {
     const { baseUrl } = photoData
 
     return (
-        // <div className="overflow-hidden" onClick={() => handleSelection(photoData)}>
-            <Image
-                loader={googlePhotosPathLoader}
-                src={baseUrl}
-                width={100}
-                height={125}
-                alt="clothing article image"
-                // className="w-full"
-                onClick={() => handleSelection(photoData)}
-            />
-        // </div>
+        <Image
+            loader={googlePhotosPathLoader}
+            src={baseUrl}
+            width={100}
+            height={125}
+            alt="clothing article image"
+            onClick={() => handleSelection(photoData)}
+        />
     )
 }
 

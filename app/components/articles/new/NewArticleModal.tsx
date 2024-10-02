@@ -13,7 +13,7 @@ import Image from "next/image";
 import * as React from "react";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 
-interface NewArticleModalTwoProps {
+interface NewArticleModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>;
     unfilteredArticles?: Article[];
     setUnfilteredArticles?: Dispatch<SetStateAction<Article[]>>;
@@ -21,7 +21,7 @@ interface NewArticleModalTwoProps {
     weatherCategory?: WeatherCategoryEnum;
 }
 
-const NewArticleModal = ({ setIsOpen, unfilteredArticles, setUnfilteredArticles, category, weatherCategory }: NewArticleModalTwoProps) => {
+const NewArticleModal = ({ setIsOpen, unfilteredArticles, setUnfilteredArticles, category, weatherCategory }: NewArticleModalProps) => {
     const [step, setStep] = useState<number>(1);
     const [image, setImage] = useState<GooglePhotoMetadata | undefined>(undefined);
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum | undefined>(category);

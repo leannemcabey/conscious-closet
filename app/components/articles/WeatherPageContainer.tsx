@@ -11,7 +11,7 @@ import { articleCategories } from "@/constants/articleCategories";
 import NoArticlesMessage from "@/app/components/articles/NoArticlesMessage";
 import NewButton from "@/app/components/buttons/NewButton";
 import NewArticleModal from "@/app/components/articles/new/NewArticleModal";
-import {WeatherCategoryEnum} from "@/types/enums/weatherCategoryEnum";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 
 interface WeatherPageContainerProps {
     articles: Article[];
@@ -30,7 +30,7 @@ const WeatherPageContainer = ({ articles, weatherCategory }: WeatherPageContaine
     const [filteredArticles, setFilteredArticles] = useState<Article[]>(articlesNotInCleanoutBag);
     const [addingArticle, setAddingArticle] = useState<boolean>(false);
 
-    const filterTypes= [FilterType.cleanout, FilterType.category];
+    const filterTypes = [FilterType.cleanout, FilterType.category];
 
     useEffect(() => {
         const tempFilteredArticles = applyArticleFilters(unfilteredArticles, filterTypes, filterSettings);
