@@ -10,7 +10,7 @@ import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import { articleCategories } from "@/constants/articleCategories";
 import NoArticlesMessage from "@/app/components/articles/NoArticlesMessage";
 import NewButton from "@/app/components/buttons/NewButton";
-import NewArticleModalTwo from "@/app/components/articles/new/NewArticleModalTwo";
+import NewArticleModal from "@/app/components/articles/new/NewArticleModal";
 import {WeatherCategoryEnum} from "@/types/enums/weatherCategoryEnum";
 
 interface WeatherPageContainerProps {
@@ -46,7 +46,7 @@ const WeatherPageContainer = ({ articles, weatherCategory }: WeatherPageContaine
                 {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles}/>}
 
                 {addingArticle &&
-                    <NewArticleModalTwo
+                    <NewArticleModal
                         setIsOpen={setAddingArticle}
                         weatherCategory={weatherCategory}
                         unfilteredArticles={unfilteredArticles}

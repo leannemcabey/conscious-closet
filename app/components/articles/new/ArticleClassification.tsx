@@ -11,9 +11,9 @@ interface StepTwoProps {
     setStep: Dispatch<SetStateAction<number>>;
     image: GooglePhotoMetadata;
     selectedCategory: ArticleCategoryEnum | undefined;
-    setSelectedCategory: Dispatch<SetStateAction<ArticleCategoryEnum>>;
+    setSelectedCategory: Dispatch<SetStateAction<ArticleCategoryEnum | undefined>>;
     selectedWeatherCategory: WeatherCategoryEnum | undefined;
-    setSelectedWeatherCategory: Dispatch<SetStateAction<WeatherCategoryEnum>>;
+    setSelectedWeatherCategory: Dispatch<SetStateAction<WeatherCategoryEnum | undefined>>;
     handleSubmit: () => void;
 }
 
@@ -38,10 +38,10 @@ const ArticleClassification = ({ image, setStep, selectedCategory, setSelectedCa
                 {Object.keys(ArticleCategoryTitle).map((category) =>
                     <button
                         key={category}
-                        onClick={() => setSelectedCategory(ArticleCategoryEnum[category])}
-                        className={`rounded-full text-center truncate py-1 px-2 ${ArticleCategoryEnum[category] === selectedCategory ? "bg-theme-green text-white" : " border border-theme-green text-theme-green"}`}
+                        onClick={() => setSelectedCategory(ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])}
+                        className={`rounded-full text-center truncate py-1 px-2 ${ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum] === selectedCategory ? "bg-theme-green text-white" : " border border-theme-green text-theme-green"}`}
                     >
-                        {ArticleCategoryTitle[category]}
+                        {ArticleCategoryTitle[category as keyof typeof ArticleCategoryEnum]}
                     </button>
                 )}
             </div>

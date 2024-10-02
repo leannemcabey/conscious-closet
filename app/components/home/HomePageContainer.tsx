@@ -1,5 +1,5 @@
 'use client'
-import NewArticleModalTwo from "@/app/components/articles/new/NewArticleModalTwo";
+import NewArticleModal from "@/app/components/articles/new/NewArticleModal";
 import NewButton from "@/app/components/buttons/NewButton";
 import WeatherCategories from "@/app/components/home/WeatherCategories";
 import {ArticleCategoryTitle} from "@/types/enums/articleCategoryEnum";
@@ -13,7 +13,7 @@ const HomePageContainer = () => {
     return (
         <>
             {addingArticle &&
-                <NewArticleModalTwo
+                <NewArticleModal
                     setIsOpen={setAddingArticle}
                 />
             }

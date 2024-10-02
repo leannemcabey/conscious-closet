@@ -11,7 +11,6 @@ import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { applyArticleFilters } from "@/utils/applyArticleFilters";
 import NewButton from "@/app/components/buttons/NewButton";
 import NoArticlesMessage from "@/app/components/articles/NoArticlesMessage";
-import NewArticleModalTwo from "@/app/components/articles/new/NewArticleModalTwo";
 
 interface CategoryPageContainerProps {
     articles: Article[];
@@ -46,7 +45,7 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
                 {filteredArticles.length > 0 && <ArticlesContainer articles={filteredArticles}/>}
 
                 {addingArticle &&
-                    <NewArticleModalTwo
+                    <NewArticleModal
                         setIsOpen={setAddingArticle}
                         category={category}
                         unfilteredArticles={unfilteredArticles}
