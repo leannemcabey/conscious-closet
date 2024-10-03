@@ -12,7 +12,7 @@ const GalleryImage = ({ photoData, handleSelection }: GalleryImageProps) => {
     const { baseUrl } = photoData
 
     return (
-        <div className="max-h-[145px] overflow-hidden">
+        <div className="max-h-[140px] overflow-hidden">
             <Image
                 loader={googlePhotosPathLoader}
                 src={baseUrl}
