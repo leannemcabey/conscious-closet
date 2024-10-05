@@ -1,15 +1,13 @@
 'use client'
 import Image from "next/image";
 import { Article } from "@/types/article";
-import {useState} from "react";
-import {ArticleCategoryEnum} from "@/types/enums/articleCategoryEnum";
-import {WeatherCategoryEnum} from "@/types/enums/weatherCategoryEnum";
+import { useState } from "react";
+import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
+import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import ArticleClassification from "@/app/components/articles/ArticleClassification";
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
-import {updateArticleWeatherCategory} from "@/app/server-actions/article/updateArticleWeatherCategory";
-import {updateArticleCategories} from "@/app/server-actions/article/updateArticleCategories";
-import {addArticlesToSuitcases} from "@/app/server-actions/suitcase/addArticlesToSuitcases";
+import { updateArticleCategories } from "@/app/server-actions/article/updateArticleCategories";
 import SuccessModal from "@/app/components/modal/SuccessModal";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 
