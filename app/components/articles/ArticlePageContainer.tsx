@@ -6,7 +6,7 @@ import AddOrRemoveFromCleanoutBag from "@/app/components/cleanoutBag/AddOrRemove
 import DeleteArticle from "@/app/components/articles/DeleteArticle";
 import { Article } from "@/types/article";
 import UpdateArticleClassification from "@/app/components/articles/UpdateArticleClassification";
-import {useState} from "react";
+import { useState } from "react";
 
 interface ArticlePageContainerProps {
     article: Article;

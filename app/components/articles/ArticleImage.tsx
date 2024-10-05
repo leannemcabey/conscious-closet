@@ -1,5 +1,5 @@
 'use client'
-import {Dispatch, SetStateAction, useEffect, useState} from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Polaroid from "@/app/components/articles/Polaroid";
 import LastWorn from "@/app/components/articles/LastWorn";
 import { Article } from "@/types/article";
