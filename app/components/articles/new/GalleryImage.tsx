@@ -14,7 +14,7 @@ const GalleryImage = ({ photoData, alreadyInCloset, handleSelection }: GalleryIm
 
     return (
         <div className="flex">
-            <div className="max-h-[140px] overflow-hidden">
+            <div className={`max-h-[140px] overflow-hidden ${alreadyInCloset && "opacity-30"}`}>
                 <Image
                     loader={googlePhotosPathLoader}
                     src={baseUrl}
@@ -31,7 +31,7 @@ const GalleryImage = ({ photoData, alreadyInCloset, handleSelection }: GalleryIm
                     height={25}
                     width={25}
                     alt="already in closet"
-                    className="self-start ml-[-28px] mt-[3px] bg-white rounded-full"
+                    className="self-start ml-[-28px] mt-[3px] bg-white rounded-full z-50"
                 />
             }
         </div>
