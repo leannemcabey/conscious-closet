@@ -42,7 +42,7 @@ export const ImageSelection = ({ setImage, setStep, allArticleExternalIds }: Ima
     const findAlreadyInCloset = (batch: GooglePhotoMetadata[]): Set<string> => {
         const availableForSelection: string[] = batch?.map((photo) => photo.imageId) || [];
 
-        const foundInCloset = new Set();
+        const foundInCloset = new Set<string>();
         availableForSelection.forEach((id) => {
             if (allArticleExternalIds.has(id)) foundInCloset.add(id);
         })
