@@ -49,15 +49,19 @@ const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategor
                         </h3>
 
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-1 max-w-[400px] md:max-w-[90%] self-center">
-                            {articleCategories.map((category) =>
-                                <button
-                                    key={category}
-                                    onClick={() => handleClick(category)}
-                                    className={`rounded-full text-center text-sm md:text-xl truncate py-1 px-2 ${ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum] === selectedCategory ? "bg-theme-green text-white" : " border border-theme-green text-theme-green"}`}
-                                >
-                                    {ArticleCategoryTitle[category as keyof typeof ArticleCategoryEnum]}
-                                </button>
-                            )}
+                            {articleCategories.map((category) => {
+                                const alreadySelected = ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum] === selectedCategory;
+
+                                return (
+                                    <button
+                                        key={category}
+                                        onClick={() => handleClick(category)}
+                                        className={`rounded-full text-center text-sm truncate py-1 px-2 ${alreadySelected ? "bg-theme-green text-white" : "border border-theme-green text-theme-green"}`}
+                                    >
+                                        {ArticleCategoryTitle[category as keyof typeof ArticleCategoryEnum]}
+                                    </button>
+                                )
+                            })}
                         </div>
                     </div>
                 </Modal>
