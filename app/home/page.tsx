@@ -1,14 +1,14 @@
 import Layout from "@/app/components/Layout";
 import * as React from "react";
 import HomePageContainer from "@/app/components/home/HomePageContainer";
-
-// This forces the PWA to load this page dynamically. Without doing this, I believe the build was breaking.
-export const dynamic = 'force-dynamic';
+import { getAllArticleExternalIds } from "@/app/server-actions/article/getAllArticleExternalIds";
 
 export default async function Home() {
+    const allArticleExternalIds: Set<string> = await getAllArticleExternalIds();
+
     return (
         <Layout>
-            <HomePageContainer />
+            <HomePageContainer allArticleExternalIds={allArticleExternalIds}/>
         </Layout>
     )
 }

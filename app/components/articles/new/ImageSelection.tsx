@@ -11,11 +11,13 @@ import { useRouter } from "next/navigation";
 interface ImageSelectionProps {
     setImage: Dispatch<SetStateAction<GooglePhotoMetadata | undefined>>;
     setStep: Dispatch<SetStateAction<number>>;
+    allArticleExternalIds: Set<string>;
 }
 
-export const ImageSelection = ({ setImage, setStep }: ImageSelectionProps) => {
+export const ImageSelection = ({ setImage, setStep, allArticleExternalIds }: ImageSelectionProps) => {
     const router = useRouter();
     const [googlePhotos, setGooglePhotos] = useState<GooglePhotoMetadata[]>()
+    const [alreadyInCloset, setAlreadyInCloset] = useState<Set<string>>();
     const [pageTokens, setPageTokens] = useState<(string|undefined)[]>([]);
     const [page, setPage] = useState<number>(0);
     const [error, setError] = useState<boolean>(false);
@@ -26,6 +28,7 @@ export const ImageSelection = ({ setImage, setStep }: ImageSelectionProps) => {
         getPaginatedMediaItemsWithRetry(router, pageTokens[page - 1])
             .then(({ data, nextPageToken }) => {
                 setGooglePhotos(data)
+                setAlreadyInCloset(findAlreadyInCloset(data))
                 setPageTokens([ ...pageTokens, nextPageToken])
             })
             .catch(() => setError(true))
@@ -35,6 +38,17 @@ export const ImageSelection = ({ setImage, setStep }: ImageSelectionProps) => {
         setImage(image)
         setStep(2);
     }
+
+    const findAlreadyInCloset = (batch: GooglePhotoMetadata[]): Set<string> => {
+        const availableForSelection: string[] = batch?.map((photo) => photo.imageId) || [];
+
+        const foundInCloset = new Set();
+        availableForSelection.forEach((id) => {
+            if (allArticleExternalIds.has(id)) foundInCloset.add(id);
+        })
+
+        return foundInCloset;
+    };
 
     if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
@@ -56,6 +70,7 @@ export const ImageSelection = ({ setImage, setStep }: ImageSelectionProps) => {
                             {googlePhotos!.map((photoData) =>
                                 <GalleryImage
                                     photoData={photoData}
+                                    alreadyInCloset={alreadyInCloset?.has(photoData.imageId) || false}
                                     handleSelection={handleClick}
                                     key={photoData.imageId}
                                 />)}

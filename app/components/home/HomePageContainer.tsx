@@ -7,7 +7,11 @@ import ArticleCategoryCard from "@/app/components/home/ArticleCategoryCard";
 import * as React from "react";
 import { useState } from "react";
 
-const HomePageContainer = () => {
+interface HomePageContainerProps {
+    allArticleExternalIds: Set<string>;
+}
+
+const HomePageContainer = ({ allArticleExternalIds }: HomePageContainerProps) => {
     const [addingArticle, setAddingArticle] = useState<boolean>(false);
 
     return (
@@ -26,6 +30,7 @@ const HomePageContainer = () => {
             {addingArticle &&
                 <NewArticleModal
                     setIsOpen={setAddingArticle}
+                    allArticleExternalIds={allArticleExternalIds}
                 />
             }
 

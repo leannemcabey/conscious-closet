@@ -19,9 +19,10 @@ interface NewArticleModalProps {
     setUnfilteredArticles?: Dispatch<SetStateAction<Article[]>>;
     category?: ArticleCategoryEnum;
     weatherCategory?: WeatherCategoryEnum;
+    allArticleExternalIds: Set<string>;
 }
 
-const NewArticleModal = ({ setIsOpen, unfilteredArticles, setUnfilteredArticles, category, weatherCategory }: NewArticleModalProps) => {
+const NewArticleModal = ({ setIsOpen, unfilteredArticles, setUnfilteredArticles, category, weatherCategory, allArticleExternalIds }: NewArticleModalProps) => {
     const [step, setStep] = useState<number>(1);
     const [image, setImage] = useState<GooglePhotoMetadata | undefined>(undefined);
     const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum | undefined>(category);
@@ -62,7 +63,7 @@ const NewArticleModal = ({ setIsOpen, unfilteredArticles, setUnfilteredArticles,
                 <CloseModalButton setIsOpen={setIsOpen} />
 
                 {step === 1 &&
-                    <ImageSelection setImage={setImage} setStep={setStep}/>
+                    <ImageSelection setImage={setImage} setStep={setStep} allArticleExternalIds={allArticleExternalIds}/>
                 }
 
                 {step === 2 && image &&

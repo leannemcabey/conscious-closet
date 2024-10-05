@@ -15,9 +15,10 @@ import NoArticlesMessage from "@/app/components/articles/NoArticlesMessage";
 interface CategoryPageContainerProps {
     articles: Article[];
     category: ArticleCategoryEnum;
+    allArticleExternalIds: Set<string>;
 }
 
-const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProps) => {
+const CategoryPageContainer = ({ articles, category, allArticleExternalIds }: CategoryPageContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: false,
         selectedWeatherCategories: [WeatherCategoryEnum.COLD, WeatherCategoryEnum.MIXED, WeatherCategoryEnum.WARM]
@@ -50,6 +51,7 @@ const CategoryPageContainer = ({ articles, category }: CategoryPageContainerProp
                         category={category}
                         unfilteredArticles={unfilteredArticles}
                         setUnfilteredArticles={setUnfilteredArticles}
+                        allArticleExternalIds={allArticleExternalIds}
                     />
                 }
 
