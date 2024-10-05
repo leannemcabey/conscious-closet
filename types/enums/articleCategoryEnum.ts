@@ -10,6 +10,8 @@ export enum ArticleCategoryEnum {
     SHOES = "shoes",
     OUTERWEAR = "outerwear",
     ACCESSORIES = "accessories",
+    INTIMATES = "intimates",
+    SWIMWEAR = "swimwear"
 }
 
 export enum ArticleCategoryTitle {
@@ -22,7 +24,9 @@ export enum ArticleCategoryTitle {
     ACTIVEWEAR = "activewear",
     SHOES = "shoes",
     OUTERWEAR = "outerwear",
-    ACCESSORIES = "accessories"
+    ACCESSORIES = "accessories",
+    INTIMATES = "intimates",
+    SWIMWEAR = "swimwear"
 }
 
 export const categorySlugToTitleMap  = {
@@ -35,5 +39,7 @@ export const categorySlugToTitleMap  = {
     activewear: "activewear",
     shoes: "shoes",
     outerwear: "outerwear",
-    accessories: "accessories"
+    accessories: "accessories",
+    intimates: "intimates",
+    swimwear: "swimwear"
 }
