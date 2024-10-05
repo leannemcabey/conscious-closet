@@ -5,7 +5,7 @@ import { getArticlesByWeatherCategory } from "@/app/server-actions/article/getAr
 import ErrorPageContainer from "@/app/components/ErrorPageContainer";
 import WeatherPageHeader from "@/app/components/WeatherPageHeader";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
-import {getAllArticleExternalIds} from "@/app/server-actions/article/getAllArticleExternalIds";
+import { getAllArticleExternalIds } from "@/app/server-actions/article/getAllArticleExternalIds";
 
 export default async function WeatherPage({ params }: { params: { id: string } }) {
     const { articles, error } = await getArticlesByWeatherCategory(params.id);
