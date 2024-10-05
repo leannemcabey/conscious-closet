@@ -17,15 +17,15 @@ interface UpdateArticleClassificationProps {
 
 const UpdateArticleClassification = ({ article }: UpdateArticleClassificationProps) => {
     const [editingArticle, setEditingArticle] = useState<boolean>(false);
-    const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum>(article.articleCategory);
-    const [selectedWeatherCategory, setSelectedWeatherCategory] = useState<WeatherCategoryEnum>(article.weatherCategory);
+    const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum | undefined>(article.articleCategory);
+    const [selectedWeatherCategory, setSelectedWeatherCategory] = useState<WeatherCategoryEnum | undefined>(article.weatherCategory);
     const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
-    const [updateError, setUpdateError] = useState<boolean>();
+    const [updateError, setUpdateError] = useState<boolean>(false);
 
     const updateErrorMessage = "An error occurred when updating your article. Please try again."
 
     const handleSubmit = () => {
-        updateArticleCategories(article, selectedCategory, selectedWeatherCategory)
+        updateArticleCategories(article, selectedCategory!!, selectedWeatherCategory!!)
             .then(() => {
                 setEditingArticle(false)
                 setShowConfirmation(true)
@@ -53,28 +53,30 @@ const UpdateArticleClassification = ({ article }: UpdateArticleClassificationPro
 
             {editingArticle && (
                 <Modal setIsOpen={setEditingArticle}>
-                    <CloseModalButton setIsOpen={setEditingArticle}/>
+                    <>
+                        <CloseModalButton setIsOpen={setEditingArticle}/>
 
-                    <div className="flex flex-col">
-                        <ArticleClassification
-                            selectedCategory={selectedCategory}
-                            setSelectedCategory={setSelectedCategory}
-                            selectedWeatherCategory={selectedWeatherCategory}
-                            setSelectedWeatherCategory={setSelectedWeatherCategory}
-                        />
-
-                        <button
-                            className="pt-4 self-end"
-                            onClick={() => handleSubmit()}
-                        >
-                            <Image
-                                src="/check-mark-button-green.svg"
-                                height={40}
-                                width={40}
-                                alt="update article"
+                        <div className="flex flex-col">
+                            <ArticleClassification
+                                selectedCategory={selectedCategory}
+                                setSelectedCategory={setSelectedCategory}
+                                selectedWeatherCategory={selectedWeatherCategory}
+                                setSelectedWeatherCategory={setSelectedWeatherCategory}
                             />
-                        </button>
-                    </div>
+
+                            <button
+                                className="pt-4 self-end"
+                                onClick={() => handleSubmit()}
+                            >
+                                <Image
+                                    src="/check-mark-button-green.svg"
+                                    height={40}
+                                    width={40}
+                                    alt="update article"
+                                />
+                            </button>
+                        </div>
+                    </>
                 </Modal>
             )}
 

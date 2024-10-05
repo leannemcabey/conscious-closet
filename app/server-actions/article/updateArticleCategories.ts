@@ -16,7 +16,7 @@ export async function updateArticleCategories(
     const originalWeatherCategory = article.weatherCategory;
 
     const determineValuesToUpdate = () => {
-        const newValues = {};
+        const newValues: { category?: ArticleCategoryEnum, weather_category?: WeatherCategoryEnum } = {};
 
         if (originalArticleCategory !== newArticleCategory) newValues['category'] = newArticleCategory;
         if (originalWeatherCategory !== newWeatherCategory) newValues['weather_category'] = newWeatherCategory;
