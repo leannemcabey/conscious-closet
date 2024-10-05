@@ -16,9 +16,10 @@ import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 interface WeatherPageContainerProps {
     articles: Article[];
     weatherCategory: WeatherCategoryEnum;
+    allArticleExternalIds: Set<string>;
 }
 
-const WeatherPageContainer = ({ articles, weatherCategory }: WeatherPageContainerProps) => {
+const WeatherPageContainer = ({ articles, weatherCategory, allArticleExternalIds }: WeatherPageContainerProps) => {
     const defaultFilterContext: FilterSettings = {
         showCleanoutBagItems: false,
         selectedArticleCategories: articleCategories.map((category) => ArticleCategoryEnum[category  as keyof typeof ArticleCategoryEnum])
@@ -51,6 +52,7 @@ const WeatherPageContainer = ({ articles, weatherCategory }: WeatherPageContaine
                         weatherCategory={weatherCategory}
                         unfilteredArticles={unfilteredArticles}
                         setUnfilteredArticles={setUnfilteredArticles}
+                        allArticleExternalIds={allArticleExternalIds}
                     />
                 }
 
