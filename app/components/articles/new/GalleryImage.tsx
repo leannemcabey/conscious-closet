@@ -12,6 +12,10 @@ interface GalleryImageProps {
 const GalleryImage = ({ photoData, alreadyInCloset, handleSelection }: GalleryImageProps) => {
     const { baseUrl } = photoData
 
+    const handleClick = () => {
+        if (!alreadyInCloset) handleSelection(photoData);
+    }
+
     return (
         <div className="flex">
             <div className={`max-h-[140px] overflow-hidden ${alreadyInCloset && "opacity-30"}`}>
@@ -21,7 +25,7 @@ const GalleryImage = ({ photoData, alreadyInCloset, handleSelection }: GalleryIm
                     width={100}
                     height={125}
                     alt="clothing article image"
-                    onClick={() => handleSelection(photoData)}
+                    onClick={() => handleClick()}
                 />
             </div>
 
