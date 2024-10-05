@@ -7,6 +7,7 @@ import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import ArticleActionToggle from "@/app/components/articles/ArticleActionToggle";
 import ErrorModal from "@/app/components/modal/ErrorModal";
+import SuccessModal from "@/app/components/modal/SuccessModal";
 
 interface AddOrRemoveFromCleanoutBagProps {
     article: Article;
@@ -34,14 +35,11 @@ const AddOrRemoveFromCleanoutBag = ({ article }: AddOrRemoveFromCleanoutBagProps
             <ArticleActionToggle iconFile="/broom.svg" iconAlt="broom icon" isActive={inCleanoutBag} clickHandler={changeCleanoutBagStatus} />
 
             {showConfirmation &&
-                <Modal setIsOpen={setShowConfirmation}>
-                    <div className="flex flex-col items-center text-center md:h-[400px] md:mt-12">
-                        <Image unoptimized={true} src="/checkmark.gif" alt="success" height="200" width="200"/>
-                        <p className="text-xl mt-4 md:text-2xl">
-                            {inCleanoutBag ? "Added to cleanout bag" : "Removed from cleanout bag"}
-                        </p>
-                    </div>
-                </Modal>
+                <SuccessModal setIsOpen={setShowConfirmation}>
+                    <p className="text-xl mt-4 md:text-2xl">
+                        {inCleanoutBag ? "Added to cleanout bag" : "Removed from cleanout bag"}
+                    </p>
+                </SuccessModal>
             }
 
             {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}

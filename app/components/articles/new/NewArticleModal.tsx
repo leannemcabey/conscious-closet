@@ -4,7 +4,7 @@ import { GooglePhotoMetadata } from "@/types/googlePhotoMetadata";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import { ImageSelection } from "@/app/components/articles/new/ImageSelection";
 import Modal from "@/app/components/modal/Modal";
-import ArticleClassification from "@/app/components/articles/new/ArticleClassification";
+import NewArticleClassification from "@/app/components/articles/new/NewArticleClassification";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { createArticle } from "@/app/server-actions/article/createArticle";
@@ -67,7 +67,7 @@ const NewArticleModal = ({ setIsOpen, unfilteredArticles, setUnfilteredArticles,
                 }
 
                 {step === 2 && image &&
-                    <ArticleClassification
+                    <NewArticleClassification
                         image={image}
                         setStep={setStep}
                         selectedCategory={selectedCategory}

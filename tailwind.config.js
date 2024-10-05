@@ -44,18 +44,18 @@ module.exports = {
         },
         'enter-from-right': {
           from: {
-            left: '100%'
+            right: '-100%'
           },
           to: {
-            left: '25%'
+            right: '0%'
           }
         },
         'exit-to-right': {
           from: {
-            left: '25%'
+            right: '0%'
           },
           to: {
-            left: '100%'
+            right: '-100%'
           }
         },
         'grow': {
