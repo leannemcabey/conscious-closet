@@ -11,12 +11,10 @@ interface ArticleActionToggleProps {
 const ArticleActionToggle = ({ iconFile, iconAlt, isActive, clickHandler }: ArticleActionToggleProps) => {
     if (isActive) {
         return (
-            <div
-                className={`justify-end bg-theme-light-green flex max-w-[70px] rounded-lg mx-1 drop-shadow`}>
-                <div className="w-[60%]">
-                    <IconButton handleClick={() => clickHandler()} isActive={true} iconPath={iconFile}
-                                iconAlt={iconAlt}/>
-                </div>
+            <div className={`justify-end bg-theme-green flex max-w-[70px] rounded-lg mx-1 drop-shadow`}>
+                {/*<div className="w-[60%]">*/}
+                    <IconButton handleClick={() => clickHandler()} isActive={true} iconPath={iconFile} iconAlt={iconAlt} />
+                {/*</div>*/}
             </div>
         )
     }
@@ -24,9 +22,9 @@ const ArticleActionToggle = ({ iconFile, iconAlt, isActive, clickHandler }: Arti
     if (!isActive) {
         return (
             <div className={`bg-white flex max-w-[70px] rounded-lg mx-1 drop-shadow`}>
-                <div className="w-[60%]">
-                    <IconButton handleClick={() => clickHandler()} isActive={true} iconPath={iconFile} iconAlt={iconAlt}/>
-                </div>
+                {/*<div className="w-[60%]">*/}
+                    <IconButton handleClick={() => clickHandler()} isActive={true} iconPath={iconFile} iconAlt={iconAlt} />
+                {/*</div>*/}
             </div>
         )
     }

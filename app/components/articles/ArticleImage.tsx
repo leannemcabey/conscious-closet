@@ -40,18 +40,21 @@ const ArticleImage = ({ article }: ArticleImageProps) => {
     if (error) return <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />
 
     if (!refreshedArticle && !error && !stopSpinner) return (
-        <div className="flex justify-center h-4/5">
+        // the overflow-hidden is used because I think this gif may be slightly wider than there's room for at
+        // the height it's set to, which is set to take up the same height as the image that will eventually load,
+        // and there was a weird scrollbar flashing during loading
+        <div className="flex justify-center h-[65%] overflow-hidden">
             <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin" />
         </div>
     )
 
     if (refreshedArticle) return (
-        <div className="w-[80%] md:w-[50%] lg:w-[30%] space-y-4 mt-8 md:mt-20">
+        <div className="w-[95%] md:w-[50%] lg:w-[30%] space-y-4">
             <Polaroid imageUrl={refreshedArticle.image.baseUrl}>
                 <LastWorn article={refreshedArticle}/>
             </Polaroid>
 
-            <ArticleWeatherCategory article={refreshedArticle} />
+            {/*<ArticleWeatherCategory article={refreshedArticle} />*/}
         </div>
     )
 

@@ -10,6 +10,7 @@ import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
 import IconButton from "@/app/components/buttons/IconButton";
 import { CapsuleElementsMapType } from "@/types/CapsuleElementsMapType";
+import SuccessModal from "@/app/components/modal/SuccessModal";
 
 interface AddCapsuleToSuitcaseProps {
     capsuleElements: CapsuleElementsMapType;
@@ -92,14 +93,11 @@ const AddCapsuleToSuitcase = ({ capsuleElements }: AddCapsuleToSuitcaseProps) =>
             }
 
             {showConfirmation &&
-                <Modal setIsOpen={setShowConfirmation}>
-                    <div className="flex flex-col items-center text-center">
-                        <Image unoptimized={true} src="/checkmark.gif" alt="success" height="200" width="200"/>
-                        <p className="text-xl mt-4">
-                            Capsule added to suitcases(s)
-                        </p>
-                    </div>
-                </Modal>
+                <SuccessModal setIsOpen={setShowConfirmation}>
+                    <p className="text-xl mt-4">
+                        Capsule added to suitcases(s)
+                    </p>
+                </SuccessModal>
             }
         </>
     )

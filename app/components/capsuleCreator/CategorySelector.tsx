@@ -42,23 +42,22 @@ const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategor
 
             {isOpen && (
                 <Modal setIsOpen={setIsOpen}>
-                    <div>
-                        <CloseModalButton setIsOpen={setIsOpen} />
-                        <h3 className="text-xl text-center md:text-3xl md:mt-6 lg:text-lg">Select a category for this capsule element:</h3>
+                    <div className="flex flex-col justify-center">
+                        <CloseModalButton setIsOpen={setIsOpen}/>
+                        <h3 className="mb-4 text-center md:text-3xl md:mt-6 lg:text-lg">
+                            Select a category for this capsule element:
+                        </h3>
 
-                        <div className="flex flex-col justify-center text-center mt-2 md:mt-6">
-                            {articleCategories.map((category) => {
-                                const selected = ArticleCategoryEnum[category  as keyof typeof ArticleCategoryEnum] === selectedCategory
-                                return (
-                                    <p
-                                        key={category}
-                                        className={`truncate my-1 p-1 border border-theme-green rounded-lg ${selected ? "bg-theme-light-green text-text-green" : ""} md:text-2xl md:p-2 lg:text-base`}
-                                        onClick={() => handleClick(category)}
-                                    >
-                                        {ArticleCategoryTitle[category as keyof typeof ArticleCategoryTitle]}
-                                    </p>
-                                )
-                            })}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 max-w-[400px] md:max-w-[90%] self-center">
+                            {articleCategories.map((category) =>
+                                <button
+                                    key={category}
+                                    onClick={() => handleClick(category)}
+                                    className={`rounded-full text-center text-sm md:text-xl truncate py-1 px-2 ${ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum] === selectedCategory ? "bg-theme-green text-white" : " border border-theme-green text-theme-green"}`}
+                                >
+                                    {ArticleCategoryTitle[category as keyof typeof ArticleCategoryEnum]}
+                                </button>
+                            )}
                         </div>
                     </div>
                 </Modal>

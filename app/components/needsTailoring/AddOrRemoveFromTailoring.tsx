@@ -6,6 +6,8 @@ import Modal from "@/app/components/modal/Modal";
 import Image from "next/image";
 import {addOrRemoveFromTailoring} from "@/app/server-actions/needs-tailoring/addOrRemoveFromTailoring";
 import ErrorModal from "@/app/components/modal/ErrorModal";
+import SuccessModal from "@/app/components/modal/SuccessModal";
+import * as React from "react";
 
 interface AddOrRemoveFromTailoringProps {
     article: Article;
@@ -33,14 +35,13 @@ const AddOrRemoveFromTailoring = ({ article }: AddOrRemoveFromTailoringProps) =>
             <ArticleActionToggle iconFile="/sewing-machine.svg" iconAlt="needle icon" isActive={inTailoring} clickHandler={changeTailoringStatus} />
 
             {showConfirmation &&
-                <Modal setIsOpen={setShowConfirmation}>
-                    <div className="flex flex-col items-center text-center md:h-[400px] md:mt-12">
-                        <Image unoptimized={true} src="/checkmark.gif" alt="success" height="200" width="200"/>
+                <SuccessModal setIsOpen={setShowConfirmation}>
+                    <p className="text-xl mt-4">
                         <p className="text-xl md:text-2xl mt-4">
                             {inTailoring ? "Added to tailoring" : "Removed from tailoring"}
                         </p>
-                    </div>
-                </Modal>
+                    </p>
+                </SuccessModal>
             }
 
             {error && <ErrorModal setIsOpen={setError} errorMessage={errorMessage} />}
