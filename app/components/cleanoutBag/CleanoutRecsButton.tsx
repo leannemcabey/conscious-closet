@@ -9,7 +9,7 @@ const CleanoutRecsButton = () => {
             <IconButton
                 handleClick={() => {}}
                 isActive={true}
-                iconPath="/earth.svg"
+                iconPath="/earth-white.svg"
                 iconAlt="earth icon"
             />
         </Link>

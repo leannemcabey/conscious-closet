@@ -4,6 +4,7 @@ import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import CategoryFilterModal from "@/app/components/filter/CategoryFilterModal";
 import Image from "next/image";
 import IconButton from "@/app/components/buttons/IconButton";
+import FilterButton from "@/app/components/buttons/FilterButton";
 
 interface CategoryFilterProps {
     selectedArticleCategories: ArticleCategoryEnum[];
@@ -15,10 +16,10 @@ const CategoryFilter = ({ selectedArticleCategories, setSelectedArticleCategorie
 
     return (
         <>
-            <IconButton
+            <FilterButton
                 handleClick={() => setSelectingCategories(!selectingCategories)}
                 isActive={true}
-                iconPath="/hanger.svg"
+                iconPath={"/hanger.svg"}
                 iconAlt="hanger icon"
             />
 

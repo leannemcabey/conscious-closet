@@ -138,7 +138,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
     return (
         <>
             <div className="h-full flex flex-col justify-center items-center m-1 lg:w-[60%]">
-                <div className="flex w-full place-content-between">
+                <div className="flex w-full justify-end space-x-2">
                     <CategorySelector
                         initialElement={initialElement}
                         selectedCategory={selectedCategory}
@@ -150,7 +150,6 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                         isActive={true}
                         iconPath="/collapse.svg"
                         iconAlt="collapse"
-                        colorOverride={{active: "bg-theme-green", inactive:"bg-theme-green"}}
                     />
                 </div>
 

@@ -31,7 +31,7 @@ const DeleteAllFromCleanoutButton = ({ disabled }: DeleteAllFromCleanoutButtonPr
             <IconButton
                 handleClick={() => setIsDeleting(true)}
                 isActive={!disabled}
-                iconPath="/trash-icon.svg"
+                iconPath={disabled ? "/trash-icon.svg" : "/trash-icon-white.svg"}
                 iconAlt="trash icon"
                 disabled={disabled}
             />

@@ -37,7 +37,6 @@ const CategorySelector = ({ initialElement, selectedCategory, setSelectedCategor
                 isActive={true}
                 iconPath="/hanger-white.svg"
                 iconAlt="hanger icon"
-                colorOverride={{active: "bg-theme-green", inactive:"bg-theme-green"}}
             />
 
             {isOpen && (

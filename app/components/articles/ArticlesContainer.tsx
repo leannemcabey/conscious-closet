@@ -40,13 +40,13 @@ const ArticlesContainer = ({ articles }: ArticlesContainerProps) => {
 
     if (!refreshedArticles && !error && !stopSpinner) return (
         <div className="flex justify-center h-[450px]">
-            <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin"/>
+            <Image src={`/loading.svg`} height="150" width="150" alt="loading" className="animate-spin"/>
         </div>
     )
 
     if (refreshedArticles) return (
         <div className="pb-10 overflow-scroll">
-            <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-2 p-2 justify-items-center">
+            <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-2 pb-2 justify-items-center">
                 {/*
                     Checking articles.length is a workaround to handle when all articles in the cleanout bag have been
                     deleted. In that scenario, `useEffect` doesn't rerun and therefore `refreshedArticles` becomes stale
