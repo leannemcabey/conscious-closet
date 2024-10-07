@@ -61,7 +61,7 @@ const AddArticleToSuitcase = ({ article }: AddArticleToSuitcaseProps) => {
 
     return (
         <>
-            <IconButton handleClick={() => setSelectingSuitcase(!selectingSuitcase)} isActive={true} iconPath="/suitcase.svg" iconAlt="suitcase icon" />
+            <IconButton handleClick={() => setSelectingSuitcase(!selectingSuitcase)} isActive={true} iconPath="/suitcase-white.svg" iconAlt="suitcase icon" />
 
             {selectingSuitcase && fetchError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={fetchErrorMessage} />}
             {selectingSuitcase && updateError && <ErrorModal setIsOpen={setSelectingSuitcase} errorMessage={updateErrorMessage} />}

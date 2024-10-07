@@ -14,7 +14,7 @@ const WeatherPageHeader = ({ icon, alt }: WeatherPageHeaderProps) => {
                     height="60"
                     width="60"
                     alt={alt}
-                    className="w-full mb-1"
+                    className="w-full my-2"
                 />
             </div>
         </div>

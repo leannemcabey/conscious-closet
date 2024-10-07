@@ -2,6 +2,7 @@
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import { Dispatch, SetStateAction } from "react";
 import IconButton from "@/app/components/buttons/IconButton";
+import FilterButton from "@/app/components/buttons/FilterButton";
 
 interface WeatherFilterProps {
     selectedWeatherCategories: WeatherCategoryEnum[];
@@ -25,25 +26,25 @@ const WeatherFilter = ({ selectedWeatherCategories, setSelectedWeatherCategories
     const weatherCategoryIsSelected = (category: WeatherCategoryEnum) => selectedWeatherCategories.includes(category)
 
     return (
-        <div className="flex place-content-between space-x-1">
-            <IconButton
+        <div className="flex space-x-1">
+            <FilterButton
                 handleClick={() => updateWeatherCategories(WeatherCategoryEnum.WARM)}
                 isActive={weatherCategoryIsSelected(WeatherCategoryEnum.WARM)}
-                iconPath="/weather-icon-warm.svg"
+                iconPath={weatherCategoryIsSelected(WeatherCategoryEnum.WARM) ? "/weather-icon-warm-green.svg" : "/weather-icon-warm-gray.svg"}
                 iconAlt="warm weather icon"
             />
 
-            <IconButton
+            <FilterButton
                 handleClick={() => updateWeatherCategories(WeatherCategoryEnum.MIXED)}
                 isActive={weatherCategoryIsSelected(WeatherCategoryEnum.MIXED)}
-                iconPath="/weather-icon-mixed.svg"
+                iconPath={weatherCategoryIsSelected(WeatherCategoryEnum.MIXED) ? "/weather-icon-mixed-green.svg" : "/weather-icon-mixed-gray.svg"}
                 iconAlt="mixed weather icon"
             />
 
-            <IconButton
+            <FilterButton
                 handleClick={() => updateWeatherCategories(WeatherCategoryEnum.COLD)}
                 isActive={weatherCategoryIsSelected(WeatherCategoryEnum.COLD)}
-                iconPath="/weather-icon-cold.svg"
+                iconPath={weatherCategoryIsSelected(WeatherCategoryEnum.COLD) ? "/weather-icon-cold-green.svg" : "/weather-icon-cold-gray.svg"}
                 iconAlt="cold weather icon"
             />
         </div>

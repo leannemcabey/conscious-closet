@@ -5,8 +5,9 @@ import AddOrRemoveFromTailoring from "@/app/components/needsTailoring/AddOrRemov
 import AddOrRemoveFromCleanoutBag from "@/app/components/cleanoutBag/AddOrRemoveFromCleanoutBag";
 import DeleteArticle from "@/app/components/articles/DeleteArticle";
 import { Article } from "@/types/article";
-import UpdateArticleClassification from "@/app/components/articles/UpdateArticleClassification";
+import EditArticleModal from "@/app/components/articles/EditArticleModal";
 import { useState } from "react";
+import EditArticleButton from "@/app/components/articles/EditArticleButton";
 
 interface ArticlePageContainerProps {
     article: Article;
@@ -17,30 +18,23 @@ const ArticlePageContainer = ({ article }: ArticlePageContainerProps) => {
 
     return (
         <>
-            <div className="h-[97%] overflow-scroll flex flex-col justify-center items-center">
-                {articleImageLoaded && <UpdateArticleClassification article={article}/>}
-
-                <ArticleImage article={article} setArticleImageLoaded={setArticleImageLoaded} />
-
-                {articleImageLoaded &&
-                    <div className="flex mt-8 w-[80%] max-w-[350px] md:max-w-[400px] lg:max-w-[400px] justify-between">
-                        <div>
-                            <AddArticleToSuitcase article={article}/>
-                        </div>
-
-                        <div className="basis-[25%]">
-                            <AddOrRemoveFromTailoring article={article}/>
-                        </div>
-
-                        <div className="basis-[25%]">
-                            <AddOrRemoveFromCleanoutBag article={article}/>
-                        </div>
-
-                        <div>
-                            <DeleteArticle article={article}/>
-                        </div>
+            {articleImageLoaded && (
+                <div className="flex place-content-between items-center">
+                    <div className="h-max flex space-x-2 mt-4">
+                        <AddOrRemoveFromTailoring article={article}/>
+                        <AddOrRemoveFromCleanoutBag article={article}/>
                     </div>
-                }
+
+                    <div className="h-max flex space-x-2 mt-4">
+                        <AddArticleToSuitcase article={article}/>
+                        <EditArticleButton article={article} />
+                        <DeleteArticle article={article}/>
+                    </div>
+                </div>
+            )}
+
+            <div className="flex justify-center items-center h-[80%] mt-12">
+                <ArticleImage article={article} setArticleImageLoaded={setArticleImageLoaded} />
             </div>
         </>
     )

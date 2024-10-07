@@ -6,6 +6,7 @@ import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import CategoryFilter from "@/app/components/filter/CategoryFilter";
 import { ArticleCategoryEnum } from "@/types/enums/articleCategoryEnum";
 import { ArticleFilterContext } from "@/app/context/ArticleFilterContext";
+import Image from "next/image";
 
 export enum FilterType {
     "cleanout",
@@ -32,17 +33,36 @@ const ArticleFilters = ({ filterTypes }: ArticleFiltersProps) => {
     }, [showCleanoutBagItems, selectedWeatherCategories, selectedArticleCategories]);
 
     return (
-        <div className="mb-1 px-1 py-2 flex place-content-between items-center bg-background-green border border-theme-green border-dotted rounded-lg drop-shadow">
+        <div className="flex space-x-1 my-2 px-1">
+            <div className="w-[30px] h-[30px] mr-2">
+                <Image
+                    src="/filter.svg"
+                    height={30}
+                    width={30}
+                    alt="filters"
+                    className="w-full"
+                />
+            </div>
+
             {filterTypes.includes(FilterType.cleanout) &&
-                <CleanoutBagFilter showCleanoutBagItems={showCleanoutBagItems} setShowCleanoutBagItems={setShowCleanoutBagItems} />
+                <CleanoutBagFilter
+                    showCleanoutBagItems={showCleanoutBagItems}
+                    setShowCleanoutBagItems={setShowCleanoutBagItems}
+                />
             }
 
             {filterTypes.includes(FilterType.weather) &&
-                <WeatherFilter selectedWeatherCategories={selectedWeatherCategories!!} setSelectedWeatherCategories={setSelectedWeatherCategories} />
+                <WeatherFilter
+                    selectedWeatherCategories={selectedWeatherCategories!!}
+                    setSelectedWeatherCategories={setSelectedWeatherCategories}
+                />
             }
 
             {filterTypes.includes(FilterType.category) &&
-                <CategoryFilter selectedArticleCategories={selectedArticleCategories!!} setSelectedArticleCategories={setSelectedArticleCategories} />
+                <CategoryFilter
+                    selectedArticleCategories={selectedArticleCategories!!}
+                    setSelectedArticleCategories={setSelectedArticleCategories}
+                />
             }
         </div>
     )

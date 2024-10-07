@@ -17,7 +17,7 @@ const DeleteSuitcaseButton = ({ suitcaseId }: DeleteSuitcaseButtonProps) => {
             <IconButton
                 handleClick={() => setDeletingSuitcase(true)}
                 isActive={true}
-                iconPath="/trash-icon.svg"
+                iconPath="/trash-icon-white.svg"
                 iconAlt="delete icon"
             />
 

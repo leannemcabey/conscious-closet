@@ -12,6 +12,7 @@ import ErrorModal from "@/app/components/modal/ErrorModal";
 import IconButton from "@/app/components/buttons/IconButton";
 import { CategoryArticlesMap } from "@/app/components/capsuleCreator/CapsuleCreatorContainer";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface CapsuleArticleSelectorProps {
     initialElement: CapsuleElementType;
@@ -138,7 +139,7 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
     return (
         <>
             <div className="h-full flex flex-col justify-center items-center m-1 lg:w-[60%]">
-                <div className="flex w-full place-content-between">
+                <div className="flex w-full justify-end space-x-2">
                     <CategorySelector
                         initialElement={initialElement}
                         selectedCategory={selectedCategory}
@@ -150,7 +151,6 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
                         isActive={true}
                         iconPath="/collapse.svg"
                         iconAlt="collapse"
-                        colorOverride={{active: "bg-theme-green", inactive:"bg-theme-green"}}
                     />
                 </div>
 
@@ -168,32 +168,39 @@ const CapsuleArticleSelector = ({ initialElement, updateCapsuleElements, article
 
                     {!noArticlesInCategory && currentElement && currentElement.article &&
                         <>
-                            <IconButton
-                                handleClick={() => handleArrowClick("left")}
-                                isActive={true}
-                                iconPath="/left-arrow-green.svg"
-                                iconAlt="left arrow"
-                            />
+                            <div className="w-[30px] h-[30px]">
+                                <Image
+                                    src="/left-arrow-green.svg"
+                                    alt="next"
+                                    width={30}
+                                    height={30}
+                                    className="w-full"
+                                    onClick={() => handleArrowClick("left")}
+                                />
+                            </div>
 
                             <Polaroid
                                 imageUrl={currentElement.article.image.baseUrl || ""}
                                 sizeStyling="w-[70%] md:w-[45%] lg:w-[65%]"
                             />
 
-                            <IconButton
-                                handleClick={() => handleArrowClick("right")}
-                                isActive={true}
-                                iconPath="/left-arrow-green.svg"
-                                iconAlt="left arrow"
-                                iconRotation="rotate-180"
-                            />
+                            <div className="w-[30px] h-[30px]">
+                                <Image
+                                    src="/left-arrow-green.svg"
+                                    alt="previous"
+                                    width={30}
+                                    height={30}
+                                    className="w-full rotate-180"
+                                    onClick={() => handleArrowClick("right")}
+                                />
+                            </div>
                         </>
                     }
                 </div>
             </div>
 
-            {refreshUrlsError && <ErrorModal setIsOpen={setRefreshUrlsError} errorMessage={refreshUrlsErrorMessage} />}
-            {filterError && <ErrorModal setIsOpen={setFilterError} errorMessage={filerErrorMessage} />}
+            {refreshUrlsError && <ErrorModal setIsOpen={setRefreshUrlsError} errorMessage={refreshUrlsErrorMessage}/>}
+            {filterError && <ErrorModal setIsOpen={setFilterError} errorMessage={filerErrorMessage}/>}
         </>
     )
 }

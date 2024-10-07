@@ -16,7 +16,7 @@ const EditSuitcaseButton = ({ suitcase }: EditSuitcaseButtonProps) => {
             <IconButton
                 handleClick={() => setEditingSuitcase(true)}
                 isActive={true}
-                iconPath="/pen.svg"
+                iconPath="/pen-white.svg"
                 iconAlt="edit icon"
             />
 

@@ -61,7 +61,7 @@ export const ImageSelection = ({ setImage, setStep, allArticleExternalIds }: Ima
 
             <div className="flex justify-center">
                 {!googlePhotos &&
-                    <Image src={`/loading.svg`} height="75" width="75" alt="loading" className="animate-spin mt-10" />
+                    <Image src={`/loading.svg`} height="150" width="150" alt="loading" className="animate-spin mt-10" />
                 }
 
                 {googlePhotos && (

@@ -66,7 +66,6 @@ const AddCapsuleToSuitcase = ({ capsuleElements }: AddCapsuleToSuitcaseProps) =>
                     isActive={true}
                     iconPath="/suitcase-white.svg"
                     iconAlt="suitcase icon"
-                    colorOverride={{active: "bg-theme-green", inactive:"bg-theme-green"}}
                 />
             </div>
 

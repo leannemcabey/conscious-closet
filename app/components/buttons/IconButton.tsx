@@ -10,19 +10,21 @@ interface IconButtonProps {
     colorOverride?: { active: string, inactive: string };
     borderOverride?: { active: string, inactive: string };
     iconRotation?: string;
-    disabled?: boolean
+    disabled?: boolean;
+    solid?: boolean;
 }
 
-const IconButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, colorOverride, borderOverride, iconRotation, disabled}: IconButtonProps) => {
+const IconButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, colorOverride, borderOverride, iconRotation, disabled, solid}: IconButtonProps) => {
     const sizeStyling = sizeOverride ? sizeOverride : "w-[40px] h-[40px]";
-    const colorStyling = colorOverride ? `${isActive ? colorOverride.active : colorOverride.inactive}` : `${isActive ? "bg-white" : "bg-background-green"}`;
-    const borderStyling = borderOverride ? `${isActive ? borderOverride.active : borderOverride.inactive}` : `border border-theme-green`
+    const activeColor = solid ? "bg-theme-green" : "bg-gradient-to-r from-button-gradient-start to-button-gradient-end";
+    const colorStyling = `${isActive ? activeColor : "bg-transparent"}`;
+    const borderStyling = `${isActive ? "" : "border border-theme-green"}`
 
     return (
         <button
             onClick={() => handleClick()}
             disabled={disabled}
-            className={`flex justify-center p-2 ${borderStyling} rounded-lg ${colorStyling} drop-shadow ${sizeStyling}`}
+            className={`flex justify-center p-2 rounded-lg ${borderStyling} ${colorStyling} ${sizeStyling}`}
         >
             <Image
                 src={iconPath}
