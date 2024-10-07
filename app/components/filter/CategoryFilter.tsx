@@ -19,7 +19,7 @@ const CategoryFilter = ({ selectedArticleCategories, setSelectedArticleCategorie
             <FilterButton
                 handleClick={() => setSelectingCategories(!selectingCategories)}
                 isActive={true}
-                iconPath={"/hanger.svg"}
+                iconPath="/hanger.svg"
                 iconAlt="hanger icon"
             />
 

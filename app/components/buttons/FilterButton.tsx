@@ -6,21 +6,15 @@ interface FilterButtonProps {
     isActive: boolean;
     iconPath: string;
     iconAlt: string;
-    sizeOverride?: string;
-    colorOverride?: { active: string, inactive: string };
-    borderOverride?: { active: string, inactive: string };
-    iconRotation?: string;
-    disabled?: boolean
 }
 
-const FilterButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, colorOverride, borderOverride, iconRotation, disabled}: FilterButtonProps) => {
+const FilterButton = ({handleClick, isActive, iconPath, iconAlt}: FilterButtonProps) => {
     const colorStyling = isActive ? "bg-white" : "bg-neutral-300";
     const borderStyling = isActive ? "border border-theme-green" : "border border-neutral-300";
 
     return (
         <button
             onClick={() => handleClick()}
-            disabled={disabled}
             className={`flex flex-col justify-center px-3 py-1 items-center rounded-full ${borderStyling} ${colorStyling}`}
         >
             <div className="w-[20px] h-[20px]">
@@ -29,7 +23,7 @@ const FilterButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, c
                     height={20}
                     width={20}
                     alt={iconAlt}
-                    className={`w-full ${iconRotation}`}
+                    className="w-full"
                 />
             </div>
         </button>

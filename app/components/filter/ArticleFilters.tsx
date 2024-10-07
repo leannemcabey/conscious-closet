@@ -45,18 +45,24 @@ const ArticleFilters = ({ filterTypes }: ArticleFiltersProps) => {
             </div>
 
             {filterTypes.includes(FilterType.cleanout) &&
-                <CleanoutBagFilter showCleanoutBagItems={showCleanoutBagItems}
-                                   setShowCleanoutBagItems={setShowCleanoutBagItems}/>
+                <CleanoutBagFilter
+                    showCleanoutBagItems={showCleanoutBagItems}
+                    setShowCleanoutBagItems={setShowCleanoutBagItems}
+                />
             }
 
             {filterTypes.includes(FilterType.weather) &&
-                <WeatherFilter selectedWeatherCategories={selectedWeatherCategories!!}
-                               setSelectedWeatherCategories={setSelectedWeatherCategories}/>
+                <WeatherFilter
+                    selectedWeatherCategories={selectedWeatherCategories!!}
+                    setSelectedWeatherCategories={setSelectedWeatherCategories}
+                />
             }
 
             {filterTypes.includes(FilterType.category) &&
-                <CategoryFilter selectedArticleCategories={selectedArticleCategories!!}
-                                setSelectedArticleCategories={setSelectedArticleCategories}/>
+                <CategoryFilter
+                    selectedArticleCategories={selectedArticleCategories!!}
+                    setSelectedArticleCategories={setSelectedArticleCategories}
+                />
             }
         </div>
     )
