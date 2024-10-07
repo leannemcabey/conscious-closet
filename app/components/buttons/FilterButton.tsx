@@ -15,7 +15,7 @@ interface FilterButtonProps {
 
 const FilterButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, colorOverride, borderOverride, iconRotation, disabled}: FilterButtonProps) => {
     const colorStyling = isActive ? "bg-white" : "bg-neutral-300";
-    const borderStyling = isActive ? "border border-theme-green" : "";
+    const borderStyling = isActive ? "border border-theme-green" : "border border-neutral-300";
 
     return (
         <button

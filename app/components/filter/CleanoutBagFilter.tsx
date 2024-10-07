@@ -13,7 +13,7 @@ const CleanoutBagFilter = ({ showCleanoutBagItems, setShowCleanoutBagItems }: Cl
         <FilterButton
             handleClick={() => setShowCleanoutBagItems(!showCleanoutBagItems)}
             isActive={showCleanoutBagItems}
-            iconPath={showCleanoutBagItems ? "/broom.svg" : "/broom-black.svg"}
+            iconPath={showCleanoutBagItems ? "/broom.svg" : "/broom-gray.svg"}
             iconAlt="broom icon"
         />
     )

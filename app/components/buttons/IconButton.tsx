@@ -10,12 +10,14 @@ interface IconButtonProps {
     colorOverride?: { active: string, inactive: string };
     borderOverride?: { active: string, inactive: string };
     iconRotation?: string;
-    disabled?: boolean
+    disabled?: boolean;
+    solid?: boolean;
 }
 
-const IconButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, colorOverride, borderOverride, iconRotation, disabled}: IconButtonProps) => {
+const IconButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, colorOverride, borderOverride, iconRotation, disabled, solid}: IconButtonProps) => {
     const sizeStyling = sizeOverride ? sizeOverride : "w-[40px] h-[40px]";
-    const colorStyling = `${isActive ? "bg-gradient-to-r from-button-gradient-start to-button-gradient-end" : "bg-transparent"}`;
+    const activeColor = solid ? "bg-theme-green" : "bg-gradient-to-r from-button-gradient-start to-button-gradient-end";
+    const colorStyling = `${isActive ? activeColor : "bg-transparent"}`;
     const borderStyling = `${isActive ? "" : "border border-theme-green"}`
 
     return (

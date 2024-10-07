@@ -11,7 +11,7 @@ module.exports = {
       },
       colors: {
         'theme-green': '#287e60',
-        'button-gradient-start': '#4ec090',
+        'button-gradient-start': '#56bd90',
         'button-gradient-end': '#266a51',
         'theme-mid-green': '#85a491',
         'theme-light-green': '#c9e0cf',

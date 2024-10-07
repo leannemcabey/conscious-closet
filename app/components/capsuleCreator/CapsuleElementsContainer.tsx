@@ -49,7 +49,7 @@ const CapsuleElementsContainer = ({ filteredArticlesMap, capsuleElements, setCap
                 setShowAllElementsView={setShowAllElementsView}
             />
 
-            <div className="grid grid-cols-5 mb-4 w-full justify-center lg:h-full lg:items-center">
+            <div className="grid grid-cols-5 mb-4 w-full justify-center justify-items-center lg:h-full lg:items-center">
                 {Array.from(capsuleElements.values()).map((element) => {
                     if (element.slot !== expandedElement.slot) {
                         return (

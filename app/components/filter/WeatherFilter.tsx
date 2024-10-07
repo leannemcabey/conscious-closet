@@ -30,21 +30,21 @@ const WeatherFilter = ({ selectedWeatherCategories, setSelectedWeatherCategories
             <FilterButton
                 handleClick={() => updateWeatherCategories(WeatherCategoryEnum.WARM)}
                 isActive={weatherCategoryIsSelected(WeatherCategoryEnum.WARM)}
-                iconPath={weatherCategoryIsSelected(WeatherCategoryEnum.WARM) ? "/weather-icon-warm-green.svg" : "/weather-icon-warm-black.svg"}
+                iconPath={weatherCategoryIsSelected(WeatherCategoryEnum.WARM) ? "/weather-icon-warm-green.svg" : "/weather-icon-warm-gray.svg"}
                 iconAlt="warm weather icon"
             />
 
             <FilterButton
                 handleClick={() => updateWeatherCategories(WeatherCategoryEnum.MIXED)}
                 isActive={weatherCategoryIsSelected(WeatherCategoryEnum.MIXED)}
-                iconPath={weatherCategoryIsSelected(WeatherCategoryEnum.MIXED) ? "/weather-icon-mixed-green.svg" : "/weather-icon-mixed-black.svg"}
+                iconPath={weatherCategoryIsSelected(WeatherCategoryEnum.MIXED) ? "/weather-icon-mixed-green.svg" : "/weather-icon-mixed-gray.svg"}
                 iconAlt="mixed weather icon"
             />
 
             <FilterButton
                 handleClick={() => updateWeatherCategories(WeatherCategoryEnum.COLD)}
                 isActive={weatherCategoryIsSelected(WeatherCategoryEnum.COLD)}
-                iconPath={weatherCategoryIsSelected(WeatherCategoryEnum.COLD) ? "/weather-icon-cold-green.svg" : "/weather-icon-cold-black.svg"}
+                iconPath={weatherCategoryIsSelected(WeatherCategoryEnum.COLD) ? "/weather-icon-cold-green.svg" : "/weather-icon-cold-gray.svg"}
                 iconAlt="cold weather icon"
             />
         </div>

@@ -4,6 +4,7 @@ import UndevelopedPolaroid from "@/app/components/articles/UndevelopedPolaroid";
 import * as React from "react";
 import IconButton from "@/app/components/buttons/IconButton";
 import { CapsuleElementType } from "@/types/CapsuleElementsMapType";
+import Image from "next/image";
 
 interface CapsuleElementProps {
     element: CapsuleElementType;
@@ -23,14 +24,18 @@ const CapsuleElement = ({ element, updateExpandedElement, sizeStyling, iconPosit
                     sizeStyling={sizeStyling}
                 />}
 
-            <div className={`relative ${iconPositioning}`}>
-                <IconButton
-                    handleClick={() => updateExpandedElement(element)}
-                    isActive={true}
-                    iconPath="/expand.svg"
-                    iconAlt="expand"
+            <button
+                onClick={() => updateExpandedElement(element)}
+                className={`flex justify-center p-2 rounded-lg bg-white border border-theme-green w-[40px] h-[40px] relative ${iconPositioning}`}
+            >
+                <Image
+                    src="/expand.svg"
+                    height={40}
+                    width={40}
+                    alt="expand capsule element"
+                    className="w-full"
                 />
-            </div>
+            </button>
         </div>
     )
 }

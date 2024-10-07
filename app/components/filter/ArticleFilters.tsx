@@ -33,8 +33,8 @@ const ArticleFilters = ({ filterTypes }: ArticleFiltersProps) => {
     }, [showCleanoutBagItems, selectedWeatherCategories, selectedArticleCategories]);
 
     return (
-        <div className="my-2 px-1 flex place-content-between items-center">
-            <div className="w-[30px] h-[30px]">
+        <div className="flex space-x-1 my-2 px-1">
+            <div className="w-[30px] h-[30px] mr-2">
                 <Image
                     src="/filter.svg"
                     height={30}
@@ -44,22 +44,20 @@ const ArticleFilters = ({ filterTypes }: ArticleFiltersProps) => {
                 />
             </div>
 
-            <div className="flex space-x-1">
-                {filterTypes.includes(FilterType.cleanout) &&
-                    <CleanoutBagFilter showCleanoutBagItems={showCleanoutBagItems}
-                                       setShowCleanoutBagItems={setShowCleanoutBagItems}/>
-                }
+            {filterTypes.includes(FilterType.cleanout) &&
+                <CleanoutBagFilter showCleanoutBagItems={showCleanoutBagItems}
+                                   setShowCleanoutBagItems={setShowCleanoutBagItems}/>
+            }
 
-                {filterTypes.includes(FilterType.weather) &&
-                    <WeatherFilter selectedWeatherCategories={selectedWeatherCategories!!}
-                                   setSelectedWeatherCategories={setSelectedWeatherCategories}/>
-                }
+            {filterTypes.includes(FilterType.weather) &&
+                <WeatherFilter selectedWeatherCategories={selectedWeatherCategories!!}
+                               setSelectedWeatherCategories={setSelectedWeatherCategories}/>
+            }
 
-                {filterTypes.includes(FilterType.category) &&
-                    <CategoryFilter selectedArticleCategories={selectedArticleCategories!!}
-                                    setSelectedArticleCategories={setSelectedArticleCategories}/>
-                }
-            </div>
+            {filterTypes.includes(FilterType.category) &&
+                <CategoryFilter selectedArticleCategories={selectedArticleCategories!!}
+                                setSelectedArticleCategories={setSelectedArticleCategories}/>
+            }
         </div>
     )
 }
