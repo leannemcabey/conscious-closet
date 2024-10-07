@@ -15,8 +15,8 @@ interface EditArticleButtonProps {
 
 const EditArticleButton = ({ article }: EditArticleButtonProps) => {
     const [editingArticle, setEditingArticle] = useState<boolean>(false);
-    const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum>(article.articleCategory);
-    const [selectedWeatherCategory, setSelectedWeatherCategory] = useState<WeatherCategoryEnum>(article.weatherCategory);
+    const [selectedCategory, setSelectedCategory] = useState<ArticleCategoryEnum | undefined>(article.articleCategory);
+    const [selectedWeatherCategory, setSelectedWeatherCategory] = useState<WeatherCategoryEnum | undefined>(article.weatherCategory);
     const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
     const [updateError, setUpdateError] = useState<boolean>(false);
 
@@ -46,9 +46,9 @@ const EditArticleButton = ({ article }: EditArticleButtonProps) => {
             {editingArticle && (
                 <EditArticleModal
                     setEditingArticle={setEditingArticle}
-                    selectedCategory={selectedCategory}
+                    selectedCategory={selectedCategory!!}
                     setSelectedCategory={setSelectedCategory}
-                    selectedWeatherCategory={selectedWeatherCategory}
+                    selectedWeatherCategory={selectedWeatherCategory!!}
                     setSelectedWeatherCategory={setSelectedWeatherCategory}
                     handleSubmit={handleSubmit}
                 />

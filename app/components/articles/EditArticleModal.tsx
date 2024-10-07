@@ -10,9 +10,9 @@ import CloseModalButton from "@/app/components/modal/CloseModalButton";
 interface EditArticleModalProps {
     setEditingArticle: Dispatch<SetStateAction<boolean>>;
     selectedCategory: ArticleCategoryEnum;
-    setSelectedCategory: Dispatch<SetStateAction<ArticleCategoryEnum>>;
+    setSelectedCategory: Dispatch<SetStateAction<ArticleCategoryEnum | undefined>>;
     selectedWeatherCategory: WeatherCategoryEnum;
-    setSelectedWeatherCategory: Dispatch<SetStateAction<WeatherCategoryEnum>>;
+    setSelectedWeatherCategory: Dispatch<SetStateAction<WeatherCategoryEnum | undefined>>;
     handleSubmit: () => void;
 }
 
