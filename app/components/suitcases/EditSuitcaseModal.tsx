@@ -1,12 +1,11 @@
 'use client'
 import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
-import {Dispatch, SetStateAction, useState} from "react";
-import {updateSuitcase} from "@/app/server-actions/suitcase/updateSuitcase";
-import {Suitcase} from "@/types/suitcase";
+import { Dispatch, SetStateAction, useState } from "react";
+import { updateSuitcase } from "@/app/server-actions/suitcase/updateSuitcase";
+import { Suitcase } from "@/types/suitcase";
 import ErrorModal from "@/app/components/modal/ErrorModal";
 import TextButton from "@/app/components/buttons/TextButton";
-import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
 
 interface EditSuitcaseModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>

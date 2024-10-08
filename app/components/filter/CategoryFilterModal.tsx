@@ -5,7 +5,6 @@ import Image from "next/image";
 import Modal from "@/app/components/modal/Modal";
 import { Dispatch, SetStateAction, useState } from "react";
 import TextButton from "@/app/components/buttons/TextButton";
-import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import { articleCategories } from "@/constants/articleCategories";
 import SaveButton from "@/app/components/buttons/SaveButton";

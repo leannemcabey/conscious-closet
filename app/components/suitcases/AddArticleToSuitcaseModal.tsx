@@ -3,10 +3,7 @@ import Modal from "@/app/components/modal/Modal";
 import SuitcaseOptions from "@/app/components/suitcases/SuitcaseOptions";
 import { Dispatch, SetStateAction } from "react";
 import { Suitcase } from "@/types/suitcase";
-import NewSuitcaseButton from "@/app/components/suitcases/NewSuitcaseButton";
-import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
-import TextButton from "@/app/components/buttons/TextButton";
 import SaveButton from "@/app/components/buttons/SaveButton";
 import NewButton from "@/app/components/buttons/NewButton";
 

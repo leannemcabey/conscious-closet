@@ -5,8 +5,6 @@ import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import { Suitcase } from "@/types/suitcase";
 import ErrorModal from "@/app/components/modal/ErrorModal";
-import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
-import TextButton from "@/app/components/buttons/TextButton";
 import SaveButton from "@/app/components/buttons/SaveButton";
 
 interface NewSuitcaseModalProps {
