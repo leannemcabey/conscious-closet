@@ -24,7 +24,7 @@ const ArticleClassification = ({ selectedCategory, setSelectedCategory, selected
                         <button
                             key={category}
                             onClick={() => setSelectedCategory(ArticleCategoryEnum[category as keyof typeof ArticleCategoryEnum])}
-                            className={`rounded-full text-center text-sm truncate py-1 px-2 ${alreadySelected ? "bg-theme-green text-white" : "border border-theme-green text-theme-green"}`}
+                            className={`rounded-full text-center text-sm truncate py-1 px-2 ${alreadySelected ? "bg-button-green text-white" : "border border-theme-green text-theme-green"}`}
                         >
                             {ArticleCategoryTitle[category as keyof typeof ArticleCategoryEnum]}
                         </button>

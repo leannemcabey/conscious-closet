@@ -43,7 +43,7 @@ const SuitcaseOptions = ({ suitcases, selectedSuitcases, setSelectedSuitcases }:
     )
 
     return (
-        <div className="h-72 mt-4 overflow-auto md:h-96">
+        <div className="h-[400px] mt-4 overflow-auto md:h-96">
             <div className="flex flex-col space-y-2">
                 {suitcases.map((suitcase) => option(suitcase))}
             </div>

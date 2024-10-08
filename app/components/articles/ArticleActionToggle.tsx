@@ -9,8 +9,8 @@ interface ArticleActionToggleProps {
 }
 
 const ArticleActionToggle = ({ iconFile, iconAlt, isActive, clickHandler }: ArticleActionToggleProps) => {
-    const backgroundColor = isActive ? "bg-theme-green" : "bg-neutral-300";
-    const borderColor = isActive ? "border-theme-green" : "border-neutral-300";
+    const backgroundColor = isActive ? "bg-button-green" : "bg-neutral-300";
+    const borderColor = isActive ? "border-button-green" : "border-neutral-300";
     const positioning = isActive ? "justify-end" : "";
 
     return (

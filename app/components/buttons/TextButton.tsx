@@ -10,11 +10,12 @@ interface TextButtonProps {
 }
 
 const TextButton = ({ widthStyling, disabled, handleClick, colorOverride, children }: TextButtonProps) => {
-    const colorStyling = colorOverride ? colorOverride : "border-theme-green text-theme-green";
+    const colorStyling = colorOverride ? colorOverride : "bg-white border-theme-green text-theme-green";
+    const inactiveColorStyling = "bg-neutral-200 border-neutral-200 text-neutral-400";
 
     return (
         <button
-            className={`${disabled && "invisible"} border bg-white ${colorStyling} rounded-lg p-1 ${widthStyling} md:text-lg lg:text-base`}
+            className={`border ${disabled ? inactiveColorStyling : colorStyling} rounded-lg py-1 px-3 ${widthStyling} md:text-lg lg:text-base`}
             onClick={() => handleClick()}
         >
             <div className="flex justify-center">

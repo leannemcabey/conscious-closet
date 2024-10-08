@@ -7,6 +7,7 @@ import { WeatherPicker } from "@/app/components/articles/new/WeatherPicker";
 import { WeatherCategoryEnum } from "@/types/enums/weatherCategoryEnum";
 import Warning from "@/app/components/articles/new/Warning";
 import ArticleClassification from "@/app/components/articles/ArticleClassification";
+import SaveButton from "@/app/components/buttons/SaveButton";
 
 interface NewArticleClassificationProps {
     setStep: Dispatch<SetStateAction<number>>;
@@ -42,18 +43,7 @@ const NewArticleClassification = ({ image, setStep, selectedCategory, setSelecte
 
             {selectedCategory && selectedWeatherCategory && <Warning />}
 
-            <button
-                className="pt-4 self-end"
-                disabled={!selectedCategory || !selectedWeatherCategory}
-                onClick={() => handleSubmit()}
-            >
-                <Image
-                    src={selectedCategory && selectedWeatherCategory ? "/check-mark-button-green.svg" : "/check-mark-button-gray.svg"}
-                    height={40}
-                    width={40}
-                    alt="save new article"
-                />
-            </button>
+            <SaveButton disabled={!selectedCategory || !selectedWeatherCategory} handleClick={handleSubmit} />
         </div>
     )
 }

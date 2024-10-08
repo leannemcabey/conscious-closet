@@ -44,9 +44,9 @@ const EditSuitcaseModal = ({ setIsOpen, suitcase }: EditSuitcaseModalProps) => {
                     />
 
                     <div className="self-end mt-4">
-                        <TextButtonFilled disabled={suitcase.name === newSuitcaseName} handleClick={() => handleSubmit()}>
+                        <TextButton disabled={suitcase.name === newSuitcaseName} handleClick={() => handleSubmit()}>
                             Update
-                        </TextButtonFilled>
+                        </TextButton>
                     </div>
                 </div>
             </div>

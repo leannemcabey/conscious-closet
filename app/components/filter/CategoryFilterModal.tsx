@@ -8,6 +8,7 @@ import TextButton from "@/app/components/buttons/TextButton";
 import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import { articleCategories } from "@/constants/articleCategories";
+import SaveButton from "@/app/components/buttons/SaveButton";
 
 interface CategoryFilterModalProps {
     selectedArticleCategories: ArticleCategoryEnum[];
@@ -52,7 +53,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
     }
 
     const menuElement= (category: ArticleCategoryEnum) => (
-        <div key={category} onClick={() => updateSelections(category)} className="flex space-x-2">
+        <div key={category} onClick={() => updateSelections(category)} className="flex items-center space-x-2">
             <div className="min-w-7 max-w-7 min-h-7 max-w-7 rounded-full border border-theme-blue">
                 <Image
                     src="/check-mark-button.svg"
@@ -70,10 +71,10 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
         <Modal setIsOpen={setSelectingCategories}>
             <>
                 <CloseModalButton setIsOpen={setSelectingCategories} />
-                <TextButton disabled={false} handleClick={() => selectOrDeselectAll()} widthStyling="w-28" colorOverride="border-theme-blue text-theme-blue">
+                <TextButton disabled={false} handleClick={() => selectOrDeselectAll()} widthStyling="w-28">
                     {allAreSelected ? "deselect all" : "select all"}
                 </TextButton>
-                <div className="mt-8">
+                <div className="flex flex-col mt-8">
                     <div className="h-full">
                         <div className="flex flex-col space-y-2 md:space-y-2.5">
                             {articleCategories
@@ -82,11 +83,7 @@ const CategoryFilterModal = ({ selectedArticleCategories, setSelectedArticleCate
                         </div>
                     </div>
 
-                    <div className="flex justify-end mt-10">
-                        <TextButtonFilled disabled={false} handleClick={() => saveSelections()}>
-                            save
-                        </TextButtonFilled>
-                    </div>
+                    <SaveButton handleClick={saveSelections} />
                 </div>
             </>
         </Modal>

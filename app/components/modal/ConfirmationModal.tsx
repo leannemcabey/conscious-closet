@@ -3,6 +3,7 @@ import { Dispatch, ReactElement, SetStateAction } from "react";
 import Modal from "@/app/components/modal/Modal";
 import * as React from "react";
 import TextButton from "@/app/components/buttons/TextButton";
+import CloseModalButton from "@/app/components/modal/CloseModalButton";
 
 interface ConfirmationModalProps {
     setIsOpen: Dispatch<SetStateAction<boolean>>
@@ -13,7 +14,9 @@ interface ConfirmationModalProps {
 const ConfirmationModal = ({ setIsOpen, confirmAction, children }: ConfirmationModalProps) => {
     return (
         <Modal setIsOpen={setIsOpen}>
-            <div className="flex flex-col">
+            <CloseModalButton setIsOpen={setIsOpen} />
+
+            <div className="flex flex-col mt-6">
                 {children}
 
                 <div className="flex justify-center space-x-4 mb-2">
