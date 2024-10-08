@@ -5,7 +5,7 @@ import Modal from "@/app/components/modal/Modal";
 import CloseModalButton from "@/app/components/modal/CloseModalButton";
 import { Suitcase } from "@/types/suitcase";
 import ErrorModal from "@/app/components/modal/ErrorModal";
-import TextButtonFilled from "@/app/components/buttons/TextButtonFilled";
+import SaveButton from "@/app/components/buttons/SaveButton";
 
 interface NewSuitcaseModalProps {
     setIsOpen:  Dispatch<SetStateAction<boolean>>;
@@ -19,7 +19,7 @@ const NewSuitcaseModal = ({ setIsOpen, suitcases, setSuitcases }: NewSuitcaseMod
 
     const errorMessage = "An error occurred while creating your new suitcase. Please try again."
 
-    const buttonDisabled: boolean = suitcaseName === undefined;
+    const buttonDisabled: boolean = suitcaseName === undefined || suitcaseName === "";
 
     const handleSubmit = () => {
         if (suitcaseName) {
@@ -47,11 +47,8 @@ const NewSuitcaseModal = ({ setIsOpen, suitcases, setSuitcases }: NewSuitcaseMod
                         onChange={(e) => setSuitcaseName(e.target.value)}
                         className="border border-theme-green bg-theme-gray rounded-lg p-2 focus:outline-none md:text-xl"
                     />
-                    <div className="self-end mt-4">
-                        <TextButtonFilled handleClick={() => handleSubmit()} disabled={buttonDisabled}>
-                            save
-                        </TextButtonFilled>
-                    </div>
+
+                    <SaveButton disabled={buttonDisabled} handleClick={handleSubmit} />
                 </div>
             </div>
         </Modal>

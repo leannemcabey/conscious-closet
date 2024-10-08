@@ -19,7 +19,6 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
                 iconPath={weatherCategory === WeatherCategoryEnum.WARM ? "/weather-icon-warm-white.svg" : "/weather-icon-warm.svg"}
                 iconAlt="warm weather icon"
                 sizeOverride={sizeStyling}
-                solid={true}
             />
 
             <IconButton
@@ -28,7 +27,6 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
                 iconPath={weatherCategory === WeatherCategoryEnum.MIXED ? "/weather-icon-mixed-white.svg" : "/weather-icon-mixed.svg"}
                 iconAlt="mixed weather icon"
                 sizeOverride={sizeStyling}
-                solid={true}
             />
 
             <IconButton
@@ -37,7 +35,6 @@ export const WeatherPicker = ({ weatherCategory, setWeatherCategory }: WeatherPi
                 iconPath={weatherCategory === WeatherCategoryEnum.COLD ? "/weather-icon-cold-white.svg" : "/weather-icon-cold.svg"}
                 iconAlt="cold weather icon"
                 sizeOverride={sizeStyling}
-                solid={true}
             />
         </div>
     )

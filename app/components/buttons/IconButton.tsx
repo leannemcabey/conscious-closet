@@ -7,18 +7,13 @@ interface IconButtonProps {
     iconPath: string;
     iconAlt: string;
     sizeOverride?: string;
-    colorOverride?: { active: string, inactive: string };
-    borderOverride?: { active: string, inactive: string };
-    iconRotation?: string;
     disabled?: boolean;
-    solid?: boolean;
 }
 
-const IconButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, colorOverride, borderOverride, iconRotation, disabled, solid}: IconButtonProps) => {
+const IconButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, disabled}: IconButtonProps) => {
     const sizeStyling = sizeOverride ? sizeOverride : "w-[40px] h-[40px]";
-    const activeColor = solid ? "bg-theme-green" : "bg-gradient-to-r from-button-gradient-start to-button-gradient-end";
-    const colorStyling = `${isActive ? activeColor : "bg-transparent"}`;
-    const borderStyling = `${isActive ? "" : "border border-theme-green"}`
+    const colorStyling = `${isActive ? "bg-button-green" : "bg-transparent"}`;
+    const borderStyling = `${isActive ? "" : "border border-neutral-300"}`
 
     return (
         <button
@@ -31,7 +26,7 @@ const IconButton = ({handleClick, isActive, iconPath, iconAlt, sizeOverride, col
                 height={40}
                 width={40}
                 alt={iconAlt}
-                className={`w-full ${iconRotation}`}
+                className="w-full"
             />
         </button>
     )

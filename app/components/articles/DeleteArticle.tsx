@@ -26,7 +26,12 @@ const DeleteArticle = ({ article }: DeleteArticleProps) => {
 
     return (
         <>
-            <IconButton handleClick={() => setIsDeleting(true)} isActive={true} iconPath="/trash-icon-white.svg" iconAlt="trash icon" />
+            <IconButton
+                handleClick={() => setIsDeleting(true)}
+                isActive={true}
+                iconPath="/trash-icon-white.svg"
+                iconAlt="trash icon"
+            />
 
             {isDeleting && <DeleteArticleModal setIsOpen={setIsDeleting} handleSubmit={handleDelete}/>}
 
